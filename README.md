@@ -1,2 +1,2 @@
 # QUACK
-Quick Unintrusive Anti-Cheat Kit
+Quick Universal Anti-Cheat Kit

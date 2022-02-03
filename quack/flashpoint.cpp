@@ -24,11 +24,8 @@ int main() {
     freopen_s(reinterpret_cast<FILE**>(stderr), "CONOUT$", "w", stderr);
 
     const auto hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleTextAttribute(hConsole, 12);
 
     // Request testing
-
-
     http::Client cli{ "http://localhost:7982" };
     for (unsigned i = 1u; ; ++i) {
         json::json body{};
@@ -42,14 +39,15 @@ int main() {
         };
         SetConsoleTextAttribute(hConsole, 7);
         std::cout << "\nSending heartbeat number " << i << "...\n";
-        SetConsoleTextAttribute(hConsole, 2);
 
         if (auto res = cli.Post("/", body.dump(), "application/json")) {
             if (res->status == 200) {
+                SetConsoleTextAttribute(hConsole, 2);
                 std::cout << res->body << std::endl;
             }
         }
         else {
+            SetConsoleTextAttribute(hConsole, 12);
             const auto err = res.error();
             std::cout << "Error: "  << http::to_string(err) << std::endl;
         }

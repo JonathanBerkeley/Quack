@@ -1,0 +1,3 @@
+[submodule "Quack-server"]
+	path = Quack-server
+	url = https://github.com/JonathanBerkeley/Quack-server

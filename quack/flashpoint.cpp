@@ -50,8 +50,8 @@ int main() {
             }
         }
         else {
-            auto err = res.error();
-            std::cout << http::to_string(err) << std::endl;
+            const auto err = res.error();
+            std::cout << "Error: "  << http::to_string(err) << std::endl;
         }
         thread::sleep_for(3s);
     }

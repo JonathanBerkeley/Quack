@@ -40,5 +40,8 @@
     <ClInclude Include="Lib\httplib.h">
       <Filter>Code\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Lib\json.hpp">
+      <Filter>Code\Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

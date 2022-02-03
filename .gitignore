@@ -2,6 +2,7 @@
 *
 !*/
 !/quack/
+!/Lib/
 
 # Source code
 !*.cpp

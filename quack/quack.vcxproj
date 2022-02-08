@@ -195,6 +195,7 @@
     <None Include="..\README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="constants.h" />
     <ClInclude Include="Lib\httplib.h" />
     <ClInclude Include="Lib\json.hpp" />
   </ItemGroup>

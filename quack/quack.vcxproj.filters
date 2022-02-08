@@ -43,5 +43,8 @@
     <ClInclude Include="Lib\json.hpp">
       <Filter>Code\Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="constants.h">
+      <Filter>Code\Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

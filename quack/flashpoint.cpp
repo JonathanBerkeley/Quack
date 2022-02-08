@@ -12,7 +12,6 @@
 namespace http = httplib;
 namespace json = nlohmann;
 namespace thread = std::this_thread;
-namespace chrono = std::chrono;
 
 using namespace std::chrono_literals;
 
@@ -24,9 +23,9 @@ int main() {
     freopen_s(reinterpret_cast<FILE**>(stderr), "CONOUT$", "w", stderr);
 
     const auto hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
-
-    // Request testing
     http::Client cli{ "http://localhost:7982" };
+
+    // Heart of the application, main loop
     for (unsigned i = 1u; ; ++i) {
         json::json body{};
         body["heartbeat"] = {

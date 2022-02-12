@@ -15,6 +15,7 @@
 
 # Media
 !*.psd
+!*.pdf
 !*.png
 !*.jpg
 !*.jpeg

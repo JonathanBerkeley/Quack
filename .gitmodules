@@ -1,3 +1,9 @@
 [submodule "Quack-server"]
 	path = Quack-server
 	url = https://github.com/JonathanBerkeley/Quack-server
+[submodule "Red team/Destroject"]
+	path = Red team/Destroject
+	url = https://github.com/JonathanBerkeley/destroject
+[submodule "Red team/Highlight-Generic"]
+	path = Red team/Highlight-Generic
+	url = https://github.com/JonathanBerkeley/Highlight-Generic

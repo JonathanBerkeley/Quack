@@ -5,6 +5,7 @@
 !/Quack/
 !/Quack-server/
 !/Lib/
+!/Red team/*
 
 # Source code
 !*.cpp

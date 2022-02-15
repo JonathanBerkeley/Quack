@@ -37,3 +37,7 @@ void LogicLoop() {
         // Todo: internal heartbeat
     }
 }
+
+void DumpProcess() {
+    GetModuleHandle(nullptr);
+}

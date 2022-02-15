@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="0. Libs">
+      <UniqueIdentifier>{13aa6bf0-2749-457a-9b87-7f0fe9beb38d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="1. Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="2. Preamble">
+      <UniqueIdentifier>{8f63b4f3-f264-4aa1-bb42-750a04cbeb10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Frame">
+      <UniqueIdentifier>{31b16c16-05ce-46ac-bb4f-2fc50c55b15d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Frame\Flashpoint">
+      <UniqueIdentifier>{2d73bd3a-4d95-4e7d-b9e9-6eae6c927f09}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Frame\Data">
+      <UniqueIdentifier>{5819fe24-ed35-4ddd-a7b4-c3f2d51c02b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Resources\Markdown">
+      <UniqueIdentifier>{870f115d-67f4-4b70-ae14-8af62e949526}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="framework.h">
+      <Filter>1. Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>1. Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="data.h">
+      <Filter>3. Frame\Data</Filter>
+    </ClInclude>
+    <ClInclude Include="flashpoint.h">
+      <Filter>3. Frame\Flashpoint</Filter>
+    </ClInclude>
+    <ClInclude Include="constants.h">
+      <Filter>Resources</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>2. Preamble</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>2. Preamble</Filter>
+    </ClCompile>
+    <ClCompile Include="flashpoint.cpp">
+      <Filter>3. Frame\Flashpoint</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

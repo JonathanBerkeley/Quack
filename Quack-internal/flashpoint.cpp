@@ -4,7 +4,12 @@
 #include "data.h"
 
 #include <vector>
+#include <chrono>
+#include <thread>
 
+namespace thread = std::this_thread;
+
+using namespace std::chrono_literals;
 using namespace data;
 
 DWORD WINAPI Init(LPVOID lpParam) {
@@ -15,7 +20,7 @@ DWORD WINAPI Init(LPVOID lpParam) {
 
     // Set title to console and output info on DLL
     SetConsoleTitle(constants::DLL_NAME);
-    std::wcout << constants::DLL_NAME << L" injected" << '\n';
+    std::wcout << constants::DLL_NAME << L" loaded" << '\n';
     std::cout << "Version - " << constants::VERSION << '\n';
 
     LogicLoop();
@@ -26,8 +31,9 @@ DWORD WINAPI Init(LPVOID lpParam) {
 
 void LogicLoop() {
     while (running) {
+        std::cout << "";
 
-        Sleep(300);
+        thread::sleep_for(10ms);
         // Todo: internal heartbeat
     }
 }

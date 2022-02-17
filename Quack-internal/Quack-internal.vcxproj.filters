@@ -55,5 +55,8 @@
     <ClCompile Include="flashpoint.cpp">
       <Filter>3. Frame\Flashpoint</Filter>
     </ClCompile>
+    <ClCompile Include="data.cpp">
+      <Filter>3. Frame\Data</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

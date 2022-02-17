@@ -6,11 +6,14 @@
 #include <vector>
 #include <chrono>
 #include <thread>
+#include <iomanip>
 
 namespace thread = std::this_thread;
+using ull = unsigned long long;
 
 using namespace std::chrono_literals;
 using namespace data;
+
 
 DWORD WINAPI Init(LPVOID lpParam) {
     // Redirect stdout & stderr to new console
@@ -22,22 +25,28 @@ DWORD WINAPI Init(LPVOID lpParam) {
     SetConsoleTitle(constants::DLL_NAME);
     std::wcout << constants::DLL_NAME << L" loaded" << '\n';
     std::cout << "Version - " << constants::VERSION << '\n';
-
+    
     LogicLoop();
 
     // ReSharper disable once CppZeroConstantCanBeReplacedWithNullptr
     return 0;
 }
 
-void LogicLoop() {
-    while (running) {
-        std::cout << "";
-
-        thread::sleep_for(10ms);
-        // Todo: internal heartbeat
+void DumpProcess() {
+    auto base = reinterpret_cast<char*>(GetModuleHandle(nullptr));
+    std::cout << "BASE: " << std::hex << base << '\n';
+    for (const auto target = base + 1; base < target; ++base) {
+        std::cout << base;
     }
 }
 
-void DumpProcess() {
-    GetModuleHandle(nullptr);
+void LogicLoop() {
+    DumpProcess();
+    system("pause");
+    while (running) {
+        std::cout << " Loop ";
+
+        thread::sleep_for(1'000ms);
+        // Todo: internal heartbeat
+    }
 }

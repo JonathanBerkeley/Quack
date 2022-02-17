@@ -7,6 +7,3 @@
 [submodule "Red team/Highlight-Generic"]
 	path = Red team/Highlight-Generic
 	url = https://github.com/JonathanBerkeley/Highlight-Generic
-[submodule "Quack-internal"]
-	path = Quack-internal
-	url = https://github.com/JonathanBerkeley/Quack-internal

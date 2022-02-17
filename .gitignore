@@ -1,8 +1,7 @@
 # Turn this .gitignore into a whitelist instead of a blacklist
 *
 !*/
-!/quack/
-!/Quack/
+!/Quack-client/
 !/Quack-internal
 !/Quack-server/
 !/Lib/

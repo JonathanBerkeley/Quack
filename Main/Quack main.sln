@@ -5,11 +5,13 @@ VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Quack-internal", "..\Quack-internal\Quack-internal.vcxproj", "{5383B9C6-5E42-4698-BC44-87EB0E11A9FA}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "quack", "..\Quack-client\quack.vcxproj", "{30A55074-4DB9-4163-BFEB-E04E2A67CE66}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Quack-client", "..\Quack-client\quack.vcxproj", "{30A55074-4DB9-4163-BFEB-E04E2A67CE66}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Highlight", "..\Red team\Highlight-Generic\Highlight\Highlight.vcxproj", "{3FD7EAB2-C241-4C18-9A7E-C1395FCDBEB1}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Destroject", "..\Red team\Destroject\Destroject\Destroject.vcxproj", "{7EE0C75F-8907-405D-945B-4EC4842C5249}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DummyGame", "..\Quack-DummyGame\example_win32_directx9\example_win32_directx9.vcxproj", "{4165A294-21F2-44CA-9B38-E3F935ABADF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +53,14 @@ Global
 		{7EE0C75F-8907-405D-945B-4EC4842C5249}.Release|x64.Build.0 = Release|x64
 		{7EE0C75F-8907-405D-945B-4EC4842C5249}.Release|x86.ActiveCfg = Release|Win32
 		{7EE0C75F-8907-405D-945B-4EC4842C5249}.Release|x86.Build.0 = Release|Win32
+		{4165A294-21F2-44CA-9B38-E3F935ABADF5}.Debug|x64.ActiveCfg = Debug|x64
+		{4165A294-21F2-44CA-9B38-E3F935ABADF5}.Debug|x64.Build.0 = Debug|x64
+		{4165A294-21F2-44CA-9B38-E3F935ABADF5}.Debug|x86.ActiveCfg = Debug|Win32
+		{4165A294-21F2-44CA-9B38-E3F935ABADF5}.Debug|x86.Build.0 = Debug|Win32
+		{4165A294-21F2-44CA-9B38-E3F935ABADF5}.Release|x64.ActiveCfg = Release|x64
+		{4165A294-21F2-44CA-9B38-E3F935ABADF5}.Release|x64.Build.0 = Release|x64
+		{4165A294-21F2-44CA-9B38-E3F935ABADF5}.Release|x86.ActiveCfg = Release|Win32
+		{4165A294-21F2-44CA-9B38-E3F935ABADF5}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

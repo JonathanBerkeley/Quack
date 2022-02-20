@@ -32,17 +32,7 @@ DWORD WINAPI Init(LPVOID lpParam) {
     return 0;
 }
 
-void DumpProcess() {
-    auto base = reinterpret_cast<char*>(GetModuleHandle(nullptr));
-    std::cout << "BASE: " << std::hex << base << '\n';
-    for (const auto target = base + 1; base < target; ++base) {
-        std::cout << base;
-    }
-}
-
 void LogicLoop() {
-    DumpProcess();
-    system("pause");
     while (running) {
         std::cout << " Loop ";
 

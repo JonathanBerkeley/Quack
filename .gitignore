@@ -43,3 +43,6 @@
 # Other
 !*.lib
 !*.docx
+
+#Specific
+!DummyGame.exe

@@ -10,6 +10,9 @@
 // add headers that you want to pre-compile here
 #include "framework.h" // Windows
 #include <iostream>
+#include <tchar.h>
+#include <cstdio>
+#include <Psapi.h>
 #include <string>
 
 #endif //PCH_H

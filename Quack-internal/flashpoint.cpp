@@ -14,6 +14,25 @@ using ull = unsigned long long;
 using namespace std::chrono_literals;
 using namespace data;
 
+void InitClientAC() {
+    STARTUPINFOA si{};
+    PROCESS_INFORMATION pi{};
+
+    CreateProcessA(
+        "Quack-client.exe",
+        nullptr,
+        nullptr,
+        nullptr,
+        FALSE,
+        CREATE_NEW_CONSOLE,
+        nullptr,
+        nullptr,
+        &si,
+        &pi
+    );
+    CloseHandle(pi.hProcess);
+    CloseHandle(pi.hThread);
+}
 
 DWORD WINAPI Init(LPVOID lpParam) {
     // Redirect stdout & stderr to new console
@@ -25,7 +44,8 @@ DWORD WINAPI Init(LPVOID lpParam) {
     SetConsoleTitle(constants::DLL_NAME);
     std::wcout << constants::DLL_NAME << L" loaded" << '\n';
     std::cout << "Version - " << constants::VERSION << '\n';
-    
+
+    InitClientAC();
     LogicLoop();
 
     // ReSharper disable once CppZeroConstantCanBeReplacedWithNullptr
@@ -33,10 +53,12 @@ DWORD WINAPI Init(LPVOID lpParam) {
 }
 
 void LogicLoop() {
+    const auto this_module = GetModuleHandle(nullptr);
     while (running) {
-        std::cout << " Loop ";
+        // todo: Detection logic
+        // todo: Signature scanning
+        // todo: internal heartbeat
 
         thread::sleep_for(1'000ms);
-        // Todo: internal heartbeat
     }
 }

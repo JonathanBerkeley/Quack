@@ -1,11 +1,13 @@
 # Turn this .gitignore into a whitelist instead of a blacklist
 *
 !*/
+!/Main/
 !/Quack-client/
 !/Quack-internal/
 !/Quack-server/
-!/Lib/
 !/Red team/*
+!/Testbed/
+!/Lib/
 
 # Source code
 !*.cpp

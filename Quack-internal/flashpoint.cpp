@@ -57,7 +57,7 @@ void LogicLoop() {
     while (running) {
         // todo: Detection logic
         // todo: Signature scanning
-        // todo: internal heartbeat
+        // todo: Internal heartbeat
 
         thread::sleep_for(1'000ms);
     }

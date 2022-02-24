@@ -3,15 +3,17 @@
 #include "constants.h"
 #include "data.h"
 
-#include <vector>
 #include <chrono>
 #include <thread>
 #include <iomanip>
+
+#include "memory_scanner.h"
 
 namespace thread = std::this_thread;
 using ull = unsigned long long;
 
 using namespace std::chrono_literals;
+using constants::DBG;
 using namespace data;
 
 void InitClientAC() {
@@ -30,6 +32,7 @@ void InitClientAC() {
         &si,
         &pi
     );
+
     CloseHandle(pi.hProcess);
     CloseHandle(pi.hThread);
 }
@@ -52,13 +55,33 @@ DWORD WINAPI Init(LPVOID lpParam) {
     return 0;
 }
 
+
 void LogicLoop() {
-    const auto this_module = GetModuleHandle(nullptr);
+    const ProcessInfo process_info{
+        GetCurrentProcess(),
+        GetCurrentProcessId(),
+        GetModuleHandle(nullptr)
+    };
+
     while (running) {
         // todo: Detection logic
         // todo: Signature scanning
         // todo: Internal heartbeat
 
-        thread::sleep_for(1'000ms);
+
+        auto dlls = EnumerateModules(process_info);
+        for (const auto& dll : dlls) {
+            TCHAR mod_name[MAX_PATH];
+            static constinit int size = sizeof(mod_name) / sizeof(TCHAR);
+
+            if (GetModuleFileNameEx(process_info.hProcess, dll, mod_name, size)) {
+                if constexpr (DBG)
+                    std::wcout << "Module:\t" << mod_name << "\n";
+            }
+        }
+        
+        if constexpr (DBG)
+            std::cout << "\n\n\n";
+        thread::sleep_for(10s);
     }
 }

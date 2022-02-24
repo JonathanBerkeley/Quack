@@ -44,6 +44,9 @@
     <ClInclude Include="constants.h">
       <Filter>Resources</Filter>
     </ClInclude>
+    <ClInclude Include="memory_scanner.h">
+      <Filter>3. Frame\Flashpoint</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -57,6 +60,9 @@
     </ClCompile>
     <ClCompile Include="data.cpp">
       <Filter>3. Frame\Data</Filter>
+    </ClCompile>
+    <ClCompile Include="memory_scanner.cpp">
+      <Filter>3. Frame\Flashpoint</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

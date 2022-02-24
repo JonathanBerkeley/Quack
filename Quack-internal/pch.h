@@ -11,6 +11,7 @@
 #include "framework.h" // Windows
 #include <iostream>
 #include <tchar.h>
+#include <vector>
 #include <cstdio>
 #include <Psapi.h>
 #include <string>

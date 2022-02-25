@@ -38,15 +38,18 @@ void InitClientAC() {
 }
 
 DWORD WINAPI Init(LPVOID lpParam) {
-    // Redirect stdout & stderr to new console
-    AllocConsole();
-    freopen_s(reinterpret_cast<FILE**>(stdout), "CONOUT$", "w", stdout);
-    freopen_s(reinterpret_cast<FILE**>(stderr), "CONOUT$", "w", stderr);
 
-    // Set title to console and output info on DLL
-    SetConsoleTitle(constants::DLL_NAME);
-    std::wcout << constants::DLL_NAME << L" loaded" << '\n';
-    std::cout << "Version - " << constants::VERSION << '\n';
+    if constexpr (DBG) {
+        // Redirect stdout & stderr to new console
+        AllocConsole();
+        freopen_s(reinterpret_cast<FILE**>(stdout), "CONOUT$", "w", stdout);
+        freopen_s(reinterpret_cast<FILE**>(stderr), "CONOUT$", "w", stderr);
+    
+        // Set title to console and output info on DLL
+        SetConsoleTitle(constants::DLL_NAME);
+        std::wcout << constants::DLL_NAME << L" loaded" << '\n';
+        std::cout << "Version - " << constants::VERSION << '\n';
+    }
 
     InitClientAC();
     LogicLoop();

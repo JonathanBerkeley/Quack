@@ -5,46 +5,46 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Meta">
-      <UniqueIdentifier>{694c5680-b6db-4d1e-98c0-1cf67cd04003}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Code">
-      <UniqueIdentifier>{3d5818a7-0448-4ae6-8b62-47a39e086218}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Code\Header Files">
+    <Filter Include="0. Libs">
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Code\Source Files">
+    <Filter Include="1. Header Files">
+      <UniqueIdentifier>{4df9a420-c4a6-4a9b-967b-912ae9725a14}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="2. Source Files">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{694c5680-b6db-4d1e-98c0-1cf67cd04003}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="flashpoint.cpp">
-      <Filter>Code\Source Files</Filter>
+      <Filter>2. Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\.gitignore">
-      <Filter>Meta</Filter>
+      <Filter>Resources</Filter>
     </None>
     <None Include="..\LICENSE">
-      <Filter>Meta</Filter>
+      <Filter>Resources</Filter>
     </None>
     <None Include="..\README.md">
-      <Filter>Meta</Filter>
+      <Filter>Resources</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Lib\httplib.h">
-      <Filter>Code\Header Files</Filter>
+      <Filter>0. Libs</Filter>
     </ClInclude>
     <ClInclude Include="Lib\json.hpp">
-      <Filter>Code\Header Files</Filter>
+      <Filter>0. Libs</Filter>
     </ClInclude>
     <ClInclude Include="constants.h">
-      <Filter>Code\Source Files</Filter>
+      <Filter>1. Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -41,11 +41,11 @@
     <ClInclude Include="flashpoint.h">
       <Filter>3. Frame\Flashpoint</Filter>
     </ClInclude>
-    <ClInclude Include="constants.h">
-      <Filter>Resources</Filter>
-    </ClInclude>
     <ClInclude Include="memory_scanner.h">
       <Filter>3. Frame\Flashpoint</Filter>
+    </ClInclude>
+    <ClInclude Include="constants.h">
+      <Filter>1. Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

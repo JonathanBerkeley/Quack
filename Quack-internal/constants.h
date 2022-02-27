@@ -3,6 +3,6 @@
 
 namespace constants {
     const LPCWSTR DLL_NAME { L"Quack-internal" };
-    const std::string VERSION { "0.1.1" };
+    const std::string VERSION { "0.1.2" };
     static constexpr bool DBG = true;
 }

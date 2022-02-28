@@ -6,14 +6,9 @@
 #include <chrono>
 #include <thread>
 #include <iomanip>
-#include <Softpub.h>
-#include <wincrypt.h>
-#include <WinTrust.h>
+#include <algorithm>
 
 #include "memory_scanner.h"
-
-// Link with the WinTrust.lib file
-#pragma comment (lib, "wintrust")
 
 namespace thread = std::this_thread;
 using ull = unsigned long long;
@@ -22,11 +17,13 @@ using namespace std::chrono_literals;
 using constants::DBG;
 using namespace data;
 
+static PROCESS_INFORMATION ac_client{};
+
 // Start the anti-cheat executable
 void InitClientAC() {
     STARTUPINFOA si{};
-    PROCESS_INFORMATION pi{};
 
+#pragma warning( suppress : 6335 )
     CreateProcessA(
         "Quack-client.exe",
         nullptr,
@@ -37,16 +34,20 @@ void InitClientAC() {
         nullptr,
         nullptr,
         &si,
-        &pi
+        &ac_client
     );
+}
 
-    CloseHandle(pi.hProcess);
-    CloseHandle(pi.hThread);
+
+void KillClientAC() {
+    TerminateProcess(ac_client.hProcess, 0);
+    CloseHandle(ac_client.hProcess);
+    CloseHandle(ac_client.hThread);
 }
 
 
 DWORD WINAPI Init(LPVOID lpParam) {
-
+    
     if constexpr (DBG) {
         // Redirect stdout & stderr to new console
         AllocConsole();
@@ -60,44 +61,14 @@ DWORD WINAPI Init(LPVOID lpParam) {
     }
 
     InitClientAC();
+
+    // On exit, run KillClientAC
+    std::atexit(KillClientAC);
+
     LogicLoop();
 
     // ReSharper disable once CppZeroConstantCanBeReplacedWithNullptr
     return 0;
-}
-
-
-// Verifies signature for source file, based on MSDN example code
-// https://docs.microsoft.com/en-us/windows/win32/seccrypto/example-c-program--verifying-the-signature-of-a-pe-file
-bool VerifyModule(const LPCWSTR source_file) {
-    WINTRUST_FILE_INFO file_data{};
-    file_data.cbStruct = sizeof(WINTRUST_FILE_INFO);
-    file_data.pcwszFilePath = source_file;
-
-    GUID policy_guid = WINTRUST_ACTION_GENERIC_VERIFY_V2;
-    WINTRUST_DATA win_trust_data{
-        .cbStruct = sizeof(win_trust_data),
-        .pPolicyCallbackData = nullptr,          // Use default code signing EKU
-        .pSIPClientData = nullptr,               // Not applicable
-        .dwUIChoice = WTD_UI_NONE,               // Disable WVT UI
-        .fdwRevocationChecks = WTD_REVOKE_NONE,  // No revocation checking.
-        .dwUnionChoice = WTD_CHOICE_FILE,        // Verify an embedded signature on a file
-        .pFile = &file_data,                     // Setup pointer to file data
-        .dwStateAction = WTD_STATEACTION_VERIFY, // Verify action
-        .hWVTStateData = nullptr,                // Verification sets this value
-        .dwUIContext = 0                         // Not applicable with no UI
-    };
-
-    bool verified = false;
-
-    // WinVerifyTrust verifies signatures as specified by the GUID and win_trust_data
-    if (WinVerifyTrust(nullptr, &policy_guid, &win_trust_data) == ERROR_SUCCESS) {
-        verified = true;
-    }
-
-    // Any hWVTStateData must be released by a call with close.
-    win_trust_data.dwStateAction = WTD_STATEACTION_CLOSE;
-    return verified;
 }
 
 
@@ -116,12 +87,24 @@ void LogicLoop() {
 
         auto dlls = EnumerateModules(process_info);
         for (const auto& dll : dlls) {
-            TCHAR mod_name[MAX_PATH];
-            static constinit int size = sizeof(mod_name) / sizeof(TCHAR);
+            TCHAR module_path[MAX_PATH];
+            static constinit int size = sizeof(module_path) / sizeof(TCHAR);
 
-            if (GetModuleFileNameEx(process_info.hProcess, dll, mod_name, size)) {
-                if constexpr (DBG)
-                    std::wcout << "Module:\t" << mod_name << " VERIFIED: " << (VerifyModule(mod_name) ? "True" : "False") << "\n";
+            if (GetModuleFileNameEx(process_info.hProcess, dll, module_path, size)) {
+                /*if constexpr (DBG)
+                    std::wcout << "Module:\t" << mod_name << " VERIFIED: " << (VerifyModule(mod_name) ? "True" : "False") << "\n";*/
+
+                if (!VerifyModule(module_path) and dll != process_info.this_module) {
+                    // FreeLibrary(dll);
+                    
+                    std::wstring w_path{ module_path };
+
+                    // todo: Concrete module whitelist
+                    if (w_path.find(L"Quack") == std::wstring::npos) {
+                        std::wcout << "Ejecting module:\t" << module_path << "\n";
+                        FreeLibrary(dll);
+                    }
+                }
             }
         }
 

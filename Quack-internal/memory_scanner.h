@@ -13,3 +13,4 @@ struct ProcessInfo {
 
 
 [[nodiscard]] std::vector<HMODULE> EnumerateModules(ProcessInfo pi);
+bool VerifyModule(const LPCWSTR source_file);

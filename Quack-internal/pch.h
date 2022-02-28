@@ -13,6 +13,7 @@
 #include <tchar.h>
 #include <vector>
 #include <cstdio>
+#include <cstdlib>
 #include <Psapi.h>
 #include <string>
 

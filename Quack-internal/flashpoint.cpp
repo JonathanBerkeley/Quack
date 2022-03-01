@@ -79,11 +79,14 @@ void LogicLoop() {
         GetModuleHandle(nullptr)
     };
 
+    std::vector<std::string> cheat_patterns{
+        "50 00 72 00 6F 00 63 00 65 00 73 00 73 00 20 00 68 00 69 00 6A 00 61 00 63 00 6B 00 65 00 64"
+    };
+
     while (running) {
         // todo: Detection logic
         // todo: Signature scanning
         // todo: Internal heartbeat
-
 
         auto dlls = EnumerateModules(process_info);
         for (const auto& dll : dlls) {
@@ -100,10 +103,16 @@ void LogicLoop() {
                     std::wstring w_path{ module_path };
 
                     // todo: Concrete module whitelist
-                    if (w_path.find(L"Quack") == std::wstring::npos) {
+                    for (const auto& pattern : cheat_patterns) {
+                        if (const auto addr = PatternScan(dll, pattern.c_str()); addr != nullptr) {
+                            std::wcout << module_path << " Signature match at " << addr << '\n';
+                        }
+                    }
+
+                    /*if (w_path.find(L"Quack") == std::wstring::npos) {
                         std::wcout << "Ejecting module:\t" << module_path << "\n";
                         FreeLibrary(dll);
-                    }
+                    }*/
                 }
             }
         }

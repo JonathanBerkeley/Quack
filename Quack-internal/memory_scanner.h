@@ -13,4 +13,5 @@ struct ProcessInfo {
 
 
 [[nodiscard]] std::vector<HMODULE> EnumerateModules(ProcessInfo pi);
-bool VerifyModule(const LPCWSTR source_file);
+bool VerifyModule(LPCWSTR source_file);
+std::uint8_t* PatternScan(HMODULE module, const char* signature);

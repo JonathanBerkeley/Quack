@@ -79,7 +79,7 @@ void LogicLoop() {
         GetModuleHandle(nullptr)
     };
 
-    std::vector<std::string> cheat_patterns{
+    const std::vector<std::string> cheat_patterns{
         "50 00 72 00 6F 00 63 00 65 00 73 00 73 00 20 00 68 00 69 00 6A 00 61 00 63 00 6B 00 65 00 64"
     };
 
@@ -117,8 +117,6 @@ void LogicLoop() {
             }
         }
 
-        if constexpr (DBG)
-            std::cout << "\n\n\n";
         thread::sleep_for(10s);
     }
 }

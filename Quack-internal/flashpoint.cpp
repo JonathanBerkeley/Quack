@@ -25,7 +25,7 @@ void InitClientAC() {
 
 #pragma warning( suppress : 6335 )
     CreateProcessA(
-        "Quack-client.exe",
+        "Quack-ac.exe",
         nullptr,
         nullptr,
         nullptr,
@@ -88,8 +88,11 @@ void LogicLoop() {
         // todo: Signature scanning
         // todo: Internal heartbeat
 
+        if (DBG)
+            std::cout << "\nBeginning memory scan...\n";
         auto dlls = EnumerateModules(process_info);
         for (const auto& dll : dlls) {
+            
             TCHAR module_path[MAX_PATH];
             static constinit int size = sizeof(module_path) / sizeof(TCHAR);
 
@@ -105,18 +108,21 @@ void LogicLoop() {
                     // todo: Concrete module whitelist
                     for (const auto& pattern : cheat_patterns) {
                         if (const auto addr = PatternScan(dll, pattern.c_str()); addr != nullptr) {
+                            std::cout << "\nCHEAT FOUND:\n";
                             std::wcout << module_path << " Signature match at " << addr << '\n';
                         }
                     }
 
-                    /*if (w_path.find(L"Quack") == std::wstring::npos) {
+                    if (w_path.find(L"Quack") == std::wstring::npos) {
                         std::wcout << "Ejecting module:\t" << module_path << "\n";
                         FreeLibrary(dll);
-                    }*/
+                        ExitProcess(0);
+                    }
                 }
             }
         }
-
+        if (DBG)
+            std::cout << "\nFinished memory scan...\n";
         thread::sleep_for(10s);
     }
 }

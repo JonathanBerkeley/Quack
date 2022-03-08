@@ -9,13 +9,17 @@
 #include <algorithm>
 
 #include "memory_scanner.h"
+#include "Lib/httplib.hpp"
+#include "Lib/json.hpp"
 
+namespace http = httplib;
+namespace json = nlohmann;
 namespace thread = std::this_thread;
-using ull = unsigned long long;
 
 using namespace std::chrono_literals;
 using constants::DBG;
 using namespace data;
+using ull = unsigned long long;
 
 static PROCESS_INFORMATION ac_client{};
 
@@ -79,6 +83,8 @@ void LogicLoop() {
         GetModuleHandle(nullptr)
     };
 
+    http::Client cli{ "localhost", constants::IPC_PORT };
+
     const std::vector<std::string> cheat_patterns{
         "50 00 72 00 6F 00 63 00 65 00 73 00 73 00 20 00 68 00 69 00 6A 00 61 00 63 00 6B 00 65 00 64"
     };
@@ -87,6 +93,24 @@ void LogicLoop() {
         // todo: Detection logic
         // todo: Signature scanning
         // todo: Internal heartbeat
+
+        json::json body{};
+        body["Test"] = {
+            {"Hello", "World"}
+        };
+
+        if (auto res = cli.Post("/", body.dump(), "application/json")) {
+            if (res->status == 200) {
+                if constexpr (DBG) {
+                    std::cout << res->body << std::endl;
+                }
+            }
+            else {
+                std::cout << "Failed: " << res->status;
+                std::cout << "\nError:" << res.error();
+            }
+        }
+
 
         if (DBG)
             std::cout << "\nBeginning memory scan...\n";
@@ -101,8 +125,6 @@ void LogicLoop() {
                     std::wcout << "Module:\t" << mod_name << " VERIFIED: " << (VerifyModule(mod_name) ? "True" : "False") << "\n";*/
 
                 if (!VerifyModule(module_path) and dll != process_info.this_module) {
-                    // FreeLibrary(dll);
-                    
                     std::wstring w_path{ module_path };
 
                     // todo: Concrete module whitelist
@@ -110,13 +132,9 @@ void LogicLoop() {
                         if (const auto addr = PatternScan(dll, pattern.c_str()); addr != nullptr) {
                             std::cout << "\nCHEAT FOUND:\n";
                             std::wcout << module_path << " Signature match at " << addr << '\n';
-                        }
-                    }
 
-                    if (w_path.find(L"Quack") == std::wstring::npos) {
-                        std::wcout << "Ejecting module:\t" << module_path << "\n";
-                        FreeLibrary(dll);
-                        ExitProcess(0);
+                            // ExitProcess(0);
+                        }
                     }
                 }
             }

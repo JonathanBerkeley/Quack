@@ -15,7 +15,6 @@ namespace json = nlohmann;
 namespace thread = std::this_thread;
 
 using namespace std::chrono_literals;
-
 using constants::DBG;
 
 int main() {
@@ -29,7 +28,18 @@ int main() {
     }
     const auto hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
-    http::Client cli{ "http://localhost:7982" };
+
+    http::Server server{};
+
+    server.Post("/", [](const http::Request& req, http::Response& res) {
+        res.set_content("Hello World!", "text/plain");
+        std::cout << req.body << '\n';
+    });
+
+    std::cout << "Listening: " << "localhost" << constants::IPC_PORT << '\n';
+    server.listen("localhost", constants::IPC_PORT); // todo: move to thread
+
+    http::Client cli{ "localhost", constants::IPC_PORT };
 
     // Heart of the application, main loop
     for (unsigned i = 1u; ; ++i) {

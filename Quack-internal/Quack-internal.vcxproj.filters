@@ -47,6 +47,12 @@
     <ClInclude Include="constants.h">
       <Filter>1. Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Lib\httplib.hpp">
+      <Filter>0. Libs</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\json.hpp">
+      <Filter>0. Libs</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">

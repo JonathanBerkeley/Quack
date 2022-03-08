@@ -159,6 +159,8 @@
     <ClInclude Include="data.h" />
     <ClInclude Include="flashpoint.h" />
     <ClInclude Include="framework.h" />
+    <ClInclude Include="Lib\httplib.hpp" />
+    <ClInclude Include="Lib\json.hpp" />
     <ClInclude Include="memory_scanner.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>

@@ -168,6 +168,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="constants.h" />
+    <ClInclude Include="Lib\httplib.hpp" />
+    <ClInclude Include="Lib\json.hpp" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>

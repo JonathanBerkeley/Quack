@@ -4,6 +4,8 @@
 #include <string>
 #include <chrono>
 #include <thread>
+#include <future>
+#include <mutex>
 
 #include "constants.h"
 #include "Lib/httplib.hpp"
@@ -17,6 +19,25 @@ namespace thread = std::this_thread;
 using namespace std::chrono_literals;
 using constants::DBG;
 
+std::mutex m;
+http::Server server{};
+struct Server {
+    static void ipc_server() {
+        server.Post("/", [](const http::Request& req, http::Response& res) {
+            res.set_content("Hello World!", "text/plain");
+            });
+
+        server.listen("localhost", constants::IPC_PORT); // todo: move to thread
+    }
+
+    void operator()() const {
+        std::lock_guard lock(m);
+        ipc_server();
+    }
+};
+
+
+
 int main() {
 
     if constexpr (DBG) {
@@ -28,18 +49,9 @@ int main() {
     }
     const auto hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
+    auto a1 = std::async(std::launch::async, Server());
 
-    http::Server server{};
-
-    server.Post("/", [](const http::Request& req, http::Response& res) {
-        res.set_content("Hello World!", "text/plain");
-        std::cout << req.body << '\n';
-    });
-
-    std::cout << "Listening: " << "localhost" << constants::IPC_PORT << '\n';
-    server.listen("localhost", constants::IPC_PORT); // todo: move to thread
-
-    http::Client cli{ "localhost", constants::IPC_PORT };
+    http::Client cli{ "localhost", constants::NET_PORT };
 
     // Heart of the application, main loop
     for (unsigned i = 1u; ; ++i) {

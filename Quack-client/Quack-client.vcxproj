@@ -171,9 +171,11 @@
     <ClInclude Include="Lib\httplib.hpp" />
     <ClInclude Include="Lib\json.hpp" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="server.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="flashpoint.cpp" />
+    <ClCompile Include="server.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Quack-client.rc" />

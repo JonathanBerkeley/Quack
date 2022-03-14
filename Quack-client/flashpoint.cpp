@@ -1,13 +1,18 @@
 #define _WINSOCKAPI_
 #include <Windows.h>
+
+// Standard lib
 #include <iostream>
 #include <string>
 #include <chrono>
 #include <thread>
 #include <future>
-#include <mutex>
 
+// Project specific
 #include "constants.h"
+#include "server.h"
+
+// Library
 #include "Lib/httplib.hpp"
 #include "Lib/json.hpp"
 
@@ -18,24 +23,6 @@ namespace thread = std::this_thread;
 
 using namespace std::chrono_literals;
 using constants::DBG;
-
-std::mutex m;
-http::Server server{};
-struct Server {
-    static void ipc_server() {
-        server.Post("/", [](const http::Request& req, http::Response& res) {
-            res.set_content("Hello World!", "text/plain");
-            });
-
-        server.listen("localhost", constants::IPC_PORT); // todo: move to thread
-    }
-
-    void operator()() const {
-        std::lock_guard lock(m);
-        ipc_server();
-    }
-};
-
 
 
 int main() {
@@ -49,7 +36,9 @@ int main() {
     }
     const auto hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
-    auto a1 = std::async(std::launch::async, Server());
+    
+    auto ipc_server{ std::thread{ Server} };
+    
 
     http::Client cli{ "localhost", constants::NET_PORT };
 

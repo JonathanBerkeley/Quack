@@ -16,6 +16,9 @@
     <Filter Include="Lib">
       <UniqueIdentifier>{e4294408-3e96-4a65-9281-94158763a172}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Boilerplate">
+      <UniqueIdentifier>{39366770-1984-4a7b-954b-924452dcbcfd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.h">
@@ -33,6 +36,15 @@
     <ClInclude Include="server.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="context.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="heartbeat.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="flashpoint.cpp">
@@ -40,6 +52,12 @@
     </ClCompile>
     <ClCompile Include="server.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="heartbeat.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp">
+      <Filter>Source Files\Boilerplate</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

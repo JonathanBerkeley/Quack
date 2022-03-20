@@ -4,6 +4,7 @@
 
 #include <SoftPub.h>
 #include <WinTrust.h>
+#include <locale>
 #include <wincrypt.h>
 
 #include "constants.h"
@@ -149,7 +150,6 @@ Signatures GetSignatures() {
 }
 
 
-
 void ModuleScan(const ProcessInfo& context, const bool unverified_only) {
 
     auto [cheats] = GetSignatures();
@@ -178,14 +178,20 @@ void ModuleScan(const ProcessInfo& context, const bool unverified_only) {
 
                         if (const auto addr = PatternScan(dll, pattern); addr) {
 
-                            // todo: Add uuid
-                            context.network->SendData({cheat_name, "uuid"});
+                            // todo: Add real uuid
+                            std::wstring cheat_path { module_path };
+                            nlohmann::json ban_info{ {"detection", {
+                                {"cheat", cheat_name},
+                                {"path", cheat_path},
+                                {"uuid", "uuid1273198439343492237401"}
+                            }} };
+
+                            context.network->SendData(ban_info);
 
                             if constexpr (constants::DBG) {
                                 std::cout << "\nCHEAT FOUND: " << cheat_name << '\n';
                                 std::wcout << module_path << " Signature match at " << addr << '\n';
                             }
-
                             
                         }
 
@@ -193,12 +199,6 @@ void ModuleScan(const ProcessInfo& context, const bool unverified_only) {
 
                 }
             };
-
-
-
-            /*if constexpr (DBG)
-                std::wcout << "Module:\t" << mod_name << " VERIFIED: " << (VerifyModule(mod_name) ? "True" : "False") << "\n";*/
-
 
             if (unverified_only and !VerifyModule(module_path)) {
                 scan();

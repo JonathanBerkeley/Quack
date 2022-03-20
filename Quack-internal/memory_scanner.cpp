@@ -6,11 +6,16 @@
 #include <WinTrust.h>
 #include <wincrypt.h>
 
+#include "constants.h"
+
 // Link with the WinTrust.lib file
 #pragma comment (lib, "wintrust")
 
+using namespace data;
+using namespace std::string_literals;
+
 // Enumerates through linked modules, returns vector of results
-std::vector<HMODULE> EnumerateModules(const ProcessInfo pi) {
+std::vector<HMODULE> EnumerateModules(const ProcessInfo& pi) {
     HMODULE modules[0x400];
     DWORD cbNeeded;
 
@@ -58,34 +63,61 @@ bool VerifyModule(const LPCWSTR source_file) {
 }
 
 
-// Extracted from CSGOSimple with minor changes
-// https://github.com/spirthack/CSGOSimple
-std::uint8_t* PatternScan(HMODULE module, const char* signature) {
-    static auto pattern_to_byte = [](const char* pattern) {
-        auto bytes = std::vector<int>{};
-        const auto start = const_cast<char*>(pattern);
-        const auto end = const_cast<char*>(pattern) + std::strlen(pattern);
 
-        for (auto current = start; current < end; ++current) {
-            if (*current == '?') {
-                ++current;
-                if (*current == '?')
-                    ++current;
-                bytes.push_back(-1);
-            }
-            else {
-                bytes.push_back(std::strtoul(current, &current, 16));
-            }
+/**
+ * \brief Converts supplied signature to bytes, removing wildcards
+ * \param signature Signature to be converted to bytes
+ * \return Vector of unsigned long, representing bytes
+ */
+std::vector<unsigned long> PatternToByte(const std::string& signature) {
+    // Pattern of bytes to be returned
+    std::vector<unsigned long> bytes{};
+
+    // Pointer to the start of the signature
+    const auto c_signature = const_cast<char*>(signature.c_str());
+
+    // Start and end of pattern
+    const auto start = c_signature;
+    const auto end = c_signature + signature.length();
+
+    // Loop over pattern
+    for (char* byte = start; byte < end; ++byte) {
+
+        // Check if signature has wildcard at this position
+        if (*byte == '*') {
+            ++byte;
+            if (*byte == '*')
+                ++byte;
+
+            // Flag value pushed back
+            bytes.push_back(0xDEADBEEF);
         }
-        return bytes;
-    };
+        else {
+            // Store as hex
+            bytes.push_back(std::strtoul(byte, &byte, 16));
+        }
+    }
 
+    return bytes;
+}
+
+
+/**
+ * \brief Scans module for supplied signature
+ *
+ * Logic learned from example in CSGOSimple
+ * https://github.com/spirthack/CSGOSimple
+ * \param module Handle to module
+ * \param signature The signature to be scanned for
+ * \return If signature detected, a pointer to detected signature otherwise nullptr
+ */
+std::uint8_t* PatternScan(const HMODULE module, const std::string& signature) {
     const auto dos_header = reinterpret_cast<PIMAGE_DOS_HEADER>(module);
     const auto e_lfanew = reinterpret_cast<std::uint8_t*>(module) + dos_header->e_lfanew;
     const auto nt_headers = reinterpret_cast<PIMAGE_NT_HEADERS>(e_lfanew);
 
     const auto size_of_image = nt_headers->OptionalHeader.SizeOfImage;
-    const auto pattern_bytes = pattern_to_byte(signature);
+    const auto pattern_bytes = PatternToByte(signature);
     const auto scan_bytes = reinterpret_cast<std::uint8_t*>(module);
 
     const auto size = pattern_bytes.size();
@@ -94,7 +126,7 @@ std::uint8_t* PatternScan(HMODULE module, const char* signature) {
     for (auto i = 0ul; i < size_of_image - size; ++i) {
         bool found = true;
         for (auto j = 0ul; j < size; ++j) {
-            if (scan_bytes[i + j] != data[j] && data[j] != -1) {
+            if (scan_bytes[i + j] != data[j] && data[j] != 0xDEADBEEF) {
                 found = false;
                 break;
             }
@@ -104,3 +136,75 @@ std::uint8_t* PatternScan(HMODULE module, const char* signature) {
     }
     return nullptr;
 }
+
+// todo: Network this
+Signatures GetSignatures() {
+    Signatures signatures{};
+
+    signatures.cheats.emplace_back(std::make_pair("Highlight"s, std::vector<std::string>{
+        "50 00 72 00 6F 00 63 00 65 00 73 00 73 00 20 00 68 00 69 00 6A 00 61 00 63 00 6B 00 65 00 64"
+    }));
+
+    return signatures;
+}
+
+
+
+void ModuleScan(const ProcessInfo& context, bool unverified_only) {
+
+    auto [cheats] = GetSignatures();
+
+    if (constants::DBG)
+        std::cout << "\nBeginning memory scan...\n";
+
+    auto dlls = EnumerateModules(context);
+
+    for (const auto& dll : dlls) {
+
+        TCHAR module_path[MAX_PATH];
+        static constinit int size = sizeof(module_path) / sizeof(TCHAR);
+
+        if (GetModuleFileNameEx(context.hProcess, dll, module_path, size)) {
+
+
+            auto scan = [&cheats, &dll, &module_path, &context]() {
+
+                if (dll == context.this_module)
+                    return;
+
+                for (const auto& [first, second] : cheats) {
+
+                    for (const auto& pattern : second) {
+
+                        if (const auto addr = PatternScan(dll, pattern); addr) {
+
+                            std::cout << "\nCHEAT FOUND:\n";
+                            std::wcout << module_path << " Signature match at " << addr << '\n';
+                        }
+
+                    }
+
+                }
+            };
+
+
+
+            /*if constexpr (DBG)
+                std::wcout << "Module:\t" << mod_name << " VERIFIED: " << (VerifyModule(mod_name) ? "True" : "False") << "\n";*/
+
+
+            if (unverified_only and !VerifyModule(module_path)) {
+                scan();
+                std::wcout << module_path << '\n';
+            }
+            else if (!unverified_only) {
+                scan();
+                std::wcout << module_path << '\n';
+            }
+            
+        }
+    }
+    if (constants::DBG)
+        std::cout << "\nFinished memory scan...\n";
+}
+

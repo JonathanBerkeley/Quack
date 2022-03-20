@@ -4,8 +4,5 @@
 namespace data {
     bool running = true;
 
-    namespace proc {
-        // Windows
-        HMODULE self_module = nullptr;
-    }
+
 }

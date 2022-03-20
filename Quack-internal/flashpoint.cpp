@@ -5,8 +5,7 @@
 
 #include <chrono>
 #include <thread>
-#include <iomanip>
-#include <algorithm>
+#include <utility>
 
 #include "memory_scanner.h"
 #include "Lib/httplib.hpp"
@@ -85,10 +84,6 @@ void LogicLoop() {
 
     http::Client cli{ "localhost", constants::IPC_PORT };
 
-    const std::vector<std::string> cheat_patterns{
-        "50 00 72 00 6F 00 63 00 65 00 73 00 73 00 20 00 68 00 69 00 6A 00 61 00 63 00 6B 00 65 00 64"
-    };
-
     while (running) {
         // todo: Detection logic
         // todo: Signature scanning
@@ -111,36 +106,9 @@ void LogicLoop() {
             }
         }
 
+        // Scan the modules in memory of target process
+        ModuleScan(process_info, false);
 
-        if (DBG)
-            std::cout << "\nBeginning memory scan...\n";
-        auto dlls = EnumerateModules(process_info);
-        for (const auto& dll : dlls) {
-            
-            TCHAR module_path[MAX_PATH];
-            static constinit int size = sizeof(module_path) / sizeof(TCHAR);
-
-            if (GetModuleFileNameEx(process_info.hProcess, dll, module_path, size)) {
-                /*if constexpr (DBG)
-                    std::wcout << "Module:\t" << mod_name << " VERIFIED: " << (VerifyModule(mod_name) ? "True" : "False") << "\n";*/
-
-                if (!VerifyModule(module_path) and dll != process_info.this_module) {
-                    std::wstring w_path{ module_path };
-
-                    // todo: Concrete module whitelist
-                    for (const auto& pattern : cheat_patterns) {
-                        if (const auto addr = PatternScan(dll, pattern.c_str()); addr != nullptr) {
-                            std::cout << "\nCHEAT FOUND:\n";
-                            std::wcout << module_path << " Signature match at " << addr << '\n';
-
-                            // ExitProcess(0);
-                        }
-                    }
-                }
-            }
-        }
-        if (DBG)
-            std::cout << "\nFinished memory scan...\n";
         thread::sleep_for(10s);
     }
 }

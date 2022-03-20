@@ -9,18 +9,14 @@ BOOL APIENTRY DllMain(const HMODULE self_module, const DWORD call_reason, LPVOID
 
         // ReSharper disable once CppLocalVariableMayBeConst
         // Create thread in host application
-        HANDLE thread = CreateThread(
+        if (HANDLE thread = CreateThread(
             nullptr,
             0,
             Init,
             self_module,
             0,
             nullptr
-        );
-
-        data::proc::self_module = self_module;
-
-        if (thread)
+        ))
             CloseHandle(thread);
     }
     return TRUE;

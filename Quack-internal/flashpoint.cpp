@@ -2,17 +2,13 @@
 #include "flashpoint.h"
 #include "constants.h"
 #include "data.h"
-
-#include <chrono>
-#include <thread>
-#include <utility>
-
+#include "network.h"
 #include "memory_scanner.h"
-#include "Lib/httplib.hpp"
+
 #include "Lib/json.hpp"
 
-namespace http = httplib;
 namespace json = nlohmann;
+
 namespace thread = std::this_thread;
 
 using namespace std::chrono_literals;
@@ -76,38 +72,28 @@ DWORD WINAPI Init(LPVOID lpParam) {
 
 
 void LogicLoop() {
+    Communication network{};
+
     const ProcessInfo process_info{
         GetCurrentProcess(),
         GetCurrentProcessId(),
-        GetModuleHandle(nullptr)
+        GetModuleHandle(nullptr),
+        &network
     };
 
-    http::Client cli{ "localhost", constants::IPC_PORT };
+    const json::json heartbeat{
+        {"Heartbeat", true}
+    };
 
     while (running) {
         // todo: Detection logic
         // todo: Signature scanning
         // todo: Internal heartbeat
-
-        json::json body{};
-        body["Test"] = {
-            {"Hello", "World"}
-        };
-
-        if (auto res = cli.Post("/", body.dump(), "application/json")) {
-            if (res->status == 200) {
-                if constexpr (DBG) {
-                    std::cout << res->body << std::endl;
-                }
-            }
-            else {
-                std::cout << "Failed: " << res->status;
-                std::cout << "\nError:" << res.error();
-            }
-        }
+        
+        network.SendData(heartbeat);
 
         // Scan the modules in memory of target process
-        ModuleScan(process_info, false);
+        ModuleScan(process_info, true);
 
         thread::sleep_for(10s);
     }

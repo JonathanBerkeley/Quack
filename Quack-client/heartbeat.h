@@ -2,4 +2,4 @@
 
 #include "context.h"
 
-bool heartbeat(const Context& ctx);
+bool Heartbeat(const Context& ctx);

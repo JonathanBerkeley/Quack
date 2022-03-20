@@ -162,13 +162,14 @@
     <ClInclude Include="Lib\httplib.hpp" />
     <ClInclude Include="Lib\json.hpp" />
     <ClInclude Include="memory_scanner.h" />
+    <ClInclude Include="network.h" />
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="data.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="flashpoint.cpp" />
     <ClCompile Include="memory_scanner.cpp" />
+    <ClCompile Include="network.cpp" />
     <ClCompile Include="pch.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

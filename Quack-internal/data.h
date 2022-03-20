@@ -1,9 +1,11 @@
 #pragma once
 #include "pch.h"
 
+#include "network.h"
+
 namespace data {
     // Used for looping, setting to false will deactivate continued module functionality
-    extern bool running;
+    inline bool running = true;
     
     // Information about the process that this .DLL is inside
     struct ProcessInfo {
@@ -13,6 +15,9 @@ namespace data {
 
         // Module specific
         HMODULE this_module;
+
+        // Networking
+        Communication* network;
     };
     
     /**

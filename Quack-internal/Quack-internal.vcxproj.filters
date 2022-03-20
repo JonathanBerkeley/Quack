@@ -53,6 +53,9 @@
     <ClInclude Include="Lib\json.hpp">
       <Filter>0. Libs</Filter>
     </ClInclude>
+    <ClInclude Include="network.h">
+      <Filter>3. Frame\Flashpoint</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -64,10 +67,10 @@
     <ClCompile Include="flashpoint.cpp">
       <Filter>3. Frame\Flashpoint</Filter>
     </ClCompile>
-    <ClCompile Include="data.cpp">
-      <Filter>3. Frame\Data</Filter>
-    </ClCompile>
     <ClCompile Include="memory_scanner.cpp">
+      <Filter>3. Frame\Flashpoint</Filter>
+    </ClCompile>
+    <ClCompile Include="network.cpp">
       <Filter>3. Frame\Flashpoint</Filter>
     </ClCompile>
   </ItemGroup>

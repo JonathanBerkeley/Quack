@@ -150,11 +150,11 @@ Signatures GetSignatures() {
 
 
 
-void ModuleScan(const ProcessInfo& context, bool unverified_only) {
+void ModuleScan(const ProcessInfo& context, const bool unverified_only) {
 
     auto [cheats] = GetSignatures();
 
-    if (constants::DBG)
+    if constexpr (constants::DBG)
         std::cout << "\nBeginning memory scan...\n";
 
     auto dlls = EnumerateModules(context);
@@ -172,14 +172,21 @@ void ModuleScan(const ProcessInfo& context, bool unverified_only) {
                 if (dll == context.this_module)
                     return;
 
-                for (const auto& [first, second] : cheats) {
+                for (const auto& [cheat_name, signatures] : cheats) {
 
-                    for (const auto& pattern : second) {
+                    for (const auto& pattern : signatures) {
 
                         if (const auto addr = PatternScan(dll, pattern); addr) {
 
-                            std::cout << "\nCHEAT FOUND:\n";
-                            std::wcout << module_path << " Signature match at " << addr << '\n';
+                            // todo: Add uuid
+                            context.network->SendData({cheat_name, "uuid"});
+
+                            if constexpr (constants::DBG) {
+                                std::cout << "\nCHEAT FOUND: " << cheat_name << '\n';
+                                std::wcout << module_path << " Signature match at " << addr << '\n';
+                            }
+
+                            
                         }
 
                     }
@@ -204,7 +211,6 @@ void ModuleScan(const ProcessInfo& context, bool unverified_only) {
             
         }
     }
-    if (constants::DBG)
+    if constexpr (constants::DBG)
         std::cout << "\nFinished memory scan...\n";
 }
-

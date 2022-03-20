@@ -32,17 +32,19 @@ int main() {
 
         context.hConsole = hConsole;
     }
-    
-    // Start inter-process communication server
-    auto ipc_server{ std::thread{ Server} };
+
     http::Client cli{ "localhost", constants::NET_PORT };
+
+    // Start inter-process communication server
+    auto ipc_server{ std::thread{ Server, &cli }};
+    
 
     context.start_point = chrono::system_clock::now();
     context.cli = &cli;
 
     // Heart of the application, main loop
-    for (unsigned i = 1u; ; ++i) {
-        heartbeat(context);
+    for (;;) {
+        Heartbeat(context);
 
         thread::sleep_for(3s);
     }

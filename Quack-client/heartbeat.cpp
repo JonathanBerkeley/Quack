@@ -16,7 +16,7 @@ namespace chrono = std::chrono;
 
 using constants::DBG;
 
-bool heartbeat(const Context& ctx) {
+bool Heartbeat(const Context& ctx) {
 
     const auto uptime{
         chrono::duration_cast<chrono::seconds>(chrono::system_clock::now() - ctx.start_point)

@@ -1,3 +1,5 @@
 #pragma once
 
-void Server();
+#include "Lib/httplib.hpp"
+
+void Server(httplib::Client* cli);

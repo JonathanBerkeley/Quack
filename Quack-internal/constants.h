@@ -3,7 +3,7 @@
 
 namespace constants {
     const LPCWSTR DLL_NAME { L"Quack-internal" };
-    const std::string VERSION { "0.2.3" };
+    const std::string VERSION { "0.2.4" };
     constexpr unsigned IPC_PORT = 5175; // Local machine communications port
     constexpr unsigned NET_PORT = 7982; // Foreign network communications port
     static constexpr bool DBG = true;

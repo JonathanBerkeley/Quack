@@ -4,9 +4,8 @@
 
 #include <SoftPub.h>
 #include <WinTrust.h>
-#include <locale>
-#include <wincrypt.h>
 
+#include "utils.h"
 #include "constants.h"
 
 // Link with the WinTrust.lib file
@@ -139,12 +138,15 @@ std::uint8_t* PatternScan(const HMODULE module, const std::string& signature) {
 }
 
 // todo: Network this
-Signatures GetSignatures() {
+Signatures GetSignatures(const ProcessInfo& context) {
     Signatures signatures{};
+
+    // context->SendData();
 
     signatures.cheats.emplace_back(std::make_pair("Highlight"s, std::vector<std::string>{
         "50 00 72 00 6F 00 63 00 65 00 73 00 73 00 20 00 68 00 69 00 6A 00 61 00 63 00 6B 00 65 00 64"
     }));
+    
 
     return signatures;
 }
@@ -152,10 +154,10 @@ Signatures GetSignatures() {
 
 void ModuleScan(const ProcessInfo& context, const bool unverified_only) {
 
-    auto [cheats] = GetSignatures();
+    auto [cheats] = GetSignatures(context);
 
-    if constexpr (constants::DBG)
-        std::cout << "\nBeginning memory scan...\n";
+    
+    Log("\nBeginning memory scan...\n");
 
     auto dlls = EnumerateModules(context);
 
@@ -188,11 +190,8 @@ void ModuleScan(const ProcessInfo& context, const bool unverified_only) {
 
                             context.network->SendData(ban_info);
 
-                            if constexpr (constants::DBG) {
-                                std::cout << "\nCHEAT FOUND: " << cheat_name << '\n';
-                                std::wcout << module_path << " Signature match at " << addr << '\n';
-                            }
-                            
+                            Log("\nCHEAT FOUND: " + cheat_name + '\n');
+                            //std::wcout << module_path << " Signature match at " << addr << '\n';
                         }
 
                     }
@@ -202,15 +201,14 @@ void ModuleScan(const ProcessInfo& context, const bool unverified_only) {
 
             if (unverified_only and !VerifyModule(module_path)) {
                 scan();
-                std::wcout << module_path << '\n';
+                Log(module_path);
             }
             else if (!unverified_only) {
                 scan();
-                std::wcout << module_path << '\n';
+                Log(module_path);
             }
             
         }
     }
-    if constexpr (constants::DBG)
-        std::cout << "\nFinished memory scan...\n";
+    Log("\nFinished memory scan...\n");
 }

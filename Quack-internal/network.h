@@ -7,7 +7,7 @@
 
 class Communication {
 private:
-    httplib::Client cli{ "localhost", constants::IPC_PORT };
+    inline static httplib::Client cli{ "localhost", constants::IPC_PORT };
 public:
-    void SendData(const nlohmann::json& body);
+    static bool SendData(const nlohmann::json& body);
 };

@@ -6,7 +6,6 @@
 #include <WinTrust.h>
 
 #include "utils.h"
-#include "constants.h"
 
 // Link with the WinTrust.lib file
 #pragma comment (lib, "wintrust")
@@ -146,27 +145,25 @@ Signatures GetSignatures(const ProcessInfo& context) {
     signatures.cheats.emplace_back(std::make_pair("Highlight"s, std::vector<std::string>{
         "50 00 72 00 6F 00 63 00 65 00 73 00 73 00 20 00 68 00 69 00 6A 00 61 00 63 00 6B 00 65 00 64"
     }));
-    
 
     return signatures;
 }
 
 
-void ModuleScan(const ProcessInfo& context, const bool unverified_only) {
+void ModuleScan(const ProcessInfo& context, const bool unsigned_only) {
 
     auto [cheats] = GetSignatures(context);
 
-    
     Log("\nBeginning memory scan...\n");
 
     auto dlls = EnumerateModules(context);
 
     for (const auto& dll : dlls) {
 
-        TCHAR module_path[MAX_PATH];
+        WCHAR module_path[MAX_PATH];
         static constinit int size = sizeof(module_path) / sizeof(TCHAR);
 
-        if (GetModuleFileNameEx(context.hProcess, dll, module_path, size)) {
+        if (GetModuleFileNameExW(context.hProcess, dll, module_path, size)) {
 
 
             auto scan = [&cheats, &dll, &module_path, &context]() {
@@ -188,10 +185,13 @@ void ModuleScan(const ProcessInfo& context, const bool unverified_only) {
                                 {"uuid", "uuid1273198439343492237401"}
                             }} };
 
-                            context.network->SendData(ban_info);
 
-                            Log("\nCHEAT FOUND: " + cheat_name + '\n');
-                            //std::wcout << module_path << " Signature match at " << addr << '\n';
+                            Log({ "\nCHEAT FOUND: "s, cheat_name });
+
+                            // Fire and forget the ban message to the server
+                            //std::thread{Communication::SendData, ban_info }.detach();
+
+                            CallAsync(Communication::SendData, ban_info);
                         }
 
                     }
@@ -199,15 +199,16 @@ void ModuleScan(const ProcessInfo& context, const bool unverified_only) {
                 }
             };
 
-            if (unverified_only and !VerifyModule(module_path)) {
+            if (unsigned_only) {
+                if (!VerifyModule(module_path)) {
+                    scan();
+                    Log(module_path);
+                }
+            }
+            else {
                 scan();
                 Log(module_path);
             }
-            else if (!unverified_only) {
-                scan();
-                Log(module_path);
-            }
-            
         }
     }
     Log("\nFinished memory scan...\n");

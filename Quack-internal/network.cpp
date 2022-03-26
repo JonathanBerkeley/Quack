@@ -10,16 +10,19 @@
 namespace http = httplib;
 namespace json = nlohmann;
 
+using namespace std::string_literals;
 
-void Communication::SendData(const json::json& body) {
 
+bool Communication::SendData(const json::json& body) {
     if (auto res = cli.Post("/", body.dump(), "application/json")) {
         if (res->status == 200) {
             Log(res->body);
+            return true;
         }
-        else {
-            Log("Failed: " + res->status);
-            // std::cout << "\nError:" << res.error();
-        }
+        Log("Failed: " + std::to_string(res->status));
+        Log({ "\nError:"s, to_string(res.error()) });
+        return false;
     }
+
+    return false;
 }

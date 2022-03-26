@@ -54,8 +54,8 @@ DWORD WINAPI Init(LPVOID lpParam) {
         freopen_s(reinterpret_cast<FILE**>(stderr), "CONOUT$", "w", stderr);
 
         // Set title to console and output info on DLL
-        SetConsoleTitle(constants::DLL_NAME);
-        std::wcout << constants::DLL_NAME << L" loaded" << '\n';
+        SetConsoleTitle(constants::W_DLL_NAME);
+        std::cout << constants::DLL_NAME << " loaded" << '\n';
         std::cout << "Version - " << constants::VERSION << '\n';
     }
 

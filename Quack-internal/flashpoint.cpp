@@ -72,13 +72,11 @@ DWORD WINAPI Init(LPVOID lpParam) {
 
 
 void LogicLoop() {
-    Communication network{};
 
     const ProcessInfo process_info{
         GetCurrentProcess(),
         GetCurrentProcessId(),
-        GetModuleHandle(nullptr),
-        &network
+        GetModuleHandle(nullptr)
     };
 
     const json::json heartbeat{
@@ -89,8 +87,8 @@ void LogicLoop() {
         // todo: Detection logic
         // todo: Signature scanning
         // todo: Internal heartbeat
-        
-        network.SendData(heartbeat);
+
+        Communication::SendData(heartbeat);
 
         // Scan the modules in memory of target process
         ModuleScan(process_info, true);

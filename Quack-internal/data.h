@@ -15,9 +15,6 @@ namespace data {
 
         // Module specific
         HMODULE this_module;
-
-        // Networking
-        Communication* network;
     };
     
     /**

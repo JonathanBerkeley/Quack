@@ -25,6 +25,7 @@ void Log(std::initializer_list<T> data) {
 /**
  * \brief Calls a function with one argument asynchronously
  *
+ * Relies on implementation defined behaviour
  * Adapted from: https://stackoverflow.com/a/56834117
  * \tparam F Function object type
  * \tparam T Function argument type

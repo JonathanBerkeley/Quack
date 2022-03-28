@@ -158,13 +158,13 @@ void ModuleScan(const ProcessInfo& context, const bool unsigned_only) {
 
     auto dlls = EnumerateModules(context);
 
+    // For each DLL in the process
     for (const auto& dll : dlls) {
 
         WCHAR module_path[MAX_PATH];
         static constinit int size = sizeof(module_path) / sizeof(TCHAR);
-
+        
         if (GetModuleFileNameExW(context.hProcess, dll, module_path, size)) {
-
 
             auto scan = [&cheats, &dll, &module_path, &context]() {
 
@@ -189,8 +189,6 @@ void ModuleScan(const ProcessInfo& context, const bool unsigned_only) {
                             Log({ "\nCHEAT FOUND: "s, cheat_name });
 
                             // Fire and forget the ban message to the server
-                            //std::thread{Communication::SendData, ban_info }.detach();
-
                             CallAsync(Communication::SendData, ban_info);
                         }
 

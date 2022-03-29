@@ -43,3 +43,6 @@
 # Other
 !*.lib
 !*.docx
+
+# Reblacklist
+~$aftReport.docx

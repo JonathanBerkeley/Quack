@@ -2,18 +2,19 @@
 #include "flashpoint.h"
 #include "constants.h"
 #include "data.h"
+#include "dns_walk.h"
+#include "config.h"
 #include "network.h"
 #include "memory_scanner.h"
-
-#include "Lib/json.hpp"
 
 namespace json = nlohmann;
 
 namespace thread = std::this_thread;
 
 using namespace std::chrono_literals;
-using constants::DBG;
+using namespace cfg;
 using namespace data;
+using constants::DBG;
 using ull = unsigned long long;
 
 static PROCESS_INFORMATION ac_client{};
@@ -83,6 +84,18 @@ void LogicLoop() {
         {"Heartbeat", true}
     };
 
+
+    if constexpr (DNSScanning) {
+        if (const auto entries = CheckForBlacklistedDNSEntries()) {
+            std::cout << "Blacklisted domain(s) found: \n";
+
+            for (const auto& [name, type] : entries.value()) {
+                std::wcout << name << L' ' << type << '\n';
+            }
+        }
+    }
+
+
     while (running) {
         // todo: Detection logic
         // todo: Signature scanning
@@ -90,8 +103,9 @@ void LogicLoop() {
 
         Communication::SendData(heartbeat);
 
-        // Scan the modules in memory of target process
-        ModuleScan(process_info, true);
+        if constexpr (SignatureScanning)
+            // Scan the modules in memory of target process
+            ModuleScan(process_info, UnsignedModulesOnly);
 
         thread::sleep_for(10s);
     }

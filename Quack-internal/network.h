@@ -1,9 +1,7 @@
 #pragma once
-
+#include "pch.h"
 #include "constants.h"
 
-#include "Lib/httplib.hpp"
-#include "Lib/json.hpp"
 
 class Communication {
 private:

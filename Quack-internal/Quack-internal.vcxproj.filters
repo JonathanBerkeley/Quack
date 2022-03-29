@@ -30,25 +30,19 @@
     <Filter Include="3. Frame\Utility">
       <UniqueIdentifier>{5c4969a8-bcd0-4f23-8534-44faf8068891}</UniqueIdentifier>
     </Filter>
+    <Filter Include="3. Frame\Network">
+      <UniqueIdentifier>{fb2ce9ab-cd37-406b-8db0-a1245206ac0e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3. Frame\Detections">
+      <UniqueIdentifier>{ec5575be-7273-422d-89ff-51272a69d53d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="framework.h">
-      <Filter>1. Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="pch.h">
-      <Filter>1. Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="data.h">
       <Filter>3. Frame\Data</Filter>
     </ClInclude>
     <ClInclude Include="flashpoint.h">
       <Filter>3. Frame\Flashpoint</Filter>
-    </ClInclude>
-    <ClInclude Include="memory_scanner.h">
-      <Filter>3. Frame\Flashpoint</Filter>
-    </ClInclude>
-    <ClInclude Include="constants.h">
-      <Filter>1. Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Lib\httplib.hpp">
       <Filter>0. Libs</Filter>
@@ -56,11 +50,29 @@
     <ClInclude Include="Lib\json.hpp">
       <Filter>0. Libs</Filter>
     </ClInclude>
-    <ClInclude Include="network.h">
-      <Filter>3. Frame\Flashpoint</Filter>
-    </ClInclude>
     <ClInclude Include="utils.h">
       <Filter>3. Frame\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="network.h">
+      <Filter>3. Frame\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="memory_scanner.h">
+      <Filter>3. Frame\Detections</Filter>
+    </ClInclude>
+    <ClInclude Include="dns_walk.h">
+      <Filter>3. Frame\Detections</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>1. Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>1. Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="constants.h">
+      <Filter>1. Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="config.h">
+      <Filter>1. Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -73,14 +85,17 @@
     <ClCompile Include="flashpoint.cpp">
       <Filter>3. Frame\Flashpoint</Filter>
     </ClCompile>
-    <ClCompile Include="memory_scanner.cpp">
-      <Filter>3. Frame\Flashpoint</Filter>
-    </ClCompile>
-    <ClCompile Include="network.cpp">
-      <Filter>3. Frame\Flashpoint</Filter>
-    </ClCompile>
     <ClCompile Include="utils.cpp">
       <Filter>3. Frame\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="network.cpp">
+      <Filter>3. Frame\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="memory_scanner.cpp">
+      <Filter>3. Frame\Detections</Filter>
+    </ClCompile>
+    <ClCompile Include="dns_walk.cpp">
+      <Filter>3. Frame\Detections</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

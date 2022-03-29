@@ -38,7 +38,6 @@ int main() {
     // Start inter-process communication server
     auto ipc_server{ std::thread{ Server, &cli }};
 
-
     context.start_point = chrono::system_clock::now();
     context.cli = &cli;
 

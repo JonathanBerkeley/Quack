@@ -155,8 +155,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="config.h" />
     <ClInclude Include="constants.h" />
     <ClInclude Include="data.h" />
+    <ClInclude Include="dns_walk.h" />
     <ClInclude Include="flashpoint.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Lib\httplib.hpp" />
@@ -168,6 +170,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="dns_walk.cpp" />
     <ClCompile Include="flashpoint.cpp" />
     <ClCompile Include="memory_scanner.cpp" />
     <ClCompile Include="network.cpp" />

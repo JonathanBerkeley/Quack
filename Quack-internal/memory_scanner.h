@@ -1,7 +1,7 @@
 #pragma once
 #include "pch.h"
 
-#include "data.h"
+#include "data.hpp"
 
 
 [[nodiscard]] std::vector<HMODULE> EnumerateModules(data::ProcessInfo& pi);

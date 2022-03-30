@@ -4,7 +4,7 @@
 #include <string>
 #include <initializer_list>
 
-#include "constants.h"
+#include "constants.hpp"
 
 void Log(const std::string& str);
 void Log(const std::wstring& w_str);

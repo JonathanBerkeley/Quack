@@ -1,5 +1,5 @@
 ﻿#include "pch.h"
-#include "dns_walk.h"
+#include "dns_walk.hpp"
 
 
 typedef struct DnsData {

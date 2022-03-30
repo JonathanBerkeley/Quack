@@ -1,6 +1,6 @@
 #include "pch.h"
-#include "flashpoint.h"
-#include "data.h"
+#include "flashpoint.hpp"
+#include "data.hpp"
 
 // Entry point for the application
 BOOL APIENTRY DllMain(const HMODULE self_module, const DWORD call_reason, LPVOID lp_reserved) {

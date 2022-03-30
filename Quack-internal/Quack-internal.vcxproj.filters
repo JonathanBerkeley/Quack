@@ -38,10 +38,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="data.h">
+    <ClInclude Include="data.hpp">
       <Filter>3. Frame\Data</Filter>
     </ClInclude>
-    <ClInclude Include="flashpoint.h">
+    <ClInclude Include="flashpoint.hpp">
       <Filter>3. Frame\Flashpoint</Filter>
     </ClInclude>
     <ClInclude Include="Lib\httplib.hpp">
@@ -59,19 +59,19 @@
     <ClInclude Include="memory_scanner.h">
       <Filter>3. Frame\Detections</Filter>
     </ClInclude>
-    <ClInclude Include="dns_walk.h">
+    <ClInclude Include="dns_walk.hpp">
       <Filter>3. Frame\Detections</Filter>
     </ClInclude>
     <ClInclude Include="pch.h">
       <Filter>1. Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="framework.h">
+    <ClInclude Include="framework.hpp">
       <Filter>1. Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="constants.h">
+    <ClInclude Include="constants.hpp">
       <Filter>1. Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="config.h">
+    <ClInclude Include="config.hpp">
       <Filter>1. Header Files</Filter>
     </ClInclude>
   </ItemGroup>

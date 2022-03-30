@@ -155,12 +155,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="config.h" />
-    <ClInclude Include="constants.h" />
-    <ClInclude Include="data.h" />
-    <ClInclude Include="dns_walk.h" />
-    <ClInclude Include="flashpoint.h" />
-    <ClInclude Include="framework.h" />
+    <ClInclude Include="config.hpp" />
+    <ClInclude Include="constants.hpp" />
+    <ClInclude Include="data.hpp" />
+    <ClInclude Include="dns_walk.hpp" />
+    <ClInclude Include="flashpoint.hpp" />
+    <ClInclude Include="framework.hpp" />
     <ClInclude Include="Lib\httplib.hpp" />
     <ClInclude Include="Lib\json.hpp" />
     <ClInclude Include="memory_scanner.h" />

@@ -1,10 +1,10 @@
-#include "pch.h"
+#include "pch.hpp"
 
 // This project
-#include "constants.h"
-#include "server.h"
-#include "context.h"
-#include "heartbeat.h"
+#include "constants.hpp"
+#include "server.hpp"
+#include "context.hpp"
+#include "heartbeat.hpp"
 
 // 3rd party library
 #include "Lib/httplib.hpp"  // Networking

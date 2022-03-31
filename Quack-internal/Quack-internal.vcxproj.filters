@@ -50,19 +50,19 @@
     <ClInclude Include="Lib\json.hpp">
       <Filter>0. Libs</Filter>
     </ClInclude>
-    <ClInclude Include="utils.h">
+    <ClInclude Include="utils.hpp">
       <Filter>3. Frame\Utility</Filter>
     </ClInclude>
-    <ClInclude Include="network.h">
+    <ClInclude Include="network.hpp">
       <Filter>3. Frame\Network</Filter>
     </ClInclude>
-    <ClInclude Include="memory_scanner.h">
+    <ClInclude Include="memory_scanner.hpp">
       <Filter>3. Frame\Detections</Filter>
     </ClInclude>
     <ClInclude Include="dns_walk.hpp">
       <Filter>3. Frame\Detections</Filter>
     </ClInclude>
-    <ClInclude Include="pch.h">
+    <ClInclude Include="pch.hpp">
       <Filter>1. Header Files</Filter>
     </ClInclude>
     <ClInclude Include="framework.hpp">

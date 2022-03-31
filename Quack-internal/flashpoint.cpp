@@ -1,11 +1,12 @@
-#include "pch.h"
+#include "pch.hpp"
 #include "flashpoint.hpp"
 #include "constants.hpp"
 #include "data.hpp"
 #include "dns_walk.hpp"
 #include "config.hpp"
-#include "network.h"
-#include "memory_scanner.h"
+#include "network.hpp"
+#include "memory_scanner.hpp"
+#include "utils.hpp"
 
 namespace json = nlohmann;
 
@@ -84,18 +85,7 @@ void LogicLoop() {
         {"Heartbeat", true}
     };
 
-
-    if constexpr (DNSScanning) {
-        if (const auto entries = CheckForBlacklistedDNSEntries()) {
-            std::cout << "Blacklisted domain(s) found: \n";
-
-            for (const auto& [name, type] : entries.value()) {
-                std::wcout << name << L' ' << type << '\n';
-            }
-        }
-    }
-
-
+    // todo: Detection module dispatch system
     while (running) {
         // todo: Detection logic
         // todo: Signature scanning
@@ -106,6 +96,22 @@ void LogicLoop() {
         if constexpr (SignatureScanning)
             // Scan the modules in memory of target process
             ModuleScan(process_info, UnsignedModulesOnly);
+
+        if constexpr (DNSScanning) {
+
+            if constexpr (DBG)
+                PrintDNSEntries(std::wcout);
+
+            if (const auto entries = CheckForBlacklistedDNSEntries()) {
+                Log("Blacklisted domain(s) found: ");
+
+                for (const auto& [name, type] : entries.value()) {
+                    // todo: move from here and network
+                    std::wstring printable{ name + L" " + std::to_wstring(type) };
+                    Log(printable);
+                }
+            }
+        }
 
         thread::sleep_for(10s);
     }

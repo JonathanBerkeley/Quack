@@ -1,7 +1,7 @@
-#include "pch.h"
+#include "pch.hpp"
 
-#include "server.h"
-#include "constants.h"
+#include "server.hpp"
+#include "constants.hpp"
 
 #include "Lib/httplib.hpp"
 #include "Lib/json.hpp"

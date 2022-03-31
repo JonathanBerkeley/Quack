@@ -1,8 +1,8 @@
-#include "pch.h"
+#include "pch.hpp"
 
 // This project
-#include "constants.h"
-#include "heartbeat.h"
+#include "constants.hpp"
+#include "heartbeat.hpp"
 
 // 3rd party library
 #include "Lib/httplib.hpp"  // Networking

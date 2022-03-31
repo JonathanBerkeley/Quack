@@ -1,11 +1,11 @@
-#include "pch.h"
+#include "pch.hpp"
 
-#include "memory_scanner.h"
+#include "memory_scanner.hpp"
 
 #include <SoftPub.h>
 #include <WinTrust.h>
 
-#include "utils.h"
+#include "utils.hpp"
 
 // Link with the WinTrust.lib file
 #pragma comment (lib, "wintrust")

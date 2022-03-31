@@ -1,7 +1,7 @@
-#include "pch.h"
+#include "pch.hpp"
 
-#include "utils.h"
-#include "network.h"
+#include "utils.hpp"
+#include "network.hpp"
 
 namespace http = httplib;
 namespace json = nlohmann;

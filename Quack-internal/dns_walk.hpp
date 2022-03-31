@@ -1,5 +1,5 @@
 ﻿#pragma once
-#include "pch.h"
+#include "pch.hpp"
 
 
 struct DnsEntry {
@@ -9,3 +9,5 @@ struct DnsEntry {
 
 std::optional<std::vector<DnsEntry>> GetCachedDNSData();
 std::optional<std::vector<DnsEntry>> CheckForBlacklistedDNSEntries();
+
+void PrintDNSEntries(std::wostream& wos);

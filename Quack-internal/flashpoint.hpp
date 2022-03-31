@@ -1,5 +1,5 @@
 #pragma once
-#include "pch.h"
+#include "pch.hpp"
 
 DWORD WINAPI Init(LPVOID lpParam);
 void LogicLoop();

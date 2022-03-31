@@ -21,7 +21,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="constants.h">
+    <ClInclude Include="constants.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="resource.h">
@@ -33,16 +33,16 @@
     <ClInclude Include="Lib\json.hpp">
       <Filter>Lib</Filter>
     </ClInclude>
-    <ClInclude Include="server.h">
+    <ClInclude Include="server.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="context.h">
+    <ClInclude Include="context.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="heartbeat.h">
+    <ClInclude Include="heartbeat.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="pch.h">
+    <ClInclude Include="pch.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

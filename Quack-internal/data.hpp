@@ -1,7 +1,7 @@
 #pragma once
-#include "pch.h"
+#include "pch.hpp"
 
-#include "network.h"
+#include "network.hpp"
 
 namespace data {
     // Used for looping, setting to false will deactivate continued module functionality

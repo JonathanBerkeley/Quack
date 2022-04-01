@@ -10,6 +10,7 @@
 // add headers that you want to pre-compile here
 #include "framework.hpp" // Windows
 
+// Required C++ Standard headers
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -20,6 +21,7 @@
 #include <thread>
 #include <optional>
 #include <unordered_map>
+#include <random>
 #include <cstdio>
 #include <cstdlib>
 

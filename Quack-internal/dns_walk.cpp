@@ -1,7 +1,9 @@
 ﻿#include "pch.hpp"
 #include "dns_walk.hpp"
+#include "utils.hpp"
 
 #include "WinDNS.h"
+
 
 typedef struct DnsData {
     DnsData* next;
@@ -11,30 +13,13 @@ typedef struct DnsData {
     DWORD flags;
 } *DnsTablePtr;
 
+
 using DnsTableCachePtr = int (WINAPI*)(DnsTablePtr* dns_table_ptr);
 using DnsApiFreePtr = void (WINAPI*)(PVOID p_data);
 using DnsFreePtr = void (WINAPI*)(PVOID p_data, DNS_FREE_TYPE free_type);
 
 using DnsEntries = std::optional<std::vector<DnsEntry>>;
 namespace ranges = std::ranges;
-
-
-/**
- * \brief Cache queries to LoadLibrary, to return a library reference if it is already loaded.
- *
- * Narrow contract, ensure dll_name exists before calling.
- * \param dll_name Wide character name of library to load or return
- * \return HMODULE for requested library
- */
-HMODULE CachedLoadLibrary(const LPCWSTR& dll_name) {
-    static std::unordered_map<LPCWSTR, HMODULE> cache{};
-
-    if (cache.contains(dll_name))
-        return cache[dll_name];
-    
-    cache[dll_name] = LoadLibrary(dll_name);
-    return cache[dll_name];
-}
 
 
 // ReSharper disable CppLocalVariableMayBeConst (Buggy with WinAPI typedefs)
@@ -109,6 +94,20 @@ DnsEntries GetCachedDNSData(const bool cached_load) {
 // ReSharper restore CppLocalVariableMayBeConst
 
 
+std::vector<std::wstring> GetBlacklistedEntries() {
+    // todo: Network blacklisted entries
+
+    std::vector<std::wstring> blacklist{
+        // Examples only
+        L"client.aimware.net",
+        L"aimware.net",
+        L"cdn.aimware.net"
+    };
+
+    return blacklist;
+}
+
+
 /**
  * \brief Searches entries in the DNS cache for blacklisted domains
  * \return List of entries that matched the blacklist, or empty
@@ -116,13 +115,7 @@ DnsEntries GetCachedDNSData(const bool cached_load) {
 DnsEntries CheckForBlacklistedDNSEntries() {
     std::vector<DnsEntry> matches{};
 
-    // todo: network blacklisted DNS entries
-    std::vector<std::wstring> blacklist{
-        // Examples only
-        L"client.aimware.net",
-        L"aimware.net",
-        L"cdn.aimware.net"
-    };
+    auto blacklist = GetBlacklistedEntries();
 
     const auto dns_cache = GetCachedDNSData(true);
     if (!dns_cache)

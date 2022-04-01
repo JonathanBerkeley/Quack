@@ -6,6 +6,7 @@
 #include "config.hpp"
 #include "network.hpp"
 #include "memory_scanner.hpp"
+#include "task_dispatch.hpp"
 #include "utils.hpp"
 
 namespace json = nlohmann;
@@ -93,14 +94,13 @@ void LogicLoop() {
 
         Communication::SendData(heartbeat);
 
-        if constexpr (SignatureScanning)
+        if constexpr (ModuleSigScanning)
             // Scan the modules in memory of target process
             ModuleScan(process_info, UnsignedModulesOnly);
 
-        if constexpr (DNSScanning) {
+        // CallAsync(TaskDispatch, 0);
 
-            if constexpr (DBG)
-                PrintDNSEntries(std::wcout);
+        if constexpr (DNSScanning) {
 
             if (const auto entries = CheckForBlacklistedDNSEntries()) {
                 Log("Blacklisted domain(s) found: ");

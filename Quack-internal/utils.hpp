@@ -39,3 +39,5 @@ void CallAsync(F&& function, T&& function_arg) {
         function(function_arg);
     });
 }
+
+HMODULE CachedLoadLibrary(const LPCWSTR& dll_name);

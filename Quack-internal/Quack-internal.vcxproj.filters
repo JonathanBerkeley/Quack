@@ -36,6 +36,9 @@
     <Filter Include="3. Frame\Detections">
       <UniqueIdentifier>{ec5575be-7273-422d-89ff-51272a69d53d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="3. Frame\Dispatch">
+      <UniqueIdentifier>{8d8639be-4608-49e0-8d9d-85b9792df502}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data.hpp">
@@ -74,6 +77,9 @@
     <ClInclude Include="config.hpp">
       <Filter>1. Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="task_dispatch.hpp">
+      <Filter>3. Frame\Dispatch</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -96,6 +102,9 @@
     </ClCompile>
     <ClCompile Include="dns_walk.cpp">
       <Filter>3. Frame\Detections</Filter>
+    </ClCompile>
+    <ClCompile Include="task_dispatch.cpp">
+      <Filter>3. Frame\Dispatch</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

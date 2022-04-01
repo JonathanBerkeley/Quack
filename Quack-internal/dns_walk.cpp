@@ -19,21 +19,45 @@ using DnsEntries = std::optional<std::vector<DnsEntry>>;
 namespace ranges = std::ranges;
 
 
-// ReSharper disable CppLocalVariableMayBeConst (Buggy with WinAPI typedefs)
+/**
+ * \brief Cache queries to LoadLibrary, to return a library reference if it is already loaded.
+ *
+ * Narrow contract, ensure dll_name exists before calling.
+ * \param dll_name Wide character name of library to load or return
+ * \return HMODULE for requested library
+ */
+HMODULE CachedLoadLibrary(const LPCWSTR& dll_name) {
+    static std::unordered_map<LPCWSTR, HMODULE> cache{};
 
+    if (cache.contains(dll_name))
+        return cache[dll_name];
+    
+    cache[dll_name] = LoadLibrary(dll_name);
+    return cache[dll_name];
+}
+
+
+// ReSharper disable CppLocalVariableMayBeConst (Buggy with WinAPI typedefs)
 /**
  * \brief Walk the DNS cache using undocumented DNSAPI function
  * Will cause DNSAPI.dll to be loaded temporarily
  *
  * Logic based on https://github.com/malcomvetter/DnsCache
  * Improved with advice from https://stackoverflow.com/a/31892801
+ * \param cached_load Whether or not to cache the DLL load attempt.
+ * Better for multiple runs, so that DNSAPI.dll is not continually reloaded.
+ * However, using cached_load will mean that DNSAPI.dll will remain loaded even after
+ * this function is finished.
  * \return Vector containing cached DnsEntries on success
  */
-DnsEntries GetCachedDNSData() {
+DnsEntries GetCachedDNSData(const bool cached_load) {
     std::vector<DnsEntry> entries{};
 
     DnsTablePtr table_entry = nullptr;
-    const auto dns_lib = LoadLibrary(L"DNSAPI.dll");
+
+    HMODULE dns_lib = cached_load
+        ? CachedLoadLibrary(L"DNSAPI.dll")
+        : LoadLibrary(L"DNSAPI.dll");
 
     if (dns_lib == nullptr)
         return std::nullopt;
@@ -74,8 +98,11 @@ DnsEntries GetCachedDNSData() {
 
     // todo: Verify no leaks possible
     // todo: Keep dns_lib loaded if repeatedly searching ?
+
     // Cleanup
-    FreeLibrary(dns_lib);
+    if (!cached_load) {
+        FreeLibrary(dns_lib);
+    }
 
     return entries;
 }
@@ -97,7 +124,7 @@ DnsEntries CheckForBlacklistedDNSEntries() {
         L"cdn.aimware.net"
     };
 
-    const auto dns_cache = GetCachedDNSData();
+    const auto dns_cache = GetCachedDNSData(true);
     if (!dns_cache)
         return std::nullopt;
 
@@ -112,7 +139,17 @@ DnsEntries CheckForBlacklistedDNSEntries() {
 }
 
 
+/**
+ * \brief Prints DNS entries in a human readable format to supplied wide output stream
+ * \param wos References to wide output stream
+ */
 void PrintDNSEntries(std::wostream& wos) {
+    const auto dns_cache = GetCachedDNSData(true);
+
+    if (!dns_cache) {
+        wos << L"DNS search failed.\n";
+        return;
+    }
 
     // Map dns flag values to printable names
     // https://docs.microsoft.com/en-us/windows/win32/dns/dns-constants
@@ -180,13 +217,6 @@ void PrintDNSEntries(std::wostream& wos) {
         {DNS_TYPE_WINSR, L"WINSR"},
         {DNS_TYPE_NBSTAT, L"NBSTAT"}
     };
-
-    const auto dns_cache = GetCachedDNSData();
-
-    if (!dns_cache) {
-        wos << L"DNS search failed.\n";
-        return;
-    }
 
     int count = 0;
     for (const auto& [name, type] : dns_cache.value()) {

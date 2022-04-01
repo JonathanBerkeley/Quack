@@ -13,6 +13,7 @@
 using namespace data;
 using namespace std::string_literals;
 
+
 // Enumerates through linked modules, returns vector of results
 std::vector<HMODULE> EnumerateModules(const ProcessInfo& pi) {
     HMODULE modules[0x400];
@@ -60,7 +61,6 @@ bool VerifyModule(const LPCWSTR source_file) {
     win_trust_data.dwStateAction = WTD_STATEACTION_CLOSE;
     return verified;
 }
-
 
 
 /**
@@ -135,6 +135,7 @@ std::uint8_t* PatternScan(const HMODULE module, const std::string& signature) {
     }
     return nullptr;
 }
+
 
 // todo: Network this
 Signatures GetSignatures(const ProcessInfo& context) {

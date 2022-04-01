@@ -5,7 +5,7 @@ namespace cfg {
 
     enum Config : bool {
         DNSScanning = true,
-        SignatureScanning = true,
+        SignatureScanning = false,
         UnsignedModulesOnly = true
     };
 

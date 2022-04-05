@@ -1,3 +1,3 @@
 #pragma once
 
-void TaskDispatch(int);
+void TaskDispatch();

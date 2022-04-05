@@ -20,6 +20,12 @@ using namespace std::chrono_literals;
 using constants::DBG;
 
 int main() {
+
+    // Simple anti-debugger check
+    if constexpr (not DBG)
+        if (IsDebuggerPresent())
+            return -1;
+
     Context context;
 
     if constexpr (DBG) {

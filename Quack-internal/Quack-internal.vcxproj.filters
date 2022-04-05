@@ -80,8 +80,11 @@
     <ClInclude Include="task_dispatch.hpp">
       <Filter>3. Frame\Dispatch</Filter>
     </ClInclude>
-    <ClInclude Include="identification.h">
+    <ClInclude Include="identification.hpp">
       <Filter>3. Frame\Detections</Filter>
+    </ClInclude>
+    <ClInclude Include="cpu_counter.hpp">
+      <Filter>3. Frame\Dispatch</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -111,6 +114,9 @@
     </ClCompile>
     <ClCompile Include="identification.cpp">
       <Filter>3. Frame\Detections</Filter>
+    </ClCompile>
+    <ClCompile Include="cpu_counter.cpp">
+      <Filter>3. Frame\Dispatch</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

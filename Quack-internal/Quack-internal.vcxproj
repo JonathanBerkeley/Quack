@@ -157,11 +157,12 @@
   <ItemGroup>
     <ClInclude Include="config.hpp" />
     <ClInclude Include="constants.hpp" />
+    <ClInclude Include="cpu_counter.hpp" />
     <ClInclude Include="data.hpp" />
     <ClInclude Include="dns_walk.hpp" />
     <ClInclude Include="flashpoint.hpp" />
     <ClInclude Include="framework.hpp" />
-    <ClInclude Include="identification.h" />
+    <ClInclude Include="identification.hpp" />
     <ClInclude Include="Lib\httplib.hpp" />
     <ClInclude Include="Lib\json.hpp" />
     <ClInclude Include="memory_scanner.hpp" />
@@ -171,6 +172,7 @@
     <ClInclude Include="utils.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="cpu_counter.cpp" />
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="dns_walk.cpp" />
     <ClCompile Include="flashpoint.cpp" />

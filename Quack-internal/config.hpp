@@ -9,4 +9,6 @@ namespace cfg {
         UnsignedModulesOnly = true
     };
 
+    constexpr double cpu_usage_threshold = 90.0;
+
 }

@@ -2,24 +2,19 @@
 #include "flashpoint.hpp"
 #include "constants.hpp"
 #include "data.hpp"
-#include "dns_walk.hpp"
 #include "config.hpp"
-#include "network.hpp"
-#include "memory_scanner.hpp"
 #include "task_dispatch.hpp"
 #include "utils.hpp"
-
-namespace json = nlohmann;
-
-namespace thread = std::this_thread;
 
 using namespace std::chrono_literals;
 using namespace cfg;
 using namespace data;
 using constants::DBG;
-using ull = unsigned long long;
 
+// This is a global variable as it's used in std::atexit, which takes no arguments
+// It is used only in this file
 static PROCESS_INFORMATION ac_client{};
+
 
 // Start the anti-cheat executable
 void InitClientAC() {
@@ -47,9 +42,9 @@ void KillClientAC() {
     CloseHandle(ac_client.hThread);
 }
 
-
+// Entry point and setup
 DWORD WINAPI Init(LPVOID lpParam) {
-    
+
     if constexpr (DBG) {
         // Redirect stdout & stderr to new console
         AllocConsole();
@@ -67,52 +62,8 @@ DWORD WINAPI Init(LPVOID lpParam) {
     // On exit, run KillClientAC
     std::atexit(KillClientAC);
 
-    LogicLoop();
+    TaskDispatch();
 
     // ReSharper disable once CppZeroConstantCanBeReplacedWithNullptr
     return 0;
-}
-
-
-void LogicLoop() {
-
-    const ProcessInfo process_info{
-        GetCurrentProcess(),
-        GetCurrentProcessId(),
-        GetModuleHandle(nullptr)
-    };
-
-    const json::json heartbeat{
-        {"Heartbeat", true}
-    };
-
-    // todo: Detection module dispatch system
-    while (running) {
-        // todo: Detection logic
-        // todo: Signature scanning
-        // todo: Internal heartbeat
-
-        Communication::SendData(heartbeat);
-
-        if constexpr (ModuleSigScanning)
-            // Scan the modules in memory of target process
-            ModuleScan(process_info, UnsignedModulesOnly);
-
-        // CallAsync(TaskDispatch, 0);
-
-        if constexpr (DNSScanning) {
-
-            if (const auto entries = CheckForBlacklistedDNSEntries()) {
-                Log("Blacklisted domain(s) found: ");
-
-                for (const auto& [name, type] : entries.value()) {
-                    // todo: move from here and network
-                    std::wstring printable{ name + L" " + std::to_wstring(type) };
-                    Log(printable);
-                }
-            }
-        }
-
-        thread::sleep_for(10s);
-    }
 }

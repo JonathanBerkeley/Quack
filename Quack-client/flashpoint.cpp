@@ -20,12 +20,6 @@ using namespace std::chrono_literals;
 using constants::DBG;
 
 int main() {
-
-    // Simple anti-debugger check
-    if constexpr (not DBG)
-        if (IsDebuggerPresent())
-            return -1;
-
     Context context;
 
     if constexpr (DBG) {
@@ -50,6 +44,11 @@ int main() {
     // Heart of the application, main loop
     for (;;) {
         Heartbeat(context);
+
+        // Simple anti-debugger check
+        if constexpr (not DBG)
+            if (IsDebuggerPresent())
+                return -1;
 
         thread::sleep_for(3s);
     }

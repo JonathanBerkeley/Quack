@@ -3,7 +3,7 @@
 
 // Cpu counter implementation
 
-#pragma region Constructor / Destructor
+#pragma region ConstructorDestructor
 CpuCounter::CpuCounter() {
     PdhOpenQuery(nullptr, 0, &cpu_query);
     PdhAddEnglishCounter(cpu_query, L"\\Processor(_Total)\\% Processor Time", 0, &cpu_counter);
@@ -17,7 +17,7 @@ CpuCounter::~CpuCounter() {
 }
 #pragma endregion
 
-#pragma region Copy / Move / Assign
+#pragma region CopyMoveAssign
 CpuCounter::CpuCounter(const CpuCounter& other) = default;
 
 CpuCounter::CpuCounter(CpuCounter&& other) noexcept :

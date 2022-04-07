@@ -5,4 +5,3 @@
 
 // Windows Header Files
 #include <Windows.h>
-#include <Pdh.h>

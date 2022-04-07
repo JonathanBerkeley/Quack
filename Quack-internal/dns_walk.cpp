@@ -23,6 +23,7 @@ namespace ranges = std::ranges;
 
 
 // ReSharper disable CppLocalVariableMayBeConst (Buggy with WinAPI typedefs)
+// ReSharper disable CppClangTidyClangDiagnosticCastFunctionType (Incorrect with FARPROC)
 /**
  * \brief Walk the DNS cache using undocumented DNSAPI function
  * Will cause DNSAPI.dll to be loaded temporarily
@@ -82,7 +83,6 @@ DnsEntries GetCachedDNSData(const bool cached_load) {
     }
 
     // todo: Verify no leaks possible
-    // todo: Keep dns_lib loaded if repeatedly searching ?
 
     // Cleanup
     if (!cached_load) {
@@ -92,7 +92,7 @@ DnsEntries GetCachedDNSData(const bool cached_load) {
     return entries;
 }
 // ReSharper restore CppLocalVariableMayBeConst
-
+// ReSharper restore CppClangTidyClangDiagnosticCastFunctionType
 
 std::vector<std::wstring> GetBlacklistedEntries() {
     // todo: Network blacklisted entries

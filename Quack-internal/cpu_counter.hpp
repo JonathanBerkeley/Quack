@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "pch.hpp"
+#include <Pdh.h>
 
 #pragma comment(lib, "pdh.lib")
 

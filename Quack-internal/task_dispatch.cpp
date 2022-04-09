@@ -36,9 +36,11 @@ void TaskDispatch() {
 
     // todo: Sleep instead of exit when cpu usage is too high
     while (running) {
-        // todo: Detection logic
-        // todo: Signature scanning
-        // todo: Internal heartbeat
+
+        // Simple anti-debugger check
+        if constexpr (not DBG)
+            if (IsDebuggerPresent())
+                ExitProcess(-1);
 
         // Avoid exhausting CPU
         for (unsigned skip_count = 0; cpu_usage() > cpu_usage_threshold; ++skip_count) {

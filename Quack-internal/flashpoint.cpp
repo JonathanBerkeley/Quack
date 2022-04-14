@@ -42,6 +42,7 @@ void KillClientAC() {
     CloseHandle(ac_client.hThread);
 }
 
+
 // Entry point and setup
 DWORD WINAPI Init(LPVOID lpParam) {
 

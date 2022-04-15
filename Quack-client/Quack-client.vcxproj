@@ -183,6 +183,7 @@
     <ClInclude Include="pch.hpp" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="server.hpp" />
+    <ClInclude Include="utility.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="flashpoint.cpp" />
@@ -194,6 +195,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="server.cpp" />
+    <ClCompile Include="utility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Quack-client.rc" />

@@ -2,8 +2,8 @@
 #include <string>
 
 namespace constants {
-    const std::string VERSION{ "0.1.6" };
-    const std::string NAME{ "Quack-ac" };
+    const std::string VERSION{ "0.1.8" };
+    const std::string NAME{ "Quack" };
     constexpr unsigned IPC_PORT = 5175; // Local machine communications port
     constexpr unsigned NET_PORT = 7982; // Foreign network communications port
     static constexpr bool DBG = true;

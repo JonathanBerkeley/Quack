@@ -19,6 +19,9 @@
     <Filter Include="Source Files\Boilerplate">
       <UniqueIdentifier>{39366770-1984-4a7b-954b-924452dcbcfd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Utility">
+      <UniqueIdentifier>{d72c607c-e30d-4dda-8713-481b442d961d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.hpp">
@@ -45,6 +48,9 @@
     <ClInclude Include="pch.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="utility.hpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="flashpoint.cpp">
@@ -58,6 +64,9 @@
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>Source Files\Boilerplate</Filter>
+    </ClCompile>
+    <ClCompile Include="utility.cpp">
+      <Filter>Source Files\Utility</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

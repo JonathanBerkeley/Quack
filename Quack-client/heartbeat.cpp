@@ -3,6 +3,7 @@
 // This project
 #include "constants.hpp"
 #include "heartbeat.hpp"
+#include "utility.hpp"
 
 // 3rd party library
 #include "Lib/httplib.hpp"  // Networking

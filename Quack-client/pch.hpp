@@ -10,8 +10,8 @@
 // Win32 API
 #define _WINSOCKAPI_
 #define NOMINMAX
-#define WIN32_LEAN_AND_MEAN
 #include <Windows.h>
+#include <iphlpapi.h>
 
 // C++ Standard library
 #include <iostream>

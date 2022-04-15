@@ -5,6 +5,7 @@
 #include "server.hpp"
 #include "context.hpp"
 #include "heartbeat.hpp"
+#include "utility.hpp"
 
 // 3rd party library
 #include "Lib/httplib.hpp"  // Networking
@@ -19,6 +20,8 @@ namespace chrono = std::chrono;
 using namespace std::chrono_literals;
 using constants::DBG;
 
+#pragma comment(lib, "Iphlpapi.lib")
+
 int main() {
     Context context;
 
@@ -32,6 +35,26 @@ int main() {
 
         context.hConsole = hConsole;
     }
+
+    // Identification
+    // todo: Develop
+    MIB_IPNETTABLE arp{};
+    unsigned long arp_sz = 1024;
+    auto result = GetIpNetTable(&arp, &arp_sz, TRUE);
+
+    if (result == ERROR_INSUFFICIENT_BUFFER)
+        result = GetIpNetTable(&arp, &arp_sz, TRUE);
+
+    if (result == NO_ERROR) {
+
+        for (DWORD i = 0; i < arp.dwNumEntries; ++i) {
+            std::cout << "Arp: " << i << " " << arp.table[i].dwIndex << " : " << arp.table[i].dwAddr << '\n';
+        }
+    }
+    else {
+        Log({ "Error: " + std::to_string(result) });
+    }
+
 
     http::Client cli{ "localhost", constants::NET_PORT };
 

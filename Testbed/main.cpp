@@ -7,128 +7,18 @@
 #include <WinSock2.h>
 #include <ws2ipdef.h>
 #include <iphlpapi.h>
-#include <bcrypt.h>
-#include <wincrypt.h>
-
-#pragma comment(lib, "iphlpapi.lib")
-#pragma comment(lib, "ws2_32.lib")
-#pragma comment(lib, "bcrypt.lib")
-#pragma comment(lib, "Crypt32.lib")
+#include "sha256.h"
 
 #include <iostream>
 #include <cstdio>
 #include <ranges>
 #include <algorithm>
 #include <string>
+#include <sstream>
 #include <vector>
 
 
-PBYTE Hash(BYTE data[]) {
-#define NT_SUCCESS(Status) (((NTSTATUS)(Status)) >= 0)
-    class HashException : std::exception {};
-
-    BCRYPT_ALG_HANDLE hasher{};
-    BCRYPT_HASH_HANDLE hHash{};
-
-    DWORD cbHashObject{ 0 }, cbData{ 0 }, cbHash{ 0 };
-    PBYTE pbHash{}, pbHashObject{};
-
-    try {
-        // Get algorithm provider handle
-        if (!NT_SUCCESS(BCryptOpenAlgorithmProvider(
-            &hasher,
-            BCRYPT_SHA256_ALGORITHM,
-            nullptr,
-            BCRYPT_HASH_REUSABLE_FLAG
-        ))) {
-            throw HashException{};
-        }
-
-        // Calculate buffer size required
-        if (!NT_SUCCESS(BCryptGetProperty(
-            hasher,
-            BCRYPT_OBJECT_LENGTH,
-            reinterpret_cast<PBYTE>(&cbHashObject),
-            sizeof(DWORD),
-            &cbData,
-            0
-        ))) {
-            throw HashException{};
-        }
-
-        // Allocate the hash object
-        pbHashObject = static_cast<PBYTE>(HeapAlloc(GetProcessHeap(), 0, cbHashObject));
-        if (pbHashObject == nullptr)
-            throw HashException{};
-
-        // Calculate length of hash
-        if (!NT_SUCCESS(BCryptGetProperty(
-            hasher,
-            BCRYPT_HASH_LENGTH,
-            reinterpret_cast<PBYTE>(&cbHash),
-            sizeof(DWORD),
-            &cbData,
-            0
-        ))) {
-            throw HashException{};
-        }
-
-        // Allocate the hash buffer
-        pbHash = static_cast<PBYTE>(HeapAlloc(GetProcessHeap(), 0, cbHash));
-        if (pbHash == nullptr)
-            throw HashException{};
-
-        // Create hash
-        if (!NT_SUCCESS(BCryptCreateHash(
-            hasher,
-            &hHash,
-            pbHashObject,
-            cbHashObject,
-            nullptr,
-            0,
-            0
-        ))) {
-            throw HashException{};
-        }
-
-        // Hash data
-        if (!NT_SUCCESS(BCryptHashData(
-            hHash,
-            data,
-            sizeof(data),
-            0
-        ))) {
-            throw HashException{};
-        }
-
-        if (!NT_SUCCESS(BCryptFinishHash(
-            hHash,
-            pbHash,
-            cbHash,
-            0
-        ))) {
-            throw HashException{};
-        }
-
-        return pbHash;
-    }
-    catch (const HashException&) {
-        // Cleanup
-        if (hasher)
-            BCryptCloseAlgorithmProvider(hasher, 0);
-        if (hHash)
-            BCryptDestroyHash(hHash);
-        if (pbHashObject)
-            HeapFree(GetProcessHeap(), 0, pbHashObject);
-        if (pbHash)
-            HeapFree(GetProcessHeap(), 0, pbHash);
-    }
-
-}
-
-
 void Testbed() {
-    
     // Identification
     // todo: Develop
     MIB_IPNET_TABLE2* arp;
@@ -144,13 +34,19 @@ void Testbed() {
         if (std::ranges::find(blacklist, current_bit) != blacklist.end())
             continue;
 
-        for (unsigned long j = 0; j < arp->Table[i].PhysicalAddressLength; j++) {
-            if (j == arp->Table[i].PhysicalAddressLength - 1)
-                std::cout << std::hex << (int)arp->Table[i].PhysicalAddress[j] << '\n';
+        auto row = arp->Table[i];
+
+        SHA256 sha256;
+        std::stringstream ss{};
+
+        for (unsigned long j = 0; j < row.PhysicalAddressLength; j++) {
+            if (j == row.PhysicalAddressLength - 1)
+                ss << std::hex << static_cast<int>(row.PhysicalAddress[j]);
             else
-                std::cout << std::hex << (int)arp->Table[i].PhysicalAddress[j] << '-';
+                ss << std::hex << static_cast<int>(row.PhysicalAddress[j]) << '-';
         }
-        Hash(arp->Table[i].PhysicalAddress);
+        std::cout << ss.str() << '\n';
+        std::cout << sha256(ss.str()) << '\n';
     }
     
 }

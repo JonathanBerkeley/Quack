@@ -8,10 +8,19 @@
 #define PCH_H
 
 // Win32 API
+#define WIN32_LEAN_AND_MEAN
 #define _WINSOCKAPI_
 #define NOMINMAX
+
 #include <Windows.h>
+#include <WinSock2.h>
+#include <ws2ipdef.h>
 #include <iphlpapi.h>
+
+#undef WIN32_LEAN_AND_MEAN
+#undef _WINSOCKAPI_
+#undef NOMINMAX
+
 
 // C++ Standard library
 #include <iostream>

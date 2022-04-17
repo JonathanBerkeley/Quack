@@ -22,6 +22,12 @@
     <Filter Include="Source Files\Utility">
       <UniqueIdentifier>{d72c607c-e30d-4dda-8713-481b442d961d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Lib\HashLib">
+      <UniqueIdentifier>{ad97684e-0f49-4f30-9be1-70aebe4b9ff1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Identification">
+      <UniqueIdentifier>{8109db60-3676-4a0d-bab5-191dae7176af}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.hpp">
@@ -51,6 +57,12 @@
     <ClInclude Include="utility.hpp">
       <Filter>Source Files\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="Lib\hash-library\sha256.hpp">
+      <Filter>Lib\HashLib</Filter>
+    </ClInclude>
+    <ClInclude Include="identification.hpp">
+      <Filter>Source Files\Identification</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="flashpoint.cpp">
@@ -67,6 +79,12 @@
     </ClCompile>
     <ClCompile Include="utility.cpp">
       <Filter>Source Files\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="Lib\hash-library\sha256.cpp">
+      <Filter>Lib\HashLib</Filter>
+    </ClCompile>
+    <ClCompile Include="identification.cpp">
+      <Filter>Source Files\Identification</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

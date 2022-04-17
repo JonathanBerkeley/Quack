@@ -13,7 +13,6 @@ namespace json = nlohmann;
 void Server(http::Client* cli) {
     http::Server server{};
 
-
     // Routes
     server.Post("/", [cli](const http::Request& req, http::Response& res) {
 

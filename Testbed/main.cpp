@@ -12,9 +12,6 @@
 #include <sstream>
 #include <optional>
 #include <unordered_map>
-#include <algorithm>
-#include <ranges>
-
 
 
 std::wstring wstring_to_lower(const std::wstring& wide_str) {
@@ -26,6 +23,7 @@ std::wstring wstring_to_lower(const std::wstring& wide_str) {
 
     return output;
 }
+
 
 using ProcessEntry = std::unordered_map<DWORD, std::wstring>;
 std::optional<ProcessEntry> find_processes(const std::vector<std::wstring>& blacklist) {
@@ -137,21 +135,16 @@ int main() {
     };
 
     if (const auto processes = find_processes(blacklist)
-        ;  processes) {
+        ; processes) {
 
         for (const auto& [pid, name] : processes.value()) {
-            std::wcout << pid << name << L'\n';
-            auto h = OpenProcess(PROCESS_ALL_ACCESS, false, 32564);
-            if (not TerminateProcess(h, 0)) {
-                std::wcout << GetLastError() << L'\n';
+
+            const auto blacklisted_process = OpenProcess(PROCESS_TERMINATE, false, pid);
+            if (not TerminateProcess(blacklisted_process, 0)) {
+                // Log(GetLastError());
             }
-
-
         }
     }
-
-    // Testbed();
-
-    Sleep(100'000);
+    
     return 0;
 }

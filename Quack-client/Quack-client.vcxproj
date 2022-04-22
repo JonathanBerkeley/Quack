@@ -177,6 +177,7 @@
   <ItemGroup>
     <ClInclude Include="constants.hpp" />
     <ClInclude Include="context.hpp" />
+    <ClInclude Include="detection.hpp" />
     <ClInclude Include="heartbeat.hpp" />
     <ClInclude Include="identification.hpp" />
     <ClInclude Include="Lib\hash-library\sha256.hpp" />
@@ -188,6 +189,7 @@
     <ClInclude Include="utility.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="detection.cpp" />
     <ClCompile Include="flashpoint.cpp" />
     <ClCompile Include="heartbeat.cpp" />
     <ClCompile Include="identification.cpp" />

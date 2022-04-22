@@ -7,7 +7,6 @@
 #pragma comment(lib, "iphlpapi.lib")
 
 
-using Hashes = std::vector<std::string>;
 /**
  * \brief Enumerate over Address Resolution Protocol (ARP) entries to extract hashes of MAC address
  * This can be used to identify users that are ban-evading.

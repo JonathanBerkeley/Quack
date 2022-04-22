@@ -25,3 +25,13 @@ void Log(const std::wstring& w_str) {
     if constexpr (constants::DBG)
         std::wcout << w_str << '\n';
 }
+
+std::wstring wstring_to_lower(const std::wstring& wide_str) {
+
+    std::wstring output;
+
+    for (auto& wc : wide_str)
+        output += static_cast<wchar_t>(towlower(wc));
+
+    return output;
+}

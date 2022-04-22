@@ -28,6 +28,9 @@
     <Filter Include="Source Files\Identification">
       <UniqueIdentifier>{8109db60-3676-4a0d-bab5-191dae7176af}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Detection">
+      <UniqueIdentifier>{3840af92-8a59-492d-a6a2-00549ed5a65e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.hpp">
@@ -63,6 +66,9 @@
     <ClInclude Include="identification.hpp">
       <Filter>Source Files\Identification</Filter>
     </ClInclude>
+    <ClInclude Include="detection.hpp">
+      <Filter>Source Files\Detection</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="flashpoint.cpp">
@@ -85,6 +91,9 @@
     </ClCompile>
     <ClCompile Include="identification.cpp">
       <Filter>Source Files\Identification</Filter>
+    </ClCompile>
+    <ClCompile Include="detection.cpp">
+      <Filter>Source Files\Detection</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

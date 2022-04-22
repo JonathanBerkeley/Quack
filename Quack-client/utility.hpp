@@ -1,8 +1,5 @@
 #pragma once
 
-#include <string>
-#include <initializer_list>
-
 #include "constants.hpp"
 
 void Log(const std::string& str);
@@ -19,3 +16,5 @@ void Log(std::initializer_list<T> data) {
         for (auto& segment : data)
             std::cout << segment << '\n';
 }
+
+std::wstring wstring_to_lower(const std::wstring& wide_str);

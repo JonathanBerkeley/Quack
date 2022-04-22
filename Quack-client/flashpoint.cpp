@@ -9,12 +9,12 @@
 #include "identification.hpp"
 
 // 3rd party library
+#include "detection.hpp"
 #include "Lib/httplib.hpp"              // Networking
 #include "Lib/json.hpp"                 // JSON support
 
 // Shorten namespace names
 namespace http = httplib;
-namespace json = nlohmann;
 namespace thread = std::this_thread;
 namespace chrono = std::chrono;
 
@@ -23,6 +23,9 @@ using constants::DBG;
 
 
 int main() {
+    // todo: implement risk factor
+    unsigned risk_factor = 0;
+
     Context context;
 
     if constexpr (DBG) {
@@ -36,10 +39,25 @@ int main() {
         context.hConsole = hConsole;
     }
 
+    const std::vector blacklist{
+        std::wstring{ L"cheatengine" },
+        std::wstring{ L"xenos" },
+        std::wstring{ L"injector" },
+        std::wstring{ L"destroject" }
+    };
+
+    auto x = KillBlacklistedProcesses(blacklist);
+    if (x) {
+        // todo: send info about detections?
+        // todo: risk factor
+        // todo: network blacklist
+        risk_factor += x * 10u;
+    }
 
     if (const auto arp_hashes = GetArpMacHashes(); arp_hashes) {
         for (const auto& hash : arp_hashes.value()) {
             Log(hash);
+            // todo: use this information
         }
     }
 

@@ -16,6 +16,8 @@
 #include <WinSock2.h>
 #include <ws2ipdef.h>
 #include <iphlpapi.h>
+#include <Psapi.h>
+#include <TlHelp32.h>
 
 #undef WIN32_LEAN_AND_MEAN
 #undef _WINSOCKAPI_
@@ -27,5 +29,6 @@
 #include <string>
 #include <chrono>
 #include <thread>
+#include <unordered_map>
 
 #endif // PCH_H

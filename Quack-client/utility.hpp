@@ -17,4 +17,16 @@ void Log(std::initializer_list<T> data) {
             std::cout << segment << '\n';
 }
 
+/**
+ * \brief Wrapper around reinterpret_cast to reduce code verbosity
+ * \tparam T Resulting type after casting
+ * \tparam U Type of the subject of the cast
+ * \param u Subject of the cast
+ * \return Result of reinterpret_cast
+ */
+template <typename T, typename U>
+T recast(U&& u) {
+    return reinterpret_cast<T>(std::forward<U>(u));
+}
+
 std::wstring wstring_to_lower(const std::wstring& wide_str);

@@ -31,9 +31,9 @@ int main() {
     if constexpr (DBG) {
         // Console for debug
         AllocConsole();
-        freopen_s(reinterpret_cast<FILE**>(stdin), "CONIN$", "r", stdin);
-        freopen_s(reinterpret_cast<FILE**>(stdout), "CONOUT$", "w", stdout);
-        freopen_s(reinterpret_cast<FILE**>(stderr), "CONOUT$", "w", stderr);
+        freopen_s(recast<FILE**>(stdin), "CONIN$", "r", stdin);
+        freopen_s(recast<FILE**>(stdout), "CONOUT$", "w", stdout);
+        freopen_s(recast<FILE**>(stderr), "CONOUT$", "w", stderr);
         const auto hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 
         context.hConsole = hConsole;

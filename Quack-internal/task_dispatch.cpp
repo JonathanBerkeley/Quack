@@ -34,6 +34,24 @@ void TaskDispatch() {
         {"Heartbeat", true}
     };
 
+    MEMORY_BASIC_INFORMATION mbi{};
+    LPVOID offset = nullptr;
+
+    const std::vector<DWORD> mask{ PAGE_EXECUTE, PAGE_EXECUTE_READWRITE, PAGE_EXECUTE_READ, PAGE_EXECUTE_WRITECOPY };
+    for (;;) {
+        while (VirtualQueryEx(GetCurrentProcess(), offset, &mbi, sizeof mbi)) {
+            offset = reinterpret_cast<LPVOID>(reinterpret_cast<DWORD_PTR>(mbi.BaseAddress) + mbi.RegionSize);
+
+            if (std::ranges::find(mask, mbi.AllocationProtect) != mask.end()) {
+                // todo: scan
+                std::wcout << L"\n0x" << std::hex << mbi.BaseAddress << L"\n";
+                std::wcout << mbi.AllocationProtect << L"\n";
+            }
+        }
+        Sleep(30'000);
+    }
+
+
     // todo: Sleep instead of exit when cpu usage is too high
     while (running) {
 

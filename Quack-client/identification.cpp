@@ -51,8 +51,6 @@ std::optional<Hashes> GetArpMacHashes() {
         hashes.emplace_back(
             sha256(ss.str())
         );
-
-        Log(sha256(ss.str()));
     }
 
     if (hashes.empty())

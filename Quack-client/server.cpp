@@ -17,6 +17,7 @@ void Server(http::Client* cli) {
     server.Post("/", [cli](const http::Request& req, http::Response& res) {
 
         // todo: enum flags instead of literals
+        // todo: proof of identity
         if (req.body.find("Highlight") != std::string::npos) {
 
             auto response = cli->Post("/ac", req.body, "application/json");
@@ -31,8 +32,6 @@ void Server(http::Client* cli) {
             res.set_content("QAC: Heartbeat received", "text/plain");
         }
     });
-
-
 
 
     server.listen("localhost", constants::IPC_PORT);

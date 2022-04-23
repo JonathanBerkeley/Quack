@@ -3,7 +3,6 @@
 // This project
 #include "constants.hpp"
 #include "heartbeat.hpp"
-#include "utility.hpp"
 
 // 3rd party library
 #include "Lib/httplib.hpp"  // Networking
@@ -16,6 +15,7 @@ namespace thread = std::this_thread;
 namespace chrono = std::chrono;
 
 using constants::DBG;
+
 
 bool Heartbeat(const Context& ctx) {
 

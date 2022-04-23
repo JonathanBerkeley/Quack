@@ -31,6 +31,9 @@
     <Filter Include="Source Files\Detection">
       <UniqueIdentifier>{3840af92-8a59-492d-a6a2-00549ed5a65e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Network">
+      <UniqueIdentifier>{81b8e145-3635-4905-b7e7-6f9bb4da6bc9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.hpp">
@@ -74,12 +77,6 @@
     <ClCompile Include="flashpoint.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="server.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="heartbeat.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>Source Files\Boilerplate</Filter>
     </ClCompile>
@@ -94,6 +91,12 @@
     </ClCompile>
     <ClCompile Include="detection.cpp">
       <Filter>Source Files\Detection</Filter>
+    </ClCompile>
+    <ClCompile Include="heartbeat.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="server.cpp">
+      <Filter>Source Files\Network</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

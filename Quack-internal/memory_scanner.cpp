@@ -137,6 +137,26 @@ std::uint8_t* PatternScan(const HMODULE module, const std::string& signature) {
 }
 
 
+std::uint8_t* PatternScan(const std::string& signature, const MemoryRegion& mem_region) {
+    const auto pattern_bytes = PatternToByte(signature);
+    const auto size = pattern_bytes.size();
+    const auto data = pattern_bytes.data();
+
+    for (unsigned i = 0u; i < mem_region.size; ++i) {
+        bool found = true;
+        for (unsigned j = 0u; j < size; j++) {
+            if (mem_region.start_address[i + j] != data[j] && data[j] != 0xDEADBEEF) {
+                found = false;
+                break;
+            }
+        }
+        if (found)
+            return &mem_region.start_address[i];
+    }
+    return nullptr;
+}
+
+
 // todo: Network this
 Signatures GetSignatures(const ProcessInfo& context) {
     Signatures signatures{};
@@ -164,51 +184,93 @@ void ModuleScan(const ProcessInfo& context, const bool unsigned_only) {
 
         WCHAR module_path[MAX_PATH];
         static constinit int size = sizeof(module_path) / sizeof(TCHAR);
-        
-        if (GetModuleFileNameExW(context.hProcess, dll, module_path, size)) {
 
-            auto scan = [&cheats, &dll, &module_path, &context]() {
+        if (!GetModuleFileNameExW(context.hProcess, dll, module_path, size))
+            return;
 
-                if (dll == context.this_module)
-                    return;
+        auto scan = [&cheats, &dll, &module_path, &context] {
 
-                for (const auto& [cheat_name, signatures] : cheats) {
+            if (dll == context.this_module)
+                return;
 
-                    for (const auto& pattern : signatures) {
+            for (const auto& [cheat_name, signatures] : cheats) {
 
-                        if (const auto addr = PatternScan(dll, pattern); addr) {
+                for (const auto& pattern : signatures) {
 
-                            // todo: Add real uuid
-                            std::wstring cheat_path { module_path };
-                            nlohmann::json ban_info{ {"detection", {
-                                {"cheat", cheat_name},
-                                {"path", cheat_path},
-                                {"uuid", "uuid1273198439343492237401"}
-                            }} };
+                    if (const auto addr = PatternScan(dll, pattern); addr) {
+
+                        // todo: Add real uuid
+                        std::wstring cheat_path{ module_path };
+                        nlohmann::json ban_info{ {"detection", {
+                            {"cheat", cheat_name},
+                            {"path", cheat_path},
+                            {"uuid", "uuid1273198439343492237401"}
+                        }} };
 
 
-                            Log({ "\nCHEAT FOUND: "s, cheat_name });
+                        Log({ "\nCHEAT FOUND: "s, cheat_name });
 
-                            // Fire and forget the ban message to the server
-                            CallAsync(Communication::SendData, ban_info);
-                        }
-
+                        // Fire and forget the ban message to the server
+                        CallAsync(Communication::SendData, ban_info);
                     }
 
                 }
-            };
 
-            if (unsigned_only) {
-                if (!VerifyModule(module_path)) {
-                    scan();
-                    Log(module_path);
-                }
             }
-            else {
+        };
+
+        if (unsigned_only) {
+            if (!VerifyModule(module_path)) {
                 scan();
                 Log(module_path);
             }
         }
+        else {
+            scan();
+            Log(module_path);
+        }
     }
+
     Log("\nFinished memory scan...\n");
 }
+
+
+
+void ModuleScan(const ProcessInfo& context, const MemoryRegion& memory_region) {
+
+    auto [cheats] = GetSignatures(context);
+
+    Log("\nBeginning memory scan...\n");
+
+    auto scan = [&cheats, &memory_region, &context] {
+
+        for (const auto& [cheat_name, signatures] : cheats) {
+
+            for (const auto& pattern : signatures) {
+
+                if (const auto addr = PatternScan(pattern, memory_region); addr) {
+
+                    // todo: Add real uuid
+                    nlohmann::json ban_info{ {"detection", {
+                        {"cheat", cheat_name},
+                        {"path", ""},
+                        {"uuid", "uuid1273198439343492237401"}
+                    }} };
+
+
+                    Log({ "\nCHEAT FOUND: "s, cheat_name });
+
+                    // Fire and forget the ban message to the server
+                    CallAsync(Communication::SendData, ban_info);
+                }
+
+            }
+
+        }
+    };
+
+    scan();
+    Log("\nFinished memory scan...\n");
+}
+
+

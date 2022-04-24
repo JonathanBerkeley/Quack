@@ -63,6 +63,7 @@ DWORD WINAPI Init(LPVOID lpParam) {
     // On exit, run KillClientAC
     std::atexit(KillClientAC);
 
+    // Main program loop
     TaskDispatch();
 
     // ReSharper disable once CppZeroConstantCanBeReplacedWithNullptr

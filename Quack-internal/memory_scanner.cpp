@@ -1,3 +1,4 @@
+// ReSharper disable CppClangTidyPerformanceNoIntToPtr
 #include "pch.hpp"
 
 #include "memory_scanner.hpp"
@@ -14,6 +15,7 @@ using namespace data;
 using namespace std::string_literals;
 
 
+#pragma region Modules
 // Enumerates through linked modules, returns vector of results
 std::vector<HMODULE> EnumerateModules(const ProcessInfo& pi) {
     HMODULE modules[0x400];
@@ -61,8 +63,9 @@ bool VerifyModule(const LPCWSTR source_file) {
     win_trust_data.dwStateAction = WTD_STATEACTION_CLOSE;
     return verified;
 }
+#pragma endregion
 
-
+#pragma region Patterns
 /**
  * \brief Converts supplied signature to bytes, removing wildcards
  * \param signature Signature to be converted to bytes
@@ -169,13 +172,14 @@ Signatures GetSignatures(const ProcessInfo& context) {
 
     return signatures;
 }
+#pragma endregion
 
-
+#pragma region Scans
 void ModuleScan(const ProcessInfo& context, const bool unsigned_only) {
 
     auto [cheats] = GetSignatures(context);
 
-    Log("\nBeginning memory scan...\n");
+    Log("\nBeginning module memory scan...\n");
 
     auto dlls = EnumerateModules(context);
 
@@ -231,46 +235,65 @@ void ModuleScan(const ProcessInfo& context, const bool unsigned_only) {
         }
     }
 
-    Log("\nFinished memory scan...\n");
+    Log("\nFinished module memory scan...\n");
 }
 
 
-
-void ModuleScan(const ProcessInfo& context, const MemoryRegion& memory_region) {
+void RegionScan(const ProcessInfo& context, const MemoryRegion& memory_region) {
 
     auto [cheats] = GetSignatures(context);
 
-    Log("\nBeginning memory scan...\n");
+    // Log("\nBeginning executable memory scan...\n");
+    
+    for (const auto& [cheat_name, signatures] : cheats) {
 
-    auto scan = [&cheats, &memory_region, &context] {
+        for (const auto& pattern : signatures) {
 
-        for (const auto& [cheat_name, signatures] : cheats) {
+            if (const auto addr = PatternScan(pattern, memory_region); addr) {
 
-            for (const auto& pattern : signatures) {
-
-                if (const auto addr = PatternScan(pattern, memory_region); addr) {
-
-                    // todo: Add real uuid
-                    nlohmann::json ban_info{ {"detection", {
-                        {"cheat", cheat_name},
-                        {"path", ""},
-                        {"uuid", "uuid1273198439343492237401"}
-                    }} };
+                // todo: Add real uuid
+                nlohmann::json ban_info{ {"detection", {
+                    {"cheat", cheat_name},
+                    {"path", ""},
+                    {"uuid", "uuid1273198439343492237401"}
+                }} };
 
 
-                    Log({ "\nCHEAT FOUND: "s, cheat_name });
+                Log({ "\nCHEAT FOUND IN EXECUTABLE MEMORY: "s, cheat_name });
 
-                    // Fire and forget the ban message to the server
-                    CallAsync(Communication::SendData, ban_info);
-                }
-
+                // Fire and forget the ban message to the server
+                CallAsync(Communication::SendData, ban_info);
             }
 
         }
-    };
+    }
 
-    scan();
-    Log("\nFinished memory scan...\n");
+   // Log("\nFinished executable memory scan...\n");
 }
 
 
+void FullScan(const ProcessInfo& context) {
+    const std::vector<DWORD> mask{ PAGE_EXECUTE, PAGE_EXECUTE_READWRITE, PAGE_EXECUTE_READ, PAGE_EXECUTE_WRITECOPY };
+
+    MEMORY_BASIC_INFORMATION mbi{};
+    LPVOID offset = nullptr;
+
+    while (VirtualQueryEx(GetCurrentProcess(), offset, &mbi, sizeof mbi)) {
+
+        // Move the next scan onto the next region by offsetting by the current region's size
+        const auto region = reinterpret_cast<DWORD_PTR>(mbi.BaseAddress) + mbi.RegionSize;
+        offset = reinterpret_cast<LPVOID>(region);
+
+        // Check if this memory region is executable
+        if (std::ranges::find(mask, mbi.AllocationProtect) != mask.end()) {
+
+            MemoryRegion memory_region{
+                .size = mbi.RegionSize,
+                .start_address = static_cast<std::uint8_t*>(mbi.BaseAddress)
+            };
+
+            RegionScan(context, memory_region);
+        }
+    }
+}
+#pragma endregion

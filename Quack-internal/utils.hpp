@@ -40,4 +40,23 @@ void CallAsync(F&& function, T&& function_arg) {
     });
 }
 
+
+/**
+ * \brief Constructs an std::optional of type T if T is not .empty()
+ *
+ * Only use in a return statement, argument is std::move'd.
+ *
+ * Thanks to fux for help with this.
+ * \tparam T Any type with .empty() method
+ * \param t Container to make std::optional from
+ * \return std::optional<> with value or std::nullopt
+ */
+template <typename T>
+std::optional<std::remove_reference_t<T>> NotEmpty(T&& t) {
+    if (t.empty())
+        return {};
+    return std::move(t);  // NOLINT(bugprone-move-forwarding-reference) Only used for return statements
+}
+
+
 HMODULE CachedLoadLibrary(const LPCWSTR& dll_name);

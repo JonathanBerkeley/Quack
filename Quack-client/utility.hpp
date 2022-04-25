@@ -29,4 +29,21 @@ T recast(U&& u) {
     return reinterpret_cast<T>(std::forward<U>(u));
 }
 
+/**
+ * \brief Constructs an std::optional of type T if T is not .empty()
+ *
+ * Only use in a return statement, argument is std::move'd.
+ *
+ * Thanks to fux for help with this.
+ * \tparam T Any type with .empty() method
+ * \param t Container to make std::optional from
+ * \return std::optional<> with value or std::nullopt
+ */
+template <typename T>
+std::optional<std::remove_reference_t<T>> NotEmpty(T&& t) {
+    if (t.empty())
+        return {};
+    return std::move(t);  // NOLINT(bugprone-move-forwarding-reference) Only used for return statements
+}
+
 std::wstring wstring_to_lower(const std::wstring& wide_str);

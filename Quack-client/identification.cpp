@@ -53,10 +53,7 @@ std::optional<Hashes> GetArpMacHashes() {
         );
     }
 
-    if (hashes.empty())
-        return std::nullopt;
-
-    return hashes;
+    return NotEmpty(hashes);
 }
 
 /* Older Windows hashing method

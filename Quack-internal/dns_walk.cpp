@@ -89,10 +89,11 @@ DnsEntries GetCachedDNSData(const bool cached_load) {
         FreeLibrary(dns_lib);
     }
 
-    return entries;
+    return NotEmpty(entries);
 }
 // ReSharper restore CppLocalVariableMayBeConst
 // ReSharper restore CppClangTidyClangDiagnosticCastFunctionType
+
 
 std::vector<std::wstring> GetBlacklistedEntries() {
     // todo: Network blacklisted entries
@@ -128,7 +129,7 @@ DnsEntries CheckForBlacklistedDNSEntries() {
     }
 
     // Return the entries, or empty if there were none
-    return matches.empty() ? std::nullopt : DnsEntries{ matches };
+    return NotEmpty(matches);
 }
 
 

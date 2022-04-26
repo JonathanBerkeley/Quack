@@ -147,7 +147,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="lib\hash-library\sha256.h" />
+    <ClInclude Include="lib\hash-library\sha256.hpp" />
+    <ClInclude Include="Lib\httplib.hpp" />
+    <ClInclude Include="Lib\json.hpp" />
     <ClInclude Include="main.hpp" />
   </ItemGroup>
   <ItemGroup>

@@ -18,7 +18,13 @@
     <ClInclude Include="main.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="lib\hash-library\sha256.h">
+    <ClInclude Include="lib\hash-library\sha256.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\httplib.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Lib\json.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>

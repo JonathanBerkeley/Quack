@@ -70,8 +70,8 @@ int main() {
     context.cli = &cli;
 
     // Heart of the application, main loop
-    for (;;) {
-        Heartbeat(context);
+    for (bool heartbeat = true; heartbeat ;) {
+        heartbeat = Heartbeat(context);
 
         // Simple anti-debugger check
         if constexpr (not DBG)

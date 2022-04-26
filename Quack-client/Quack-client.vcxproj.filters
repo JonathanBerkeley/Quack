@@ -48,13 +48,7 @@
     <ClInclude Include="Lib\json.hpp">
       <Filter>Lib</Filter>
     </ClInclude>
-    <ClInclude Include="server.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="context.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="heartbeat.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="pch.hpp">
@@ -71,6 +65,12 @@
     </ClInclude>
     <ClInclude Include="detection.hpp">
       <Filter>Source Files\Detection</Filter>
+    </ClInclude>
+    <ClInclude Include="heartbeat.hpp">
+      <Filter>Source Files\Network</Filter>
+    </ClInclude>
+    <ClInclude Include="server.hpp">
+      <Filter>Source Files\Network</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

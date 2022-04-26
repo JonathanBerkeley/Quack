@@ -40,6 +40,7 @@ bool Heartbeat(const Context& ctx) {
     }
 
     if (auto res = ctx.cli->Post("/", body.dump(), "application/json")) {
+        // Success
         if (res->status == 200) {
             if constexpr (DBG) {
                 SetConsoleTextAttribute(ctx.hConsole, 2);
@@ -48,6 +49,7 @@ bool Heartbeat(const Context& ctx) {
             return true;
         }
     }
+    // Failure
     else {
         if constexpr (DBG) {
             SetConsoleTextAttribute(ctx.hConsole, 12);

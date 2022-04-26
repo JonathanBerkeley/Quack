@@ -48,12 +48,13 @@ std::optional<Hashes> GetArpMacHashes() {
                 ss << std::hex << static_cast<int>(row.PhysicalAddress[j]) << '-';
         }
 
+        Log(ss.str());
         hashes.emplace_back(
             sha256(ss.str())
         );
     }
 
-    return NotEmpty(hashes);
+    return IfNotEmpty(hashes);
 }
 
 /* Older Windows hashing method

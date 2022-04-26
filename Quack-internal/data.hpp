@@ -10,7 +10,7 @@ namespace data {
     // Information about the process that this .DLL is inside
     struct ProcessInfo {
         // Process specific
-        HANDLE hProcess;
+        HANDLE handle;
         DWORD pid;
 
         // Module specific

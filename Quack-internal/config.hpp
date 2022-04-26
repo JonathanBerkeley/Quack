@@ -10,6 +10,12 @@ namespace cfg {
         ExecutableMemory = true
     };
 
+    enum ExitCode : int {
+        Success,
+        DebuggerPresent,
+        NoHeartbeat
+    };
+
     constexpr double cpu_usage_threshold = 90.0;
 
 }

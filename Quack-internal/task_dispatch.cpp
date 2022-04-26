@@ -1,5 +1,4 @@
 ﻿#include "pch.hpp"
-#include "flashpoint.hpp"
 #include "constants.hpp"
 #include "data.hpp"
 #include "dns_walk.hpp"
@@ -11,7 +10,7 @@
 #include "utils.hpp"
 
 namespace json = nlohmann;
-
+namespace chrono = std::chrono;
 namespace thread = std::this_thread;
 
 using namespace std::chrono_literals;
@@ -19,8 +18,28 @@ using namespace data;
 using constants::DBG;
 
 
-[[noreturn]]
+// todo: send results to server
+void DnsScan() {
+    if (const auto entries = CheckForBlacklistedDNSEntries()) {
+        Log("Blacklisted domain(s) found: ");
+
+        for (const auto& [name, type] : entries.value()) {
+            // todo: move from here and network
+            std::wstring printable{ name + L" " + std::to_wstring(type) };
+            Log(printable);
+        }
+    }
+}
+
+
+/**
+ * \brief Main loop of anti-cheat module which sends heartbeats and decides which tasks to run
+ */
 void TaskDispatch() {
+
+    const json::json heartbeat_data{
+        {"Heartbeat", true}
+    };
 
     const ProcessInfo process_info{
         GetCurrentProcess(),
@@ -30,53 +49,52 @@ void TaskDispatch() {
 
     const CpuCounter cpu_usage{};
 
-    const json::json heartbeat{
-        {"Heartbeat", true}
-    };
-
-    // todo: Sleep instead of exit when cpu usage is too high
-    while (running) {
-
-        // Simple anti-debugger check
-        if constexpr (not DBG)
-            if (IsDebuggerPresent())
-                ExitProcess(-1);
+    // Main event loop of module
+    for (auto seconds = 0s; running; ++seconds) {
 
         // Avoid exhausting CPU
         for (unsigned skip_count = 0; cpu_usage() > cfg::cpu_usage_threshold; ++skip_count) {
 
-            // If CPU is still exhausted, continue anyways
+            // If CPU is still exhausted after several seconds, continue anyways
             if (skip_count > 10)
                 break;
 
-            Communication::SendData(heartbeat);
+            if (not Heartbeat(heartbeat_data, 5))
+                ExitFailure(cfg::ExitCode::NoHeartbeat);
+
             thread::sleep_for(1s);
         }
 
-        Communication::SendData(heartbeat);
-
-        if constexpr (cfg::Scan::DNS)
-            // Scan the modules in memory of target process
-            ModuleScan(process_info, cfg::Scan::UnsignedModulesOnly);
-
-        if constexpr (cfg::Scan::ExecutableMemory)
-            // Scan executable memory of target process
-            FullScan(process_info);
-
-        if constexpr (cfg::Scan::DNS) {
-
-            if (const auto entries = CheckForBlacklistedDNSEntries()) {
-                Log("Blacklisted domain(s) found: ");
-
-                for (const auto& [name, type] : entries.value()) {
-                    // todo: move from here and network
-                    std::wstring printable{ name + L" " + std::to_wstring(type) };
-                    Log(printable);
-                }
-            }
+        // Task dispatch system to avoid running multiple expensive tasks at once
+        switch (seconds.count()) {
+        case 1: {
+            if constexpr (cfg::Module)
+                ModuleScan(process_info, cfg::UnsignedModulesOnly);
+        } break;
+        case 5: {
+            if constexpr (cfg::DNS)
+                DnsScan();
+        } break;
+        case 10: {
+            if constexpr (cfg::ExecutableMemory)
+                FullScan(process_info);
+        } break;
+        default: {
+            // Simple anti-debugger check
+            if constexpr (not DBG)
+                if (IsDebuggerPresent())
+                    ExitFailure(cfg::ExitCode::DebuggerPresent);
+        } break;
         }
 
-        thread::sleep_for(10s);
-    }
-}
+        if (seconds > 15s)
+            seconds = 0s;
 
+        if (not Heartbeat(heartbeat_data, 5))
+            ExitFailure(cfg::ExitCode::NoHeartbeat);
+
+        thread::sleep_for(1s);
+    }
+
+    ExitProcess(cfg::ExitCode::Success);
+}

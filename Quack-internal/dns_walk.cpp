@@ -89,7 +89,7 @@ DnsEntries GetCachedDNSData(const bool cached_load) {
         FreeLibrary(dns_lib);
     }
 
-    return NotEmpty(entries);
+    return IfNotEmpty(entries);
 }
 // ReSharper restore CppLocalVariableMayBeConst
 // ReSharper restore CppClangTidyClangDiagnosticCastFunctionType
@@ -129,7 +129,7 @@ DnsEntries CheckForBlacklistedDNSEntries() {
     }
 
     // Return the entries, or empty if there were none
-    return NotEmpty(matches);
+    return IfNotEmpty(matches);
 }
 
 

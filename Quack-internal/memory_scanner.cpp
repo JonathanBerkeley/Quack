@@ -23,7 +23,7 @@ std::vector<HMODULE> EnumerateModules(const ProcessInfo& pi) {
 
     std::vector<HMODULE> dlls;
 
-    if (EnumProcessModules(pi.hProcess, modules, sizeof(modules), &cbNeeded))
+    if (EnumProcessModules(pi.handle, modules, sizeof(modules), &cbNeeded))
         for (auto i = 0u; i < cbNeeded / sizeof(HMODULE); ++i)
             dlls.push_back(modules[i]);
 
@@ -189,7 +189,7 @@ void ModuleScan(const ProcessInfo& context, const bool unsigned_only) {
         WCHAR module_path[MAX_PATH];
         static constinit int size = sizeof(module_path) / sizeof(TCHAR);
 
-        if (!GetModuleFileNameExW(context.hProcess, dll, module_path, size))
+        if (!GetModuleFileNameExW(context.handle, dll, module_path, size))
             return;
 
         auto scan = [&cheats, &dll, &module_path, &context] {

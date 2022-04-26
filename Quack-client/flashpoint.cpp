@@ -73,6 +73,9 @@ int main() {
     for (bool heartbeat = true; heartbeat ;) {
         heartbeat = Heartbeat(context);
 
+        if constexpr (DBG)
+            heartbeat = true;
+
         // Simple anti-debugger check
         if constexpr (not DBG)
             if (IsDebuggerPresent())

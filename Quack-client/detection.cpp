@@ -40,7 +40,7 @@ std::optional<ProcessEntry> FindProcesses(const std::vector<std::wstring>& black
     // Cleanup handle
     CloseHandle(proc_snap);
 
-    return NotEmpty(entries_found);
+    return IfNotEmpty(entries_found);
 }
 
 

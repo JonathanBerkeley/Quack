@@ -1,6 +1,7 @@
 #include "pch.hpp"
 
 #include "utils.hpp"
+#include "config.hpp"
 #include "constants.hpp"
 
 
@@ -41,4 +42,31 @@ HMODULE CachedLoadLibrary(const LPCWSTR& dll_name) {
 
     cache[dll_name] = LoadLibrary(dll_name);
     return cache[dll_name];
+}
+
+
+/**
+ * \brief Wrapper around ExitProcess
+ *
+ * This should be used for any process failure exit, so that future exit handling refactoring is easier
+ * \param exit_code Reason for exiting
+ */
+void ExitFailure(const UINT exit_code) {
+    using cfg::ExitCode;
+
+    std::wstring exit_message;
+
+    switch (static_cast<cfg::ExitCode>(exit_code)) {
+    case ExitCode::Success:
+        ExitProcess(0);
+    case ExitCode::DebuggerPresent:
+        exit_message = L"Debugger detected";
+        break;
+    case ExitCode::NoHeartbeat:
+        exit_message = L"Anti-cheat lost connection";
+        break;
+    }
+
+    Log(exit_message);
+    ExitProcess(exit_code);
 }

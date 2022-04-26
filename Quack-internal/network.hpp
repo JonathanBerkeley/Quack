@@ -9,3 +9,5 @@ private:
 public:
     static bool SendData(const nlohmann::json& body);
 };
+
+bool Heartbeat(const nlohmann::json& heartbeat_data, const int miss_tolerance);

@@ -73,8 +73,11 @@ int main() {
     for (bool heartbeat = true; heartbeat ;) {
         heartbeat = Heartbeat(context);
 
+        // Override check so that testing can be done without server connection
         if constexpr (DBG)
             heartbeat = true;
+
+        // todo: task dispatch system
 
         // Simple anti-debugger check
         if constexpr (not DBG)

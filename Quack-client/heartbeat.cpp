@@ -5,8 +5,8 @@
 #include "heartbeat.hpp"
 
 // 3rd party library
-#include "Lib/httplib.hpp"  // Networking
-#include "Lib/json.hpp"     // JSON support
+#include "httplib.hpp"  // Networking
+#include "json.hpp"     // JSON support
 
 // Shorten namespace names
 namespace http = httplib;

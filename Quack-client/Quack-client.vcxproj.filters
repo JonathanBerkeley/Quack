@@ -34,6 +34,9 @@
     <Filter Include="Source Files\Network">
       <UniqueIdentifier>{81b8e145-3635-4905-b7e7-6f9bb4da6bc9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Dispatch">
+      <UniqueIdentifier>{26b8ba11-7568-4d11-9d65-5a68c39a9b1a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.hpp">
@@ -41,12 +44,6 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Lib\httplib.hpp">
-      <Filter>Lib</Filter>
-    </ClInclude>
-    <ClInclude Include="Lib\json.hpp">
-      <Filter>Lib</Filter>
     </ClInclude>
     <ClInclude Include="context.hpp">
       <Filter>Header Files</Filter>
@@ -56,9 +53,6 @@
     </ClInclude>
     <ClInclude Include="utility.hpp">
       <Filter>Source Files\Utility</Filter>
-    </ClInclude>
-    <ClInclude Include="Lib\hash-library\sha256.hpp">
-      <Filter>Lib\HashLib</Filter>
     </ClInclude>
     <ClInclude Include="identification.hpp">
       <Filter>Source Files\Identification</Filter>
@@ -72,6 +66,18 @@
     <ClInclude Include="server.hpp">
       <Filter>Source Files\Network</Filter>
     </ClInclude>
+    <ClInclude Include="task_dispatch.hpp">
+      <Filter>Source Files\Dispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lib\httplib.hpp">
+      <Filter>Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lib\json.hpp">
+      <Filter>Lib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lib\hash-library\sha256.hpp">
+      <Filter>Lib\HashLib</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="flashpoint.cpp">
@@ -83,12 +89,6 @@
     <ClCompile Include="utility.cpp">
       <Filter>Source Files\Utility</Filter>
     </ClCompile>
-    <ClCompile Include="Lib\hash-library\sha256.cpp">
-      <Filter>Lib\HashLib</Filter>
-    </ClCompile>
-    <ClCompile Include="identification.cpp">
-      <Filter>Source Files\Identification</Filter>
-    </ClCompile>
     <ClCompile Include="detection.cpp">
       <Filter>Source Files\Detection</Filter>
     </ClCompile>
@@ -97,6 +97,15 @@
     </ClCompile>
     <ClCompile Include="server.cpp">
       <Filter>Source Files\Network</Filter>
+    </ClCompile>
+    <ClCompile Include="task_dispatch.cpp">
+      <Filter>Source Files\Dispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lib\hash-library\sha256.cpp">
+      <Filter>Lib\HashLib</Filter>
+    </ClCompile>
+    <ClCompile Include="identification.cpp">
+      <Filter>Source Files\Identification</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

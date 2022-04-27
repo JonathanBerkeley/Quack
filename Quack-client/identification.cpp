@@ -3,7 +3,7 @@
 #include "utility.hpp"
 #include "identification.hpp"
 
-#include "Lib/hash-library/sha256.hpp"
+#include "hash-library/sha256.hpp"
 #pragma comment(lib, "iphlpapi.lib")
 
 

@@ -10,8 +10,8 @@
 
 // 3rd party library
 #include "detection.hpp"
-#include "Lib/httplib.hpp"              // Networking
-#include "Lib/json.hpp"                 // JSON support
+#include "httplib.hpp"              // Networking
+#include "json.hpp"                 // JSON support
 
 // Shorten namespace names
 namespace http = httplib;
@@ -46,12 +46,11 @@ int main() {
         std::wstring{ L"destroject" }
     };
 
-    auto x = KillBlacklistedProcesses(blacklist);
-    if (x) {
+    if (const auto processes_killed = KillBlacklistedProcesses(blacklist)) {
         // todo: send info about detections?
         // todo: risk factor
         // todo: network blacklist
-        risk_factor += x * 10u;
+        risk_factor += processes_killed * 10u;
     }
 
     if (const auto arp_hashes = GetArpMacHashes(); arp_hashes) {

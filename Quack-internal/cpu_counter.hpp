@@ -1,8 +1,9 @@
 ﻿#pragma once
 #include "pch.hpp"
-#include <Pdh.h>
 
+#include <Pdh.h>
 #pragma comment(lib, "pdh.lib")
+
 
 /**
  * \brief RAII Wrapper for querying cpu usage through Pdh WinAPI

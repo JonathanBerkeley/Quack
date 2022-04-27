@@ -47,12 +47,6 @@
     <ClInclude Include="flashpoint.hpp">
       <Filter>3. Frame\Flashpoint</Filter>
     </ClInclude>
-    <ClInclude Include="Lib\httplib.hpp">
-      <Filter>0. Libs</Filter>
-    </ClInclude>
-    <ClInclude Include="Lib\json.hpp">
-      <Filter>0. Libs</Filter>
-    </ClInclude>
     <ClInclude Include="utils.hpp">
       <Filter>3. Frame\Utility</Filter>
     </ClInclude>
@@ -85,6 +79,12 @@
     </ClInclude>
     <ClInclude Include="cpu_counter.hpp">
       <Filter>3. Frame\Dispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lib\httplib.hpp">
+      <Filter>0. Libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lib\json.hpp">
+      <Filter>0. Libs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

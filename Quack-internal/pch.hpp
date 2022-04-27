@@ -30,8 +30,8 @@
 #pragma warning(disable : 26478 6031)
 
 // 3rd party library files
-#include "Lib/httplib.hpp"
-#include "Lib/json.hpp"
+#include "httplib.hpp"
+#include "json.hpp"
 
 #pragma warning(pop)
 

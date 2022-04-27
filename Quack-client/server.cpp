@@ -3,8 +3,8 @@
 #include "server.hpp"
 #include "constants.hpp"
 
-#include "Lib/httplib.hpp"
-#include "Lib/json.hpp"
+#include "httplib.hpp"
+#include "json.hpp"
 
 namespace http = httplib;
 namespace json = nlohmann;

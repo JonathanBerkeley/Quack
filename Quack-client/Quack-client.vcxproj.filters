@@ -78,6 +78,9 @@
     <ClInclude Include="..\Lib\hash-library\sha256.hpp">
       <Filter>Lib\HashLib</Filter>
     </ClInclude>
+    <ClInclude Include="..\Lib\Quack-shared\cpu_counter.hpp">
+      <Filter>Source Files\Dispatch</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="flashpoint.cpp">
@@ -106,6 +109,9 @@
     </ClCompile>
     <ClCompile Include="identification.cpp">
       <Filter>Source Files\Identification</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lib\Quack-shared\cpu_counter.cpp">
+      <Filter>Source Files\Dispatch</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

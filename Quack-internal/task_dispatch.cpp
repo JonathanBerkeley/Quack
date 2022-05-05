@@ -48,6 +48,7 @@ void TaskDispatch() {
     };
 
     const CpuCounter cpu_usage{};
+    constexpr auto sleep_delay = 1s;
 
     // Main event loop of module
     for (auto seconds = 0s; running; ++seconds) {
@@ -62,7 +63,7 @@ void TaskDispatch() {
             if (not Heartbeat(heartbeat_data, 5))
                 ExitFailure(cfg::ExitCode::NoHeartbeat);
 
-            thread::sleep_for(1s);
+            thread::sleep_for(sleep_delay);
         }
 
         // Task dispatch system to avoid running multiple expensive tasks at once
@@ -93,7 +94,7 @@ void TaskDispatch() {
         if (not Heartbeat(heartbeat_data, 5))
             ExitFailure(cfg::ExitCode::NoHeartbeat);
 
-        thread::sleep_for(1s);
+        thread::sleep_for(sleep_delay);
     }
 
     ExitProcess(cfg::ExitCode::Success);

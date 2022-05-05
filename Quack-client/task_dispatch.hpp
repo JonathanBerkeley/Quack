@@ -2,4 +2,4 @@
 
 
 [[noreturn]]
-void TaskDispatch();
+void TaskDispatch(const Context& cfg);

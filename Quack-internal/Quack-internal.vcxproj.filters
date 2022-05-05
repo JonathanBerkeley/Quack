@@ -47,9 +47,6 @@
     <ClInclude Include="flashpoint.hpp">
       <Filter>3. Frame\Flashpoint</Filter>
     </ClInclude>
-    <ClInclude Include="utils.hpp">
-      <Filter>3. Frame\Utility</Filter>
-    </ClInclude>
     <ClInclude Include="network.hpp">
       <Filter>3. Frame\Network</Filter>
     </ClInclude>
@@ -68,23 +65,26 @@
     <ClInclude Include="constants.hpp">
       <Filter>1. Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="config.hpp">
-      <Filter>1. Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="task_dispatch.hpp">
       <Filter>3. Frame\Dispatch</Filter>
     </ClInclude>
     <ClInclude Include="identification.hpp">
       <Filter>3. Frame\Detections</Filter>
     </ClInclude>
-    <ClInclude Include="cpu_counter.hpp">
-      <Filter>3. Frame\Dispatch</Filter>
-    </ClInclude>
     <ClInclude Include="..\Lib\httplib.hpp">
       <Filter>0. Libs</Filter>
     </ClInclude>
     <ClInclude Include="..\Lib\json.hpp">
       <Filter>0. Libs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lib\Quack-shared\cpu_counter.hpp">
+      <Filter>3. Frame\Dispatch</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lib\Quack-shared\config.hpp">
+      <Filter>1. Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lib\Quack-shared\utils.hpp">
+      <Filter>3. Frame\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -96,9 +96,6 @@
     </ClCompile>
     <ClCompile Include="flashpoint.cpp">
       <Filter>3. Frame\Flashpoint</Filter>
-    </ClCompile>
-    <ClCompile Include="utils.cpp">
-      <Filter>3. Frame\Utility</Filter>
     </ClCompile>
     <ClCompile Include="network.cpp">
       <Filter>3. Frame\Network</Filter>
@@ -115,8 +112,11 @@
     <ClCompile Include="identification.cpp">
       <Filter>3. Frame\Detections</Filter>
     </ClCompile>
-    <ClCompile Include="cpu_counter.cpp">
+    <ClCompile Include="..\Lib\Quack-shared\cpu_counter.cpp">
       <Filter>3. Frame\Dispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lib\Quack-shared\utils.cpp">
+      <Filter>3. Frame\Utility</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

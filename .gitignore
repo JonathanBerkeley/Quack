@@ -47,4 +47,4 @@
 !*.docx
 
 # Reblacklist
-~$aftReport.docx
+*~$*.docx

@@ -21,11 +21,6 @@ void Server(http::Client* cli) {
         if (req.body.find("Highlight") != std::string::npos) {
 
             auto response = cli->Post("/ac", req.body, "application/json");
-            if (response->status != 200) {
-                
-                // todo
-                // ExitProcess(EXIT_FAILURE);
-            }
 
             res.set_content("QAC: Cheat info received", "text/plain");
         }
@@ -33,7 +28,6 @@ void Server(http::Client* cli) {
             res.set_content("QAC: Heartbeat received", "text/plain");
         }
     });
-
 
     server.listen("localhost", constants::IPC_PORT);
 }

@@ -10,3 +10,6 @@
 [submodule "Red team/Inertia-cheat"]
 	path = Red team/Inertia-cheat
 	url = https://github.com/JonathanBerkeley/Inertia-cheat
+[submodule "React-frontend"]
+	path = React-frontend
+	url = https://github.com/JonathanBerkeley/Anti-cheat-frontend

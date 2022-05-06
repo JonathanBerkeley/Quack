@@ -27,12 +27,18 @@
     <ClInclude Include="Lib\json.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="smbios.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="lib\hash-library\sha256.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="smbios.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

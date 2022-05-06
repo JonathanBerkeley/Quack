@@ -4,6 +4,7 @@
 #include "constants.hpp"
 #include "heartbeat.hpp"
 #include "cpu_counter.hpp"
+#include "identification.hpp"
 #include "utils.hpp"
 
 namespace chrono = std::chrono;
@@ -26,6 +27,10 @@ void HeartbeatWrapper(const Context& ctx) {
  * \brief Main loop of anti-cheat module which sends heartbeats and decides which tasks to run
  */
 void TaskDispatch(const Context& ctx) {
+
+    HardwareID hwid;
+    Log("HWID raw: " + hwid.GetRawHWID());
+    Log("HWID hash: " + hwid.GetHash());
 
     const CpuCounter cpu_usage{};
     constexpr auto sleep_delay = 1s;

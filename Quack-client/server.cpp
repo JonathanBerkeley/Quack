@@ -16,9 +16,7 @@ void Server(http::Client* cli) {
     // Routes
     server.Post("/", [cli](const http::Request& req, http::Response& res) {
 
-        // todo: enum flags instead of literals
-        // todo: proof of identity
-        if (req.body.find("Highlight") != std::string::npos) {
+        if (req.body.find("detection") != std::string::npos) {
 
             auto response = cli->Post("/ac", req.body, "application/json");
 

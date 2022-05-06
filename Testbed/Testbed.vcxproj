@@ -151,10 +151,12 @@
     <ClInclude Include="Lib\httplib.hpp" />
     <ClInclude Include="Lib\json.hpp" />
     <ClInclude Include="main.hpp" />
+    <ClInclude Include="smbios.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="lib\hash-library\sha256.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="smbios.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

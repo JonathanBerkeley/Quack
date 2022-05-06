@@ -81,6 +81,9 @@
     <ClInclude Include="..\Lib\Quack-shared\cpu_counter.hpp">
       <Filter>Source Files\Dispatch</Filter>
     </ClInclude>
+    <ClInclude Include="..\Lib\smbios.hpp">
+      <Filter>Lib</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="flashpoint.cpp">
@@ -112,6 +115,9 @@
     </ClCompile>
     <ClCompile Include="..\Lib\Quack-shared\cpu_counter.cpp">
       <Filter>Source Files\Dispatch</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lib\smbios.cpp">
+      <Filter>Lib</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

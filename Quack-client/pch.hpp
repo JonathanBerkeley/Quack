@@ -23,10 +23,10 @@
 #undef _WINSOCKAPI_
 #undef NOMINMAX
 
-
 // C++ Standard library
 #include <iostream>
 #include <string>
+#include <sstream>
 #include <chrono>
 #include <thread>
 #include <unordered_map>

@@ -4,7 +4,7 @@
 #include "constants.hpp"
 #include "heartbeat.hpp"
 #include "cpu_counter.hpp"
-#include "identification.hpp"
+#include "hardware_id.hpp"
 #include "utils.hpp"
 
 namespace chrono = std::chrono;
@@ -15,7 +15,6 @@ using constants::DBG;
 
 
 void HeartbeatWrapper(const Context& ctx) {
-
     // Override check so that testing can be done without server connection
     if (not Heartbeat(ctx))
         if constexpr (not DBG)

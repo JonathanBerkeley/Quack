@@ -96,7 +96,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.hpp</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)Lib\;..\Lib\Quack-shared;..\Lib;$(ProjecetDir)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Lib\;..\Lib\Quack-shared;..\Lib;$(ProjectDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -120,7 +120,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.hpp</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)Lib\;..\Lib\Quack-shared;..\Lib;$(ProjecetDir)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Lib\;..\Lib\Quack-shared;..\Lib;$(ProjectDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -144,7 +144,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.hpp</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)Lib\;..\Lib\Quack-shared;..\Lib;$(ProjecetDir)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Lib\;..\Lib\Quack-shared;..\Lib;$(ProjectDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -168,7 +168,7 @@
       <LanguageStandard_C>stdc17</LanguageStandard_C>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>pch.hpp</PrecompiledHeaderFile>
-      <AdditionalIncludeDirectories>$(ProjectDir)Lib\;..\Lib\Quack-shared;..\Lib;$(ProjecetDir)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)Lib\;..\Lib\Quack-shared;..\Lib;$(ProjectDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -187,6 +187,7 @@
     <ClInclude Include="..\Lib\httplib.hpp" />
     <ClInclude Include="..\Lib\json.hpp" />
     <ClInclude Include="..\Lib\Quack-shared\cpu_counter.hpp" />
+    <ClInclude Include="..\Lib\Quack-shared\hardware_id.hpp" />
     <ClInclude Include="..\Lib\smbios.hpp" />
     <ClInclude Include="constants.hpp" />
     <ClInclude Include="context.hpp" />
@@ -202,6 +203,7 @@
   <ItemGroup>
     <ClCompile Include="..\Lib\hash-library\sha256.cpp" />
     <ClCompile Include="..\Lib\Quack-shared\cpu_counter.cpp" />
+    <ClCompile Include="..\Lib\Quack-shared\hardware_id.cpp" />
     <ClCompile Include="..\Lib\smbios.cpp" />
     <ClCompile Include="detection.cpp" />
     <ClCompile Include="flashpoint.cpp" />

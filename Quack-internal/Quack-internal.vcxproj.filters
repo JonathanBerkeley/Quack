@@ -39,6 +39,12 @@
     <Filter Include="3. Frame\Dispatch">
       <UniqueIdentifier>{8d8639be-4608-49e0-8d9d-85b9792df502}</UniqueIdentifier>
     </Filter>
+    <Filter Include="3. Frame\Identification">
+      <UniqueIdentifier>{4db26817-3bc5-444a-b5f6-bfd9aa3fb87e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="0. Libs\HashLib">
+      <UniqueIdentifier>{d634e57a-bbdb-431b-a15e-55eae1c6931f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="data.hpp">
@@ -86,6 +92,18 @@
     <ClInclude Include="..\Lib\Quack-shared\utils.hpp">
       <Filter>3. Frame\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="..\Lib\Quack-shared\hardware_id.hpp">
+      <Filter>3. Frame\Identification</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lib\hash-library\sha256.hpp">
+      <Filter>0. Libs\HashLib</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Lib\smbios.hpp">
+      <Filter>0. Libs</Filter>
+    </ClInclude>
+    <ClInclude Include="ban.hpp">
+      <Filter>3. Frame\Network</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp">
@@ -117,6 +135,18 @@
     </ClCompile>
     <ClCompile Include="..\Lib\Quack-shared\utils.cpp">
       <Filter>3. Frame\Utility</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lib\Quack-shared\hardware_id.cpp">
+      <Filter>3. Frame\Identification</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lib\hash-library\sha256.cpp">
+      <Filter>0. Libs\HashLib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lib\smbios.cpp">
+      <Filter>0. Libs</Filter>
+    </ClCompile>
+    <ClCompile Include="ban.cpp">
+      <Filter>3. Frame\Network</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -7,6 +7,9 @@
 #include <SoftPub.h>
 #include <WinTrust.h>
 
+#include "ban.hpp"
+#include "hardware_id.hpp"
+
 // Link with the WinTrust.lib file
 #pragma comment (lib, "wintrust")
 
@@ -164,7 +167,7 @@ Signatures GetSignatures(const ProcessInfo& context) {
     Signatures signatures{};
 
     // context->SendData();
-
+    
     signatures.cheats.emplace_back(std::make_pair("Highlight"s, std::vector<std::string>{
         "50 00 72 00 6F 00 63 00 65 00 73 00 73 00 20 00 68 00 69 00 6A 00 61 00 63 00 6B 00 65 00 64"
     }));
@@ -180,6 +183,7 @@ void ModuleScan(const ProcessInfo& context, const bool unsigned_only) {
 
     Log("\nBeginning module memory scan...\n");
 
+    // ReSharper disable once CppLocalVariableMayBeConst
     auto dlls = EnumerateModules(context);
 
     // For each DLL in the process
@@ -196,25 +200,21 @@ void ModuleScan(const ProcessInfo& context, const bool unsigned_only) {
             if (dll == context.this_module)
                 return;
 
+            // For every cheat
             for (const auto& [cheat_name, signatures] : cheats) {
 
+                // Try every known pattern
                 for (const auto& pattern : signatures) {
 
+                    // Check for pattern match
                     if (const auto addr = PatternScan(dll, pattern); addr) {
 
-                        // todo: Add real uuid
-                        std::wstring cheat_path{ module_path };
-                        nlohmann::json ban_info{ {"detection", {
-                            {"cheat", cheat_name},
-                            {"path", cheat_path},
-                            {"uuid", "uuid1273198439343492237401"}
-                        }} };
-
-
-                        Log({ "\nCHEAT FOUND: "s, cheat_name });
-
-                        // Fire and forget the ban message to the server
-                        CallAsync(Communication::SendData, ban_info);
+                        DetectionInfo detection_info{
+                            .cheat_name = cheat_name,
+                            .scan_type = "Module scan",
+                            .cheat_path = module_path
+                        };
+                        Ban(detection_info);
                     }
 
                 }
@@ -243,31 +243,24 @@ void RegionScan(const ProcessInfo& context, const MemoryRegion& memory_region) {
     auto [cheats] = GetSignatures(context);
 
     // Log("\nBeginning executable memory scan...\n");
-    
+
     for (const auto& [cheat_name, signatures] : cheats) {
 
         for (const auto& pattern : signatures) {
 
             if (const auto addr = PatternScan(pattern, memory_region); addr) {
-
-                // todo: Add real uuid
-                nlohmann::json ban_info{ {"detection", {
-                    {"cheat", cheat_name},
-                    {"path", ""},
-                    {"uuid", "uuid1273198439343492237401"}
-                }} };
-
-
-                Log({ "\nCHEAT FOUND IN EXECUTABLE MEMORY: "s, cheat_name });
-
-                // Fire and forget the ban message to the server
-                CallAsync(Communication::SendData, ban_info);
+                DetectionInfo detection_info{
+                    .cheat_name = cheat_name,
+                    .scan_type = "RegionScan",
+                    .cheat_path = L"Mapped cheat"
+                };
+                Ban(detection_info);
             }
 
         }
     }
 
-   // Log("\nFinished executable memory scan...\n");
+    // Log("\nFinished executable memory scan...\n");
 }
 
 

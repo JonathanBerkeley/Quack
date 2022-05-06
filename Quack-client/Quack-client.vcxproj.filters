@@ -84,6 +84,9 @@
     <ClInclude Include="..\Lib\smbios.hpp">
       <Filter>Lib</Filter>
     </ClInclude>
+    <ClInclude Include="..\Lib\Quack-shared\hardware_id.hpp">
+      <Filter>Source Files\Identification</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="flashpoint.cpp">
@@ -118,6 +121,9 @@
     </ClCompile>
     <ClCompile Include="..\Lib\smbios.cpp">
       <Filter>Lib</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lib\Quack-shared\hardware_id.cpp">
+      <Filter>Source Files\Identification</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

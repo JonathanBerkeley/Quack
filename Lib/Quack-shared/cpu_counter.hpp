@@ -4,7 +4,7 @@
 
 
 /**
- * \brief RAII Wrapper for querying cpu usage through Pdh WinAPI
+ * \brief RAII Wrapper for querying cpu usage through PDH in WinAPI
  *
  * WinAPI details: https://docs.microsoft.com/en-us/windows/win32/api/pdh/
  */
@@ -14,7 +14,13 @@ private:
     PDH_HCOUNTER cpu_counter{};
 
 public:
+    /**
+     * \brief Establishes PDH queries to processor and adds counter
+     */
     CpuCounter();
+    /**
+     * \brief Closes PDH queries and counters
+     */
     ~CpuCounter();
 
     CpuCounter(const CpuCounter& other);

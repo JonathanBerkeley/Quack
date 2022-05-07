@@ -1,8 +1,7 @@
+// ReSharper disable CppClangTidyClangDiagnosticCoveredSwitchDefault
 #include "pch.hpp"
-
 #include "utils.hpp"
 #include "config.hpp"
-#include "constants.hpp"
 
 
 /**
@@ -16,6 +15,7 @@ void Log(const std::string& str) {
         std::cout << str << '\n';
 }
 
+
 /**
  * \brief Logs to standard output conditionally if debug mode is enabled
  *
@@ -26,6 +26,7 @@ void Log(const std::wstring& w_str) {
     if constexpr (constants::DBG)
         std::wcout << w_str << '\n';
 }
+
 
 /**
  * \brief Cache queries to LoadLibrary, to return a library reference if it is already loaded.
@@ -65,8 +66,53 @@ void ExitFailure(const UINT exit_code) {
     case ExitCode::NoHeartbeat:
         exit_message = L"Anti-cheat lost connection";
         break;
+    case ExitCode::BlacklistedProgram:
+        exit_message = L"Blacklisted program found";
+        break;
+    default:
+        exit_message = L"Unknown";
+        break;
     }
 
     Log(exit_message);
     ExitProcess(exit_code);
+}
+
+
+/**
+ * \brief Convert a std::wstring to a std::string
+ * \param wide_str Wide string to be converted
+ * \return std::string representation of the std::wstring provided on success, std::nullopt on failure
+ */
+std::optional<std::string> wstring_to_string(const std::wstring& wide_str) {
+    if (wide_str.empty())
+        return {};
+
+    const auto size = WideCharToMultiByte(
+        CP_UTF8,
+        0,
+        &wide_str[0],
+        static_cast<int>(wide_str.size()),
+        nullptr,
+        0,
+        nullptr,
+        nullptr
+    );
+
+    if (size <= 0)
+        return {};
+
+    std::string output(size, 0);
+    WideCharToMultiByte(
+        CP_UTF8,
+        0,
+        &wide_str[0],
+        static_cast<int>(wide_str.size()),
+        &output[0],
+        size,
+        nullptr,
+        nullptr
+    );
+
+    return output;
 }

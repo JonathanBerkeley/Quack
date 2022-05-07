@@ -10,26 +10,11 @@
 #include "utils.hpp"
 
 namespace json = nlohmann;
-namespace chrono = std::chrono;
 namespace thread = std::this_thread;
 
 using namespace std::chrono_literals;
 using namespace data;
 using constants::DBG;
-
-
-// todo: send results to server
-void DnsScan() {
-    if (const auto entries = CheckForBlacklistedDNSEntries()) {
-        Log("Blacklisted domain(s) found: ");
-
-        for (const auto& [name, type] : entries.value()) {
-            // todo: move from here and network
-            std::wstring printable{ name + L" " + std::to_wstring(type) };
-            Log(printable);
-        }
-    }
-}
 
 
 /**
@@ -54,16 +39,18 @@ void TaskDispatch() {
     for (auto seconds = 0s; running; ++seconds) {
 
         // Avoid exhausting CPU
-        for (unsigned skip_count = 0; cpu_usage() > cfg::cpu_usage_threshold; ++skip_count) {
+        if constexpr (cfg::CpuThrottle) {
+            for (unsigned skip_count = 0; cpu_usage() > cfg::cpu_usage_threshold; ++skip_count) {
 
-            // If CPU is still exhausted after several seconds, continue anyways
-            if (skip_count > 10)
-                break;
+                // If CPU is still exhausted after several seconds, continue anyways
+                if (skip_count > 10)
+                    break;
 
-            if (not Heartbeat(heartbeat_data, 5))
-                ExitFailure(cfg::ExitCode::NoHeartbeat);
+                if (not Heartbeat(heartbeat_data, 5))
+                    ExitFailure(cfg::ExitCode::NoHeartbeat);
 
-            thread::sleep_for(sleep_delay);
+                thread::sleep_for(sleep_delay);
+            }
         }
 
         // Task dispatch system to avoid running multiple expensive tasks at once

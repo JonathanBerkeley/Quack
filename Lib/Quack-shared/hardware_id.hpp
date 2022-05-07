@@ -2,6 +2,9 @@
 #include "hash-library/sha256.hpp"
 
 
+/**
+ * \brief Class for
+ */
 class HardwareID {
 private:
     std::string raw_hwid;

@@ -63,3 +63,5 @@ HMODULE CachedLoadLibrary(const LPCWSTR& dll_name);
 
 [[noreturn]]
 void ExitFailure(const UINT exit_code);
+
+std::optional<std::string> wstring_to_string(const std::wstring& wide_str);

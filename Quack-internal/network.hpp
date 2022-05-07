@@ -3,6 +3,9 @@
 #include "constants.hpp"
 
 
+/**
+ * \brief Wrapper around networking functionality
+ */
 class Communication {
 private:
     inline static httplib::Client cli{ "localhost", constants::IPC_PORT };

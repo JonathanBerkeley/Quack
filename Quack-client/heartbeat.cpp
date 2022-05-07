@@ -23,6 +23,13 @@ using constants::DBG;
  */
 bool Heartbeat(const Context& ctx, const HeartbeatInfo& heartbeat_info) {
 
+    // Windows console colour codes
+    enum Colour : int {
+        Green = 2,
+        White = 7,
+        Red = 12
+    };
+
     const auto uptime{
         chrono::duration_cast<chrono::seconds>(chrono::system_clock::now() - ctx.start_point)
     };
@@ -40,29 +47,37 @@ bool Heartbeat(const Context& ctx, const HeartbeatInfo& heartbeat_info) {
     };
 
     if constexpr (DBG) {
-        SetConsoleTextAttribute(ctx.hConsole, 7);
+        SetConsoleTextAttribute(ctx.hConsole, Colour::White);
         std::cout << "\nHeartbeat uptime " << uptime.count() << "...\n";
     }
 
     if (auto res = ctx.cli->Post("/", body.dump(), "application/json")) {
         // Success
         if (res->status == 200) {
+
             if constexpr (DBG) {
-                SetConsoleTextAttribute(ctx.hConsole, 2);
+                SetConsoleTextAttribute(ctx.hConsole, Colour::Green);
                 std::cout << res->body << std::endl;
             }
+
+            if constexpr (DBG)
+                SetConsoleTextAttribute(ctx.hConsole, Colour::White);
+
             return true;
         }
     }
     // Failure
     else {
         if constexpr (DBG) {
-            SetConsoleTextAttribute(ctx.hConsole, 12);
+            SetConsoleTextAttribute(ctx.hConsole, Colour::Red);
             const auto err = res.error();
             std::cout << "Error: " << http::to_string(err) << std::endl;
         }
         return false;
     }
+
+    if constexpr (DBG)
+        SetConsoleTextAttribute(ctx.hConsole, Colour::White);
 
     return false;
 }

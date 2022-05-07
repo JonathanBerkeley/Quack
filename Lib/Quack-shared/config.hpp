@@ -1,8 +1,14 @@
 ﻿#pragma once
 
+
+/**
+ * \brief Config of this build, values changed here will enable or disable functionality
+ * True indicates feature is enabled, false indicates disabled
+ */
 namespace cfg {
 
     enum Scan : bool {
+        CpuThrottle = true,
         DNS = true,
         Module = true,
         UnsignedModulesOnly = true,
@@ -23,5 +29,6 @@ namespace cfg {
         BlacklistedProgram
     };
 
+    // Percent to throttle CPU usage at, if Scan::CpuThrottle is enabled
     constexpr double cpu_usage_threshold = 90.0;
 }

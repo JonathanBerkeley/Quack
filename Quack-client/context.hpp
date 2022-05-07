@@ -1,10 +1,11 @@
 #pragma once
-
-#include <Windows.h>
+#include "pch.hpp"
 #include "httplib.hpp"
 
 
-// Context that can be passed around to decouple code dependencies
+/**
+ * \brief Application context that can be passed around to decouple code dependencies
+ */
 struct Context {
     httplib::Client* cli{};
     HANDLE hConsole{};

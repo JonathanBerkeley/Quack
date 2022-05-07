@@ -2,13 +2,12 @@
 #include "pch.hpp"
 
 #include "utils.hpp"
+#include "ban.hpp"
 #include "memory_scanner.hpp"
 
+// 3rd party
 #include <SoftPub.h>
 #include <WinTrust.h>
-
-#include "ban.hpp"
-#include "hardware_id.hpp"
 
 // Link with the WinTrust.lib file
 #pragma comment (lib, "wintrust")
@@ -18,14 +17,18 @@ using namespace std::string_literals;
 
 
 #pragma region Modules
-// Enumerates through linked modules, returns vector of results
-std::vector<HMODULE> EnumerateModules(const ProcessInfo& pi) {
+/**
+ * \brief Enumerates through loaded modules, returns vector of results
+ * \param process_info Information about the current process
+ * \return Vector of HMODULEs that correspond to the starting address of loaded modules
+ */
+std::vector<HMODULE> EnumerateModules(const ProcessInfo& process_info) {
     HMODULE modules[0x400];
     DWORD cbNeeded;
 
     std::vector<HMODULE> dlls;
 
-    if (EnumProcessModules(pi.handle, modules, sizeof(modules), &cbNeeded))
+    if (EnumProcessModules(process_info.handle, modules, sizeof(modules), &cbNeeded))
         for (auto i = 0u; i < cbNeeded / sizeof(HMODULE); ++i)
             dlls.push_back(modules[i]);
 
@@ -33,8 +36,13 @@ std::vector<HMODULE> EnumerateModules(const ProcessInfo& pi) {
 }
 
 
-// Verifies signature for source file, based on MSDN example code
-// https://docs.microsoft.com/en-us/windows/win32/seccrypto/example-c-program--verifying-the-signature-of-a-pe-file
+/**
+ * \brief Verifies signature for source file, based on MSDN example code
+ *
+ * https://docs.microsoft.com/en-us/windows/win32/seccrypto/example-c-program--verifying-the-signature-of-a-pe-file
+ * \param source_file Image name to verify
+ * \return True if the module is verified, false otherwise
+ */
 bool VerifyModule(const LPCWSTR source_file) {
     WINTRUST_FILE_INFO file_data{};
     file_data.cbStruct = sizeof(WINTRUST_FILE_INFO);
@@ -142,6 +150,12 @@ std::uint8_t* PatternScan(const HMODULE module, const std::string& signature) {
 }
 
 
+/**
+ * \brief Scans a region for a provided signature
+ * \param signature Signature to search for
+ * \param mem_region Memory region to search
+ * \return Pointer to start address of matched pattern
+ */
 std::uint8_t* PatternScan(const std::string& signature, const MemoryRegion& mem_region) {
     const auto pattern_bytes = PatternToByte(signature);
     const auto size = pattern_bytes.size();
@@ -163,6 +177,11 @@ std::uint8_t* PatternScan(const std::string& signature, const MemoryRegion& mem_
 
 
 // todo: Network this
+/**
+ * \brief Fetches known cheat signatures
+ * \param context Information about the current process
+ * \return Signature data
+ */
 Signatures GetSignatures(const ProcessInfo& context) {
     Signatures signatures{};
 
@@ -177,6 +196,11 @@ Signatures GetSignatures(const ProcessInfo& context) {
 #pragma endregion
 
 #pragma region Scans
+/**
+ * \brief Scans a module that is loaded into the process
+ * \param context Information about the current process
+ * \param unsigned_only Whether to scan unsigned modules only, or to scan all modules
+ */
 void ModuleScan(const ProcessInfo& context, const bool unsigned_only) {
 
     auto [cheats] = GetSignatures(context);
@@ -207,7 +231,7 @@ void ModuleScan(const ProcessInfo& context, const bool unsigned_only) {
                 for (const auto& pattern : signatures) {
 
                     // Check for pattern match
-                    if (const auto addr = PatternScan(dll, pattern); addr) {
+                    if (PatternScan(dll, pattern)) {
 
                         DetectionInfo detection_info{
                             .cheat_name = cheat_name,
@@ -238,6 +262,11 @@ void ModuleScan(const ProcessInfo& context, const bool unsigned_only) {
 }
 
 
+/**
+ * \brief Scans a region of memory provided by param memory_region
+ * \param context Information about the current process
+ * \param memory_region Information about the memory region to scan, containing size and start address
+ */
 void RegionScan(const ProcessInfo& context, const MemoryRegion& memory_region) {
 
     auto [cheats] = GetSignatures(context);
@@ -248,11 +277,11 @@ void RegionScan(const ProcessInfo& context, const MemoryRegion& memory_region) {
 
         for (const auto& pattern : signatures) {
 
-            if (const auto addr = PatternScan(pattern, memory_region); addr) {
+            if (PatternScan(pattern, memory_region)) {
                 DetectionInfo detection_info{
                     .cheat_name = cheat_name,
                     .scan_type = "RegionScan",
-                    .cheat_path = L"Mapped cheat"
+                    .cheat_path = L"0"
                 };
                 Ban(detection_info);
             }
@@ -264,6 +293,10 @@ void RegionScan(const ProcessInfo& context, const MemoryRegion& memory_region) {
 }
 
 
+/**
+ * \brief Scan all of executable memory
+ * \param context Information about the current process
+ */
 void FullScan(const ProcessInfo& context) {
     const std::vector<DWORD> mask{ PAGE_EXECUTE, PAGE_EXECUTE_READWRITE, PAGE_EXECUTE_READ, PAGE_EXECUTE_WRITECOPY };
 

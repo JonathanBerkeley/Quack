@@ -11,12 +11,17 @@ using namespace cfg;
 using namespace data;
 using constants::DBG;
 
-// This is a global variable as it's used in std::atexit, which takes no arguments
-// It is used only in this file
+
+/**
+ * \brief This is a global variable as it's used in std::atexit, which takes no arguments
+ * It is used only in this file
+ */
 static PROCESS_INFORMATION ac_client{};
 
 
-// Start the anti-cheat executable
+/**
+ * \brief Starts the anti-cheat executable
+ */
 void InitClientAC() {
     STARTUPINFOA si{};
 
@@ -36,6 +41,9 @@ void InitClientAC() {
 }
 
 
+/**
+ * \brief Kills the client anti-cheat that was started by InitClientAC
+ */
 void KillClientAC() {
     TerminateProcess(ac_client.hProcess, 0);
     CloseHandle(ac_client.hProcess);
@@ -43,7 +51,11 @@ void KillClientAC() {
 }
 
 
-// Entry point and setup
+/**
+ * \brief Entry point and setup
+ * \param lpParam Optional parameter passed from DllMain
+ * \return Does not return
+ */
 DWORD WINAPI Init(LPVOID lpParam) {
 
     if constexpr (DBG) {
@@ -58,6 +70,7 @@ DWORD WINAPI Init(LPVOID lpParam) {
         std::cout << "Version - " << constants::VERSION << '\n';
     }
 
+    // Start standalone anti-cheat client
     InitClientAC();
 
     // On exit, run KillClientAC
@@ -65,7 +78,4 @@ DWORD WINAPI Init(LPVOID lpParam) {
 
     // Main program loop
     TaskDispatch();
-
-    // ReSharper disable once CppZeroConstantCanBeReplacedWithNullptr
-    return 0;
 }

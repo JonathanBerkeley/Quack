@@ -38,8 +38,6 @@ std::optional<Hashes> GetArpMacHashes() {
         if (std::ranges::find(blacklist, current_bit) != blacklist.end())
             continue;
 
-        // Create a SHA256 hash of the address
-        SHA256 sha256;
         std::stringstream ss{};
 
         for (unsigned long j = 0; j < row.PhysicalAddressLength; j++) {
@@ -50,6 +48,9 @@ std::optional<Hashes> GetArpMacHashes() {
         }
 
         Log(ss.str());
+
+        // Create a SHA256 hash of the address
+        SHA256 sha256;
         hashes.emplace_back(
             sha256(ss.str())
         );

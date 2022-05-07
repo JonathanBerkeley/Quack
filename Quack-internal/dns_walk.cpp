@@ -1,10 +1,15 @@
 ﻿#include "pch.hpp"
 #include "dns_walk.hpp"
+#include "ban.hpp"
 #include "utils.hpp"
 
+// 3rd party
 #include "WinDNS.h"
 
 
+/**
+ * \brief Structure to contain data found in dns table
+ */
 typedef struct DnsData {
     DnsData* next;
     PWSTR name;
@@ -95,6 +100,10 @@ DnsEntries GetCachedDNSData(const bool cached_load) {
 // ReSharper restore CppClangTidyClangDiagnosticCastFunctionType
 
 
+/**
+ * \brief Retrieves a list of blacklisted DNS entries
+ * \return Vector of blacklisted DNS entries
+ */
 std::vector<std::wstring> GetBlacklistedEntries() {
     // todo: Network blacklisted entries
 
@@ -224,4 +233,33 @@ void PrintDNSEntries(std::wostream& wos) {
     }
 
     wos << L"DNS Records found: "  << count << '\n';
+}
+
+
+// todo: network
+/**
+ * \brief Scans DNS entries for blacklisted domains and bans player if blacklisted entries are found
+ */
+void DnsScan() {
+    if (const auto entries = CheckForBlacklistedDNSEntries()) {
+        Log("Blacklisted domain(s) found: ");
+
+        DetectionInfo detection_info{
+            .scan_type = "DnsScan",
+            .cheat_path = L"0",
+        };
+
+        for (const auto& [name, type] : entries.value()) {
+
+            detection_info.blacklisted_domains.emplace_back(
+                wstring_to_string(name).value_or("")
+            );
+
+            std::wstring printable{ name + L" " + std::to_wstring(type) };
+            Log(printable);
+        }
+
+        detection_info.cheat_name = detection_info.blacklisted_domains.at(0);
+        Ban(detection_info);
+    }
 }

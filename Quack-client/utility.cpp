@@ -26,6 +26,11 @@ void Log(const std::wstring& w_str) {
         std::wcout << w_str << '\n';
 }
 
+/**
+ * \brief Returns a lowercase version of wide string
+ * \param wide_str Wide string to be converted
+ * \return New wide string in lowercase
+ */
 std::wstring wstring_to_lower(const std::wstring& wide_str) {
 
     std::wstring output;

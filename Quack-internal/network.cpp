@@ -3,12 +3,16 @@
 #include "utils.hpp"
 #include "network.hpp"
 
-namespace http = httplib;
 namespace json = nlohmann;
 
 using namespace std::string_literals;
 
 
+/**
+ * \brief Send data to the server
+ * \param body Json data to be sent to the server
+ * \return True if the server returns status 200, false otherwise
+ */
 bool Communication::SendData(const json::json& body) {
     if (auto res = cli.Post("/", body.dump(), "application/json")) {
         if (res->status == 200) {

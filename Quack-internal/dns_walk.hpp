@@ -11,3 +11,4 @@ std::optional<std::vector<DnsEntry>> GetCachedDNSData(const bool cached_load);
 std::optional<std::vector<DnsEntry>> CheckForBlacklistedDNSEntries();
 
 void PrintDNSEntries(std::wostream& wos);
+void DnsScan();

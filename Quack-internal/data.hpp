@@ -1,13 +1,17 @@
 #pragma once
 #include "pch.hpp"
 
-#include "network.hpp"
 
+/**
+ * \brief Data structures needed for various parts of the application
+ */
 namespace data {
     // Used for looping, setting to false will deactivate continued module functionality
     inline bool running = true;
-    
-    // Information about the process that this .DLL is inside
+
+    /**
+     * \brief Information about the process that this .DLL is inside
+     */
     struct ProcessInfo {
         // Process specific
         HANDLE handle;

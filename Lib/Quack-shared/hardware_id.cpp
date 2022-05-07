@@ -7,11 +7,27 @@
 #include "smbios.hpp"
 
 
+
+
+#pragma region Public
 HardwareID::HardwareID() : raw_hwid(GetHWID().value_or("")) {
     hash(raw_hwid);
 }
 
+std::string HardwareID::GetHash() {
+    return hash.getHash();
+}
 
+std::string HardwareID::GetRawHWID() {
+    return raw_hwid;
+}
+#pragma endregion
+
+#pragma region Private
+/**
+ * \brief Retrieves hardware ID based on config settings
+ * \return std::string encoded representation of hardware ID on success, std::nullopt otherwise
+ */
 std::optional<std::string> HardwareID::GetHWID() {
     // Retrieve size needed for table
     const auto smbios_size = GetSystemFirmwareTable(
@@ -52,7 +68,10 @@ std::optional<std::string> HardwareID::GetHWID() {
     return hwid.str();
 }
 
-
+/**
+ * \brief Retrieve serial information from main computer storage
+ * \return Serial on success, std::nullopt otherwise
+ */
 std::optional<DWORD> HardwareID::DiskID() {
     DWORD serial{};
     if (not GetVolumeInformationA(
@@ -69,7 +88,10 @@ std::optional<DWORD> HardwareID::DiskID() {
     return serial;
 }
 
-
+/**
+ * \brief Retrieves hardware ID of GPU
+ * \return std::string encoded representation of GPU serials on success, std::nullopt on failure
+ */
 std::optional<std::string> HardwareID::GpuID() {
     IDirect3D9* d9_object = Direct3DCreate9(D3D_SDK_VERSION);
     if (not d9_object)
@@ -94,7 +116,10 @@ std::optional<std::string> HardwareID::GpuID() {
     return ss.str();
 }
 
-
+/**
+ * \brief Retrieve CPU ID through intrinsic function __cpuid()
+ * \return chat16_t representation of CPU ID
+ */
 char16_t HardwareID::GetCpuID() {
     // EAX, EBX, ECX, EDX
     int cpu_id[4] = { 0, 0, 0, 0 };
@@ -108,13 +133,4 @@ char16_t HardwareID::GetCpuID() {
 
     return id_output;
 }
-
-
-std::string HardwareID::GetHash() {
-    return hash.getHash();
-}
-
-
-std::string HardwareID::GetRawHWID() {
-    return raw_hwid;
-}
+#pragma endregion

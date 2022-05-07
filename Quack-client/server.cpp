@@ -27,5 +27,11 @@ void Server(http::Client* cli) {
         }
     });
 
+    server.Post("/handshake", [cli](const http::Request& req, http::Response& res) {
+
+
+        res.set_content("", "text/plain");
+    });
+
     server.listen("localhost", constants::IPC_PORT);
 }

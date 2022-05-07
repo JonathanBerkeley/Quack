@@ -4,7 +4,10 @@
 #include "constants.hpp"
 #include "heartbeat.hpp"
 #include "cpu_counter.hpp"
+#include "detection.hpp"
+#include "task_dispatch.hpp"
 #include "hardware_id.hpp"
+#include "identification.hpp"
 #include "utils.hpp"
 
 namespace chrono = std::chrono;
@@ -14,9 +17,9 @@ using namespace std::chrono_literals;
 using constants::DBG;
 
 
-void HeartbeatWrapper(const Context& ctx) {
+void HeartbeatWrapper(const Context& ctx, const HeartbeatInfo& heartbeat_info) {
     // Override check so that testing can be done without server connection
-    if (not Heartbeat(ctx))
+    if (not Heartbeat(ctx, heartbeat_info))
         if constexpr (not DBG)
             ExitFailure(cfg::ExitCode::NoHeartbeat);
 }
@@ -27,9 +30,23 @@ void HeartbeatWrapper(const Context& ctx) {
  */
 void TaskDispatch(const Context& ctx) {
 
+    // todo: network
+    const std::vector blacklist{
+        std::wstring{ L"cheatengine" },
+        std::wstring{ L"xenos" },
+        std::wstring{ L"injector" },
+        std::wstring{ L"destroject" }
+    };
+
+    // Get hardware id
     HardwareID hwid;
-    Log("HWID raw: " + hwid.GetRawHWID());
+    Log("\nHWID raw: " + hwid.GetRawHWID());
     Log("HWID hash: " + hwid.GetHash());
+
+    HeartbeatInfo heartbeat_info{
+        .hwid = hwid.GetHash(),
+        .username = "Placeholder"
+    };
 
     const CpuCounter cpu_usage{};
     constexpr auto sleep_delay = 1s;
@@ -43,7 +60,7 @@ void TaskDispatch(const Context& ctx) {
             if (skip_count > 10)
                 break;
 
-            HeartbeatWrapper(ctx);
+            HeartbeatWrapper(ctx, heartbeat_info);
 
             thread::sleep_for(sleep_delay);
         }
@@ -51,8 +68,23 @@ void TaskDispatch(const Context& ctx) {
         // Task dispatch system to avoid running multiple expensive tasks at once
         switch (seconds.count()) {
         case 1: {
+
+            if (auto arp_hashes = GetArpMacHashes(); arp_hashes) {
+
+                if constexpr (DBG)
+                    for (const auto& hash : arp_hashes.value())
+                        Log(hash);
+
+                heartbeat_info.arp_hashes = arp_hashes.value();
+            }
         } break;
         case 5: {
+            if (const auto processes_killed = KillBlacklistedProcesses(blacklist)) {
+                unsigned risk_factor = 0u;
+                risk_factor += processes_killed * 10u;
+
+                heartbeat_info.risk_factor = risk_factor;
+            }
         } break;
         case 10: {
         } break;
@@ -64,12 +96,11 @@ void TaskDispatch(const Context& ctx) {
         } break;
         }
 
+
         if (seconds > 15s)
             seconds = 0s;
 
-        HeartbeatWrapper(ctx);
-
+        HeartbeatWrapper(ctx, heartbeat_info);
         thread::sleep_for(sleep_delay);
     }
-
 }

@@ -3,6 +3,7 @@
 // This project
 #include "constants.hpp"
 #include "heartbeat.hpp"
+#include "task_dispatch.hpp"
 
 // 3rd party library
 #include "httplib.hpp"  // Networking
@@ -11,26 +12,24 @@
 // Shorten namespace names
 namespace http = httplib;
 namespace json = nlohmann;
-namespace thread = std::this_thread;
 namespace chrono = std::chrono;
 
 using constants::DBG;
 
 
-bool Heartbeat(const Context& ctx) {
+bool Heartbeat(const Context& ctx, const HeartbeatInfo& heartbeat_info) {
 
     const auto uptime{
         chrono::duration_cast<chrono::seconds>(chrono::system_clock::now() - ctx.start_point)
     };
 
     json::json body{};
-    // todo: hash real data and send it
     body["heartbeat"] = {
-        {"id", "uuid1273198439343492237401"},
-        {"name", "legit_player"},
+        {"uuid", heartbeat_info.hwid},
+        {"name", heartbeat_info.username},
         {"uptime", uptime.count()},
         {"blob", {
-            {"Game-Specific-Info", "Important data!"}
+            {"Game specific data", "[Data]"}
         }}
     };
 

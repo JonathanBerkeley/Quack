@@ -186,6 +186,7 @@
     <ClInclude Include="..\Lib\hash-library\sha256.hpp" />
     <ClInclude Include="..\Lib\httplib.hpp" />
     <ClInclude Include="..\Lib\json.hpp" />
+    <ClInclude Include="..\Lib\Quack-shared\config.hpp" />
     <ClInclude Include="..\Lib\Quack-shared\cpu_counter.hpp" />
     <ClInclude Include="..\Lib\Quack-shared\hardware_id.hpp" />
     <ClInclude Include="..\Lib\smbios.hpp" />

@@ -2,6 +2,7 @@
 #include "hardware_id.hpp"
 
 // 3rd party
+#include "config.hpp"
 #include "smbios.hpp"
 
 
@@ -33,9 +34,16 @@ std::optional<std::string> HardwareID::GetHWID() {
 
     // Create HWID
     std::stringstream hwid;
-    hwid << static_cast<int>(smbios_table[0x4]) << static_cast<int>(smbios_table[0x5])
-        << static_cast<int>(smbios_table[0x8]) << GpuID().value_or("")
-        << DiskID().value_or(0) << static_cast<int>(GetCpuID());
+    hwid << static_cast<int>(smbios_table[0x4]) << static_cast<int>(smbios_table[0x5]) << static_cast<int>(smbios_table[0x8]);
+
+    if constexpr (cfg::Features::GpuID)
+        hwid << GpuID().value_or("");
+
+    if constexpr (cfg::Features::DiskID)
+        hwid << DiskID().value_or(0);
+
+    if constexpr (cfg::Features::CpuID)
+        hwid << static_cast<int>(GetCpuID());
 
     // Cleanup
     HeapFree(GetProcessHeap(), 0, smbios_data);

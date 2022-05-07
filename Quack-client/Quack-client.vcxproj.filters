@@ -87,6 +87,9 @@
     <ClInclude Include="..\Lib\Quack-shared\hardware_id.hpp">
       <Filter>Source Files\Identification</Filter>
     </ClInclude>
+    <ClInclude Include="..\Lib\Quack-shared\config.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="flashpoint.cpp">

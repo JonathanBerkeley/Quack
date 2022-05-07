@@ -10,6 +10,7 @@
 
 // 3rd party library
 #include "detection.hpp"
+#include "hardware_id.hpp"
 #include "httplib.hpp"              // Networking
 #include "json.hpp"                 // JSON support
 #include "task_dispatch.hpp"
@@ -24,9 +25,6 @@ using constants::DBG;
 
 
 int main() {
-    // todo: implement risk factor
-    unsigned risk_factor = 0;
-
     Context context;
 
     if constexpr (DBG) {
@@ -40,27 +38,6 @@ int main() {
         context.hConsole = hConsole;
     }
 
-    const std::vector blacklist{
-        std::wstring{ L"cheatengine" },
-        std::wstring{ L"xenos" },
-        std::wstring{ L"injector" },
-        std::wstring{ L"destroject" }
-    };
-
-    if (const auto processes_killed = KillBlacklistedProcesses(blacklist)) {
-        // todo: send info about detections?
-        // todo: risk factor
-        // todo: network blacklist
-        risk_factor += processes_killed * 10u;
-    }
-
-    if (const auto arp_hashes = GetArpMacHashes(); arp_hashes) {
-        for (const auto& hash : arp_hashes.value()) {
-            Log(hash);
-            // todo: use this information
-        }
-    }
-
     http::Client cli{ "localhost", constants::NET_PORT };
 
     // Start inter-process communication server
@@ -68,7 +45,7 @@ int main() {
 
     context.start_point = chrono::system_clock::now();
     context.cli = &cli;
-
+    
     // Enter the task dispatch loop
     TaskDispatch(context);
 }

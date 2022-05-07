@@ -10,10 +10,18 @@ namespace cfg {
         ExecutableMemory = true
     };
 
+    enum Features : bool {
+        ARP = true,
+        GpuID = true,
+        CpuID = true,
+        DiskID = true
+    };
+
     enum ExitCode : int {
         Success,
         DebuggerPresent,
-        NoHeartbeat
+        NoHeartbeat,
+        BlacklistedProgram
     };
 
     constexpr double cpu_usage_threshold = 90.0;

@@ -1,6 +1,8 @@
 ﻿#include "pch.hpp"
 
 #include "detection.hpp"
+
+#include "config.hpp"
 #include "utility.hpp"
 
 
@@ -61,10 +63,12 @@ unsigned KillBlacklistedProcesses(const std::vector<std::wstring>& blacklist) {
             Log(std::wstring{ L"Killed process: " + name + L" : " + std::to_wstring(pid) });
 
             const auto blacklisted_process = OpenProcess(PROCESS_TERMINATE, false, pid);
-            if (not TerminateProcess(blacklisted_process, 0))
+            if (not TerminateProcess(blacklisted_process, 0)) {
                 Log({ GetLastError() });
-            else
-                ++count;
+                ExitProcess(cfg::ExitCode::BlacklistedProgram);
+            }
+
+            ++count;
         }
         return count;
     }

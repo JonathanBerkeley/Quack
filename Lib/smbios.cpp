@@ -97,7 +97,7 @@ auto smbios::dmi_string(
 
 }
 
-auto dmi_memory_device_type(
+auto smbios::dmi_memory_device_type_func(
 	BYTE code
 		) -> const char*
 {

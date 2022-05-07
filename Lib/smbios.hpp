@@ -160,8 +160,8 @@ namespace smbios
 	} dmi_header;
 
 
-	// function protoypes
+	// function prototypes
 	void dmi_system_uuid(const BYTE* p, short version);
 	const char* dmi_string(const dmi_header* dm, BYTE src);
-	const char* dmi_memory_device_type(BYTE code);
+	auto dmi_memory_device_type_func(BYTE code) -> const char*;
 };

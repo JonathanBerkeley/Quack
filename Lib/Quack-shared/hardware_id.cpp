@@ -1,8 +1,9 @@
-﻿#include "pch.hpp"
+﻿// ReSharper disable CppClangTidyClangDiagnosticFourCharConstants
+#include "pch.hpp"
 #include "hardware_id.hpp"
+#include "config.hpp"
 
 // 3rd party
-#include "config.hpp"
 #include "smbios.hpp"
 
 

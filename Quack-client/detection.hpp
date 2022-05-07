@@ -1,5 +1,4 @@
 #pragma once
-#include "pch.hpp"
 
 
 using ProcessEntry = std::unordered_map<DWORD, std::wstring>;

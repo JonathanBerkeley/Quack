@@ -1,5 +1,4 @@
 ﻿#include "pch.hpp"
-
 #include "config.hpp"
 #include "constants.hpp"
 #include "heartbeat.hpp"
@@ -10,7 +9,6 @@
 #include "identification.hpp"
 #include "utils.hpp"
 
-namespace chrono = std::chrono;
 namespace thread = std::this_thread;
 
 using namespace std::chrono_literals;

@@ -1,6 +1,7 @@
 ﻿#include "pch.hpp"
 #include "cpu_counter.hpp"
 
+
 // Cpu counter implementation
 
 #pragma region ConstructorDestructor

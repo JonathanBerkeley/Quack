@@ -1,9 +1,12 @@
 #pragma once
-
+#include "pch.hpp"
 #include "context.hpp"
 #include "identification.hpp"
 
 
+/**
+ * \brief Contains information that will be transmitted with heartbeats
+ */
 struct HeartbeatInfo {
     std::string hwid;
     std::string username;

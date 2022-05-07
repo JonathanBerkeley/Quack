@@ -1,6 +1,5 @@
 ﻿#pragma once
 
-
 namespace cfg {
 
     enum Scan : bool {
@@ -25,5 +24,4 @@ namespace cfg {
     };
 
     constexpr double cpu_usage_threshold = 90.0;
-
 }

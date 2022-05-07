@@ -1,0 +1,74 @@
+\hypertarget{detection_8hpp}{}\doxysection{\+\_\+\+\_\+quack/\+Quack-\/client/detection.hpp File Reference}
+\label{detection_8hpp}\index{\_\_quack/Quack-\/client/detection.hpp@{\_\_quack/Quack-\/client/detection.hpp}}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{detection_8hpp_a54a5f3995159e2b0dfdf1b14abaea4dd}{Process\+Entry}} = std\+::unordered\+\_\+map$<$ DWORD, std\+::wstring $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::optional$<$ \mbox{\hyperlink{detection_8hpp_a54a5f3995159e2b0dfdf1b14abaea4dd}{Process\+Entry}} $>$ \mbox{\hyperlink{detection_8hpp_a4f5b1ecf2a4b9587f270effa0512c794}{Find\+Processes}} (const std\+::vector$<$ std\+::wstring $>$ \&blacklist)
+\begin{DoxyCompactList}\small\item\em Check running processes\textquotesingle{} image name for those contained in blacklist. \end{DoxyCompactList}\item 
+unsigned \mbox{\hyperlink{detection_8hpp_aeb9f4f4add467c5f4963cca26711e095}{Kill\+Blacklisted\+Processes}} (const std\+::vector$<$ std\+::wstring $>$ \&blacklist)
+\begin{DoxyCompactList}\small\item\em Scans running processes image names against blacklist, kills any occurrences found. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{detection_8hpp_a54a5f3995159e2b0dfdf1b14abaea4dd}\label{detection_8hpp_a54a5f3995159e2b0dfdf1b14abaea4dd}} 
+\index{detection.hpp@{detection.hpp}!ProcessEntry@{ProcessEntry}}
+\index{ProcessEntry@{ProcessEntry}!detection.hpp@{detection.hpp}}
+\doxysubsubsection{\texorpdfstring{ProcessEntry}{ProcessEntry}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{detection_8hpp_a54a5f3995159e2b0dfdf1b14abaea4dd}{Process\+Entry}} =  std\+::unordered\+\_\+map$<$DWORD, std\+::wstring$>$}
+
+
+
+Definition at line \mbox{\hyperlink{detection_8hpp_source_l00004}{4}} of file \mbox{\hyperlink{detection_8hpp_source}{detection.\+hpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{detection_8hpp_a4f5b1ecf2a4b9587f270effa0512c794}\label{detection_8hpp_a4f5b1ecf2a4b9587f270effa0512c794}} 
+\index{detection.hpp@{detection.hpp}!FindProcesses@{FindProcesses}}
+\index{FindProcesses@{FindProcesses}!detection.hpp@{detection.hpp}}
+\doxysubsubsection{\texorpdfstring{FindProcesses()}{FindProcesses()}}
+{\footnotesize\ttfamily std\+::optional$<$ \mbox{\hyperlink{detection_8hpp_a54a5f3995159e2b0dfdf1b14abaea4dd}{Process\+Entry}} $>$ Find\+Processes (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::wstring $>$ \&}]{blacklist }\end{DoxyParamCaption})}
+
+
+
+Check running processes\textquotesingle{} image name for those contained in blacklist. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em blacklist} & List of names to search process names for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Map of results with PID and name for each process if found, std\+::nullopt otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{detection_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{detection_8cpp_source}{detection.\+cpp}}.
+
+\mbox{\Hypertarget{detection_8hpp_aeb9f4f4add467c5f4963cca26711e095}\label{detection_8hpp_aeb9f4f4add467c5f4963cca26711e095}} 
+\index{detection.hpp@{detection.hpp}!KillBlacklistedProcesses@{KillBlacklistedProcesses}}
+\index{KillBlacklistedProcesses@{KillBlacklistedProcesses}!detection.hpp@{detection.hpp}}
+\doxysubsubsection{\texorpdfstring{KillBlacklistedProcesses()}{KillBlacklistedProcesses()}}
+{\footnotesize\ttfamily unsigned Kill\+Blacklisted\+Processes (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::wstring $>$ \&}]{blacklist }\end{DoxyParamCaption})}
+
+
+
+Scans running processes image names against blacklist, kills any occurrences found. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em blacklist} & Names of processes to search for substring of in the image name of active processes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Count of processes killed 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{detection_8cpp_source_l00052}{52}} of file \mbox{\hyperlink{detection_8cpp_source}{detection.\+cpp}}.
+

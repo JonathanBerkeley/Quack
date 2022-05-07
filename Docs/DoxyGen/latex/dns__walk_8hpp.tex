@@ -1,0 +1,78 @@
+\hypertarget{dns__walk_8hpp}{}\doxysection{\+\_\+\+\_\+quack/\+Quack-\/internal/dns\+\_\+walk.hpp File Reference}
+\label{dns__walk_8hpp}\index{\_\_quack/Quack-\/internal/dns\_walk.hpp@{\_\_quack/Quack-\/internal/dns\_walk.hpp}}
+{\ttfamily \#include \char`\"{}pch.\+hpp\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_dns_entry}{Dns\+Entry}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::optional$<$ std\+::vector$<$ \mbox{\hyperlink{struct_dns_entry}{Dns\+Entry}} $>$ $>$ \mbox{\hyperlink{dns__walk_8hpp_afb5e793fde7937fec85122512e3a6f71}{Get\+Cached\+DNSData}} (const bool cached\+\_\+load)
+\begin{DoxyCompactList}\small\item\em Walk the DNS cache using undocumented DNSAPI function Will cause DNSAPI.\+dll to be loaded temporarily. \end{DoxyCompactList}\item 
+std\+::optional$<$ std\+::vector$<$ \mbox{\hyperlink{struct_dns_entry}{Dns\+Entry}} $>$ $>$ \mbox{\hyperlink{dns__walk_8hpp_a62050f84df134a7fd8a1dfc8cbd19d14}{Check\+For\+Blacklisted\+DNSEntries}} ()
+\begin{DoxyCompactList}\small\item\em Searches entries in the DNS cache for blacklisted domains. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{dns__walk_8hpp_aad94980acc9a425f0a1a3028d49b2bd3}{Print\+DNSEntries}} (std\+::wostream \&wos)
+\begin{DoxyCompactList}\small\item\em Prints DNS entries in a human readable format to supplied wide output stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{dns__walk_8hpp_a62050f84df134a7fd8a1dfc8cbd19d14}\label{dns__walk_8hpp_a62050f84df134a7fd8a1dfc8cbd19d14}} 
+\index{dns\_walk.hpp@{dns\_walk.hpp}!CheckForBlacklistedDNSEntries@{CheckForBlacklistedDNSEntries}}
+\index{CheckForBlacklistedDNSEntries@{CheckForBlacklistedDNSEntries}!dns\_walk.hpp@{dns\_walk.hpp}}
+\doxysubsubsection{\texorpdfstring{CheckForBlacklistedDNSEntries()}{CheckForBlacklistedDNSEntries()}}
+{\footnotesize\ttfamily std\+::optional$<$ std\+::vector$<$ \mbox{\hyperlink{struct_dns_entry}{Dns\+Entry}} $>$ $>$ Check\+For\+Blacklisted\+DNSEntries (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Searches entries in the DNS cache for blacklisted domains. 
+
+\begin{DoxyReturn}{Returns}
+List of entries that matched the blacklist, or empty 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{dns__walk_8cpp_source_l00116}{116}} of file \mbox{\hyperlink{dns__walk_8cpp_source}{dns\+\_\+walk.\+cpp}}.
+
+\mbox{\Hypertarget{dns__walk_8hpp_afb5e793fde7937fec85122512e3a6f71}\label{dns__walk_8hpp_afb5e793fde7937fec85122512e3a6f71}} 
+\index{dns\_walk.hpp@{dns\_walk.hpp}!GetCachedDNSData@{GetCachedDNSData}}
+\index{GetCachedDNSData@{GetCachedDNSData}!dns\_walk.hpp@{dns\_walk.hpp}}
+\doxysubsubsection{\texorpdfstring{GetCachedDNSData()}{GetCachedDNSData()}}
+{\footnotesize\ttfamily std\+::optional$<$ std\+::vector$<$ \mbox{\hyperlink{struct_dns_entry}{Dns\+Entry}} $>$ $>$ Get\+Cached\+DNSData (\begin{DoxyParamCaption}\item[{const bool}]{cached\+\_\+load }\end{DoxyParamCaption})}
+
+
+
+Walk the DNS cache using undocumented DNSAPI function Will cause DNSAPI.\+dll to be loaded temporarily. 
+
+Logic based on \href{https://github.com/malcomvetter/DnsCache}{\texttt{ https\+://github.\+com/malcomvetter/\+Dns\+Cache}} Improved with advice from \href{https://stackoverflow.com/a/31892801}{\texttt{ https\+://stackoverflow.\+com/a/31892801}} 
+\begin{DoxyParams}{Parameters}
+{\em cached\+\_\+load} & Whether or not to cache the DLL load attempt. Better for multiple runs, so that DNSAPI.\+dll is not continually reloaded. However, using cached\+\_\+load will mean that DNSAPI.\+dll will remain loaded even after this function is finished. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector containing cached Dns\+Entries on success 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{dns__walk_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{dns__walk_8cpp_source}{dns\+\_\+walk.\+cpp}}.
+
+\mbox{\Hypertarget{dns__walk_8hpp_aad94980acc9a425f0a1a3028d49b2bd3}\label{dns__walk_8hpp_aad94980acc9a425f0a1a3028d49b2bd3}} 
+\index{dns\_walk.hpp@{dns\_walk.hpp}!PrintDNSEntries@{PrintDNSEntries}}
+\index{PrintDNSEntries@{PrintDNSEntries}!dns\_walk.hpp@{dns\_walk.hpp}}
+\doxysubsubsection{\texorpdfstring{PrintDNSEntries()}{PrintDNSEntries()}}
+{\footnotesize\ttfamily void Print\+DNSEntries (\begin{DoxyParamCaption}\item[{std\+::wostream \&}]{wos }\end{DoxyParamCaption})}
+
+
+
+Prints DNS entries in a human readable format to supplied wide output stream. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em wos} & References to wide output stream \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{dns__walk_8cpp_source_l00140}{140}} of file \mbox{\hyperlink{dns__walk_8cpp_source}{dns\+\_\+walk.\+cpp}}.
+

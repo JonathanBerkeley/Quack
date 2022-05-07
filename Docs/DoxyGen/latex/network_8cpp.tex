@@ -1,0 +1,37 @@
+\hypertarget{network_8cpp}{}\doxysection{\+\_\+\+\_\+quack/\+Quack-\/internal/network.cpp File Reference}
+\label{network_8cpp}\index{\_\_quack/Quack-\/internal/network.cpp@{\_\_quack/Quack-\/internal/network.cpp}}
+{\ttfamily \#include \char`\"{}pch.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}utils.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}network.\+hpp\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{network_8cpp_a25ab864e68502a8f628f9cdc4e394c54}{Heartbeat}} (const json\+::json \&heartbeat\+\_\+data, const int miss\+\_\+tolerance)
+\begin{DoxyCompactList}\small\item\em Sends heartbeats to main anti-\/cheat module. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{network_8cpp_a25ab864e68502a8f628f9cdc4e394c54}\label{network_8cpp_a25ab864e68502a8f628f9cdc4e394c54}} 
+\index{network.cpp@{network.cpp}!Heartbeat@{Heartbeat}}
+\index{Heartbeat@{Heartbeat}!network.cpp@{network.cpp}}
+\doxysubsubsection{\texorpdfstring{Heartbeat()}{Heartbeat()}}
+{\footnotesize\ttfamily bool Heartbeat (\begin{DoxyParamCaption}\item[{const json\+::json \&}]{heartbeat\+\_\+data,  }\item[{const int}]{miss\+\_\+tolerance }\end{DoxyParamCaption})}
+
+
+
+Sends heartbeats to main anti-\/cheat module. 
+
+Will cause process to exit if there are miss\+\_\+tolerance amount of timeouts while waiting for response. 
+\begin{DoxyParams}{Parameters}
+{\em heartbeat\+\_\+data} & Heartbeat json data to be sent to main anti-\/cheat module \\
+\hline
+{\em miss\+\_\+tolerance} & The number of timeouts to allow before exiting \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+False if there were more timeouts than miss\+\_\+tolerance, true otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{network_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{network_8cpp_source}{network.\+cpp}}.
+

@@ -1,0 +1,139 @@
+\hypertarget{util_8h}{}\doxysection{\+\_\+\+\_\+quack/\+Red team/\+Destroject/src/util.h File Reference}
+\label{util_8h}\index{\_\_quack/Red team/Destroject/src/util.h@{\_\_quack/Red team/Destroject/src/util.h}}
+{\ttfamily \#include $<$Windows.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structfile__contents}{file\+\_\+contents}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structfile__contents}{file\+\_\+contents}} \mbox{\hyperlink{util_8h_ac50769322189d486044db9d60a5ea33d}{config\+\_\+read}} ()
+\begin{DoxyCompactList}\small\item\em Reads and parses config details. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{util_8h_a5354aaa283ee1eb99170672768a6f4ce}{config\+\_\+write}} (const std\+::string \&content)
+\begin{DoxyCompactList}\small\item\em Writes content to config. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{util_8h_af1fb285bc928880e22a89589717535c9}{log\+\_\+write}} (std\+::string text)
+\begin{DoxyCompactList}\small\item\em Helper function for writing a logfile to diagnose issues. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{util_8h_a5aacbb489d670e9343296d4e91b20ac7}{sleep}} (long long milliseconds)
+\begin{DoxyCompactList}\small\item\em Wrapper around std\+::this\+\_\+thread\+::sleep\+\_\+for() with long long to milliseconds conversion. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{util_8h_ad16da7741df83e60c5ac24fbc92dcccb}{str\+\_\+to\+\_\+lower}} (const std\+::string \&str)
+\begin{DoxyCompactList}\small\item\em Helper function to set a string to lowercase. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+const LPCWSTR \mbox{\hyperlink{util_8h_a7e6ce119f90da717c2dc75712e439680}{LOG\+\_\+\+FILE}} = L\char`\"{}destroject.\+log\char`\"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{util_8h_ac50769322189d486044db9d60a5ea33d}\label{util_8h_ac50769322189d486044db9d60a5ea33d}} 
+\index{util.h@{util.h}!config\_read@{config\_read}}
+\index{config\_read@{config\_read}!util.h@{util.h}}
+\doxysubsubsection{\texorpdfstring{config\_read()}{config\_read()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structfile__contents}{file\+\_\+contents}} config\+\_\+read (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads and parses config details. 
+
+\begin{DoxyReturn}{Returns}
+Structure containing string of contents or an error with error message 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{util_8cpp_source_l00017}{17}} of file \mbox{\hyperlink{util_8cpp_source}{util.\+cpp}}.
+
+\mbox{\Hypertarget{util_8h_a5354aaa283ee1eb99170672768a6f4ce}\label{util_8h_a5354aaa283ee1eb99170672768a6f4ce}} 
+\index{util.h@{util.h}!config\_write@{config\_write}}
+\index{config\_write@{config\_write}!util.h@{util.h}}
+\doxysubsubsection{\texorpdfstring{config\_write()}{config\_write()}}
+{\footnotesize\ttfamily void config\+\_\+write (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{content }\end{DoxyParamCaption})}
+
+
+
+Writes content to config. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em content} & String representation of content to be written to config \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{util_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{util_8cpp_source}{util.\+cpp}}.
+
+\mbox{\Hypertarget{util_8h_af1fb285bc928880e22a89589717535c9}\label{util_8h_af1fb285bc928880e22a89589717535c9}} 
+\index{util.h@{util.h}!log\_write@{log\_write}}
+\index{log\_write@{log\_write}!util.h@{util.h}}
+\doxysubsubsection{\texorpdfstring{log\_write()}{log\_write()}}
+{\footnotesize\ttfamily void log\+\_\+write (\begin{DoxyParamCaption}\item[{std\+::string}]{text }\end{DoxyParamCaption})}
+
+
+
+Helper function for writing a logfile to diagnose issues. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & Text to be logged \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{util_8cpp_source_l00059}{59}} of file \mbox{\hyperlink{util_8cpp_source}{util.\+cpp}}.
+
+\mbox{\Hypertarget{util_8h_a5aacbb489d670e9343296d4e91b20ac7}\label{util_8h_a5aacbb489d670e9343296d4e91b20ac7}} 
+\index{util.h@{util.h}!sleep@{sleep}}
+\index{sleep@{sleep}!util.h@{util.h}}
+\doxysubsubsection{\texorpdfstring{sleep()}{sleep()}}
+{\footnotesize\ttfamily void sleep (\begin{DoxyParamCaption}\item[{const long long}]{milliseconds }\end{DoxyParamCaption})}
+
+
+
+Wrapper around std\+::this\+\_\+thread\+::sleep\+\_\+for() with long long to milliseconds conversion. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em milliseconds} & Milliseconds value of time to sleep for \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{util_8cpp_source_l00103}{103}} of file \mbox{\hyperlink{util_8cpp_source}{util.\+cpp}}.
+
+\mbox{\Hypertarget{util_8h_ad16da7741df83e60c5ac24fbc92dcccb}\label{util_8h_ad16da7741df83e60c5ac24fbc92dcccb}} 
+\index{util.h@{util.h}!str\_to\_lower@{str\_to\_lower}}
+\index{str\_to\_lower@{str\_to\_lower}!util.h@{util.h}}
+\doxysubsubsection{\texorpdfstring{str\_to\_lower()}{str\_to\_lower()}}
+{\footnotesize\ttfamily std\+::string str\+\_\+to\+\_\+lower (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{str }\end{DoxyParamCaption})}
+
+
+
+Helper function to set a string to lowercase. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & String to be shifted to lowercase \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New string that is lowercase 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{util_8cpp_source_l00114}{114}} of file \mbox{\hyperlink{util_8cpp_source}{util.\+cpp}}.
+
+
+
+\doxysubsection{Variable Documentation}
+\mbox{\Hypertarget{util_8h_a7e6ce119f90da717c2dc75712e439680}\label{util_8h_a7e6ce119f90da717c2dc75712e439680}} 
+\index{util.h@{util.h}!LOG\_FILE@{LOG\_FILE}}
+\index{LOG\_FILE@{LOG\_FILE}!util.h@{util.h}}
+\doxysubsubsection{\texorpdfstring{LOG\_FILE}{LOG\_FILE}}
+{\footnotesize\ttfamily const LPCWSTR LOG\+\_\+\+FILE = L\char`\"{}destroject.\+log\char`\"{}}
+
+
+
+Definition at line \mbox{\hyperlink{util_8h_source_l00017}{17}} of file \mbox{\hyperlink{util_8h_source}{util.\+h}}.
+

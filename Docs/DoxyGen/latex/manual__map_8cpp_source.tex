@@ -1,0 +1,265 @@
+\hypertarget{manual__map_8cpp_source}{}\doxysection{manual\+\_\+map.\+cpp}
+\label{manual__map_8cpp_source}\index{\_\_quack/Red team/Destroject/src/manual\_map.cpp@{\_\_quack/Red team/Destroject/src/manual\_map.cpp}}
+\mbox{\hyperlink{manual__map_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00001}00001 \textcolor{comment}{// ReSharper disable CppClangTidyPerformanceNoIntToPtr}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00002}00002 \textcolor{comment}{// ReSharper disable CppClangTidyClangDiagnosticMicrosoftCast}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00003}00003 \textcolor{comment}{// ReSharper disable CppClangTidyClangDiagnosticUnusedMacros}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00008}00008 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{manual__map_8h}{manual\_map.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00009}00009 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{util_8h}{util.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00010}00010 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00018}\mbox{\hyperlink{manual__map_8cpp_a9ce13209d5cfc9cc02d60ada16b72305}{00018}} std::unique\_ptr<BYTE[]> \mbox{\hyperlink{manual__map_8cpp_a9ce13209d5cfc9cc02d60ada16b72305}{parse\_dll}}(\textcolor{keyword}{const} \textcolor{keywordtype}{char}* dll\_name) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00019}00019     \textcolor{keywordflow}{if} (!GetFileAttributesA(dll\_name)) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00020}00020         \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(ERROR\_MM) File doesn't exist"{}});}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00021}00021         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00022}00022     \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00023}00023 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00024}00024     std::ifstream file(dll\_name, std::ios::binary | std::ios::ate);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00025}00025     \textcolor{keywordflow}{if} (file.fail()) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00026}00026         \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(ERROR\_MM) Opening file failed: "{}} + std::to\_string(\textcolor{keyword}{static\_cast<}DWORD\textcolor{keyword}{>}(file.rdstate())));}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00027}00027         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00028}00028     \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00030}00030     \textcolor{keyword}{const} \textcolor{keyword}{auto} file\_size = file.tellg();}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00031}00031     \textcolor{keywordflow}{if} (file\_size < 0x1000) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00032}00032         \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(ERROR\_MM) File-\/size invalid"{}});}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00033}00033         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00034}00034     \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00036}00036     \textcolor{keyword}{auto} src\_data = std::make\_unique<BYTE[]>(\textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{size\_t}\textcolor{keyword}{>}(file\_size));}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00037}00037     \textcolor{keywordflow}{if} (!src\_data) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00038}00038         \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(ERROR\_MM) Memory allocating failed"{}});}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00039}00039         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00040}00040     \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00042}00042     file.seekg(0, std::ios::beg);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00043}00043     file.read(\textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(src\_data.get()), file\_size);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00044}00044     \textcolor{keywordflow}{return} src\_data;}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00045}00045 \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00047}00047 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00054}\mbox{\hyperlink{manual__map_8cpp_a5be0386e1f8637c9e706f732c5db8d49}{00054}} HANDLE \mbox{\hyperlink{manual__map_8cpp_a5be0386e1f8637c9e706f732c5db8d49}{manual\_map}}(HANDLE proc\_handle, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* dll\_name) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00055}00055 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00056}00056     \textcolor{keyword}{const} \textcolor{keyword}{auto} src\_data = \mbox{\hyperlink{manual__map_8cpp_a9ce13209d5cfc9cc02d60ada16b72305}{parse\_dll}}(dll\_name);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00057}00057 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00058}00058     \textcolor{keywordflow}{if} (\textcolor{keyword}{reinterpret\_cast<}IMAGE\_DOS\_HEADER*\textcolor{keyword}{>}(src\_data.get())-\/>e\_magic != 0x5A4D) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00059}00059         \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(ERROR\_MM) Wrong file type"{}});}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00060}00060         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00061}00061     \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00063}00063     \textcolor{keyword}{auto} old\_nt\_header = \textcolor{keyword}{reinterpret\_cast<}IMAGE\_NT\_HEADERS*\textcolor{keyword}{>}(}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00064}00064         src\_data.get() + \textcolor{keyword}{reinterpret\_cast<}IMAGE\_DOS\_HEADER*\textcolor{keyword}{>}(src\_data.get())-\/>e\_lfanew);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00066}00066     \textcolor{keyword}{const} IMAGE\_OPTIONAL\_HEADER* old\_opt\_header = \&old\_nt\_header-\/>OptionalHeader;}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00067}00067     \textcolor{keyword}{const} IMAGE\_FILE\_HEADER* old\_file\_header = \&old\_nt\_header-\/>FileHeader;}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00069}00069 \textcolor{preprocessor}{\#ifdef \_WIN64}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00070}00070     \textcolor{keywordflow}{if} (old\_file\_header-\/>Machine != IMAGE\_FILE\_MACHINE\_AMD64) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00071}00071         \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(ERROR\_MM) Unsupported platform"{}});}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00072}00072         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00073}00073     \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00074}00074 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00075}00075     \textcolor{keywordflow}{if} (old\_file\_header-\/>Machine != IMAGE\_FILE\_MACHINE\_I386) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00076}00076         \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(ERROR\_MM) Unsupported platform"{}});}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00077}00077         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00078}00078     \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00079}00079 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00080}00080 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00081}00081     \textcolor{keyword}{auto} target\_base = \textcolor{keyword}{static\_cast<}BYTE*\textcolor{keyword}{>}(}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00082}00082         VirtualAllocEx(}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00083}00083             proc\_handle,}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00084}00084             \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{void}*\textcolor{keyword}{>}(old\_opt\_header-\/>ImageBase),}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00085}00085             old\_opt\_header-\/>SizeOfImage,}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00086}00086             MEM\_COMMIT | MEM\_RESERVE,}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00087}00087             PAGE\_EXECUTE\_READWRITE}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00088}00088         ));}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00089}00089 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00090}00090     \textcolor{keywordflow}{if} (!target\_base) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00091}00091         target\_base = \textcolor{keyword}{static\_cast<}BYTE*\textcolor{keyword}{>}(VirtualAllocEx(proc\_handle, \textcolor{keyword}{nullptr}, old\_opt\_header-\/>SizeOfImage,}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00092}00092             MEM\_COMMIT | MEM\_RESERVE, PAGE\_EXECUTE\_READWRITE));}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00093}00093 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00094}00094         \textcolor{keywordflow}{if} (!target\_base) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00095}00095             \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(ERROR\_MM) Memory allocation failed: "{}} + std::to\_string(GetLastError()));}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00096}00096             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00097}00097         \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00098}00098     \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00099}00099 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00100}00100     \mbox{\hyperlink{struct_mapping_data}{MappingData}} mapping\_data\{\};}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00101}00101     mapping\_data.\mbox{\hyperlink{struct_mapping_data_a57d25826d4cf23c7baaf1d861daaa2e0}{LoadLibraryA\_ptr}} = LoadLibraryA;}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00102}00102     mapping\_data.GetProcAddress\_ptr = \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{manual__map_8h_aa6ea7f37f445feb64f87bc54e13ecebc}{GetProcAddress\_fn}}\textcolor{keyword}{>}(GetProcAddress);  \textcolor{comment}{// NOLINT(clang-\/diagnostic-\/cast-\/function-\/type)}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00103}00103 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00104}00104     \textcolor{keyword}{auto}* section\_header = IMAGE\_FIRST\_SECTION(old\_nt\_header);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00105}00105     \textcolor{keywordflow}{for} (UINT i = 0; i != old\_file\_header-\/>NumberOfSections; ++i, ++section\_header) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00106}00106         \textcolor{keywordflow}{if} (section\_header-\/>SizeOfRawData) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00107}00107             \textcolor{keywordflow}{if} (!WriteProcessMemory(proc\_handle, target\_base + section\_header-\/>VirtualAddress,}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00108}00108                 src\_data.get() + section\_header-\/>PointerToRawData, section\_header-\/>SizeOfRawData, \textcolor{keyword}{nullptr})) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00109}00109                 \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(ERROR\_MM) Could not map sections: "{}} + std::to\_string(GetLastError()));}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00110}00110                 VirtualFreeEx(proc\_handle, target\_base, 0, MEM\_RELEASE);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00111}00111                 \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00112}00112             \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00113}00113         \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00114}00114     \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00115}00115     memcpy(src\_data.get(), \&mapping\_data, \textcolor{keyword}{sizeof}(mapping\_data));}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00116}00116     WriteProcessMemory(proc\_handle, target\_base, src\_data.get(), 0x1000, \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00117}00117 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00118}00118     \textcolor{keywordtype}{void}* alloc\_memory = VirtualAllocEx(}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00119}00119         proc\_handle,}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00120}00120         \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00121}00121         0x1000,}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00122}00122         MEM\_COMMIT | MEM\_RESERVE,}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00123}00123         PAGE\_EXECUTE\_READWRITE);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00124}00124     \textcolor{keywordflow}{if} (!alloc\_memory) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00125}00125         \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(ERROR\_MM) Shell-\/code memory allocation failed: "{}} + std::to\_string(GetLastError()));}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00126}00126         VirtualFreeEx(proc\_handle, target\_base, 0, MEM\_RELEASE);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00127}00127         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00128}00128     \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00129}00129 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00130}00130     WriteProcessMemory(proc\_handle, alloc\_memory, \mbox{\hyperlink{manual__map_8cpp_ad7082e05b9589192887c724def6357b4}{shell\_code}}, 0x1000, \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00131}00131 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00132}00132     HANDLE new\_thread = CreateRemoteThread(}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00133}00133         proc\_handle,}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00134}00134         \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00135}00135         0,}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00136}00136         \textcolor{keyword}{reinterpret\_cast<}LPTHREAD\_START\_ROUTINE\textcolor{keyword}{>}(alloc\_memory),}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00137}00137         target\_base,}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00138}00138         0,}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00139}00139         \textcolor{keyword}{nullptr}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00140}00140     );}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00141}00141 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00142}00142     \textcolor{comment}{// If CreateRemoteThread causes the process to crash, this won't know}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00143}00143     \textcolor{keywordflow}{if} (!new\_thread) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00144}00144         \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(ERROR\_MM) CreateRemoteThread failed:  "{}} + std::to\_string(GetLastError()));}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00145}00145         VirtualFreeEx(proc\_handle, target\_base, 0, MEM\_RELEASE);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00146}00146         VirtualFreeEx(proc\_handle, alloc\_memory, 0, MEM\_RELEASE);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00147}00147         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00148}00148     \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00149}00149 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00150}00150     HINSTANCE hCheck = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00151}00151     \textcolor{keywordflow}{while} (!hCheck) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00152}00152 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00153}00153         \textcolor{comment}{// Prevent infinite loop on target process death}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00154}00154         DWORD exit\_code\{\};}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00155}00155         \textcolor{keywordflow}{if} (GetExitCodeProcess(proc\_handle, \&exit\_code); exit\_code != STILL\_ACTIVE) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00156}00156             \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(ERROR\_MM) Target process died while attempting to manual map to it"{}});}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00157}00157             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00158}00158         \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00159}00159 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00160}00160         \mbox{\hyperlink{struct_mapping_data}{MappingData}} data\_checked\{\};}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00161}00161         ReadProcessMemory(proc\_handle, target\_base, \&data\_checked, \textcolor{keyword}{sizeof}(data\_checked), \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00162}00162         hCheck = data\_checked.Module;}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00163}00163         Sleep(10);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00164}00164     \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00165}00165 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00166}00166     VirtualFreeEx(proc\_handle, alloc\_memory, 0, MEM\_RELEASE);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00167}00167 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00168}00168     \textcolor{keywordflow}{return} new\_thread;}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00169}00169 \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00170}00170 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00171}\mbox{\hyperlink{manual__map_8cpp_a4b5ad872b8229715b775c741418f1c45}{00171}} \textcolor{preprocessor}{\#define RELOC\_FLAG32(RelInfo)(((RelInfo) >> 0x0C == IMAGE\_REL\_BASED\_HIGHLOW))}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00172}\mbox{\hyperlink{manual__map_8cpp_a4d797ff2e78de8b28f1408a1744fbf49}{00172}} \textcolor{preprocessor}{\#define RELOC\_FLAG64(RelInfo)(((RelInfo) >> 0x0C == IMAGE\_REL\_BASED\_DIR64))}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00173}00173 \textcolor{preprocessor}{\#ifdef  \_WIN64}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00174}00174 \textcolor{preprocessor}{\#define RELOC\_FLAG RELOC\_FLAG64}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00175}00175 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00176}\mbox{\hyperlink{manual__map_8cpp_a68129d4382e059810889bce0e3b2c69c}{00176}} \textcolor{preprocessor}{\#define RELOC\_FLAG RELOC\_FLAG32}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00177}00177 \textcolor{preprocessor}{\#endif }\textcolor{comment}{//  \_WIN64}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00178}00178 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00179}00179 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00184}\mbox{\hyperlink{manual__map_8cpp_ad7082e05b9589192887c724def6357b4}{00184}} \textcolor{keywordtype}{void} WINAPI \mbox{\hyperlink{manual__map_8cpp_ad7082e05b9589192887c724def6357b4}{shell\_code}}(\mbox{\hyperlink{struct_mapping_data}{MappingData}}* mapping\_data) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00185}00185 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00186}00186     \textcolor{keywordflow}{if} (!mapping\_data)}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00187}00187         \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00188}00188 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00189}00189     \textcolor{keyword}{const} \textcolor{keyword}{auto} base = \textcolor{keyword}{reinterpret\_cast<}BYTE*\textcolor{keyword}{>}(mapping\_data);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00190}00190 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00191}00191     \textcolor{keyword}{auto}* e\_lfanew = base + \textcolor{keyword}{reinterpret\_cast<}IMAGE\_DOS\_HEADER*\textcolor{keyword}{>}(mapping\_data)-\/>e\_lfanew;}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00192}00192     \textcolor{keyword}{const} \textcolor{keyword}{auto}* optional\_headers = \&\textcolor{keyword}{reinterpret\_cast<}IMAGE\_NT\_HEADERS*\textcolor{keyword}{>}(e\_lfanew)-\/>OptionalHeader;}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00193}00193 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00194}00194     \textcolor{keyword}{const} \textcolor{keyword}{auto} load\_library\_a = mapping\_data-\/>\mbox{\hyperlink{struct_mapping_data_a57d25826d4cf23c7baaf1d861daaa2e0}{LoadLibraryA\_ptr}};}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00195}00195     \textcolor{keyword}{const} \textcolor{keyword}{auto} get\_proc\_address = mapping\_data-\/>\mbox{\hyperlink{struct_mapping_data_aff8467684ab8890c55526375219a4c71}{GetProcAddress\_ptr}};}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00196}00196     \textcolor{keyword}{const} \textcolor{keyword}{auto} dll\_main = \textcolor{keyword}{reinterpret\_cast<}\mbox{\hyperlink{manual__map_8h_a61440f931ebc21115bd41dcb766bc932}{DllEntryPoint\_fn}}\textcolor{keyword}{>}(base + optional\_headers-\/>AddressOfEntryPoint);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00197}00197 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00198}00198     \textcolor{keywordflow}{if} (BYTE* location\_delta = base -\/ optional\_headers-\/>ImageBase) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00199}00199 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00200}00200         \textcolor{comment}{// Check if possible to relocate data}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00201}00201         \textcolor{keywordflow}{if} (!optional\_headers-\/>DataDirectory[IMAGE\_DIRECTORY\_ENTRY\_BASERELOC].Size)}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00202}00202             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00203}00203 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00204}00204         \textcolor{keyword}{const} \textcolor{keyword}{auto} base\_reloc\_vaddr = optional\_headers-\/>DataDirectory[IMAGE\_DIRECTORY\_ENTRY\_BASERELOC].VirtualAddress;}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00205}00205         \textcolor{keyword}{auto}* base\_relocation = \textcolor{keyword}{reinterpret\_cast<}IMAGE\_BASE\_RELOCATION*\textcolor{keyword}{>}(base + base\_reloc\_vaddr);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00206}00206 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00207}00207         \textcolor{keywordflow}{while} (base\_relocation-\/>VirtualAddress) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00208}00208 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00209}00209             \textcolor{keyword}{const} UINT entry\_count = (base\_relocation-\/>SizeOfBlock -\/ \textcolor{keyword}{sizeof}(IMAGE\_BASE\_RELOCATION)) / \textcolor{keyword}{sizeof}(WORD);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00210}00210             \textcolor{keyword}{auto} relative\_info = \textcolor{keyword}{reinterpret\_cast<}WORD*\textcolor{keyword}{>}(base\_relocation + 1);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00211}00211 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00212}00212             \textcolor{keywordflow}{for} (UINT i = 0u; i != entry\_count; ++i, ++relative\_info) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00213}00213 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00214}00214                 \textcolor{keywordflow}{if} (\mbox{\hyperlink{manual__map_8cpp_a68129d4382e059810889bce0e3b2c69c}{RELOC\_FLAG}}(*relative\_info)) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00215}00215                     \textcolor{keyword}{const} \textcolor{keyword}{auto} reloc\_addr = base + base\_relocation-\/>VirtualAddress + (*relative\_info \& 0xFFF);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00216}00216                     \textcolor{keyword}{const} \textcolor{keyword}{auto} patch = \textcolor{keyword}{reinterpret\_cast<}UINT\_PTR*\textcolor{keyword}{>}(reloc\_addr);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00217}00217 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00218}00218                     *patch += \textcolor{keyword}{reinterpret\_cast<}UINT\_PTR\textcolor{keyword}{>}(location\_delta);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00219}00219                 \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00220}00220 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00221}00221             \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00222}00222             base\_relocation = \textcolor{keyword}{reinterpret\_cast<}IMAGE\_BASE\_RELOCATION*\textcolor{keyword}{>}(}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00223}00223                 \textcolor{keyword}{reinterpret\_cast<}BYTE*\textcolor{keyword}{>}(base\_relocation) + base\_relocation-\/>SizeOfBlock);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00224}00224         \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00225}00225     \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00226}00226 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00227}00227     \textcolor{comment}{// Check for import directory}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00228}00228     \textcolor{keywordflow}{if} (\textcolor{keyword}{const} \textcolor{keyword}{auto} [VirtualAddress, Size]}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00229}00229         = optional\_headers-\/>DataDirectory[IMAGE\_DIRECTORY\_ENTRY\_IMPORT];}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00230}00230         Size) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00231}00231 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00232}00232         \textcolor{keyword}{auto}* import\_descriptor = \textcolor{keyword}{reinterpret\_cast<}IMAGE\_IMPORT\_DESCRIPTOR*\textcolor{keyword}{>}(base + VirtualAddress);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00233}00233 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00234}00234         \textcolor{keywordflow}{while} (import\_descriptor-\/>Name) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00235}00235 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00236}00236             \textcolor{keyword}{const} \textcolor{keywordtype}{char}* sz\_mod = \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(base + import\_descriptor-\/>Name);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00237}00237 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00238}00238             \textcolor{comment}{// ReSharper disable once CppLocalVariableMayBeConst}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00239}00239             HINSTANCE dll = load\_library\_a(sz\_mod);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00240}00240 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00241}00241             \textcolor{keyword}{auto} thunk\_ref = \textcolor{keyword}{reinterpret\_cast<}ULONG\_PTR*\textcolor{keyword}{>}(base + import\_descriptor-\/>OriginalFirstThunk);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00242}00242             \textcolor{keyword}{auto}* func\_ref = \textcolor{keyword}{reinterpret\_cast<}ULONG\_PTR*\textcolor{keyword}{>}(base + import\_descriptor-\/>FirstThunk);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00243}00243 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00244}00244             \textcolor{keywordflow}{if} (!thunk\_ref)}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00245}00245                 thunk\_ref = func\_ref;}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00246}00246 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00247}00247             \textcolor{keywordflow}{for} (; *thunk\_ref; ++thunk\_ref, ++func\_ref) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00248}00248                 \textcolor{keywordflow}{if} (IMAGE\_SNAP\_BY\_ORDINAL(*thunk\_ref)) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00249}00249                     *func\_ref = get\_proc\_address(dll, \textcolor{keyword}{reinterpret\_cast<}\textcolor{keywordtype}{char}*\textcolor{keyword}{>}(*thunk\_ref \& 0xFFFF));}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00250}00250                 \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00251}00251                 \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00252}00252                     \textcolor{keyword}{const} \textcolor{keyword}{auto}* import\_by\_name = \textcolor{keyword}{reinterpret\_cast<}IMAGE\_IMPORT\_BY\_NAME*\textcolor{keyword}{>}(base + *thunk\_ref);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00253}00253                     *func\_ref = get\_proc\_address(dll, import\_by\_name-\/>Name);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00254}00254                 \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00255}00255             \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00256}00256             ++import\_descriptor;}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00257}00257         \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00258}00258     \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00259}00259 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00260}00260     \textcolor{comment}{// Check for thread local storage}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00261}00261     \textcolor{comment}{// https://docs.microsoft.com/en-\/us/windows/win32/debug/pe-\/format\#the-\/tls-\/directory}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00262}00262     \textcolor{keywordflow}{if} (\textcolor{keyword}{const} \textcolor{keyword}{auto} [VirtualAddress, Size]}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00263}00263         = optional\_headers-\/>DataDirectory[IMAGE\_DIRECTORY\_ENTRY\_TLS];}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00264}00264         Size) \{}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00265}00265 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00266}00266         \textcolor{keyword}{const} \textcolor{keyword}{auto}* tls = \textcolor{keyword}{reinterpret\_cast<}IMAGE\_TLS\_DIRECTORY*\textcolor{keyword}{>}(base + VirtualAddress);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00267}00267 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00268}00268         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto}* tls\_callback = \textcolor{keyword}{reinterpret\_cast<}PIMAGE\_TLS\_CALLBACK*\textcolor{keyword}{>}(tls-\/>AddressOfCallBacks); tls\_callback \&\& *tls\_callback; ++tls\_callback)}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00269}00269             (*tls\_callback)(base, DLL\_PROCESS\_ATTACH, \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00270}00270 }
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00271}00271     \}}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00272}00272     dll\_main(base, DLL\_PROCESS\_ATTACH, \textcolor{keyword}{nullptr});}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00273}00273     mapping\_data-\/>\mbox{\hyperlink{struct_mapping_data_a91dabe8c87988fa095b8879b2efb9a3f}{Module}} = \textcolor{keyword}{reinterpret\_cast<}HINSTANCE\textcolor{keyword}{>}(base);}
+\DoxyCodeLine{\Hypertarget{manual__map_8cpp_source_l00274}00274 \}}
+
+\end{DoxyCode}

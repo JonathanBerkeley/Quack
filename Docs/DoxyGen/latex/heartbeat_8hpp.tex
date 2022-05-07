@@ -1,0 +1,42 @@
+\hypertarget{heartbeat_8hpp}{}\doxysection{\+\_\+\+\_\+quack/\+Quack-\/client/heartbeat.hpp File Reference}
+\label{heartbeat_8hpp}\index{\_\_quack/Quack-\/client/heartbeat.hpp@{\_\_quack/Quack-\/client/heartbeat.hpp}}
+{\ttfamily \#include \char`\"{}pch.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}context.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}identification.\+hpp\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_heartbeat_info}{Heartbeat\+Info}}
+\begin{DoxyCompactList}\small\item\em Contains information that will be transmitted with heartbeats. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{heartbeat_8hpp_abd3fbdd1e1b59d85c54a595135468391}{Heartbeat}} (const \mbox{\hyperlink{struct_context}{Context}} \&ctx, const \mbox{\hyperlink{struct_heartbeat_info}{Heartbeat\+Info}} \&heartbeat\+\_\+info)
+\begin{DoxyCompactList}\small\item\em Transmits data to remote server containing heartbeat information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{heartbeat_8hpp_abd3fbdd1e1b59d85c54a595135468391}\label{heartbeat_8hpp_abd3fbdd1e1b59d85c54a595135468391}} 
+\index{heartbeat.hpp@{heartbeat.hpp}!Heartbeat@{Heartbeat}}
+\index{Heartbeat@{Heartbeat}!heartbeat.hpp@{heartbeat.hpp}}
+\doxysubsubsection{\texorpdfstring{Heartbeat()}{Heartbeat()}}
+{\footnotesize\ttfamily bool Heartbeat (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{struct_context}{Context}} \&}]{ctx,  }\item[{const \mbox{\hyperlink{struct_heartbeat_info}{Heartbeat\+Info}} \&}]{heartbeat\+\_\+info }\end{DoxyParamCaption})}
+
+
+
+Transmits data to remote server containing heartbeat information. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ctx} & Application context \\
+\hline
+{\em heartbeat\+\_\+info} & Data to be transmitted in the heartbeat \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the remote server returned status 200, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{heartbeat_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{heartbeat_8cpp_source}{heartbeat.\+cpp}}.
+

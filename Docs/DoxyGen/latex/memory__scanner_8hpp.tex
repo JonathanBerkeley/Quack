@@ -1,0 +1,133 @@
+\hypertarget{memory__scanner_8hpp}{}\doxysection{\+\_\+\+\_\+quack/\+Quack-\/internal/memory\+\_\+scanner.hpp File Reference}
+\label{memory__scanner_8hpp}\index{\_\_quack/Quack-\/internal/memory\_scanner.hpp@{\_\_quack/Quack-\/internal/memory\_scanner.hpp}}
+{\ttfamily \#include \char`\"{}pch.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}data.\+hpp\char`\"{}}\newline
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_memory_region}{Memory\+Region}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ HMODULE $>$ \mbox{\hyperlink{memory__scanner_8hpp_a9c6e17807cdaf631a78e72cea857adc6}{Enumerate\+Modules}} (\mbox{\hyperlink{structdata_1_1_process_info}{data\+::\+Process\+Info}} \&pi)
+\item 
+bool \mbox{\hyperlink{memory__scanner_8hpp_a784f8dc8677eb7181a0de5843013722b}{Verify\+Module}} (LPCWSTR source\+\_\+file)
+\item 
+std\+::vector$<$ unsigned long $>$ \mbox{\hyperlink{memory__scanner_8hpp_a28181accbbef183e3bd1c232250ba19f}{Pattern\+To\+Byte}} (const std\+::string \&signature)
+\begin{DoxyCompactList}\small\item\em Converts supplied signature to bytes, removing wildcards. \end{DoxyCompactList}\item 
+std\+::uint8\+\_\+t $\ast$ \mbox{\hyperlink{memory__scanner_8hpp_a21c6c3348901651c3ff03e7cdc610e8c}{Pattern\+Scan}} (const HMODULE module, const std\+::string \&signature)
+\begin{DoxyCompactList}\small\item\em Scans module for supplied signature. \end{DoxyCompactList}\item 
+std\+::uint8\+\_\+t $\ast$ \mbox{\hyperlink{memory__scanner_8hpp_a6f5661ae7206f7751587a687d4b421fb}{Pattern\+Scan}} (const std\+::string \&signature, const \mbox{\hyperlink{struct_memory_region}{Memory\+Region}} \&mem\+\_\+region)
+\item 
+void \mbox{\hyperlink{memory__scanner_8hpp_a677b9f0b9fe6d5efaef52a0673dc2783}{Module\+Scan}} (const \mbox{\hyperlink{structdata_1_1_process_info}{data\+::\+Process\+Info}} \&context, const bool unsigned\+\_\+only)
+\item 
+void \mbox{\hyperlink{memory__scanner_8hpp_a0b6433cd3c0e8e1639f39f0c0eb69abb}{Region\+Scan}} (const \mbox{\hyperlink{structdata_1_1_process_info}{data\+::\+Process\+Info}} \&context, const \mbox{\hyperlink{struct_memory_region}{Memory\+Region}} \&memory\+\_\+region)
+\item 
+void \mbox{\hyperlink{memory__scanner_8hpp_a9b5983ccb579005cf91545bcfe3937fa}{Full\+Scan}} (const \mbox{\hyperlink{structdata_1_1_process_info}{data\+::\+Process\+Info}} \&context)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{memory__scanner_8hpp_a9c6e17807cdaf631a78e72cea857adc6}\label{memory__scanner_8hpp_a9c6e17807cdaf631a78e72cea857adc6}} 
+\index{memory\_scanner.hpp@{memory\_scanner.hpp}!EnumerateModules@{EnumerateModules}}
+\index{EnumerateModules@{EnumerateModules}!memory\_scanner.hpp@{memory\_scanner.hpp}}
+\doxysubsubsection{\texorpdfstring{EnumerateModules()}{EnumerateModules()}}
+{\footnotesize\ttfamily std\+::vector$<$ HMODULE $>$ Enumerate\+Modules (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structdata_1_1_process_info}{data\+::\+Process\+Info}} \&}]{pi }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{memory__scanner_8hpp_a9b5983ccb579005cf91545bcfe3937fa}\label{memory__scanner_8hpp_a9b5983ccb579005cf91545bcfe3937fa}} 
+\index{memory\_scanner.hpp@{memory\_scanner.hpp}!FullScan@{FullScan}}
+\index{FullScan@{FullScan}!memory\_scanner.hpp@{memory\_scanner.hpp}}
+\doxysubsubsection{\texorpdfstring{FullScan()}{FullScan()}}
+{\footnotesize\ttfamily void Full\+Scan (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structdata_1_1_process_info}{data\+::\+Process\+Info}} \&}]{context }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00267}{267}} of file \mbox{\hyperlink{memory__scanner_8cpp_source}{memory\+\_\+scanner.\+cpp}}.
+
+\mbox{\Hypertarget{memory__scanner_8hpp_a677b9f0b9fe6d5efaef52a0673dc2783}\label{memory__scanner_8hpp_a677b9f0b9fe6d5efaef52a0673dc2783}} 
+\index{memory\_scanner.hpp@{memory\_scanner.hpp}!ModuleScan@{ModuleScan}}
+\index{ModuleScan@{ModuleScan}!memory\_scanner.hpp@{memory\_scanner.hpp}}
+\doxysubsubsection{\texorpdfstring{ModuleScan()}{ModuleScan()}}
+{\footnotesize\ttfamily void Module\+Scan (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structdata_1_1_process_info}{data\+::\+Process\+Info}} \&}]{context,  }\item[{const bool}]{unsigned\+\_\+only }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00180}{180}} of file \mbox{\hyperlink{memory__scanner_8cpp_source}{memory\+\_\+scanner.\+cpp}}.
+
+\mbox{\Hypertarget{memory__scanner_8hpp_a21c6c3348901651c3ff03e7cdc610e8c}\label{memory__scanner_8hpp_a21c6c3348901651c3ff03e7cdc610e8c}} 
+\index{memory\_scanner.hpp@{memory\_scanner.hpp}!PatternScan@{PatternScan}}
+\index{PatternScan@{PatternScan}!memory\_scanner.hpp@{memory\_scanner.hpp}}
+\doxysubsubsection{\texorpdfstring{PatternScan()}{PatternScan()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily std\+::uint8\+\_\+t $\ast$ Pattern\+Scan (\begin{DoxyParamCaption}\item[{const HMODULE}]{module,  }\item[{const std\+::string \&}]{signature }\end{DoxyParamCaption})}
+
+
+
+Scans module for supplied signature. 
+
+Logic learned from example in CSGOSimple \href{https://github.com/spirthack/CSGOSimple}{\texttt{ https\+://github.\+com/spirthack/\+CSGOSimple}} 
+\begin{DoxyParams}{Parameters}
+{\em module} & Handle to module \\
+\hline
+{\em signature} & The signature to be scanned for \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If signature detected, a pointer to detected signature otherwise nullptr 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00118}{118}} of file \mbox{\hyperlink{memory__scanner_8cpp_source}{memory\+\_\+scanner.\+cpp}}.
+
+\mbox{\Hypertarget{memory__scanner_8hpp_a6f5661ae7206f7751587a687d4b421fb}\label{memory__scanner_8hpp_a6f5661ae7206f7751587a687d4b421fb}} 
+\index{memory\_scanner.hpp@{memory\_scanner.hpp}!PatternScan@{PatternScan}}
+\index{PatternScan@{PatternScan}!memory\_scanner.hpp@{memory\_scanner.hpp}}
+\doxysubsubsection{\texorpdfstring{PatternScan()}{PatternScan()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily std\+::uint8\+\_\+t $\ast$ Pattern\+Scan (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{signature,  }\item[{const \mbox{\hyperlink{struct_memory_region}{Memory\+Region}} \&}]{mem\+\_\+region }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00145}{145}} of file \mbox{\hyperlink{memory__scanner_8cpp_source}{memory\+\_\+scanner.\+cpp}}.
+
+\mbox{\Hypertarget{memory__scanner_8hpp_a28181accbbef183e3bd1c232250ba19f}\label{memory__scanner_8hpp_a28181accbbef183e3bd1c232250ba19f}} 
+\index{memory\_scanner.hpp@{memory\_scanner.hpp}!PatternToByte@{PatternToByte}}
+\index{PatternToByte@{PatternToByte}!memory\_scanner.hpp@{memory\_scanner.hpp}}
+\doxysubsubsection{\texorpdfstring{PatternToByte()}{PatternToByte()}}
+{\footnotesize\ttfamily std\+::vector$<$ unsigned long $>$ Pattern\+To\+Byte (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{signature }\end{DoxyParamCaption})}
+
+
+
+Converts supplied signature to bytes, removing wildcards. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em signature} & Signature to be converted to bytes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of unsigned long, representing bytes 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00076}{76}} of file \mbox{\hyperlink{memory__scanner_8cpp_source}{memory\+\_\+scanner.\+cpp}}.
+
+\mbox{\Hypertarget{memory__scanner_8hpp_a0b6433cd3c0e8e1639f39f0c0eb69abb}\label{memory__scanner_8hpp_a0b6433cd3c0e8e1639f39f0c0eb69abb}} 
+\index{memory\_scanner.hpp@{memory\_scanner.hpp}!RegionScan@{RegionScan}}
+\index{RegionScan@{RegionScan}!memory\_scanner.hpp@{memory\_scanner.hpp}}
+\doxysubsubsection{\texorpdfstring{RegionScan()}{RegionScan()}}
+{\footnotesize\ttfamily void Region\+Scan (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structdata_1_1_process_info}{data\+::\+Process\+Info}} \&}]{context,  }\item[{const \mbox{\hyperlink{struct_memory_region}{Memory\+Region}} \&}]{memory\+\_\+region }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00241}{241}} of file \mbox{\hyperlink{memory__scanner_8cpp_source}{memory\+\_\+scanner.\+cpp}}.
+
+\mbox{\Hypertarget{memory__scanner_8hpp_a784f8dc8677eb7181a0de5843013722b}\label{memory__scanner_8hpp_a784f8dc8677eb7181a0de5843013722b}} 
+\index{memory\_scanner.hpp@{memory\_scanner.hpp}!VerifyModule@{VerifyModule}}
+\index{VerifyModule@{VerifyModule}!memory\_scanner.hpp@{memory\_scanner.hpp}}
+\doxysubsubsection{\texorpdfstring{VerifyModule()}{VerifyModule()}}
+{\footnotesize\ttfamily bool Verify\+Module (\begin{DoxyParamCaption}\item[{LPCWSTR}]{source\+\_\+file }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{memory__scanner_8cpp_source}{memory\+\_\+scanner.\+cpp}}.
+

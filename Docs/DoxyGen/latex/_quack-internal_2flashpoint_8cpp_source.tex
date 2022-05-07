@@ -1,0 +1,77 @@
+\hypertarget{_quack-internal_2flashpoint_8cpp_source}{}\doxysection{flashpoint.\+cpp}
+\label{_quack-internal_2flashpoint_8cpp_source}\index{\_\_quack/Quack-\/internal/flashpoint.cpp@{\_\_quack/Quack-\/internal/flashpoint.cpp}}
+\mbox{\hyperlink{_quack-internal_2flashpoint_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2pch_8hpp}{pch.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8hpp}{flashpoint.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2constants_8hpp}{constants.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2data_8hpp}{data.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{config_8hpp}{config.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_quack-internal_2task__dispatch_8hpp}{task\_dispatch.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{utils_8hpp}{utils.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00009}00009 \textcolor{keyword}{using namespace }std::chrono\_literals;}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00010}00010 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespacecfg}{cfg}};}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00011}00011 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespacedata}{data}};}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00012}00012 \textcolor{keyword}{using }constants::DBG;}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00013}00013 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00014}00014 \textcolor{comment}{// This is a global variable as it's used in std::atexit, which takes no arguments}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00015}00015 \textcolor{comment}{// It is used only in this file}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00016}00016 \textcolor{keyword}{static} PROCESS\_INFORMATION ac\_client\{\};}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00017}00017 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00019}00019 \textcolor{comment}{// Start the anti-\/cheat executable}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00020}\mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_abd0606756ee6183c3caeae6b0e928d11}{00020}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_abd0606756ee6183c3caeae6b0e928d11}{InitClientAC}}() \{}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00021}00021     STARTUPINFOA si\{\};}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00023}00023 \textcolor{preprocessor}{\#pragma warning( suppress : 6335 )}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00024}00024     CreateProcessA(}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00025}00025         \textcolor{stringliteral}{"{}Quack-\/ac.exe"{}},}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00026}00026         \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00027}00027         \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00028}00028         \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00029}00029         FALSE,}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00030}00030         CREATE\_NEW\_CONSOLE,}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00031}00031         \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00032}00032         \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00033}00033         \&si,}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00034}00034         \&ac\_client}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00035}00035     );}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00036}00036 \}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00037}00037 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00038}00038 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00039}\mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_a2f2ccaefc4cce39a52aef1e87d358f6d}{00039}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_a2f2ccaefc4cce39a52aef1e87d358f6d}{KillClientAC}}() \{}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00040}00040     TerminateProcess(ac\_client.hProcess, 0);}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00041}00041     CloseHandle(ac\_client.hProcess);}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00042}00042     CloseHandle(ac\_client.hThread);}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00043}00043 \}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00044}00044 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00045}00045 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00046}00046 \textcolor{comment}{// Entry point and setup}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00047}\mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_a44385e5f6ecb4d791f022bf8f4392404}{00047}} DWORD WINAPI \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_a44385e5f6ecb4d791f022bf8f4392404}{Init}}(LPVOID lpParam) \{}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00049}00049     \textcolor{keywordflow}{if} \textcolor{keyword}{constexpr} (DBG) \{}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00050}00050         \textcolor{comment}{// Redirect stdout \& stderr to new console}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00051}00051         AllocConsole();}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00052}00052         freopen\_s(\textcolor{keyword}{reinterpret\_cast<}FILE**\textcolor{keyword}{>}(stdout), \textcolor{stringliteral}{"{}CONOUT\$"{}}, \textcolor{stringliteral}{"{}w"{}}, stdout);}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00053}00053         freopen\_s(\textcolor{keyword}{reinterpret\_cast<}FILE**\textcolor{keyword}{>}(stderr), \textcolor{stringliteral}{"{}CONOUT\$"{}}, \textcolor{stringliteral}{"{}w"{}}, stderr);}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00055}00055         \textcolor{comment}{// Set title to console and output info on DLL}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00056}00056         SetConsoleTitle(\mbox{\hyperlink{namespaceconstants_a363abd05858266375be01b8ddb67a137}{constants::W\_DLL\_NAME}});}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00057}00057         std::cout << \mbox{\hyperlink{namespaceconstants_a895e97597e5131fb5301ae2ef7cd377e}{constants::DLL\_NAME}} << \textcolor{stringliteral}{"{} loaded"{}} << \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00058}00058         std::cout << \textcolor{stringliteral}{"{}Version -\/ "{}} << \mbox{\hyperlink{namespaceconstants_aee53c90b8dbbbf076fd51818fe89c77f}{constants::VERSION}} << \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00059}00059     \}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00060}00060 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00061}00061     \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_abd0606756ee6183c3caeae6b0e928d11}{InitClientAC}}();}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00062}00062 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00063}00063     \textcolor{comment}{// On exit, run KillClientAC}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00064}00064     std::atexit(\mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_a2f2ccaefc4cce39a52aef1e87d358f6d}{KillClientAC}});}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00065}00065 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00066}00066     \textcolor{comment}{// Main program loop}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00067}00067     \mbox{\hyperlink{_quack-client_2task__dispatch_8cpp_a2fa9076c95e2b43a3afe903eaf7d951c}{TaskDispatch}}();}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00068}00068 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00069}00069     \textcolor{comment}{// ReSharper disable once CppZeroConstantCanBeReplacedWithNullptr}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00070}00070     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2flashpoint_8cpp_source_l00071}00071 \}}
+
+\end{DoxyCode}

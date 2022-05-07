@@ -1,0 +1,82 @@
+\hypertarget{class_hardware_i_d}{}\doxysection{Hardware\+ID Class Reference}
+\label{class_hardware_i_d}\index{HardwareID@{HardwareID}}
+
+
+{\ttfamily \#include $<$Lib/\+Quack-\/shared/hardware\+\_\+id.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_hardware_i_d_a1e2c969c29884c985f141437de20c9c3}{Hardware\+ID}} ()
+\begin{DoxyCompactList}\small\item\em Creates an ID that is identifiable to a specific PC Value is created on construction, and can be retrieved as a SHA256 hash through \mbox{\hyperlink{class_hardware_i_d_a824b6234e04801a7423dc6aa291bab47}{Get\+Hash()}} or as a raw value through \mbox{\hyperlink{class_hardware_i_d_aa4b2891ba45be13c8dbad9b5f5dfb895}{Get\+Raw\+HWID()}} \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_hardware_i_d_a824b6234e04801a7423dc6aa291bab47}{Get\+Hash}} ()
+\begin{DoxyCompactList}\small\item\em Gets std\+::string representation of SHA256 hash created around \mbox{\hyperlink{class_hardware_i_d}{Hardware\+ID}}. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_hardware_i_d_aa4b2891ba45be13c8dbad9b5f5dfb895}{Get\+Raw\+HWID}} ()
+\begin{DoxyCompactList}\small\item\em Gets std\+::string representation of various identifying serials concatenated together. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+
+
+Definition at line \mbox{\hyperlink{hardware__id_8hpp_source_l00005}{5}} of file \mbox{\hyperlink{hardware__id_8hpp_source}{hardware\+\_\+id.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_hardware_i_d_a1e2c969c29884c985f141437de20c9c3}\label{class_hardware_i_d_a1e2c969c29884c985f141437de20c9c3}} 
+\index{HardwareID@{HardwareID}!HardwareID@{HardwareID}}
+\index{HardwareID@{HardwareID}!HardwareID@{HardwareID}}
+\doxysubsubsection{\texorpdfstring{HardwareID()}{HardwareID()}}
+{\footnotesize\ttfamily Hardware\+ID\+::\+Hardware\+ID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates an ID that is identifiable to a specific PC Value is created on construction, and can be retrieved as a SHA256 hash through \mbox{\hyperlink{class_hardware_i_d_a824b6234e04801a7423dc6aa291bab47}{Get\+Hash()}} or as a raw value through \mbox{\hyperlink{class_hardware_i_d_aa4b2891ba45be13c8dbad9b5f5dfb895}{Get\+Raw\+HWID()}} 
+
+Much of the implementation was learned from \href{https://github.com/medievalghoul/hwid-checker-mg}{\texttt{ https\+://github.\+com/medievalghoul/hwid-\/checker-\/mg}} 
+
+Definition at line \mbox{\hyperlink{hardware__id_8cpp_source_l00010}{10}} of file \mbox{\hyperlink{hardware__id_8cpp_source}{hardware\+\_\+id.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_hardware_i_d_a824b6234e04801a7423dc6aa291bab47}\label{class_hardware_i_d_a824b6234e04801a7423dc6aa291bab47}} 
+\index{HardwareID@{HardwareID}!GetHash@{GetHash}}
+\index{GetHash@{GetHash}!HardwareID@{HardwareID}}
+\doxysubsubsection{\texorpdfstring{GetHash()}{GetHash()}}
+{\footnotesize\ttfamily std\+::string Hardware\+ID\+::\+Get\+Hash (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets std\+::string representation of SHA256 hash created around \mbox{\hyperlink{class_hardware_i_d}{Hardware\+ID}}. 
+
+Created to address privacy concerns around distribution of raw Hardware IDs \begin{DoxyReturn}{Returns}
+std\+::string representation of SHA256 hash of \mbox{\hyperlink{class_hardware_i_d}{Hardware\+ID}} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{hardware__id_8cpp_source_l00113}{113}} of file \mbox{\hyperlink{hardware__id_8cpp_source}{hardware\+\_\+id.\+cpp}}.
+
+\mbox{\Hypertarget{class_hardware_i_d_aa4b2891ba45be13c8dbad9b5f5dfb895}\label{class_hardware_i_d_aa4b2891ba45be13c8dbad9b5f5dfb895}} 
+\index{HardwareID@{HardwareID}!GetRawHWID@{GetRawHWID}}
+\index{GetRawHWID@{GetRawHWID}!HardwareID@{HardwareID}}
+\doxysubsubsection{\texorpdfstring{GetRawHWID()}{GetRawHWID()}}
+{\footnotesize\ttfamily std\+::string Hardware\+ID\+::\+Get\+Raw\+HWID (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets std\+::string representation of various identifying serials concatenated together. 
+
+Not suitable for networking, as it contains potentially identifiable information encoded \begin{DoxyReturn}{Returns}
+std\+::string encoding of \mbox{\hyperlink{class_hardware_i_d}{Hardware\+ID}} 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{hardware__id_8cpp_source_l00118}{118}} of file \mbox{\hyperlink{hardware__id_8cpp_source}{hardware\+\_\+id.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\+\_\+\+\_\+quack/\+Lib/\+Quack-\/shared/\mbox{\hyperlink{hardware__id_8hpp}{hardware\+\_\+id.\+hpp}}\item 
+\+\_\+\+\_\+quack/\+Lib/\+Quack-\/shared/\mbox{\hyperlink{hardware__id_8cpp}{hardware\+\_\+id.\+cpp}}\end{DoxyCompactItemize}

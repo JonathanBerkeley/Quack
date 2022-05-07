@@ -1,0 +1,277 @@
+\hypertarget{main_8cpp_source}{}\doxysection{main.\+cpp}
+\label{main_8cpp_source}\index{\_\_quack/Red team/Destroject/src/main.cpp@{\_\_quack/Red team/Destroject/src/main.cpp}}
+\mbox{\hyperlink{main_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00001}00001 \textcolor{comment}{// ReSharper disable CppLocalVariableMayBeConst}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00002}00002 \textcolor{comment}{// ReSharper disable CppClangTidyConcurrencyMtUnsafe}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00003}00003 \textcolor{comment}{// ReSharper disable CppRedundantCastExpression}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00004}00004 \textcolor{comment}{// ReSharper disable CppClangTidyBugproneMisplacedWideningCast}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00005}00005 \textcolor{comment}{// ReSharper disable CppClangTidyClangDiagnosticCastFunctionType}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00006}\mbox{\hyperlink{main_8cpp_ac7bef5d85e3dcd73eef56ad39ffc84a9}{00006}} \textcolor{preprocessor}{\#define WIN32\_LEAN\_AND\_MEAN}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00008}00008 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{main_8h}{main.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00009}00009 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00010}00010 \textcolor{preprocessor}{\#include <filesystem>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00011}00011 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00012}00012 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00013}00013 \textcolor{preprocessor}{\#include <sysinfoapi.h>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00014}00014 \textcolor{preprocessor}{\#include <thread>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00015}00015 \textcolor{preprocessor}{\#include <TlHelp32.h>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00016}00016 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00017}00017 \textcolor{preprocessor}{\#include <Windows.h>}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00019}00019 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{manual__map_8h}{manual\_map.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00020}00020 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{constants_8h}{constants.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00021}00021 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{util_8h}{util.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00023}00023 \textcolor{preprocessor}{\#ifdef \_WIN64}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00024}00024 \textcolor{keyword}{constexpr} \textcolor{keywordtype}{bool} \mbox{\hyperlink{main_8cpp_ad7720ca34cf0900913ab90c8a575e17d}{x64}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00025}00025 \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00026}\mbox{\hyperlink{main_8cpp_ad7720ca34cf0900913ab90c8a575e17d}{00026}} \textcolor{keyword}{constexpr} \textcolor{keywordtype}{bool} \mbox{\hyperlink{main_8cpp_ad7720ca34cf0900913ab90c8a575e17d}{x64}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00027}00027 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00028}00028 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00030}00030 \textcolor{keyword}{using namespace }std::string\_literals;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00033}\mbox{\hyperlink{main_8cpp_ad53223b8779f25caeddb70a3b9172967}{00033}} \textcolor{keywordtype}{int} \mbox{\hyperlink{main_8cpp_ad53223b8779f25caeddb70a3b9172967}{main}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} argc, \textcolor{keyword}{const} \textcolor{keywordtype}{char}* argv[]) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00034}00034     \textcolor{comment}{// Get and format windows local time}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00035}00035     SYSTEMTIME lt;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00036}00036     GetLocalTime(\&lt);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00037}00037     \textcolor{keyword}{const} std::string session\_date\_time = std::to\_string(lt.wHour)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00038}00038         + \textcolor{stringliteral}{"{}:"{}} + std::to\_string(lt.wMinute)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00039}00039         + \textcolor{stringliteral}{"{}:"{}} + std::to\_string(lt.wSecond)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00040}00040         + \textcolor{stringliteral}{"{} "{}} + std::to\_string(lt.wDay)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00041}00041         + \textcolor{stringliteral}{"{}-\/"{}} + std::to\_string(lt.wMonth)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00042}00042         + \textcolor{stringliteral}{"{}-\/"{}} + std::to\_string(lt.wYear);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00043}00043 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00044}00044     \textcolor{keyword}{const} std::string win64 = (\mbox{\hyperlink{main_8cpp_ad7720ca34cf0900913ab90c8a575e17d}{x64}}) ? \textcolor{stringliteral}{"{}x64"{}} : \textcolor{stringliteral}{"{}x86"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00045}00045     \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}\(\backslash\)nNew session: (Injector version: "{}} + \mbox{\hyperlink{namespaceconstants_aee53c90b8dbbbf076fd51818fe89c77f}{constants::VERSION}} + \textcolor{stringliteral}{"{} "{}} + win64 + \textcolor{stringliteral}{"{}) (Timestamp: "{}} + session\_date\_time + \textcolor{stringliteral}{"{})\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00046}00046 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00047}00047     std::string target;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00048}00048     \textcolor{keywordtype}{bool} \mbox{\hyperlink{manual__map_8cpp_a5be0386e1f8637c9e706f732c5db8d49}{manual\_map}} = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00049}00049     \textcolor{keywordflow}{switch} (argc) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00050}00050     \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00051}00051     \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00052}00052         \textcolor{comment}{// No argument given, check config file}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00053}00053         \textcolor{keywordflow}{if} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& [process\_target, mode, error] \{ \mbox{\hyperlink{util_8cpp_ac50769322189d486044db9d60a5ea33d}{config\_read}}() \}; error.empty()) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00054}00054             target = process\_target;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00055}00055             \mbox{\hyperlink{manual__map_8cpp_a5be0386e1f8637c9e706f732c5db8d49}{manual\_map}} = mode == \textcolor{stringliteral}{"{}Manual"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00056}00056         \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00057}00057         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00058}00058             \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(error + \textcolor{stringliteral}{"{}\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00059}00059                 \textcolor{stringliteral}{"{}(INFO) Run with arguments e.g:\(\backslash\)n"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00060}00060                 \textcolor{stringliteral}{"{}C:\(\backslash\)\(\backslash\)Users\(\backslash\)\(\backslash\)Me\(\backslash\)\(\backslash\)Desktop> "{}} + \mbox{\hyperlink{namespaceconstants_aefb5e307e0b36a4d5fe3069256c41376}{constants::NAME}} + \textcolor{stringliteral}{"{}.exe ProcessName\(\backslash\)n"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00061}00061             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00062}00062         \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00063}00063     \} \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00064}00064     \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00065}00065     \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00066}00066         \textcolor{comment}{// On argument supplied for target}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00067}00067         target = argv[1];}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00068}00068         \mbox{\hyperlink{util_8cpp_a5354aaa283ee1eb99170672768a6f4ce}{config\_write}}(target);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00069}00069     \} \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00070}00070     \textcolor{keywordflow}{case} 3:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00071}00071     \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00072}00072         \textcolor{comment}{// On argument supplied for mode}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00073}00073         target = argv[1];}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00074}00074 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00075}00075         \textcolor{keyword}{auto} mode\_lowercase = \mbox{\hyperlink{util_8cpp_ad16da7741df83e60c5ac24fbc92dcccb}{str\_to\_lower}}(std::string\{ argv[2] \});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00076}00076         \mbox{\hyperlink{manual__map_8cpp_a5be0386e1f8637c9e706f732c5db8d49}{manual\_map}} = mode\_lowercase == \textcolor{stringliteral}{"{}manual"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00077}00077         \textcolor{keyword}{auto} injection\_mode = \mbox{\hyperlink{manual__map_8cpp_a5be0386e1f8637c9e706f732c5db8d49}{manual\_map}} ? \textcolor{stringliteral}{"{}\(\backslash\)nManual"{}}s : \textcolor{stringliteral}{"{}\(\backslash\)nDefault"{}}s;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00078}00078 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00079}00079         \mbox{\hyperlink{util_8cpp_a5354aaa283ee1eb99170672768a6f4ce}{config\_write}}(target + injection\_mode);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00080}00080     \} \textcolor{keywordflow}{break};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00081}00081     \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00082}00082         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00083}00083     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00084}00084 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00085}00085     \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(CFG) Target: "{}} + target + \textcolor{stringliteral}{"{}\(\backslash\)n(CFG) Mode: "{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00086}00086         + (\mbox{\hyperlink{manual__map_8cpp_a5be0386e1f8637c9e706f732c5db8d49}{manual\_map}} ? \textcolor{stringliteral}{"{}Manual"{}} : \textcolor{stringliteral}{"{}Default"{}}));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00087}00087     \textcolor{keyword}{const} \textcolor{keyword}{auto} w\_target = std::wstring(target.begin(), target.end());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00088}00088 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00089}00089     \textcolor{comment}{// Find DLLs in same path as executable}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00090}00090     \textcolor{comment}{// When running in debug environment, you may need to put the DLL in the parent folder}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00091}00091     std::vector<std::string> dll\_options;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00092}00092     \textcolor{keywordflow}{for} (\textcolor{keyword}{const} \textcolor{keyword}{auto}\& entry : std::filesystem::directory\_iterator(\textcolor{stringliteral}{"{}."{}})) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00093}00093         \textcolor{keywordflow}{if} (entry.path().extension().string() == \textcolor{stringliteral}{"{}.dll"{}}) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00094}00094             dll\_options.push\_back(entry.path().string());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00095}00095             \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(INFO) Preparing to load "{}} + entry.path().string());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00096}00096         \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00097}00097     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00099}00099     \textcolor{keywordflow}{if} (!dll\_options.empty()) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00100}00100         \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(INFO) Waiting for "{}} + target);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00101}00101 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00102}00102         \textcolor{keyword}{const} std::wstring q\_target = w\_target + L\textcolor{stringliteral}{"{}.exe"{}};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00103}00103         \textcolor{keyword}{const} \textcolor{keywordtype}{wchar\_t}* qualified\_target = q\_target.c\_str();}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00104}00104         \textcolor{keywordflow}{while} (!\mbox{\hyperlink{main_8cpp_ae7680764507ace44e3430634e684937f}{is\_proc\_running}}(qualified\_target))}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00105}00105             \mbox{\hyperlink{main_8h_a5aacbb489d670e9343296d4e91b20ac7}{sleep}}(200);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00107}00107         \mbox{\hyperlink{main_8h_a5aacbb489d670e9343296d4e91b20ac7}{sleep}}(1000);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00109}00109         \textcolor{keywordtype}{int} proc\_id = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\mbox{\hyperlink{main_8cpp_abde8b376eb5f3d06a7774a3576868dcd}{get\_proc\_id}}(qualified\_target));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00110}00110         \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(INFO) "{}} + target + \textcolor{stringliteral}{"{} found with process id: "{}} + std::to\_string(proc\_id));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00111}00111         \textcolor{keywordflow}{if} (proc\_id != 0) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00112}00112             \textcolor{keywordflow}{for} (\textcolor{keyword}{const} std::string\& dll : dll\_options) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00113}00113 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00114}00114                 HANDLE injected\_dll = (\mbox{\hyperlink{manual__map_8cpp_a5be0386e1f8637c9e706f732c5db8d49}{manual\_map}}) ? }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00115}00115                     \mbox{\hyperlink{main_8cpp_a525971cb2def1efb5a484bdb7aede97c}{map\_into\_proc}}(std::filesystem::absolute(dll).string(), proc\_id)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00116}00116                 : \mbox{\hyperlink{main_8cpp_a7991293c35ca7f2de412ddc7954bc179}{inject\_into\_proc}}(std::filesystem::absolute(dll).string(), proc\_id);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00117}00117 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00118}00118                 \mbox{\hyperlink{main_8h_a5aacbb489d670e9343296d4e91b20ac7}{sleep}}(2000);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00119}00119                 \textcolor{keywordflow}{if} (injected\_dll) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00120}00120                     \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(SUCCESS) Injection of "{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00121}00121                         + std::filesystem::absolute(dll).\textcolor{keywordtype}{string}()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00122}00122                         + \textcolor{stringliteral}{"{} into "{}} + std::to\_string(proc\_id)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00123}00123                         + \textcolor{stringliteral}{"{} seems to have succeeded"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00124}00124                     );}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00125}00125                     CloseHandle(injected\_dll);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00126}00126                 \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00127}00127                 \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00128}00128                     \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(ERROR) Injection of "{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00129}00129                         + std::filesystem::absolute(dll).\textcolor{keywordtype}{string}()}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00130}00130                         + \textcolor{stringliteral}{"{} into "{}} + std::to\_string(proc\_id)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00131}00131                         + \textcolor{stringliteral}{"{} seems to have failed"{}}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00132}00132                     );}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00133}00133                 \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00134}00134             \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00135}00135         \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00136}00136         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00137}00137             \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(ERROR) Error getting "{}} + target + \textcolor{stringliteral}{"{} process id (Exiting)"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00138}00138             \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00139}00139         \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00140}00140     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00141}00141     \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00142}00142         \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(ERROR) No DLL(s) found to inject (Exiting)"{}});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00143}00143         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00144}00144     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00145}00145 \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00146}00146 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00147}00147 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00148}00148 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00154}\mbox{\hyperlink{main_8cpp_ae7680764507ace44e3430634e684937f}{00154}} \textcolor{keywordtype}{bool} \mbox{\hyperlink{main_8cpp_ae7680764507ace44e3430634e684937f}{is\_proc\_running}}(\textcolor{keyword}{const} \textcolor{keywordtype}{wchar\_t}* proc\_name) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00155}00155     \textcolor{keywordtype}{bool} is\_running = \textcolor{keyword}{false};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00156}00156     PROCESSENTRY32 process\_entry\{\};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00157}00157     process\_entry.dwSize = \textcolor{keyword}{sizeof}(PROCESSENTRY32);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00158}00158 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00159}00159     HANDLE proc\_snap = CreateToolhelp32Snapshot(TH32CS\_SNAPPROCESS, NULL);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00160}00160 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00161}00161     \textcolor{keywordflow}{if} (Process32First(proc\_snap, \&process\_entry))}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00162}00162         \textcolor{keywordflow}{while} (Process32Next(proc\_snap, \&process\_entry))}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00163}00163             \textcolor{keywordflow}{if} (!\_wcsicmp(process\_entry.szExeFile, proc\_name))}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00164}00164                 is\_running = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00165}00165 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00166}00166     CloseHandle(proc\_snap);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00167}00167     \textcolor{keywordflow}{return} is\_running;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00168}00168 \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00169}00169 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00170}00170 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00171}00171 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00177}\mbox{\hyperlink{main_8cpp_abde8b376eb5f3d06a7774a3576868dcd}{00177}} DWORD \mbox{\hyperlink{main_8cpp_abde8b376eb5f3d06a7774a3576868dcd}{get\_proc\_id}}(\textcolor{keyword}{const} \textcolor{keywordtype}{wchar\_t}* proc\_name) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00178}00178     PROCESSENTRY32 process\_entry\{\};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00179}00179     process\_entry.dwSize = \textcolor{keyword}{sizeof}(PROCESSENTRY32);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00180}00180 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00181}00181     HANDLE proc\_snap = CreateToolhelp32Snapshot(TH32CS\_SNAPPROCESS, NULL);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00182}00182 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00183}00183     \textcolor{keywordflow}{if} (Process32First(proc\_snap, \&process\_entry)) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00184}00184         \textcolor{keywordflow}{while} (Process32Next(proc\_snap, \&process\_entry)) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00185}00185             \textcolor{keywordflow}{if} (!\_wcsicmp(process\_entry.szExeFile, proc\_name)) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00186}00186                 CloseHandle(proc\_snap);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00187}00187                 \textcolor{keywordflow}{return} process\_entry.th32ProcessID;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00188}00188             \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00189}00189         \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00190}00190     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00191}00191 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00192}00192     CloseHandle(proc\_snap);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00193}00193     \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00194}00194 \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00195}00195 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00196}00196 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00197}00197 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00204}\mbox{\hyperlink{main_8cpp_a7991293c35ca7f2de412ddc7954bc179}{00204}} HANDLE \mbox{\hyperlink{main_8cpp_a7991293c35ca7f2de412ddc7954bc179}{inject\_into\_proc}}(\textcolor{keyword}{const} std::string\& dll\_name, \textcolor{keyword}{const} \textcolor{keywordtype}{int} process\_id) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00205}00205     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00206}00206         \textcolor{keyword}{const} \textcolor{keywordtype}{long} dll\_length = \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{long}\textcolor{keyword}{>}(dll\_name.length() + 1);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00207}00207         HANDLE proc\_handle = OpenProcess(PROCESS\_ALL\_ACCESS, \textcolor{keyword}{false}, process\_id);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00208}00208         \textcolor{keywordflow}{if} (proc\_handle == \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00209}00209             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00210}00210 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00211}00211         LPVOID virt\_alloc = VirtualAllocEx(}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00212}00212             proc\_handle,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00213}00213             \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00214}00214             dll\_length,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00215}00215             MEM\_COMMIT,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00216}00216             PAGE\_EXECUTE\_READWRITE}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00217}00217         );}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00218}00218 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00219}00219         \textcolor{keywordflow}{if} (virt\_alloc == \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00220}00220             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00221}00221 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00222}00222         \textcolor{keywordflow}{if} (\textcolor{keyword}{const} \textcolor{keywordtype}{int} write\_dll\_to\_mem = WriteProcessMemory(}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00223}00223             proc\_handle,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00224}00224             virt\_alloc,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00225}00225             dll\_name.c\_str(),}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00226}00226             dll\_length,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00227}00227             \textcolor{keyword}{nullptr}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00228}00228         ); write\_dll\_to\_mem == NULL)}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00229}00229             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00230}00230 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00231}00231         DWORD thread\_id;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00232}00232         LPTHREAD\_START\_ROUTINE load\_lib;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00233}00233         \textcolor{keywordflow}{if} (\textcolor{keyword}{const} HMODULE load\_lib\_addr = LoadLibraryA(\textcolor{stringliteral}{"{}kernel32"{}}); load\_lib\_addr != \textcolor{keyword}{nullptr})}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00234}00234             load\_lib = \textcolor{keyword}{reinterpret\_cast<}LPTHREAD\_START\_ROUTINE\textcolor{keyword}{>}(GetProcAddress(load\_lib\_addr, \textcolor{stringliteral}{"{}LoadLibraryA"{}}));  }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00235}00235         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00236}00236             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00237}00237 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00238}00238         HANDLE new\_thread = CreateRemoteThread(}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00239}00239             proc\_handle,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00240}00240             \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00241}00241             0,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00242}00242             load\_lib,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00243}00243             virt\_alloc,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00244}00244             0,}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00245}00245             \&thread\_id}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00246}00246         );}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00247}00247 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00248}00248         \textcolor{keywordflow}{if} (!new\_thread) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00249}00249             \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(ERROR) Unsuccessfully attempted to inject "{}} + dll\_name + \textcolor{stringliteral}{"{} into "{}} + std::to\_string(process\_id));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00250}00250             \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(ERROR) Windows returned system error code 0x"{}} + std::to\_string(GetLastError()));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00251}00251             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00252}00252         \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00253}00253 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00254}00254         std::stringstream ss;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00255}00255         ss << std::hex << new\_thread;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00256}00256         \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(INFO) Attempted to inject "{}} + dll\_name + \textcolor{stringliteral}{"{} into "{}} + std::to\_string(process\_id) + \textcolor{stringliteral}{"{} handle: 0x"{}} + ss.str());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00257}00257         \textcolor{keywordflow}{return} new\_thread;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00258}00258     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00259}00259     \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception\& ex) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00260}00260         \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(ERROR) "{}} + std::string\{ ex.what() \});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00261}00261         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00262}00262     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00263}00263 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00264}00264 \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00265}00265 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00266}00266 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00267}00267 \textcolor{comment}{// Manual map DLL into process}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00268}\mbox{\hyperlink{main_8cpp_a525971cb2def1efb5a484bdb7aede97c}{00268}} HANDLE \mbox{\hyperlink{main_8cpp_a525971cb2def1efb5a484bdb7aede97c}{map\_into\_proc}}(\textcolor{keyword}{const} std::string\& dll\_name, \textcolor{keyword}{const} \textcolor{keywordtype}{int} process\_id) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00269}00269     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00270}00270         HANDLE proc\_handle = OpenProcess(PROCESS\_ALL\_ACCESS, FALSE, process\_id);}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00271}00271         \textcolor{keywordflow}{if} (proc\_handle == \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00272}00272             \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(ERROR) OpenProcess failed: "{}} + std::to\_string(GetLastError()));}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00273}00273             \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00274}00274         \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00275}00275 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00276}00276         HANDLE new\_thread = \mbox{\hyperlink{manual__map_8cpp_a5be0386e1f8637c9e706f732c5db8d49}{manual\_map}}(proc\_handle, dll\_name.c\_str());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00277}00277 }
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00278}00278         std::stringstream ss;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00279}00279         ss << std::hex << new\_thread;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00280}00280         \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(INFO) Attempted to inject "{}} + dll\_name + \textcolor{stringliteral}{"{} into "{}} + std::to\_string(process\_id) + \textcolor{stringliteral}{"{} handle: 0x"{}} + ss.str());}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00281}00281         \textcolor{keywordflow}{return} new\_thread;}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00282}00282     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00283}00283     \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception\& ex) \{}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00284}00284         \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(\textcolor{stringliteral}{"{}(ERROR) "{}} + std::string\{ ex.what() \});}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00285}00285         \textcolor{keywordflow}{return} \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00286}00286     \}}
+\DoxyCodeLine{\Hypertarget{main_8cpp_source_l00287}00287 \}}
+
+\end{DoxyCode}

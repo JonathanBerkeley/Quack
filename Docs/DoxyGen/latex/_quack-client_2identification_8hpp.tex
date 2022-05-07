@@ -1,0 +1,45 @@
+\hypertarget{_quack-client_2identification_8hpp}{}\doxysection{\+\_\+\+\_\+quack/\+Quack-\/client/identification.hpp File Reference}
+\label{_quack-client_2identification_8hpp}\index{\_\_quack/Quack-\/client/identification.hpp@{\_\_quack/Quack-\/client/identification.hpp}}
+\doxysubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{_quack-client_2identification_8hpp_ae0fb0ca3b7df7ef8e93e8326650959b7}{Hashes}} = std\+::vector$<$ std\+::string $>$
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::optional$<$ std\+::vector$<$ std\+::string $>$ $>$ \mbox{\hyperlink{_quack-client_2identification_8hpp_a7258a94f42c1eece428511d8f0390b6e}{Get\+Arp\+Mac\+Hashes}} ()
+\begin{DoxyCompactList}\small\item\em Enumerate over Address Resolution Protocol (ARP) entries to extract hashes of MAC address This can be used to identify users that are ban-\/evading. Multiple users using the same network could trigger a match though, so it should be used as a suspicious indicator only. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\mbox{\Hypertarget{_quack-client_2identification_8hpp_ae0fb0ca3b7df7ef8e93e8326650959b7}\label{_quack-client_2identification_8hpp_ae0fb0ca3b7df7ef8e93e8326650959b7}} 
+\index{identification.hpp@{identification.hpp}!Hashes@{Hashes}}
+\index{Hashes@{Hashes}!identification.hpp@{identification.hpp}}
+\doxysubsubsection{\texorpdfstring{Hashes}{Hashes}}
+{\footnotesize\ttfamily using \mbox{\hyperlink{_quack-client_2identification_8hpp_ae0fb0ca3b7df7ef8e93e8326650959b7}{Hashes}} =  std\+::vector$<$std\+::string$>$}
+
+
+
+Definition at line \mbox{\hyperlink{_quack-client_2identification_8hpp_source_l00004}{4}} of file \mbox{\hyperlink{_quack-client_2identification_8hpp_source}{identification.\+hpp}}.
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_quack-client_2identification_8hpp_a7258a94f42c1eece428511d8f0390b6e}\label{_quack-client_2identification_8hpp_a7258a94f42c1eece428511d8f0390b6e}} 
+\index{identification.hpp@{identification.hpp}!GetArpMacHashes@{GetArpMacHashes}}
+\index{GetArpMacHashes@{GetArpMacHashes}!identification.hpp@{identification.hpp}}
+\doxysubsubsection{\texorpdfstring{GetArpMacHashes()}{GetArpMacHashes()}}
+{\footnotesize\ttfamily std\+::optional$<$ std\+::vector$<$ std\+::string $>$ $>$ Get\+Arp\+Mac\+Hashes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Enumerate over Address Resolution Protocol (ARP) entries to extract hashes of MAC address This can be used to identify users that are ban-\/evading. Multiple users using the same network could trigger a match though, so it should be used as a suspicious indicator only. 
+
+\begin{DoxyReturn}{Returns}
+Vector of SHA256 hashes on success, std\+::nullopt on failure 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_quack-client_2identification_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{_quack-client_2identification_8cpp_source}{identification.\+cpp}}.
+

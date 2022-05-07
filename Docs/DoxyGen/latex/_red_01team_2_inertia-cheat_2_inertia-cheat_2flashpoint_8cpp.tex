@@ -1,0 +1,124 @@
+\hypertarget{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp}{}\doxysection{\+\_\+\+\_\+quack/\+Red team/\+Inertia-\/cheat/\+Inertia-\/cheat/flashpoint.cpp File Reference}
+\label{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp}\index{\_\_quack/Red team/Inertia-\/cheat/Inertia-\/cheat/flashpoint.cpp@{\_\_quack/Red team/Inertia-\/cheat/Inertia-\/cheat/flashpoint.cpp}}
+{\ttfamily \#include \char`\"{}pch.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}flashpoint.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}constants.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}data.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}memory.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}player.\+hpp\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+DWORD WINAPI \mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_a44385e5f6ecb4d791f022bf8f4392404}{Init}} (LPVOID lp\+Param)
+\begin{DoxyCompactList}\small\item\em Entry point for the cheat logic. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_a214c39c3f8d928f6c04b7e221d751b65}{Rename\+Windows}} (LPCWSTR lp\+String)
+\begin{DoxyCompactList}\small\item\em Enumerate a processes windows and set them to supplied string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_a965a5d6cda6e4d0476f1a8a2ff7d7ba6}{Uninject}} ()
+\begin{DoxyCompactList}\small\item\em Uninject this module from the game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_a0f68f6a55beb7e31b73e93d2237e6856}{Check\+Hotkeys}} (bool \&cheat\+\_\+enabled)
+\begin{DoxyCompactList}\small\item\em Check cheat hotkeys. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_a7c2ef33ca0d4a323d680346d8e51bc3c}{Stats\+Hack}} ()
+\begin{DoxyCompactList}\small\item\em Set player\textquotesingle{}s health and ammo to 100. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_aebaf9f31c019f8369744ed56fd28f162}{Logic\+Loop}} ()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_a0f68f6a55beb7e31b73e93d2237e6856}\label{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_a0f68f6a55beb7e31b73e93d2237e6856}} 
+\index{flashpoint.cpp@{flashpoint.cpp}!CheckHotkeys@{CheckHotkeys}}
+\index{CheckHotkeys@{CheckHotkeys}!flashpoint.cpp@{flashpoint.cpp}}
+\doxysubsubsection{\texorpdfstring{CheckHotkeys()}{CheckHotkeys()}}
+{\footnotesize\ttfamily void Check\+Hotkeys (\begin{DoxyParamCaption}\item[{bool \&}]{cheat\+\_\+enabled }\end{DoxyParamCaption})}
+
+
+
+Check cheat hotkeys. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cheat\+\_\+enabled} & Cheat\+\_\+enabled status to be toggled if hotkey pressed \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_source_l00061}{61}} of file \mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_source}{flashpoint.\+cpp}}.
+
+\mbox{\Hypertarget{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_a44385e5f6ecb4d791f022bf8f4392404}\label{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_a44385e5f6ecb4d791f022bf8f4392404}} 
+\index{flashpoint.cpp@{flashpoint.cpp}!Init@{Init}}
+\index{Init@{Init}!flashpoint.cpp@{flashpoint.cpp}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily DWORD WINAPI Init (\begin{DoxyParamCaption}\item[{LPVOID}]{lp\+Param }\end{DoxyParamCaption})}
+
+
+
+Entry point for the cheat logic. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lp\+Param} & Dummy parameter \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_source_l00015}{15}} of file \mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_source}{flashpoint.\+cpp}}.
+
+\mbox{\Hypertarget{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_aebaf9f31c019f8369744ed56fd28f162}\label{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_aebaf9f31c019f8369744ed56fd28f162}} 
+\index{flashpoint.cpp@{flashpoint.cpp}!LogicLoop@{LogicLoop}}
+\index{LogicLoop@{LogicLoop}!flashpoint.cpp@{flashpoint.cpp}}
+\doxysubsubsection{\texorpdfstring{LogicLoop()}{LogicLoop()}}
+{\footnotesize\ttfamily void Logic\+Loop (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_source_l00100}{100}} of file \mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_source}{flashpoint.\+cpp}}.
+
+\mbox{\Hypertarget{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_a214c39c3f8d928f6c04b7e221d751b65}\label{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_a214c39c3f8d928f6c04b7e221d751b65}} 
+\index{flashpoint.cpp@{flashpoint.cpp}!RenameWindows@{RenameWindows}}
+\index{RenameWindows@{RenameWindows}!flashpoint.cpp@{flashpoint.cpp}}
+\doxysubsubsection{\texorpdfstring{RenameWindows()}{RenameWindows()}}
+{\footnotesize\ttfamily void Rename\+Windows (\begin{DoxyParamCaption}\item[{LPCWSTR}]{lp\+String }\end{DoxyParamCaption})}
+
+
+
+Enumerate a processes windows and set them to supplied string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lp\+String} & String to set names to \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_source_l00027}{27}} of file \mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_source}{flashpoint.\+cpp}}.
+
+\mbox{\Hypertarget{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_a7c2ef33ca0d4a323d680346d8e51bc3c}\label{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_a7c2ef33ca0d4a323d680346d8e51bc3c}} 
+\index{flashpoint.cpp@{flashpoint.cpp}!StatsHack@{StatsHack}}
+\index{StatsHack@{StatsHack}!flashpoint.cpp@{flashpoint.cpp}}
+\doxysubsubsection{\texorpdfstring{StatsHack()}{StatsHack()}}
+{\footnotesize\ttfamily bool Stats\+Hack (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Set player\textquotesingle{}s health and ammo to 100. 
+
+\begin{DoxyReturn}{Returns}
+True on success, false on failure 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_source_l00083}{83}} of file \mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_source}{flashpoint.\+cpp}}.
+
+\mbox{\Hypertarget{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_a965a5d6cda6e4d0476f1a8a2ff7d7ba6}\label{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_a965a5d6cda6e4d0476f1a8a2ff7d7ba6}} 
+\index{flashpoint.cpp@{flashpoint.cpp}!Uninject@{Uninject}}
+\index{Uninject@{Uninject}!flashpoint.cpp@{flashpoint.cpp}}
+\doxysubsubsection{\texorpdfstring{Uninject()}{Uninject()}}
+{\footnotesize\ttfamily void Uninject (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Uninject this module from the game. 
+
+
+
+Definition at line \mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_source_l00050}{50}} of file \mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp_source}{flashpoint.\+cpp}}.
+

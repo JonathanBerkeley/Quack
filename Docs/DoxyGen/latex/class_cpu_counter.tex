@@ -1,0 +1,122 @@
+\hypertarget{class_cpu_counter}{}\doxysection{Cpu\+Counter Class Reference}
+\label{class_cpu_counter}\index{CpuCounter@{CpuCounter}}
+
+
+RAII Wrapper for querying cpu usage through Pdh Win\+API.  
+
+
+
+
+{\ttfamily \#include $<$Lib/\+Quack-\/shared/cpu\+\_\+counter.\+hpp$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_cpu_counter_a3a6eac534e74f44946f09d0a40c3e18b}{Cpu\+Counter}} ()
+\item 
+\mbox{\hyperlink{class_cpu_counter_ac783d677a7becc1a89d0cbb7ec5b85b8}{$\sim$\+Cpu\+Counter}} ()
+\item 
+\mbox{\hyperlink{class_cpu_counter_a434e43475aae4a9cb713b17393d5147a}{Cpu\+Counter}} (const \mbox{\hyperlink{class_cpu_counter}{Cpu\+Counter}} \&other)
+\item 
+\mbox{\hyperlink{class_cpu_counter_a2c279420c27610b1978c99f959217116}{Cpu\+Counter}} (\mbox{\hyperlink{class_cpu_counter}{Cpu\+Counter}} \&\&other) noexcept
+\item 
+\mbox{\hyperlink{class_cpu_counter}{Cpu\+Counter}} \& \mbox{\hyperlink{class_cpu_counter_a261b57ed843716f26039dda13d1752d1}{operator=}} (const \mbox{\hyperlink{class_cpu_counter}{Cpu\+Counter}} \&other)
+\item 
+\mbox{\hyperlink{class_cpu_counter}{Cpu\+Counter}} \& \mbox{\hyperlink{class_cpu_counter_ad719b5ab8bc5f145d282e5f28b3c4ccc}{operator=}} (\mbox{\hyperlink{class_cpu_counter}{Cpu\+Counter}} \&\&other) noexcept
+\item 
+double \mbox{\hyperlink{class_cpu_counter_a356d4ed5cd4aee9f499a845e0712204e}{operator()}} () const
+\begin{DoxyCompactList}\small\item\em Queries PDH for cpu usage statistics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+RAII Wrapper for querying cpu usage through Pdh Win\+API. 
+
+Win\+API details\+: \href{https://docs.microsoft.com/en-us/windows/win32/api/pdh/}{\texttt{ https\+://docs.\+microsoft.\+com/en-\/us/windows/win32/api/pdh/}} 
+
+Definition at line \mbox{\hyperlink{cpu__counter_8hpp_source_l00011}{11}} of file \mbox{\hyperlink{cpu__counter_8hpp_source}{cpu\+\_\+counter.\+hpp}}.
+
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_cpu_counter_a3a6eac534e74f44946f09d0a40c3e18b}\label{class_cpu_counter_a3a6eac534e74f44946f09d0a40c3e18b}} 
+\index{CpuCounter@{CpuCounter}!CpuCounter@{CpuCounter}}
+\index{CpuCounter@{CpuCounter}!CpuCounter@{CpuCounter}}
+\doxysubsubsection{\texorpdfstring{CpuCounter()}{CpuCounter()}\hspace{0.1cm}{\footnotesize\ttfamily [1/3]}}
+{\footnotesize\ttfamily Cpu\+Counter\+::\+Cpu\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{cpu__counter_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{cpu__counter_8cpp_source}{cpu\+\_\+counter.\+cpp}}.
+
+\mbox{\Hypertarget{class_cpu_counter_ac783d677a7becc1a89d0cbb7ec5b85b8}\label{class_cpu_counter_ac783d677a7becc1a89d0cbb7ec5b85b8}} 
+\index{CpuCounter@{CpuCounter}!````~CpuCounter@{$\sim$CpuCounter}}
+\index{````~CpuCounter@{$\sim$CpuCounter}!CpuCounter@{CpuCounter}}
+\doxysubsubsection{\texorpdfstring{$\sim$CpuCounter()}{~CpuCounter()}}
+{\footnotesize\ttfamily Cpu\+Counter\+::$\sim$\+Cpu\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{cpu__counter_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{cpu__counter_8cpp_source}{cpu\+\_\+counter.\+cpp}}.
+
+\mbox{\Hypertarget{class_cpu_counter_a434e43475aae4a9cb713b17393d5147a}\label{class_cpu_counter_a434e43475aae4a9cb713b17393d5147a}} 
+\index{CpuCounter@{CpuCounter}!CpuCounter@{CpuCounter}}
+\index{CpuCounter@{CpuCounter}!CpuCounter@{CpuCounter}}
+\doxysubsubsection{\texorpdfstring{CpuCounter()}{CpuCounter()}\hspace{0.1cm}{\footnotesize\ttfamily [2/3]}}
+{\footnotesize\ttfamily Cpu\+Counter\+::\+Cpu\+Counter (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_cpu_counter}{Cpu\+Counter}} \&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+\mbox{\Hypertarget{class_cpu_counter_a2c279420c27610b1978c99f959217116}\label{class_cpu_counter_a2c279420c27610b1978c99f959217116}} 
+\index{CpuCounter@{CpuCounter}!CpuCounter@{CpuCounter}}
+\index{CpuCounter@{CpuCounter}!CpuCounter@{CpuCounter}}
+\doxysubsubsection{\texorpdfstring{CpuCounter()}{CpuCounter()}\hspace{0.1cm}{\footnotesize\ttfamily [3/3]}}
+{\footnotesize\ttfamily Cpu\+Counter\+::\+Cpu\+Counter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cpu_counter}{Cpu\+Counter}} \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{cpu__counter_8cpp_source_l00024}{24}} of file \mbox{\hyperlink{cpu__counter_8cpp_source}{cpu\+\_\+counter.\+cpp}}.
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_cpu_counter_a356d4ed5cd4aee9f499a845e0712204e}\label{class_cpu_counter_a356d4ed5cd4aee9f499a845e0712204e}} 
+\index{CpuCounter@{CpuCounter}!operator()@{operator()}}
+\index{operator()@{operator()}!CpuCounter@{CpuCounter}}
+\doxysubsubsection{\texorpdfstring{operator()()}{operator()()}}
+{\footnotesize\ttfamily double Cpu\+Counter\+::operator() (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Queries PDH for cpu usage statistics. 
+
+\begin{DoxyReturn}{Returns}
+Returns double representing total CPU usage as a percent 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{cpu__counter_8cpp_source_l00049}{49}} of file \mbox{\hyperlink{cpu__counter_8cpp_source}{cpu\+\_\+counter.\+cpp}}.
+
+\mbox{\Hypertarget{class_cpu_counter_a261b57ed843716f26039dda13d1752d1}\label{class_cpu_counter_a261b57ed843716f26039dda13d1752d1}} 
+\index{CpuCounter@{CpuCounter}!operator=@{operator=}}
+\index{operator=@{operator=}!CpuCounter@{CpuCounter}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cpu_counter}{Cpu\+Counter}} \& Cpu\+Counter\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_cpu_counter}{Cpu\+Counter}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{cpu__counter_8cpp_source_l00028}{28}} of file \mbox{\hyperlink{cpu__counter_8cpp_source}{cpu\+\_\+counter.\+cpp}}.
+
+\mbox{\Hypertarget{class_cpu_counter_ad719b5ab8bc5f145d282e5f28b3c4ccc}\label{class_cpu_counter_ad719b5ab8bc5f145d282e5f28b3c4ccc}} 
+\index{CpuCounter@{CpuCounter}!operator=@{operator=}}
+\index{operator=@{operator=}!CpuCounter@{CpuCounter}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_cpu_counter}{Cpu\+Counter}} \& Cpu\+Counter\+::operator= (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_cpu_counter}{Cpu\+Counter}} \&\&}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [noexcept]}}
+
+
+
+Definition at line \mbox{\hyperlink{cpu__counter_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{cpu__counter_8cpp_source}{cpu\+\_\+counter.\+cpp}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\+\_\+\+\_\+quack/\+Lib/\+Quack-\/shared/\mbox{\hyperlink{cpu__counter_8hpp}{cpu\+\_\+counter.\+hpp}}\item 
+\+\_\+\+\_\+quack/\+Lib/\+Quack-\/shared/\mbox{\hyperlink{cpu__counter_8cpp}{cpu\+\_\+counter.\+cpp}}\end{DoxyCompactItemize}

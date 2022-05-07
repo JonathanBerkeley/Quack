@@ -1,0 +1,33 @@
+\hypertarget{player_8cpp_source}{}\doxysection{player.\+cpp}
+\label{player_8cpp_source}\index{\_\_quack/Red team/Inertia-\/cheat/Inertia-\/cheat/player.cpp@{\_\_quack/Red team/Inertia-\/cheat/Inertia-\/cheat/player.cpp}}
+\mbox{\hyperlink{player_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00001}00001 \textcolor{comment}{// ReSharper disable CppClangTidyPerformanceNoIntToPtr}}
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2pch_8hpp}{pch.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{player_8hpp}{player.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2data_8hpp}{data.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00006}00006 \textcolor{keyword}{using namespace }\mbox{\hyperlink{namespacedata}{data}}; \textcolor{comment}{// For offset data}}
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00013}\mbox{\hyperlink{player_8cpp_a9911d6b45909d37e1df31a53759f33a7}{00013}} std::optional<Player> \mbox{\hyperlink{player_8cpp_a9911d6b45909d37e1df31a53759f33a7}{GetPlayer}}() \{}
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00014}00014     \textcolor{keyword}{auto} start\_point = \textcolor{keyword}{reinterpret\_cast<}std::uintptr\_t\textcolor{keyword}{>}(GetModuleHandleA(\textcolor{stringliteral}{"{}UnityPlayer.dll"{}}));}
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00015}00015     start\_point += \mbox{\hyperlink{namespacedata_1_1offsets_a128a41352a2e9253e70a0d8173d26d29}{offsets::player}}.\mbox{\hyperlink{structdata_1_1_pointer_chain_ab873de23a6d44d2c78211afaf0d374e2}{start\_point}};}
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00016}00016 }
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00017}00017     \textcolor{comment}{// Get a pointer to health}}
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00018}00018     \textcolor{keyword}{const} \textcolor{keyword}{auto} health\_ptr = \mbox{\hyperlink{memory_8cpp_a7c0a4d7a0875931362a9d353095165d9}{TraverseChain}}(start\_point, \mbox{\hyperlink{namespacedata_1_1offsets_a128a41352a2e9253e70a0d8173d26d29}{offsets::player}}.ptr\_chain).value\_or(0u);}
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00020}00020     \textcolor{keywordflow}{if} (!health\_ptr)}
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00021}00021         \textcolor{keywordflow}{return} std::nullopt;}
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00022}00022     }
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00023}00023     \textcolor{keyword}{const} \textcolor{keyword}{auto} ammo\_ptr = health\_ptr -\/ 0x4;}
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00024}00024 }
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00025}00025     \textcolor{keyword}{const} \mbox{\hyperlink{struct_player}{Player}} \mbox{\hyperlink{namespacedata_1_1offsets_a128a41352a2e9253e70a0d8173d26d29}{player}}\{}
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00026}00026         .health = \textcolor{keyword}{reinterpret\_cast<}std::int32\_t*\textcolor{keyword}{>}(health\_ptr),}
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00027}00027         .ammo = \textcolor{keyword}{reinterpret\_cast<}std::int32\_t*\textcolor{keyword}{>}(ammo\_ptr)}
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00028}00028     \};}
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00030}00030     \textcolor{keywordflow}{return} \mbox{\hyperlink{namespacedata_1_1offsets_a128a41352a2e9253e70a0d8173d26d29}{player}};}
+\DoxyCodeLine{\Hypertarget{player_8cpp_source_l00031}00031 \}}
+
+\end{DoxyCode}

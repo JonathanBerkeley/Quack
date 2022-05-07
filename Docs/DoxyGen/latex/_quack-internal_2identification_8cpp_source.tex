@@ -1,0 +1,25 @@
+\hypertarget{_quack-internal_2identification_8cpp_source}{}\doxysection{identification.\+cpp}
+\label{_quack-internal_2identification_8cpp_source}\index{\_\_quack/Quack-\/internal/identification.cpp@{\_\_quack/Quack-\/internal/identification.cpp}}
+\mbox{\hyperlink{_quack-internal_2identification_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2identification_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2pch_8hpp}{pch.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2identification_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2identification_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include "{}d3d9.h"{}}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2identification_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#pragma comment(lib, "{}d3d9.lib"{}})}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2identification_8cpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2identification_8cpp_source_l00006}\mbox{\hyperlink{_quack-internal_2identification_8cpp_a9dc8e779b60a6aced538aab8c02d597e}{00006}} \textcolor{keywordtype}{void} \mbox{\hyperlink{_quack-internal_2identification_8cpp_a9dc8e779b60a6aced538aab8c02d597e}{GetGPUID}}() \{}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2identification_8cpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2identification_8cpp_source_l00008}00008     \textcolor{comment}{// https://docs.microsoft.com/en-\/us/windows/win32/api/sysinfoapi/nf-\/sysinfoapi-\/getsystemfirmwaretable}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2identification_8cpp_source_l00009}00009     \textcolor{keyword}{auto} smbios = GetSystemFirmwareTable(}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2identification_8cpp_source_l00010}00010         \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(\textcolor{stringliteral}{'RSMB'}),}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2identification_8cpp_source_l00011}00011         0,}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2identification_8cpp_source_l00012}00012         \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2identification_8cpp_source_l00013}00013         0}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2identification_8cpp_source_l00014}00014     );}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2identification_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2identification_8cpp_source_l00016}00016     \textcolor{keyword}{auto} dummy\_object = Direct3DCreate9(D3D\_SDK\_VERSION);}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2identification_8cpp_source_l00017}00017     \textcolor{keyword}{auto} adapter\_count = dummy\_object-\/>GetAdapterCount();}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2identification_8cpp_source_l00018}00018     \textcolor{comment}{// todo: Hwid}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2identification_8cpp_source_l00019}00019 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,117 @@
+\hypertarget{main_8h}{}\doxysection{\+\_\+\+\_\+quack/\+Red team/\+Destroject/src/main.h File Reference}
+\label{main_8h}\index{\_\_quack/Red team/Destroject/src/main.h@{\_\_quack/Red team/Destroject/src/main.h}}
+{\ttfamily \#include $<$Windows.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{main_8h_ae7680764507ace44e3430634e684937f}{is\+\_\+proc\+\_\+running}} (const wchar\+\_\+t $\ast$proc\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Check if a given process is currently running. \end{DoxyCompactList}\item 
+DWORD \mbox{\hyperlink{main_8h_abde8b376eb5f3d06a7774a3576868dcd}{get\+\_\+proc\+\_\+id}} (const wchar\+\_\+t $\ast$proc\+\_\+name)
+\begin{DoxyCompactList}\small\item\em Returns a process ID for given process name. \end{DoxyCompactList}\item 
+HANDLE \mbox{\hyperlink{main_8h_a7991293c35ca7f2de412ddc7954bc179}{inject\+\_\+into\+\_\+proc}} (const std\+::string \&dll\+\_\+name, const int process\+\_\+id)
+\begin{DoxyCompactList}\small\item\em Injects DLL into process through Load\+Library method. \end{DoxyCompactList}\item 
+HANDLE \mbox{\hyperlink{main_8h_a525971cb2def1efb5a484bdb7aede97c}{map\+\_\+into\+\_\+proc}} (const std\+::string \&dll\+\_\+name, const int process\+\_\+id)
+\item 
+void \mbox{\hyperlink{main_8h_a5aacbb489d670e9343296d4e91b20ac7}{sleep}} (long long milliseconds)
+\begin{DoxyCompactList}\small\item\em Wrapper around std\+::this\+\_\+thread\+::sleep\+\_\+for() with long long to milliseconds conversion. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{main_8h_abde8b376eb5f3d06a7774a3576868dcd}\label{main_8h_abde8b376eb5f3d06a7774a3576868dcd}} 
+\index{main.h@{main.h}!get\_proc\_id@{get\_proc\_id}}
+\index{get\_proc\_id@{get\_proc\_id}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{get\_proc\_id()}{get\_proc\_id()}}
+{\footnotesize\ttfamily DWORD get\+\_\+proc\+\_\+id (\begin{DoxyParamCaption}\item[{const wchar\+\_\+t $\ast$}]{proc\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Returns a process ID for given process name. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em proc\+\_\+name} & Process name to retrieve process ID of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Process ID 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00177}{177}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8h_a7991293c35ca7f2de412ddc7954bc179}\label{main_8h_a7991293c35ca7f2de412ddc7954bc179}} 
+\index{main.h@{main.h}!inject\_into\_proc@{inject\_into\_proc}}
+\index{inject\_into\_proc@{inject\_into\_proc}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{inject\_into\_proc()}{inject\_into\_proc()}}
+{\footnotesize\ttfamily HANDLE inject\+\_\+into\+\_\+proc (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{dll\+\_\+name,  }\item[{const int}]{process\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Injects DLL into process through Load\+Library method. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dll\+\_\+name} & Name of DLL to be injected \\
+\hline
+{\em process\+\_\+id} & ID of process that is to be targeted for injection \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Handle if successful, 0 otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00204}{204}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8h_ae7680764507ace44e3430634e684937f}\label{main_8h_ae7680764507ace44e3430634e684937f}} 
+\index{main.h@{main.h}!is\_proc\_running@{is\_proc\_running}}
+\index{is\_proc\_running@{is\_proc\_running}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{is\_proc\_running()}{is\_proc\_running()}}
+{\footnotesize\ttfamily bool is\+\_\+proc\+\_\+running (\begin{DoxyParamCaption}\item[{const wchar\+\_\+t $\ast$}]{proc\+\_\+name }\end{DoxyParamCaption})}
+
+
+
+Check if a given process is currently running. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em proc\+\_\+name} & Name of the process \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the process is currently running, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00154}{154}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8h_a525971cb2def1efb5a484bdb7aede97c}\label{main_8h_a525971cb2def1efb5a484bdb7aede97c}} 
+\index{main.h@{main.h}!map\_into\_proc@{map\_into\_proc}}
+\index{map\_into\_proc@{map\_into\_proc}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{map\_into\_proc()}{map\_into\_proc()}}
+{\footnotesize\ttfamily HANDLE map\+\_\+into\+\_\+proc (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{dll\+\_\+name,  }\item[{const int}]{process\+\_\+id }\end{DoxyParamCaption})}
+
+
+
+Definition at line \mbox{\hyperlink{main_8cpp_source_l00268}{268}} of file \mbox{\hyperlink{main_8cpp_source}{main.\+cpp}}.
+
+\mbox{\Hypertarget{main_8h_a5aacbb489d670e9343296d4e91b20ac7}\label{main_8h_a5aacbb489d670e9343296d4e91b20ac7}} 
+\index{main.h@{main.h}!sleep@{sleep}}
+\index{sleep@{sleep}!main.h@{main.h}}
+\doxysubsubsection{\texorpdfstring{sleep()}{sleep()}}
+{\footnotesize\ttfamily void sleep (\begin{DoxyParamCaption}\item[{const long long}]{milliseconds }\end{DoxyParamCaption})}
+
+
+
+Wrapper around std\+::this\+\_\+thread\+::sleep\+\_\+for() with long long to milliseconds conversion. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em milliseconds} & Milliseconds value of time to sleep for \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{util_8cpp_source_l00103}{103}} of file \mbox{\hyperlink{util_8cpp_source}{util.\+cpp}}.
+

@@ -1,0 +1,33 @@
+\hypertarget{_quack-internal_2data_8hpp_source}{}\doxysection{data.\+hpp}
+\label{_quack-internal_2data_8hpp_source}\index{\_\_quack/Quack-\/internal/data.hpp@{\_\_quack/Quack-\/internal/data.hpp}}
+\mbox{\hyperlink{_quack-internal_2data_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00002}00002 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2pch_8hpp}{pch.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00003}00003 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00004}00004 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{network_8hpp}{network.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00006}\mbox{\hyperlink{namespacedata}{00006}} \textcolor{keyword}{namespace }\mbox{\hyperlink{namespacedata}{data}} \{}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00007}00007     \textcolor{comment}{// Used for looping, setting to false will deactivate continued module functionality}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00008}\mbox{\hyperlink{namespacedata_afcf2dfaa3b0aa888223f59f394e2b0e0}{00008}}     \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{namespacedata_afcf2dfaa3b0aa888223f59f394e2b0e0}{running}} = \textcolor{keyword}{true};}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00009}00009     }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00010}00010     \textcolor{comment}{// Information about the process that this .DLL is inside}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00011}\mbox{\hyperlink{structdata_1_1_process_info}{00011}}     \textcolor{keyword}{struct }\mbox{\hyperlink{structdata_1_1_process_info}{ProcessInfo}} \{}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00012}00012         \textcolor{comment}{// Process specific}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00013}\mbox{\hyperlink{structdata_1_1_process_info_afafe395662998d8209b04d0810f8e60f}{00013}}         HANDLE \mbox{\hyperlink{structdata_1_1_process_info_afafe395662998d8209b04d0810f8e60f}{handle}};}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00014}\mbox{\hyperlink{structdata_1_1_process_info_ae636ceaa4dae6399b29431fa56b8d3a8}{00014}}         DWORD \mbox{\hyperlink{structdata_1_1_process_info_ae636ceaa4dae6399b29431fa56b8d3a8}{pid}};}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00016}00016         \textcolor{comment}{// Module specific}}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00017}\mbox{\hyperlink{structdata_1_1_process_info_a3ec3376bb54480cac694ff36874c6f3b}{00017}}         HMODULE \mbox{\hyperlink{structdata_1_1_process_info_a3ec3376bb54480cac694ff36874c6f3b}{this\_module}};}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00018}00018     \};}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00019}00019     }
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00023}\mbox{\hyperlink{classdata_1_1_signatures}{00023}}     \textcolor{keyword}{class }\mbox{\hyperlink{classdata_1_1_signatures}{Signatures}} \{}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00024}00024     \textcolor{keyword}{private}:}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00025}00025         \textcolor{keyword}{using }name = std::string;}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00026}00026         \textcolor{keyword}{using }pattern = std::vector<std::string>;}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00027}00027     \textcolor{keyword}{public}:}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00028}\mbox{\hyperlink{classdata_1_1_signatures_aa8435e1f1391139a9c9ce6171934b0a6}{00028}}         std::vector<std::pair<name, pattern>> \mbox{\hyperlink{classdata_1_1_signatures_aa8435e1f1391139a9c9ce6171934b0a6}{cheats}}\{\};}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00029}00029     \};}
+\DoxyCodeLine{\Hypertarget{_quack-internal_2data_8hpp_source_l00030}00030 \}}
+
+\end{DoxyCode}

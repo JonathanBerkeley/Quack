@@ -1,0 +1,60 @@
+\hypertarget{memory_8cpp}{}\doxysection{\+\_\+\+\_\+quack/\+Red team/\+Inertia-\/cheat/\+Inertia-\/cheat/memory.cpp File Reference}
+\label{memory_8cpp}\index{\_\_quack/Red team/Inertia-\/cheat/Inertia-\/cheat/memory.cpp@{\_\_quack/Red team/Inertia-\/cheat/Inertia-\/cheat/memory.cpp}}
+{\ttfamily \#include \char`\"{}pch.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}memory.\+hpp\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{memory_8cpp_a383441e07eff1fd3167a90dc9732729c}{Pointer\+Is\+Valid}} (const void $\ast$ptr)
+\begin{DoxyCompactList}\small\item\em Check if a pointer is valid. \end{DoxyCompactList}\item 
+std\+::optional$<$ std\+::uint32\+\_\+t $>$ \mbox{\hyperlink{memory_8cpp_a7c0a4d7a0875931362a9d353095165d9}{Traverse\+Chain}} (std\+::uint32\+\_\+t start\+\_\+point, const std\+::vector$<$ std\+::uint32\+\_\+t $>$ \&ptr\+\_\+chain)
+\begin{DoxyCompactList}\small\item\em Traverses a chain of pointers to find the final point. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{memory_8cpp_a383441e07eff1fd3167a90dc9732729c}\label{memory_8cpp_a383441e07eff1fd3167a90dc9732729c}} 
+\index{memory.cpp@{memory.cpp}!PointerIsValid@{PointerIsValid}}
+\index{PointerIsValid@{PointerIsValid}!memory.cpp@{memory.cpp}}
+\doxysubsubsection{\texorpdfstring{PointerIsValid()}{PointerIsValid()}}
+{\footnotesize\ttfamily bool Pointer\+Is\+Valid (\begin{DoxyParamCaption}\item[{const void $\ast$}]{ptr }\end{DoxyParamCaption})}
+
+
+
+Check if a pointer is valid. 
+
+Adapted from\+: \href{https://guidedhacking.com/threads/testing-if-pointer-is-invalid.13222/\#post-77709}{\texttt{ https\+://guidedhacking.\+com/threads/testing-\/if-\/pointer-\/is-\/invalid.\+13222/\#post-\/77709}} 
+\begin{DoxyParams}{Parameters}
+{\em ptr} & Pointer to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if pointer is valid 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{memory_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{memory_8cpp_source}{memory.\+cpp}}.
+
+\mbox{\Hypertarget{memory_8cpp_a7c0a4d7a0875931362a9d353095165d9}\label{memory_8cpp_a7c0a4d7a0875931362a9d353095165d9}} 
+\index{memory.cpp@{memory.cpp}!TraverseChain@{TraverseChain}}
+\index{TraverseChain@{TraverseChain}!memory.cpp@{memory.cpp}}
+\doxysubsubsection{\texorpdfstring{TraverseChain()}{TraverseChain()}}
+{\footnotesize\ttfamily std\+::optional$<$ std\+::uint32\+\_\+t $>$ Traverse\+Chain (\begin{DoxyParamCaption}\item[{std\+::uint32\+\_\+t}]{start\+\_\+point,  }\item[{const std\+::vector$<$ std\+::uint32\+\_\+t $>$ \&}]{ptr\+\_\+chain }\end{DoxyParamCaption})}
+
+
+
+Traverses a chain of pointers to find the final point. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em start\+\_\+point} & Address to begin traversal \\
+\hline
+{\em ptr\+\_\+chain} & Chain of pointers to resolve final address of \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Address the chain leads to on success, or std\+::nullopt on failure 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{memory_8cpp_source_l00036}{36}} of file \mbox{\hyperlink{memory_8cpp_source}{memory.\+cpp}}.
+

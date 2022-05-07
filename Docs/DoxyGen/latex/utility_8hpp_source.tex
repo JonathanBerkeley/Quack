@@ -1,0 +1,33 @@
+\hypertarget{utility_8hpp_source}{}\doxysection{utility.\+hpp}
+\label{utility_8hpp_source}\index{\_\_quack/Quack-\/client/utility.hpp@{\_\_quack/Quack-\/client/utility.hpp}}
+\mbox{\hyperlink{utility_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00001}00001 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00003}00003 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2constants_8hpp}{constants.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00004}00004 }
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00005}00005 \textcolor{keywordtype}{void} \mbox{\hyperlink{utility_8hpp_a61e909d98c60465d776d9cbf1da6a0bd}{Log}}(\textcolor{keyword}{const} std::string\& str);}
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00006}00006 \textcolor{keywordtype}{void} \mbox{\hyperlink{utility_8hpp_a61e909d98c60465d776d9cbf1da6a0bd}{Log}}(\textcolor{keyword}{const} std::wstring\& w\_str);}
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00013}00013 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00014}\mbox{\hyperlink{utility_8hpp_ad975235123c7b7e0248847508f7debd8}{00014}} \textcolor{keywordtype}{void} \mbox{\hyperlink{utility_8hpp_a61e909d98c60465d776d9cbf1da6a0bd}{Log}}(std::initializer\_list<T> \mbox{\hyperlink{namespacedata}{data}}) \{}
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00015}00015     \textcolor{keywordflow}{if} \textcolor{keyword}{constexpr} (constants::DBG)}
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00016}00016         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto}\& segment : \mbox{\hyperlink{namespacedata}{data}})}
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00017}00017             std::cout << segment << \textcolor{charliteral}{'\(\backslash\)n'};}
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00018}00018 \}}
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00019}00019 }
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00027}00027 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T, \textcolor{keyword}{typename} U>}
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00028}\mbox{\hyperlink{utility_8hpp_a9952fc2b17b16940f8dd3d32ed675d60}{00028}} T \mbox{\hyperlink{utility_8hpp_a9952fc2b17b16940f8dd3d32ed675d60}{recast}}(U\&\& u) \{}
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00029}00029     \textcolor{keywordflow}{return} \textcolor{keyword}{reinterpret\_cast<}T\textcolor{keyword}{>}(std::forward<U>(u));}
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00030}00030 \}}
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00042}00042 \textcolor{keyword}{template} <\textcolor{keyword}{typename} T>}
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00043}\mbox{\hyperlink{utility_8hpp_a9dbea9df0654c3d551d35ae4bd7d4c8f}{00043}} std::optional<std::remove\_reference\_t<T>> \mbox{\hyperlink{utility_8hpp_a9dbea9df0654c3d551d35ae4bd7d4c8f}{IfNotEmpty}}(T\&\& t) \{}
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00044}00044     \textcolor{keywordflow}{if} (t.empty())}
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00045}00045         \textcolor{keywordflow}{return} \{\};}
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00046}00046     \textcolor{keywordflow}{return} std::move(t);  \textcolor{comment}{// NOLINT(bugprone-\/move-\/forwarding-\/reference) Only used for return statements}}
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00047}00047 \}}
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00048}00048 }
+\DoxyCodeLine{\Hypertarget{utility_8hpp_source_l00049}00049 std::wstring \mbox{\hyperlink{utility_8hpp_aed561d723ab83be5f60ab6021f49621b}{wstring\_to\_lower}}(\textcolor{keyword}{const} std::wstring\& wide\_str);}
+
+\end{DoxyCode}

@@ -1,0 +1,31 @@
+\hypertarget{_quack-client_2identification_8cpp}{}\doxysection{\+\_\+\+\_\+quack/\+Quack-\/client/identification.cpp File Reference}
+\label{_quack-client_2identification_8cpp}\index{\_\_quack/Quack-\/client/identification.cpp@{\_\_quack/Quack-\/client/identification.cpp}}
+{\ttfamily \#include \char`\"{}pch.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}utility.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}identification.\+hpp\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}hash-\/library/sha256.\+hpp\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::optional$<$ \mbox{\hyperlink{_quack-client_2identification_8hpp_ae0fb0ca3b7df7ef8e93e8326650959b7}{Hashes}} $>$ \mbox{\hyperlink{_quack-client_2identification_8cpp_a5f70ff2aacfeca32dfc206d0d88ebe2d}{Get\+Arp\+Mac\+Hashes}} ()
+\begin{DoxyCompactList}\small\item\em Enumerate over Address Resolution Protocol (ARP) entries to extract hashes of MAC address This can be used to identify users that are ban-\/evading. Multiple users using the same network could trigger a match though, so it should be used as a suspicious indicator only. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{_quack-client_2identification_8cpp_a5f70ff2aacfeca32dfc206d0d88ebe2d}\label{_quack-client_2identification_8cpp_a5f70ff2aacfeca32dfc206d0d88ebe2d}} 
+\index{identification.cpp@{identification.cpp}!GetArpMacHashes@{GetArpMacHashes}}
+\index{GetArpMacHashes@{GetArpMacHashes}!identification.cpp@{identification.cpp}}
+\doxysubsubsection{\texorpdfstring{GetArpMacHashes()}{GetArpMacHashes()}}
+{\footnotesize\ttfamily std\+::optional$<$ \mbox{\hyperlink{_quack-client_2identification_8hpp_ae0fb0ca3b7df7ef8e93e8326650959b7}{Hashes}} $>$ Get\+Arp\+Mac\+Hashes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Enumerate over Address Resolution Protocol (ARP) entries to extract hashes of MAC address This can be used to identify users that are ban-\/evading. Multiple users using the same network could trigger a match though, so it should be used as a suspicious indicator only. 
+
+\begin{DoxyReturn}{Returns}
+Vector of SHA256 hashes on success, std\+::nullopt on failure 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_quack-client_2identification_8cpp_source_l00018}{18}} of file \mbox{\hyperlink{_quack-client_2identification_8cpp_source}{identification.\+cpp}}.
+

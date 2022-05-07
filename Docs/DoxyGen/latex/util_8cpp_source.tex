@@ -1,0 +1,106 @@
+\hypertarget{util_8cpp_source}{}\doxysection{util.\+cpp}
+\label{util_8cpp_source}\index{\_\_quack/Red team/Destroject/src/util.cpp@{\_\_quack/Red team/Destroject/src/util.cpp}}
+\mbox{\hyperlink{util_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00001}00001 \textcolor{comment}{// ReSharper disable CppLocalVariableMayBeConst}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00002}00002 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00005}00005 \textcolor{preprocessor}{\#include <chrono>}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include <thread>}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00007}00007 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00008}00008 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{util_8h}{util.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00009}00009 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{constants_8h}{constants.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00010}00010 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{main_8h}{main.h}}"{}}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00017}\mbox{\hyperlink{util_8cpp_ac50769322189d486044db9d60a5ea33d}{00017}} \mbox{\hyperlink{structfile__contents}{file\_contents}} \mbox{\hyperlink{util_8cpp_ac50769322189d486044db9d60a5ea33d}{config\_read}}() \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00018}00018     \textcolor{keywordflow}{if} (std::ifstream in\{ \mbox{\hyperlink{namespaceconstants_a8afa299fdf89c148f82f3fbd2e7c1af4}{constants::CONFIG}} \}; in) \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00019}00019         \mbox{\hyperlink{structfile__contents}{file\_contents}} contents\{\};}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00021}00021         \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00022}00022             std::getline(in, contents.target);}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00023}00023             contents.target = contents.target.substr(}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00024}00024                 contents.target.find(\textcolor{charliteral}{':'}) + 1u}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00025}00025             );}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00026}00026 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00027}00027             std::getline(in, contents.mode);}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00028}00028             contents.mode = contents.mode.substr(}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00029}00029                 contents.mode.find(\textcolor{charliteral}{':'}) + 1u}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00030}00030             );}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00032}00032             \textcolor{keywordflow}{return} contents;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00033}00033         \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00034}00034         \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::out\_of\_range\&) \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00035}00035             contents.error = \textcolor{stringliteral}{"{}(ERROR) Invalid config, delete it"{}};}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00036}00036             \textcolor{keywordflow}{return} contents;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00037}00037         \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00038}00038     \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00039}00039     \textcolor{keywordflow}{return} \mbox{\hyperlink{structfile__contents}{file\_contents}}\{ .\mbox{\hyperlink{structfile__contents_a97ec5e76b4ae43000b508bfc484ffd09}{error}} = \textcolor{stringliteral}{"{}(ERROR) Couldn't find or open config!"{}} \};}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00040}00040 \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00041}00041 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00042}00042 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00047}\mbox{\hyperlink{util_8cpp_a5354aaa283ee1eb99170672768a6f4ce}{00047}} \textcolor{keywordtype}{void} \mbox{\hyperlink{util_8cpp_a5354aaa283ee1eb99170672768a6f4ce}{config\_write}}(\textcolor{keyword}{const} std::string\& content) \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00048}00048     \textcolor{keywordflow}{if} (std::ofstream \mbox{\hyperlink{namespacecfg}{cfg}} \{ \mbox{\hyperlink{namespaceconstants_a8afa299fdf89c148f82f3fbd2e7c1af4}{constants::CONFIG}} \}; \mbox{\hyperlink{namespacecfg}{cfg}}) \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00049}00049         \mbox{\hyperlink{namespacecfg}{cfg}} << content;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00050}00050     \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00051}00051 \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00052}00052 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00053}00053 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00054}00054 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00059}\mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{00059}} \textcolor{keywordtype}{void} \mbox{\hyperlink{util_8cpp_af1fb285bc928880e22a89589717535c9}{log\_write}}(std::string text) \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00060}00060     HANDLE file\_handle = CreateFileW(}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00061}00061         \mbox{\hyperlink{util_8h_a7e6ce119f90da717c2dc75712e439680}{LOG\_FILE}},}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00062}00062         FILE\_APPEND\_DATA,}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00063}00063         FILE\_SHARE\_READ,}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00064}00064         \textcolor{keyword}{nullptr},}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00065}00065         OPEN\_ALWAYS,}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00066}00066         FILE\_ATTRIBUTE\_NORMAL,}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00067}00067         \textcolor{keyword}{nullptr}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00068}00068     );}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00069}00069 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00070}00070     \textcolor{keywordflow}{if} (file\_handle == INVALID\_HANDLE\_VALUE)}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00071}00071         MessageBoxW(\textcolor{keyword}{nullptr}, L\textcolor{stringliteral}{"{}(destroject) Failed to open error log file"{}}, \textcolor{keyword}{nullptr}, 0);}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00072}00072 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00073}00073     DWORD written;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00074}00074     text += \textcolor{stringliteral}{"{}\(\backslash\)r\(\backslash\)n"{}};}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00075}00075     \textcolor{keywordflow}{try} \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00076}00076         WriteFile(}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00077}00077             file\_handle,}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00078}00078             text.c\_str(),}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00079}00079             \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(text.length()),}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00080}00080             \&written,}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00081}00081             \textcolor{keyword}{nullptr}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00082}00082         );}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00083}00083     \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00084}00084     \textcolor{keywordflow}{catch} (\textcolor{keyword}{const} std::exception\& ex) \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00085}00085         \textcolor{keyword}{const} std::string exception\_log = \textcolor{stringliteral}{"{}Exception when trying to write previous entry to log file: "{}} + std::string\{ ex.what() \};}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00086}00086         WriteFile(}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00087}00087             file\_handle,}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00088}00088             exception\_log.c\_str(),}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00089}00089             \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(exception\_log.length()),}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00090}00090             \&written,}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00091}00091             \textcolor{keyword}{nullptr}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00092}00092         );}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00093}00093     \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00094}00094     CloseHandle(file\_handle);}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00095}00095 \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00096}00096 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00097}00097 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00098}00098 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00103}\mbox{\hyperlink{main_8h_a5aacbb489d670e9343296d4e91b20ac7}{00103}} \textcolor{keywordtype}{void} \mbox{\hyperlink{util_8cpp_ab6c0e16c4404154111dd21586df9a55f}{sleep}}(\textcolor{keyword}{const} \textcolor{keywordtype}{long} \textcolor{keywordtype}{long} milliseconds) \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00104}00104     std::this\_thread::sleep\_for(std::chrono::milliseconds(milliseconds));}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00105}00105 \}}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00106}00106 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00107}00107 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00108}00108 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00114}\mbox{\hyperlink{util_8cpp_ad16da7741df83e60c5ac24fbc92dcccb}{00114}} std::string \mbox{\hyperlink{util_8cpp_ad16da7741df83e60c5ac24fbc92dcccb}{str\_to\_lower}}(\textcolor{keyword}{const} std::string\& str) \{}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00115}00115     std::string output;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00116}00116 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00117}00117     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} c : str)}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00118}00118         output += \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{char}\textcolor{keyword}{>}(std::tolower(c));}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00119}00119 }
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00120}00120     \textcolor{keywordflow}{return} output;}
+\DoxyCodeLine{\Hypertarget{util_8cpp_source_l00121}00121 \}}
+
+\end{DoxyCode}

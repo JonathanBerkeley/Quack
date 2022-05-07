@@ -1,0 +1,5 @@
+# Doxygen files
+!*.html
+!*.tex
+!*.js
+!*.css

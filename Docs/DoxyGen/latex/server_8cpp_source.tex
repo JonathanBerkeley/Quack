@@ -1,0 +1,43 @@
+\hypertarget{server_8cpp_source}{}\doxysection{server.\+cpp}
+\label{server_8cpp_source}\index{\_\_quack/Quack-\/client/server.cpp@{\_\_quack/Quack-\/client/server.cpp}}
+\mbox{\hyperlink{server_8cpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00001}00001 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2pch_8hpp}{pch.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00002}00002 }
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00003}00003 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{server_8hpp}{server.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00004}00004 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{_red_01team_2_inertia-cheat_2_inertia-cheat_2constants_8hpp}{constants.hpp}}"{}}}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00005}00005 }
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00006}00006 \textcolor{preprocessor}{\#include "{}httplib.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00007}00007 \textcolor{preprocessor}{\#include "{}json.hpp"{}}}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00008}00008 }
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00009}00009 \textcolor{keyword}{namespace }http = httplib;}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00010}00010 \textcolor{keyword}{namespace }json = nlohmann;}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00011}00011 }
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00012}00012 }
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00013}\mbox{\hyperlink{server_8cpp_ac795f32e39ef3a54d8e00caf14db91cb}{00013}} \textcolor{keywordtype}{void} \mbox{\hyperlink{server_8cpp_ac795f32e39ef3a54d8e00caf14db91cb}{Server}}(http::Client* cli) \{}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00014}00014     \mbox{\hyperlink{server_8cpp_ac795f32e39ef3a54d8e00caf14db91cb}{http::Server}} server\{\};}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00015}00015 }
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00016}00016     \textcolor{comment}{// Routes}}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00017}00017     server.Post(\textcolor{stringliteral}{"{}/"{}}, [cli](\textcolor{keyword}{const} http::Request\& req, http::Response\& res) \{}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00018}00018 }
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00019}00019         \textcolor{keywordflow}{if} (req.body.find(\textcolor{stringliteral}{"{}detection"{}}) != std::string::npos) \{}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00020}00020 }
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00021}00021             auto response = cli-\/>Post(\textcolor{stringliteral}{"{}/ac"{}}, req.body, \textcolor{stringliteral}{"{}application/json"{}});}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00022}00022 }
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00023}00023             res.set\_content(\textcolor{stringliteral}{"{}QAC: Cheat info received"{}}, \textcolor{stringliteral}{"{}text/plain"{}});}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00024}00024         \}}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00025}00025         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00026}00026             res.set\_content(\textcolor{stringliteral}{"{}QAC: Heartbeat received"{}}, \textcolor{stringliteral}{"{}text/plain"{}});}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00027}00027         \}}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00028}00028     \});}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00029}00029 }
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00030}00030     server.Post(\textcolor{stringliteral}{"{}/handshake"{}}, [cli](\textcolor{keyword}{const} http::Request\& req, http::Response\& res) \{}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00031}00031 }
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00032}00032 }
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00033}00033         res.set\_content(\textcolor{stringliteral}{"{}"{}}, \textcolor{stringliteral}{"{}text/plain"{}});}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00034}00034     \});}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00035}00035 }
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00036}00036     server.listen(\textcolor{stringliteral}{"{}localhost"{}}, \mbox{\hyperlink{namespaceconstants_a8f8ee980778f66bcee97be6d3a4f06a2}{constants::IPC\_PORT}});}
+\DoxyCodeLine{\Hypertarget{server_8cpp_source_l00037}00037 \}}
+
+\end{DoxyCode}

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['getprocaddress_5fptr_0',['GetProcAddress_ptr',['../struct_mapping_data.html#aff8467684ab8890c55526375219a4c71',1,'MappingData']]]
+  ['flags_0',['flags',['../struct_dns_data.html#a1e68b0332a31d7202ad00f597cee76e8',1,'DnsData']]]
 ];

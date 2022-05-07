@@ -20,7 +20,9 @@ void \mbox{\hyperlink{utils_8hpp_a7b81a0d85bc1b81270bacc0b547e4347}{Log}} (const
 HMODULE \mbox{\hyperlink{utils_8hpp_a84817d79c47f5b13735e17b57a386f92}{Cached\+Load\+Library}} (const LPCWSTR \&dll\+\_\+name)
 \begin{DoxyCompactList}\small\item\em Cache queries to Load\+Library, to return a library reference if it is already loaded. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{utils_8hpp_a9317d81d43e3270a6f3176c65f9f4c97}{Exit\+Failure}} (const UINT exit\+\_\+code)
-\begin{DoxyCompactList}\small\item\em Wrapper around Exit\+Process. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Wrapper around Exit\+Process. \end{DoxyCompactList}\item 
+std\+::optional$<$ std\+::string $>$ \mbox{\hyperlink{utils_8hpp_ad5f1f74d60d70b4087722033ea8b31e5}{wstring\+\_\+to\+\_\+string}} (const std\+::wstring \&wide\+\_\+str)
+\begin{DoxyCompactList}\small\item\em Convert a std\+::wstring to a std\+::string. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -44,7 +46,7 @@ HMODULE for requested library
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{utils_8cpp_source_l00037}{37}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
 
 \mbox{\Hypertarget{utils_8hpp_aecb9ce4c8098cd95259a02000c1478bf}\label{utils_8hpp_aecb9ce4c8098cd95259a02000c1478bf}} 
 \index{utils.hpp@{utils.hpp}!CallAsync@{CallAsync}}
@@ -92,7 +94,7 @@ This should be used for any process failure exit, so that future exit handling r
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{utils_8cpp_source_l00054}{54}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00055}{55}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
 
 \mbox{\Hypertarget{utils_8hpp_a9dbea9df0654c3d551d35ae4bd7d4c8f}\label{utils_8hpp_a9dbea9df0654c3d551d35ae4bd7d4c8f}} 
 \index{utils.hpp@{utils.hpp}!IfNotEmpty@{IfNotEmpty}}
@@ -141,7 +143,7 @@ Undefined behaviour if used in conjunction with \mbox{\hyperlink{utils_8cpp_a7b8
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{utils_8cpp_source_l00014}{14}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00013}{13}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
 
 \mbox{\Hypertarget{utils_8hpp_a7b81a0d85bc1b81270bacc0b547e4347}\label{utils_8hpp_a7b81a0d85bc1b81270bacc0b547e4347}} 
 \index{utils.hpp@{utils.hpp}!Log@{Log}}
@@ -186,4 +188,26 @@ Log various homogeneously typed data to standard output (through std\+::cout)
 
 
 Definition at line \mbox{\hyperlink{utils_8hpp_source_l00018}{18}} of file \mbox{\hyperlink{utils_8hpp_source}{utils.\+hpp}}.
+
+\mbox{\Hypertarget{utils_8hpp_ad5f1f74d60d70b4087722033ea8b31e5}\label{utils_8hpp_ad5f1f74d60d70b4087722033ea8b31e5}} 
+\index{utils.hpp@{utils.hpp}!wstring\_to\_string@{wstring\_to\_string}}
+\index{wstring\_to\_string@{wstring\_to\_string}!utils.hpp@{utils.hpp}}
+\doxysubsubsection{\texorpdfstring{wstring\_to\_string()}{wstring\_to\_string()}}
+{\footnotesize\ttfamily std\+::optional$<$ std\+::string $>$ wstring\+\_\+to\+\_\+string (\begin{DoxyParamCaption}\item[{const std\+::wstring \&}]{wide\+\_\+str }\end{DoxyParamCaption})}
+
+
+
+Convert a std\+::wstring to a std\+::string. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em wide\+\_\+str} & Wide string to be converted \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string representation of the std\+::wstring provided on success, std\+::nullopt on failure 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{utils_8cpp_source_l00087}{87}} of file \mbox{\hyperlink{utils_8cpp_source}{utils.\+cpp}}.
 

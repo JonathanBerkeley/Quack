@@ -26,9 +26,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="DoxyGen.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.5 / 0.6.0</span>
+   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.8 / 0.6.2</span>
    </div>
-   <div id="projectbrief">Quick Universal Anti-Cheat Kit</div>
+   <div id="projectbrief">Quick Universal Anti-Cheat Kit - https://quack.ac</div>
   </td>
  </tr>
  </tbody>
@@ -91,304 +91,299 @@ $(document).ready(function(){initNavTree('memory__scanner_8cpp_source.html','');
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="_red_01team_2_inertia-cheat_2_inertia-cheat_2pch_8hpp.html">pch.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="utils_8hpp.html">utils.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="memory__scanner_8hpp.html">memory_scanner.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &lt;SoftPub.h&gt;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &lt;WinTrust.h&gt;</span></div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &quot;<a class="code" href="ban_8hpp.html">ban.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="preprocessor">#include &quot;<a class="code" href="hardware__id_8hpp.html">hardware_id.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="comment">// Link with the WinTrust.lib file</span></div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span><span class="preprocessor">#pragma comment (lib, &quot;wintrust&quot;</span>)</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacedata.html">data</a>;</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span><span class="keyword">using namespace </span>std::string_literals;</div>
+<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#include &quot;<a class="code" href="ban_8hpp.html">ban.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;<a class="code" href="memory__scanner_8hpp.html">memory_scanner.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span> </div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="comment">// 3rd party</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;SoftPub.h&gt;</span></div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#include &lt;WinTrust.h&gt;</span></div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="comment">// Link with the WinTrust.lib file</span></div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span><span class="preprocessor">#pragma comment (lib, &quot;wintrust&quot;</span>)</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span> </div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespacedata.html">data</a>;</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keyword">using namespace </span>std::string_literals;</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span> </div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span> </div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#pragma region Modules</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="comment">// Enumerates through linked modules, returns vector of results</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno"><a class="line" href="memory__scanner_8cpp.html#af70a6b13d65edc9fe9c84b8b1539b96a">   22</a></span>std::vector&lt;HMODULE&gt; <a class="code hl_function" href="memory__scanner_8cpp.html#af70a6b13d65edc9fe9c84b8b1539b96a">EnumerateModules</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structdata_1_1_process_info.html">ProcessInfo</a>&amp; pi) {</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>    HMODULE modules[0x400];</div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>    DWORD cbNeeded;</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    std::vector&lt;HMODULE&gt; dlls;</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordflow">if</span> (EnumProcessModules(pi.<a class="code hl_variable" href="structdata_1_1_process_info.html#afafe395662998d8209b04d0810f8e60f">handle</a>, modules, <span class="keyword">sizeof</span>(modules), &amp;cbNeeded))</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0u; i &lt; cbNeeded / <span class="keyword">sizeof</span>(HMODULE); ++i)</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>            dlls.push_back(modules[i]);</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>    <span class="keywordflow">return</span> dlls;</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>}</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">#pragma region Modules</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno"><a class="line" href="memory__scanner_8cpp.html#acea7c94e476706b397d76faee2317412">   25</a></span>std::vector&lt;HMODULE&gt; <a class="code hl_function" href="memory__scanner_8cpp.html#acea7c94e476706b397d76faee2317412">EnumerateModules</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structdata_1_1_process_info.html">ProcessInfo</a>&amp; process_info) {</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    HMODULE modules[0x400];</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    DWORD cbNeeded;</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    std::vector&lt;HMODULE&gt; dlls;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keywordflow">if</span> (EnumProcessModules(process_info.<a class="code hl_variable" href="structdata_1_1_process_info.html#afafe395662998d8209b04d0810f8e60f">handle</a>, modules, <span class="keyword">sizeof</span>(modules), &amp;cbNeeded))</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0u; i &lt; cbNeeded / <span class="keyword">sizeof</span>(HMODULE); ++i)</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            dlls.push_back(modules[i]);</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">// Verifies signature for source file, based on MSDN example code</span></div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">// https://docs.microsoft.com/en-us/windows/win32/seccrypto/example-c-program--verifying-the-signature-of-a-pe-file</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno"><a class="line" href="memory__scanner_8cpp.html#a990a578ffbeeb49aba389620d153b683">   38</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="memory__scanner_8cpp.html#a990a578ffbeeb49aba389620d153b683">VerifyModule</a>(<span class="keyword">const</span> LPCWSTR source_file) {</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    WINTRUST_FILE_INFO file_data{};</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    file_data.cbStruct = <span class="keyword">sizeof</span>(WINTRUST_FILE_INFO);</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    file_data.pcwszFilePath = source_file;</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    GUID policy_guid = WINTRUST_ACTION_GENERIC_VERIFY_V2;</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>    WINTRUST_DATA win_trust_data{</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>        .cbStruct = <span class="keyword">sizeof</span>(win_trust_data),</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        .pPolicyCallbackData = <span class="keyword">nullptr</span>,          <span class="comment">// Use default code signing EKU</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>        .pSIPClientData = <span class="keyword">nullptr</span>,               <span class="comment">// Not applicable</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        .dwUIChoice = WTD_UI_NONE,               <span class="comment">// Disable WVT UI</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        .fdwRevocationChecks = WTD_REVOKE_NONE,  <span class="comment">// No revocation checking.</span></div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        .dwUnionChoice = WTD_CHOICE_FILE,        <span class="comment">// Verify an embedded signature on a file</span></div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        .pFile = &amp;file_data,                     <span class="comment">// Setup pointer to file data</span></div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        .dwStateAction = WTD_STATEACTION_VERIFY, <span class="comment">// Verify action</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        .hWVTStateData = <span class="keyword">nullptr</span>,                <span class="comment">// Verification sets this value</span></div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        .dwUIContext = 0                         <span class="comment">// Not applicable with no UI</span></div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>    };</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="keywordtype">bool</span> verified = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    <span class="comment">// WinVerifyTrust verifies signatures as specified by the GUID and win_trust_data</span></div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keywordflow">if</span> (WinVerifyTrust(<span class="keyword">nullptr</span>, &amp;policy_guid, &amp;win_trust_data) == ERROR_SUCCESS) {</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        verified = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>    }</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="comment">// Any hWVTStateData must be released by a call with close.</span></div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    win_trust_data.dwStateAction = WTD_STATEACTION_CLOSE;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>    <span class="keywordflow">return</span> verified;</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>}</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span><span class="preprocessor">#pragma endregion</span></div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span> </div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span><span class="preprocessor">#pragma region Patterns</span></div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno"><a class="line" href="memory__scanner_8cpp.html#a28181accbbef183e3bd1c232250ba19f">   76</a></span>std::vector&lt;unsigned long&gt; <a class="code hl_function" href="memory__scanner_8cpp.html#a28181accbbef183e3bd1c232250ba19f">PatternToByte</a>(<span class="keyword">const</span> std::string&amp; signature) {</div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    <span class="comment">// Pattern of bytes to be returned</span></div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    std::vector&lt;unsigned long&gt; bytes{};</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>    <span class="comment">// Pointer to the start of the signature</span></div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    <span class="keyword">const</span> <span class="keyword">auto</span> c_signature = <span class="keyword">const_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(signature.c_str());</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span> </div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>    <span class="comment">// Start and end of pattern</span></div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keyword">const</span> <span class="keyword">auto</span> start = c_signature;</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end = c_signature + signature.length();</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>    <span class="comment">// Loop over pattern</span></div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordflow">for</span> (<span class="keywordtype">char</span>* <span class="keywordtype">byte</span> = start; <span class="keywordtype">byte</span> &lt; end; ++byte) {</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span> </div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>        <span class="comment">// Check if signature has wildcard at this position</span></div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>        <span class="keywordflow">if</span> (*<span class="keywordtype">byte</span> == <span class="charliteral">&#39;*&#39;</span>) {</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>            ++byte;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>            <span class="keywordflow">if</span> (*<span class="keywordtype">byte</span> == <span class="charliteral">&#39;*&#39;</span>)</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>                ++byte;</div>
-<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
-<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>            <span class="comment">// Flag value pushed back</span></div>
-<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>            bytes.push_back(0xDEADBEEF);</div>
-<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        }</div>
-<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            <span class="comment">// Store as hex</span></div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            bytes.push_back(std::strtoul(<span class="keywordtype">byte</span>, &amp;<span class="keywordtype">byte</span>, 16));</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        }</div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>    }</div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>    <span class="keywordflow">return</span> bytes;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>}</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span> </div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span> </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno"><a class="line" href="memory__scanner_8cpp.html#a21c6c3348901651c3ff03e7cdc610e8c">  118</a></span>std::uint8_t* <a class="code hl_function" href="memory__scanner_8cpp.html#a21c6c3348901651c3ff03e7cdc610e8c">PatternScan</a>(<span class="keyword">const</span> HMODULE module, <span class="keyword">const</span> std::string&amp; signature) {</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>    <span class="keyword">const</span> <span class="keyword">auto</span> dos_header = <span class="keyword">reinterpret_cast&lt;</span>PIMAGE_DOS_HEADER<span class="keyword">&gt;</span>(module);</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>    <span class="keyword">const</span> <span class="keyword">auto</span> e_lfanew = <span class="keyword">reinterpret_cast&lt;</span>std::uint8_t*<span class="keyword">&gt;</span>(module) + dos_header-&gt;e_lfanew;</div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keyword">const</span> <span class="keyword">auto</span> nt_headers = <span class="keyword">reinterpret_cast&lt;</span>PIMAGE_NT_HEADERS<span class="keyword">&gt;</span>(e_lfanew);</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>    <span class="keyword">const</span> <span class="keyword">auto</span> size_of_image = nt_headers-&gt;OptionalHeader.SizeOfImage;</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>    <span class="keyword">const</span> <span class="keyword">auto</span> pattern_bytes = <a class="code hl_function" href="memory__scanner_8cpp.html#a28181accbbef183e3bd1c232250ba19f">PatternToByte</a>(signature);</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>    <span class="keyword">const</span> <span class="keyword">auto</span> scan_bytes = <span class="keyword">reinterpret_cast&lt;</span>std::uint8_t*<span class="keyword">&gt;</span>(module);</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span> </div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keyword">const</span> <span class="keyword">auto</span> size = pattern_bytes.size();</div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_namespace" href="namespacedata.html">data</a> = pattern_bytes.data();</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span> </div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0ul; i &lt; size_of_image - size; ++i) {</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <span class="keywordtype">bool</span> found = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> j = 0ul; j &lt; size; ++j) {</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>            <span class="keywordflow">if</span> (scan_bytes[i + j] != <a class="code hl_namespace" href="namespacedata.html">data</a>[j] &amp;&amp; <a class="code hl_namespace" href="namespacedata.html">data</a>[j] != 0xDEADBEEF) {</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>                found = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>            }</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        }</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        <span class="keywordflow">if</span> (found)</div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>            <span class="keywordflow">return</span> &amp;scan_bytes[i];</div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>    }</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>}</div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span> </div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span> </div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno"><a class="line" href="memory__scanner_8cpp.html#a6f5661ae7206f7751587a687d4b421fb">  145</a></span>std::uint8_t* <a class="code hl_function" href="memory__scanner_8cpp.html#a21c6c3348901651c3ff03e7cdc610e8c">PatternScan</a>(<span class="keyword">const</span> std::string&amp; signature, <span class="keyword">const</span> <a class="code hl_struct" href="struct_memory_region.html">MemoryRegion</a>&amp; mem_region) {</div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>    <span class="keyword">const</span> <span class="keyword">auto</span> pattern_bytes = <a class="code hl_function" href="memory__scanner_8cpp.html#a28181accbbef183e3bd1c232250ba19f">PatternToByte</a>(signature);</div>
-<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>    <span class="keyword">const</span> <span class="keyword">auto</span> size = pattern_bytes.size();</div>
-<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_namespace" href="namespacedata.html">data</a> = pattern_bytes.data();</div>
-<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span> </div>
-<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0u; i &lt; mem_region.<a class="code hl_variable" href="struct_memory_region.html#a2d9fa429e65d179bb0b6e274122e9b57">size</a>; ++i) {</div>
-<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="keywordtype">bool</span> found = <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> j = 0u; j &lt; size; j++) {</div>
-<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span>            <span class="keywordflow">if</span> (mem_region.<a class="code hl_variable" href="struct_memory_region.html#a44ea7a88d0b4e60c526a48d4bc347b26">start_address</a>[i + j] != <a class="code hl_namespace" href="namespacedata.html">data</a>[j] &amp;&amp; <a class="code hl_namespace" href="namespacedata.html">data</a>[j] != 0xDEADBEEF) {</div>
-<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>                found = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>                <span class="keywordflow">break</span>;</div>
-<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>            }</div>
-<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>        }</div>
-<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>        <span class="keywordflow">if</span> (found)</div>
-<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span>            <span class="keywordflow">return</span> &amp;mem_region.<a class="code hl_variable" href="struct_memory_region.html#a44ea7a88d0b4e60c526a48d4bc347b26">start_address</a>[i];</div>
-<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    }</div>
-<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>}</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    <span class="keywordflow">return</span> dlls;</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>}</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno"><a class="line" href="memory__scanner_8cpp.html#a990a578ffbeeb49aba389620d153b683">   46</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="memory__scanner_8cpp.html#a990a578ffbeeb49aba389620d153b683">VerifyModule</a>(<span class="keyword">const</span> LPCWSTR source_file) {</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    WINTRUST_FILE_INFO file_data{};</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>    file_data.cbStruct = <span class="keyword">sizeof</span>(WINTRUST_FILE_INFO);</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    file_data.pcwszFilePath = source_file;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    GUID policy_guid = WINTRUST_ACTION_GENERIC_VERIFY_V2;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    WINTRUST_DATA win_trust_data{</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>        .cbStruct = <span class="keyword">sizeof</span>(win_trust_data),</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>        .pPolicyCallbackData = <span class="keyword">nullptr</span>,          <span class="comment">// Use default code signing EKU</span></div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        .pSIPClientData = <span class="keyword">nullptr</span>,               <span class="comment">// Not applicable</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        .dwUIChoice = WTD_UI_NONE,               <span class="comment">// Disable WVT UI</span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        .fdwRevocationChecks = WTD_REVOKE_NONE,  <span class="comment">// No revocation checking.</span></div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>        .dwUnionChoice = WTD_CHOICE_FILE,        <span class="comment">// Verify an embedded signature on a file</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        .pFile = &amp;file_data,                     <span class="comment">// Setup pointer to file data</span></div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>        .dwStateAction = WTD_STATEACTION_VERIFY, <span class="comment">// Verify action</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>        .hWVTStateData = <span class="keyword">nullptr</span>,                <span class="comment">// Verification sets this value</span></div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>        .dwUIContext = 0                         <span class="comment">// Not applicable with no UI</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>    };</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    <span class="keywordtype">bool</span> verified = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="comment">// WinVerifyTrust verifies signatures as specified by the GUID and win_trust_data</span></div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    <span class="keywordflow">if</span> (WinVerifyTrust(<span class="keyword">nullptr</span>, &amp;policy_guid, &amp;win_trust_data) == ERROR_SUCCESS) {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        verified = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span> </div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>    <span class="comment">// Any hWVTStateData must be released by a call with close.</span></div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    win_trust_data.dwStateAction = WTD_STATEACTION_CLOSE;</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>    <span class="keywordflow">return</span> verified;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>}</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">#pragma endregion</span></div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="preprocessor">#pragma region Patterns</span></div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno"><a class="line" href="memory__scanner_8cpp.html#a28181accbbef183e3bd1c232250ba19f">   84</a></span>std::vector&lt;unsigned long&gt; <a class="code hl_function" href="memory__scanner_8cpp.html#a28181accbbef183e3bd1c232250ba19f">PatternToByte</a>(<span class="keyword">const</span> std::string&amp; signature) {</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>    <span class="comment">// Pattern of bytes to be returned</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>    std::vector&lt;unsigned long&gt; bytes{};</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="comment">// Pointer to the start of the signature</span></div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>    <span class="keyword">const</span> <span class="keyword">auto</span> c_signature = <span class="keyword">const_cast&lt;</span><span class="keywordtype">char</span>*<span class="keyword">&gt;</span>(signature.c_str());</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>    <span class="comment">// Start and end of pattern</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>    <span class="keyword">const</span> <span class="keyword">auto</span> start = c_signature;</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>    <span class="keyword">const</span> <span class="keyword">auto</span> end = c_signature + signature.length();</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>    <span class="comment">// Loop over pattern</span></div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>    <span class="keywordflow">for</span> (<span class="keywordtype">char</span>* <span class="keywordtype">byte</span> = start; <span class="keywordtype">byte</span> &lt; end; ++byte) {</div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span> </div>
+<div class="line"><a id="l00098" name="l00098"></a><span class="lineno">   98</span>        <span class="comment">// Check if signature has wildcard at this position</span></div>
+<div class="line"><a id="l00099" name="l00099"></a><span class="lineno">   99</span>        <span class="keywordflow">if</span> (*<span class="keywordtype">byte</span> == <span class="charliteral">&#39;*&#39;</span>) {</div>
+<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>            ++byte;</div>
+<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>            <span class="keywordflow">if</span> (*<span class="keywordtype">byte</span> == <span class="charliteral">&#39;*&#39;</span>)</div>
+<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>                ++byte;</div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span> </div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>            <span class="comment">// Flag value pushed back</span></div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>            bytes.push_back(0xDEADBEEF);</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        }</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>            <span class="comment">// Store as hex</span></div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>            bytes.push_back(std::strtoul(<span class="keywordtype">byte</span>, &amp;<span class="keywordtype">byte</span>, 16));</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        }</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>    }</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>    <span class="keywordflow">return</span> bytes;</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>}</div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span> </div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span> </div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno"><a class="line" href="memory__scanner_8cpp.html#a21c6c3348901651c3ff03e7cdc610e8c">  126</a></span>std::uint8_t* <a class="code hl_function" href="memory__scanner_8cpp.html#a21c6c3348901651c3ff03e7cdc610e8c">PatternScan</a>(<span class="keyword">const</span> HMODULE module, <span class="keyword">const</span> std::string&amp; signature) {</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>    <span class="keyword">const</span> <span class="keyword">auto</span> dos_header = <span class="keyword">reinterpret_cast&lt;</span>PIMAGE_DOS_HEADER<span class="keyword">&gt;</span>(module);</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keyword">const</span> <span class="keyword">auto</span> e_lfanew = <span class="keyword">reinterpret_cast&lt;</span>std::uint8_t*<span class="keyword">&gt;</span>(module) + dos_header-&gt;e_lfanew;</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>    <span class="keyword">const</span> <span class="keyword">auto</span> nt_headers = <span class="keyword">reinterpret_cast&lt;</span>PIMAGE_NT_HEADERS<span class="keyword">&gt;</span>(e_lfanew);</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>    <span class="keyword">const</span> <span class="keyword">auto</span> size_of_image = nt_headers-&gt;OptionalHeader.SizeOfImage;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>    <span class="keyword">const</span> <span class="keyword">auto</span> pattern_bytes = <a class="code hl_function" href="memory__scanner_8cpp.html#a28181accbbef183e3bd1c232250ba19f">PatternToByte</a>(signature);</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>    <span class="keyword">const</span> <span class="keyword">auto</span> scan_bytes = <span class="keyword">reinterpret_cast&lt;</span>std::uint8_t*<span class="keyword">&gt;</span>(module);</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>    <span class="keyword">const</span> <span class="keyword">auto</span> size = pattern_bytes.size();</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_namespace" href="namespacedata.html">data</a> = pattern_bytes.data();</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span> </div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>    <span class="keywordflow">for</span> (<span class="keyword">auto</span> i = 0ul; i &lt; size_of_image - size; ++i) {</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>        <span class="keywordtype">bool</span> found = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>        <span class="keywordflow">for</span> (<span class="keyword">auto</span> j = 0ul; j &lt; size; ++j) {</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>            <span class="keywordflow">if</span> (scan_bytes[i + j] != <a class="code hl_namespace" href="namespacedata.html">data</a>[j] &amp;&amp; <a class="code hl_namespace" href="namespacedata.html">data</a>[j] != 0xDEADBEEF) {</div>
+<div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span>                found = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>            }</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>        }</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>        <span class="keywordflow">if</span> (found)</div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>            <span class="keywordflow">return</span> &amp;scan_bytes[i];</div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>    }</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span>}</div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span> </div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span> </div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno"><a class="line" href="memory__scanner_8cpp.html#a6f5661ae7206f7751587a687d4b421fb">  159</a></span>std::uint8_t* <a class="code hl_function" href="memory__scanner_8cpp.html#a21c6c3348901651c3ff03e7cdc610e8c">PatternScan</a>(<span class="keyword">const</span> std::string&amp; signature, <span class="keyword">const</span> <a class="code hl_struct" href="struct_memory_region.html">MemoryRegion</a>&amp; mem_region) {</div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>    <span class="keyword">const</span> <span class="keyword">auto</span> pattern_bytes = <a class="code hl_function" href="memory__scanner_8cpp.html#a28181accbbef183e3bd1c232250ba19f">PatternToByte</a>(signature);</div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>    <span class="keyword">const</span> <span class="keyword">auto</span> size = pattern_bytes.size();</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>    <span class="keyword">const</span> <span class="keyword">auto</span> <a class="code hl_namespace" href="namespacedata.html">data</a> = pattern_bytes.data();</div>
 <div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span> </div>
-<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span> </div>
-<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span><span class="comment">// todo: Network this</span></div>
-<div class="line"><a id="l00166" name="l00166"></a><span class="lineno"><a class="line" href="memory__scanner_8cpp.html#a9655c919d6586782d25a74508a661754">  166</a></span><a class="code hl_class" href="classdata_1_1_signatures.html">Signatures</a> <a class="code hl_function" href="memory__scanner_8cpp.html#a9655c919d6586782d25a74508a661754">GetSignatures</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structdata_1_1_process_info.html">ProcessInfo</a>&amp; context) {</div>
-<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>    <a class="code hl_class" href="classdata_1_1_signatures.html">Signatures</a> signatures{};</div>
-<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span> </div>
-<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>    <span class="comment">// context-&gt;SendData();</span></div>
-<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>    </div>
-<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>    signatures.<a class="code hl_variable" href="classdata_1_1_signatures.html#aa8435e1f1391139a9c9ce6171934b0a6">cheats</a>.emplace_back(std::make_pair(<span class="stringliteral">&quot;Highlight&quot;</span>s, std::vector&lt;std::string&gt;{</div>
-<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        <span class="stringliteral">&quot;50 00 72 00 6F 00 63 00 65 00 73 00 73 00 20 00 68 00 69 00 6A 00 61 00 63 00 6B 00 65 00 64&quot;</span></div>
-<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>    }));</div>
-<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span> </div>
-<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <span class="keywordflow">return</span> signatures;</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>    <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> i = 0u; i &lt; mem_region.<a class="code hl_variable" href="struct_memory_region.html#a2d9fa429e65d179bb0b6e274122e9b57">size</a>; ++i) {</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        <span class="keywordtype">bool</span> found = <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        <span class="keywordflow">for</span> (<span class="keywordtype">unsigned</span> j = 0u; j &lt; size; j++) {</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>            <span class="keywordflow">if</span> (mem_region.<a class="code hl_variable" href="struct_memory_region.html#a44ea7a88d0b4e60c526a48d4bc347b26">start_address</a>[i + j] != <a class="code hl_namespace" href="namespacedata.html">data</a>[j] &amp;&amp; <a class="code hl_namespace" href="namespacedata.html">data</a>[j] != 0xDEADBEEF) {</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>                found = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>                <span class="keywordflow">break</span>;</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>            }</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        }</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        <span class="keywordflow">if</span> (found)</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>            <span class="keywordflow">return</span> &amp;mem_region.<a class="code hl_variable" href="struct_memory_region.html#a44ea7a88d0b4e60c526a48d4bc347b26">start_address</a>[i];</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>    }</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>    <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>}</div>
-<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span><span class="preprocessor">#pragma endregion</span></div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span> </div>
 <div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span> </div>
-<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="preprocessor">#pragma region Scans</span></div>
-<div class="line"><a id="l00180" name="l00180"></a><span class="lineno"><a class="line" href="memory__scanner_8cpp.html#a4f466c30ccd782474f4dea34cc470cc1">  180</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="memory__scanner_8cpp.html#a4f466c30ccd782474f4dea34cc470cc1">ModuleScan</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structdata_1_1_process_info.html">ProcessInfo</a>&amp; context, <span class="keyword">const</span> <span class="keywordtype">bool</span> unsigned_only) {</div>
-<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span> </div>
-<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>    <span class="keyword">auto</span> [cheats] = <a class="code hl_function" href="memory__scanner_8cpp.html#a9655c919d6586782d25a74508a661754">GetSignatures</a>(context);</div>
-<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span> </div>
-<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>    <a class="code hl_function" href="utils_8cpp.html#a61e909d98c60465d776d9cbf1da6a0bd">Log</a>(<span class="stringliteral">&quot;\nBeginning module memory scan...\n&quot;</span>);</div>
-<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span> </div>
-<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <span class="comment">// ReSharper disable once CppLocalVariableMayBeConst</span></div>
-<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span>    <span class="keyword">auto</span> dlls = <a class="code hl_function" href="memory__scanner_8cpp.html#af70a6b13d65edc9fe9c84b8b1539b96a">EnumerateModules</a>(context);</div>
-<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span> </div>
-<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    <span class="comment">// For each DLL in the process</span></div>
-<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; dll : dlls) {</div>
-<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span> </div>
-<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>        WCHAR module_path[MAX_PATH];</div>
-<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span>        <span class="keyword">static</span> <span class="keyword">constinit</span> <span class="keywordtype">int</span> size = <span class="keyword">sizeof</span>(module_path) / <span class="keyword">sizeof</span>(TCHAR);</div>
-<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span> </div>
-<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>        <span class="keywordflow">if</span> (!GetModuleFileNameExW(context.<a class="code hl_variable" href="structdata_1_1_process_info.html#afafe395662998d8209b04d0810f8e60f">handle</a>, dll, module_path, size))</div>
-<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span>            <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span><span class="comment">// todo: Network this</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno"><a class="line" href="memory__scanner_8cpp.html#a9655c919d6586782d25a74508a661754">  185</a></span><span class="comment"></span><a class="code hl_class" href="classdata_1_1_signatures.html">Signatures</a> <a class="code hl_function" href="memory__scanner_8cpp.html#a9655c919d6586782d25a74508a661754">GetSignatures</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structdata_1_1_process_info.html">ProcessInfo</a>&amp; context) {</div>
+<div class="line"><a id="l00186" name="l00186"></a><span class="lineno">  186</span>    <a class="code hl_class" href="classdata_1_1_signatures.html">Signatures</a> signatures{};</div>
+<div class="line"><a id="l00187" name="l00187"></a><span class="lineno">  187</span> </div>
+<div class="line"><a id="l00188" name="l00188"></a><span class="lineno">  188</span>    <span class="comment">// context-&gt;SendData();</span></div>
+<div class="line"><a id="l00189" name="l00189"></a><span class="lineno">  189</span>    </div>
+<div class="line"><a id="l00190" name="l00190"></a><span class="lineno">  190</span>    signatures.<a class="code hl_variable" href="classdata_1_1_signatures.html#aa8435e1f1391139a9c9ce6171934b0a6">cheats</a>.emplace_back(std::make_pair(<span class="stringliteral">&quot;Highlight&quot;</span>s, std::vector&lt;std::string&gt;{</div>
+<div class="line"><a id="l00191" name="l00191"></a><span class="lineno">  191</span>        <span class="stringliteral">&quot;50 00 72 00 6F 00 63 00 65 00 73 00 73 00 20 00 68 00 69 00 6A 00 61 00 63 00 6B 00 65 00 64&quot;</span></div>
+<div class="line"><a id="l00192" name="l00192"></a><span class="lineno">  192</span>    }));</div>
+<div class="line"><a id="l00193" name="l00193"></a><span class="lineno">  193</span> </div>
+<div class="line"><a id="l00194" name="l00194"></a><span class="lineno">  194</span>    <span class="keywordflow">return</span> signatures;</div>
+<div class="line"><a id="l00195" name="l00195"></a><span class="lineno">  195</span>}</div>
+<div class="line"><a id="l00196" name="l00196"></a><span class="lineno">  196</span><span class="preprocessor">#pragma endregion</span></div>
 <div class="line"><a id="l00197" name="l00197"></a><span class="lineno">  197</span> </div>
-<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span>        <span class="keyword">auto</span> scan = [&amp;cheats, &amp;dll, &amp;module_path, &amp;context] {</div>
-<div class="line"><a id="l00199" name="l00199"></a><span class="lineno">  199</span> </div>
-<div class="line"><a id="l00200" name="l00200"></a><span class="lineno">  200</span>            <span class="keywordflow">if</span> (dll == context.<a class="code hl_variable" href="structdata_1_1_process_info.html#a3ec3376bb54480cac694ff36874c6f3b">this_module</a>)</div>
-<div class="line"><a id="l00201" name="l00201"></a><span class="lineno">  201</span>                <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00202" name="l00202"></a><span class="lineno">  202</span> </div>
-<div class="line"><a id="l00203" name="l00203"></a><span class="lineno">  203</span>            <span class="comment">// For every cheat</span></div>
-<div class="line"><a id="l00204" name="l00204"></a><span class="lineno">  204</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [cheat_name, signatures] : cheats) {</div>
+<div class="line"><a id="l00198" name="l00198"></a><span class="lineno">  198</span><span class="preprocessor">#pragma region Scans</span></div>
+<div class="line"><a id="l00204" name="l00204"></a><span class="lineno"><a class="line" href="memory__scanner_8cpp.html#a4f466c30ccd782474f4dea34cc470cc1">  204</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="memory__scanner_8cpp.html#a4f466c30ccd782474f4dea34cc470cc1">ModuleScan</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structdata_1_1_process_info.html">ProcessInfo</a>&amp; context, <span class="keyword">const</span> <span class="keywordtype">bool</span> unsigned_only) {</div>
 <div class="line"><a id="l00205" name="l00205"></a><span class="lineno">  205</span> </div>
-<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>                <span class="comment">// Try every known pattern</span></div>
-<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span>                <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; pattern : signatures) {</div>
-<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span> </div>
-<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span>                    <span class="comment">// Check for pattern match</span></div>
-<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>                    <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> addr = <a class="code hl_function" href="memory__scanner_8cpp.html#a21c6c3348901651c3ff03e7cdc610e8c">PatternScan</a>(dll, pattern); addr) {</div>
-<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span> </div>
-<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span>                        <a class="code hl_struct" href="struct_detection_info.html">DetectionInfo</a> detection_info{</div>
-<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>                            .<a class="code hl_variable" href="struct_detection_info.html#aa4036f69c6fbbd5bb158d9272c12e3fb">cheat_name</a> = cheat_name,</div>
-<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>                            .scan_type = <span class="stringliteral">&quot;Module scan&quot;</span>,</div>
-<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span>                            .cheat_path = module_path</div>
-<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>                        };</div>
-<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>                        <a class="code hl_function" href="ban_8cpp.html#a492cefe8e40eb583e4950fe63c959ce2">Ban</a>(detection_info);</div>
-<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span>                    }</div>
-<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span> </div>
-<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>                }</div>
+<div class="line"><a id="l00206" name="l00206"></a><span class="lineno">  206</span>    <span class="keyword">auto</span> [cheats] = <a class="code hl_function" href="memory__scanner_8cpp.html#a9655c919d6586782d25a74508a661754">GetSignatures</a>(context);</div>
+<div class="line"><a id="l00207" name="l00207"></a><span class="lineno">  207</span> </div>
+<div class="line"><a id="l00208" name="l00208"></a><span class="lineno">  208</span>    <a class="code hl_function" href="utils_8cpp.html#a61e909d98c60465d776d9cbf1da6a0bd">Log</a>(<span class="stringliteral">&quot;\nBeginning module memory scan...\n&quot;</span>);</div>
+<div class="line"><a id="l00209" name="l00209"></a><span class="lineno">  209</span> </div>
+<div class="line"><a id="l00210" name="l00210"></a><span class="lineno">  210</span>    <span class="comment">// ReSharper disable once CppLocalVariableMayBeConst</span></div>
+<div class="line"><a id="l00211" name="l00211"></a><span class="lineno">  211</span>    <span class="keyword">auto</span> dlls = <a class="code hl_function" href="memory__scanner_8cpp.html#acea7c94e476706b397d76faee2317412">EnumerateModules</a>(context);</div>
+<div class="line"><a id="l00212" name="l00212"></a><span class="lineno">  212</span> </div>
+<div class="line"><a id="l00213" name="l00213"></a><span class="lineno">  213</span>    <span class="comment">// For each DLL in the process</span></div>
+<div class="line"><a id="l00214" name="l00214"></a><span class="lineno">  214</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; dll : dlls) {</div>
+<div class="line"><a id="l00215" name="l00215"></a><span class="lineno">  215</span> </div>
+<div class="line"><a id="l00216" name="l00216"></a><span class="lineno">  216</span>        WCHAR module_path[MAX_PATH];</div>
+<div class="line"><a id="l00217" name="l00217"></a><span class="lineno">  217</span>        <span class="keyword">static</span> <span class="keyword">constinit</span> <span class="keywordtype">int</span> size = <span class="keyword">sizeof</span>(module_path) / <span class="keyword">sizeof</span>(TCHAR);</div>
+<div class="line"><a id="l00218" name="l00218"></a><span class="lineno">  218</span> </div>
+<div class="line"><a id="l00219" name="l00219"></a><span class="lineno">  219</span>        <span class="keywordflow">if</span> (!GetModuleFileNameExW(context.<a class="code hl_variable" href="structdata_1_1_process_info.html#afafe395662998d8209b04d0810f8e60f">handle</a>, dll, module_path, size))</div>
+<div class="line"><a id="l00220" name="l00220"></a><span class="lineno">  220</span>            <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00221" name="l00221"></a><span class="lineno">  221</span> </div>
-<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>            }</div>
-<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span>        };</div>
-<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span> </div>
-<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>        <span class="keywordflow">if</span> (unsigned_only) {</div>
-<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="memory__scanner_8cpp.html#a990a578ffbeeb49aba389620d153b683">VerifyModule</a>(module_path)) {</div>
-<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>                scan();</div>
-<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>                <a class="code hl_function" href="utils_8cpp.html#a61e909d98c60465d776d9cbf1da6a0bd">Log</a>(module_path);</div>
-<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span>            }</div>
-<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>        }</div>
-<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>        <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span>            scan();</div>
-<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>            <a class="code hl_function" href="utils_8cpp.html#a61e909d98c60465d776d9cbf1da6a0bd">Log</a>(module_path);</div>
-<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>        }</div>
-<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span>    }</div>
-<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span> </div>
-<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>    <a class="code hl_function" href="utils_8cpp.html#a61e909d98c60465d776d9cbf1da6a0bd">Log</a>(<span class="stringliteral">&quot;\nFinished module memory scan...\n&quot;</span>);</div>
-<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>}</div>
-<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span> </div>
-<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span> </div>
-<div class="line"><a id="l00241" name="l00241"></a><span class="lineno"><a class="line" href="memory__scanner_8cpp.html#a2ae050caa2cab158f3f0de9796e62343">  241</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="memory__scanner_8cpp.html#a2ae050caa2cab158f3f0de9796e62343">RegionScan</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structdata_1_1_process_info.html">ProcessInfo</a>&amp; context, <span class="keyword">const</span> <a class="code hl_struct" href="struct_memory_region.html">MemoryRegion</a>&amp; memory_region) {</div>
-<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span> </div>
-<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span>    <span class="keyword">auto</span> [cheats] = <a class="code hl_function" href="memory__scanner_8cpp.html#a9655c919d6586782d25a74508a661754">GetSignatures</a>(context);</div>
-<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span> </div>
-<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span>    <span class="comment">// Log(&quot;\nBeginning executable memory scan...\n&quot;);</span></div>
-<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span> </div>
-<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [cheat_name, signatures] : cheats) {</div>
+<div class="line"><a id="l00222" name="l00222"></a><span class="lineno">  222</span>        <span class="keyword">auto</span> scan = [&amp;cheats, &amp;dll, &amp;module_path, &amp;context] {</div>
+<div class="line"><a id="l00223" name="l00223"></a><span class="lineno">  223</span> </div>
+<div class="line"><a id="l00224" name="l00224"></a><span class="lineno">  224</span>            <span class="keywordflow">if</span> (dll == context.<a class="code hl_variable" href="structdata_1_1_process_info.html#a3ec3376bb54480cac694ff36874c6f3b">this_module</a>)</div>
+<div class="line"><a id="l00225" name="l00225"></a><span class="lineno">  225</span>                <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00226" name="l00226"></a><span class="lineno">  226</span> </div>
+<div class="line"><a id="l00227" name="l00227"></a><span class="lineno">  227</span>            <span class="comment">// For every cheat</span></div>
+<div class="line"><a id="l00228" name="l00228"></a><span class="lineno">  228</span>            <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [cheat_name, signatures] : cheats) {</div>
+<div class="line"><a id="l00229" name="l00229"></a><span class="lineno">  229</span> </div>
+<div class="line"><a id="l00230" name="l00230"></a><span class="lineno">  230</span>                <span class="comment">// Try every known pattern</span></div>
+<div class="line"><a id="l00231" name="l00231"></a><span class="lineno">  231</span>                <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; pattern : signatures) {</div>
+<div class="line"><a id="l00232" name="l00232"></a><span class="lineno">  232</span> </div>
+<div class="line"><a id="l00233" name="l00233"></a><span class="lineno">  233</span>                    <span class="comment">// Check for pattern match</span></div>
+<div class="line"><a id="l00234" name="l00234"></a><span class="lineno">  234</span>                    <span class="keywordflow">if</span> (<a class="code hl_function" href="memory__scanner_8cpp.html#a21c6c3348901651c3ff03e7cdc610e8c">PatternScan</a>(dll, pattern)) {</div>
+<div class="line"><a id="l00235" name="l00235"></a><span class="lineno">  235</span> </div>
+<div class="line"><a id="l00236" name="l00236"></a><span class="lineno">  236</span>                        <a class="code hl_struct" href="struct_detection_info.html">DetectionInfo</a> detection_info{</div>
+<div class="line"><a id="l00237" name="l00237"></a><span class="lineno">  237</span>                            .<a class="code hl_variable" href="struct_detection_info.html#aa4036f69c6fbbd5bb158d9272c12e3fb">cheat_name</a> = cheat_name,</div>
+<div class="line"><a id="l00238" name="l00238"></a><span class="lineno">  238</span>                            .scan_type = <span class="stringliteral">&quot;Module scan&quot;</span>,</div>
+<div class="line"><a id="l00239" name="l00239"></a><span class="lineno">  239</span>                            .cheat_path = module_path</div>
+<div class="line"><a id="l00240" name="l00240"></a><span class="lineno">  240</span>                        };</div>
+<div class="line"><a id="l00241" name="l00241"></a><span class="lineno">  241</span>                        <a class="code hl_function" href="ban_8cpp.html#a492cefe8e40eb583e4950fe63c959ce2">Ban</a>(detection_info);</div>
+<div class="line"><a id="l00242" name="l00242"></a><span class="lineno">  242</span>                    }</div>
+<div class="line"><a id="l00243" name="l00243"></a><span class="lineno">  243</span> </div>
+<div class="line"><a id="l00244" name="l00244"></a><span class="lineno">  244</span>                }</div>
+<div class="line"><a id="l00245" name="l00245"></a><span class="lineno">  245</span> </div>
+<div class="line"><a id="l00246" name="l00246"></a><span class="lineno">  246</span>            }</div>
+<div class="line"><a id="l00247" name="l00247"></a><span class="lineno">  247</span>        };</div>
 <div class="line"><a id="l00248" name="l00248"></a><span class="lineno">  248</span> </div>
-<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; pattern : signatures) {</div>
-<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span> </div>
-<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>            <span class="keywordflow">if</span> (<span class="keyword">const</span> <span class="keyword">auto</span> addr = <a class="code hl_function" href="memory__scanner_8cpp.html#a21c6c3348901651c3ff03e7cdc610e8c">PatternScan</a>(pattern, memory_region); addr) {</div>
-<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>                <a class="code hl_struct" href="struct_detection_info.html">DetectionInfo</a> detection_info{</div>
-<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>                    .<a class="code hl_variable" href="struct_detection_info.html#aa4036f69c6fbbd5bb158d9272c12e3fb">cheat_name</a> = cheat_name,</div>
-<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>                    .scan_type = <span class="stringliteral">&quot;RegionScan&quot;</span>,</div>
-<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>                    .cheat_path = L<span class="stringliteral">&quot;Mapped cheat&quot;</span></div>
-<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>                };</div>
-<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>                <a class="code hl_function" href="ban_8cpp.html#a492cefe8e40eb583e4950fe63c959ce2">Ban</a>(detection_info);</div>
-<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>            }</div>
-<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span> </div>
-<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span>        }</div>
-<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    }</div>
-<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span> </div>
-<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span>    <span class="comment">// Log(&quot;\nFinished executable memory scan...\n&quot;);</span></div>
-<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span>}</div>
-<div class="line"><a id="l00265" name="l00265"></a><span class="lineno">  265</span> </div>
-<div class="line"><a id="l00266" name="l00266"></a><span class="lineno">  266</span> </div>
-<div class="line"><a id="l00267" name="l00267"></a><span class="lineno"><a class="line" href="memory__scanner_8cpp.html#ad9f74c4315ef2c88f6ad70fa1f151096">  267</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="memory__scanner_8cpp.html#ad9f74c4315ef2c88f6ad70fa1f151096">FullScan</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structdata_1_1_process_info.html">ProcessInfo</a>&amp; context) {</div>
-<div class="line"><a id="l00268" name="l00268"></a><span class="lineno">  268</span>    <span class="keyword">const</span> std::vector&lt;DWORD&gt; mask{ PAGE_EXECUTE, PAGE_EXECUTE_READWRITE, PAGE_EXECUTE_READ, PAGE_EXECUTE_WRITECOPY };</div>
-<div class="line"><a id="l00269" name="l00269"></a><span class="lineno">  269</span> </div>
-<div class="line"><a id="l00270" name="l00270"></a><span class="lineno">  270</span>    MEMORY_BASIC_INFORMATION mbi{};</div>
-<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span>    LPVOID offset = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span> </div>
-<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span>    <span class="keywordflow">while</span> (VirtualQueryEx(GetCurrentProcess(), offset, &amp;mbi, <span class="keyword">sizeof</span> mbi)) {</div>
-<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span> </div>
-<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span>        <span class="comment">// Move the next scan onto the next region by offsetting by the current region&#39;s size</span></div>
-<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>        <span class="keyword">const</span> <span class="keyword">auto</span> region = <span class="keyword">reinterpret_cast&lt;</span>DWORD_PTR<span class="keyword">&gt;</span>(mbi.BaseAddress) + mbi.RegionSize;</div>
-<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span>        offset = <span class="keyword">reinterpret_cast&lt;</span>LPVOID<span class="keyword">&gt;</span>(region);</div>
-<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span> </div>
-<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span>        <span class="comment">// Check if this memory region is executable</span></div>
-<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>        <span class="keywordflow">if</span> (std::ranges::find(mask, mbi.AllocationProtect) != mask.end()) {</div>
-<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span> </div>
-<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>            <a class="code hl_struct" href="struct_memory_region.html">MemoryRegion</a> memory_region{</div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>                .<a class="code hl_variable" href="struct_memory_region.html#a2d9fa429e65d179bb0b6e274122e9b57">size</a> = mbi.RegionSize,</div>
-<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>                .start_address = <span class="keyword">static_cast&lt;</span>std::uint8_t*<span class="keyword">&gt;</span>(mbi.BaseAddress)</div>
-<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>            };</div>
-<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span> </div>
-<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>            <a class="code hl_function" href="memory__scanner_8cpp.html#a2ae050caa2cab158f3f0de9796e62343">RegionScan</a>(context, memory_region);</div>
-<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span>        }</div>
-<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>    }</div>
-<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>}</div>
-<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span><span class="preprocessor">#pragma endregion</span></div>
+<div class="line"><a id="l00249" name="l00249"></a><span class="lineno">  249</span>        <span class="keywordflow">if</span> (unsigned_only) {</div>
+<div class="line"><a id="l00250" name="l00250"></a><span class="lineno">  250</span>            <span class="keywordflow">if</span> (!<a class="code hl_function" href="memory__scanner_8cpp.html#a990a578ffbeeb49aba389620d153b683">VerifyModule</a>(module_path)) {</div>
+<div class="line"><a id="l00251" name="l00251"></a><span class="lineno">  251</span>                scan();</div>
+<div class="line"><a id="l00252" name="l00252"></a><span class="lineno">  252</span>                <a class="code hl_function" href="utils_8cpp.html#a61e909d98c60465d776d9cbf1da6a0bd">Log</a>(module_path);</div>
+<div class="line"><a id="l00253" name="l00253"></a><span class="lineno">  253</span>            }</div>
+<div class="line"><a id="l00254" name="l00254"></a><span class="lineno">  254</span>        }</div>
+<div class="line"><a id="l00255" name="l00255"></a><span class="lineno">  255</span>        <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00256" name="l00256"></a><span class="lineno">  256</span>            scan();</div>
+<div class="line"><a id="l00257" name="l00257"></a><span class="lineno">  257</span>            <a class="code hl_function" href="utils_8cpp.html#a61e909d98c60465d776d9cbf1da6a0bd">Log</a>(module_path);</div>
+<div class="line"><a id="l00258" name="l00258"></a><span class="lineno">  258</span>        }</div>
+<div class="line"><a id="l00259" name="l00259"></a><span class="lineno">  259</span>    }</div>
+<div class="line"><a id="l00260" name="l00260"></a><span class="lineno">  260</span> </div>
+<div class="line"><a id="l00261" name="l00261"></a><span class="lineno">  261</span>    <a class="code hl_function" href="utils_8cpp.html#a61e909d98c60465d776d9cbf1da6a0bd">Log</a>(<span class="stringliteral">&quot;\nFinished module memory scan...\n&quot;</span>);</div>
+<div class="line"><a id="l00262" name="l00262"></a><span class="lineno">  262</span>}</div>
+<div class="line"><a id="l00263" name="l00263"></a><span class="lineno">  263</span> </div>
+<div class="line"><a id="l00264" name="l00264"></a><span class="lineno">  264</span> </div>
+<div class="line"><a id="l00270" name="l00270"></a><span class="lineno"><a class="line" href="memory__scanner_8cpp.html#a2ae050caa2cab158f3f0de9796e62343">  270</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="memory__scanner_8cpp.html#a2ae050caa2cab158f3f0de9796e62343">RegionScan</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structdata_1_1_process_info.html">ProcessInfo</a>&amp; context, <span class="keyword">const</span> <a class="code hl_struct" href="struct_memory_region.html">MemoryRegion</a>&amp; memory_region) {</div>
+<div class="line"><a id="l00271" name="l00271"></a><span class="lineno">  271</span> </div>
+<div class="line"><a id="l00272" name="l00272"></a><span class="lineno">  272</span>    <span class="keyword">auto</span> [cheats] = <a class="code hl_function" href="memory__scanner_8cpp.html#a9655c919d6586782d25a74508a661754">GetSignatures</a>(context);</div>
+<div class="line"><a id="l00273" name="l00273"></a><span class="lineno">  273</span> </div>
+<div class="line"><a id="l00274" name="l00274"></a><span class="lineno">  274</span>    <span class="comment">// Log(&quot;\nBeginning executable memory scan...\n&quot;);</span></div>
+<div class="line"><a id="l00275" name="l00275"></a><span class="lineno">  275</span> </div>
+<div class="line"><a id="l00276" name="l00276"></a><span class="lineno">  276</span>    <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; [cheat_name, signatures] : cheats) {</div>
+<div class="line"><a id="l00277" name="l00277"></a><span class="lineno">  277</span> </div>
+<div class="line"><a id="l00278" name="l00278"></a><span class="lineno">  278</span>        <span class="keywordflow">for</span> (<span class="keyword">const</span> <span class="keyword">auto</span>&amp; pattern : signatures) {</div>
+<div class="line"><a id="l00279" name="l00279"></a><span class="lineno">  279</span> </div>
+<div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="memory__scanner_8cpp.html#a21c6c3348901651c3ff03e7cdc610e8c">PatternScan</a>(pattern, memory_region)) {</div>
+<div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>                <a class="code hl_struct" href="struct_detection_info.html">DetectionInfo</a> detection_info{</div>
+<div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span>                    .<a class="code hl_variable" href="struct_detection_info.html#aa4036f69c6fbbd5bb158d9272c12e3fb">cheat_name</a> = cheat_name,</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>                    .scan_type = <span class="stringliteral">&quot;RegionScan&quot;</span>,</div>
+<div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span>                    .cheat_path = L<span class="stringliteral">&quot;0&quot;</span></div>
+<div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span>                };</div>
+<div class="line"><a id="l00286" name="l00286"></a><span class="lineno">  286</span>                <a class="code hl_function" href="ban_8cpp.html#a492cefe8e40eb583e4950fe63c959ce2">Ban</a>(detection_info);</div>
+<div class="line"><a id="l00287" name="l00287"></a><span class="lineno">  287</span>            }</div>
+<div class="line"><a id="l00288" name="l00288"></a><span class="lineno">  288</span> </div>
+<div class="line"><a id="l00289" name="l00289"></a><span class="lineno">  289</span>        }</div>
+<div class="line"><a id="l00290" name="l00290"></a><span class="lineno">  290</span>    }</div>
+<div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span> </div>
+<div class="line"><a id="l00292" name="l00292"></a><span class="lineno">  292</span>    <span class="comment">// Log(&quot;\nFinished executable memory scan...\n&quot;);</span></div>
+<div class="line"><a id="l00293" name="l00293"></a><span class="lineno">  293</span>}</div>
+<div class="line"><a id="l00294" name="l00294"></a><span class="lineno">  294</span> </div>
+<div class="line"><a id="l00295" name="l00295"></a><span class="lineno">  295</span> </div>
+<div class="line"><a id="l00300" name="l00300"></a><span class="lineno"><a class="line" href="memory__scanner_8cpp.html#ad9f74c4315ef2c88f6ad70fa1f151096">  300</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="memory__scanner_8cpp.html#ad9f74c4315ef2c88f6ad70fa1f151096">FullScan</a>(<span class="keyword">const</span> <a class="code hl_struct" href="structdata_1_1_process_info.html">ProcessInfo</a>&amp; context) {</div>
+<div class="line"><a id="l00301" name="l00301"></a><span class="lineno">  301</span>    <span class="keyword">const</span> std::vector&lt;DWORD&gt; mask{ PAGE_EXECUTE, PAGE_EXECUTE_READWRITE, PAGE_EXECUTE_READ, PAGE_EXECUTE_WRITECOPY };</div>
+<div class="line"><a id="l00302" name="l00302"></a><span class="lineno">  302</span> </div>
+<div class="line"><a id="l00303" name="l00303"></a><span class="lineno">  303</span>    MEMORY_BASIC_INFORMATION mbi{};</div>
+<div class="line"><a id="l00304" name="l00304"></a><span class="lineno">  304</span>    LPVOID offset = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span> </div>
+<div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>    <span class="keywordflow">while</span> (VirtualQueryEx(GetCurrentProcess(), offset, &amp;mbi, <span class="keyword">sizeof</span> mbi)) {</div>
+<div class="line"><a id="l00307" name="l00307"></a><span class="lineno">  307</span> </div>
+<div class="line"><a id="l00308" name="l00308"></a><span class="lineno">  308</span>        <span class="comment">// Move the next scan onto the next region by offsetting by the current region&#39;s size</span></div>
+<div class="line"><a id="l00309" name="l00309"></a><span class="lineno">  309</span>        <span class="keyword">const</span> <span class="keyword">auto</span> region = <span class="keyword">reinterpret_cast&lt;</span>DWORD_PTR<span class="keyword">&gt;</span>(mbi.BaseAddress) + mbi.RegionSize;</div>
+<div class="line"><a id="l00310" name="l00310"></a><span class="lineno">  310</span>        offset = <span class="keyword">reinterpret_cast&lt;</span>LPVOID<span class="keyword">&gt;</span>(region);</div>
+<div class="line"><a id="l00311" name="l00311"></a><span class="lineno">  311</span> </div>
+<div class="line"><a id="l00312" name="l00312"></a><span class="lineno">  312</span>        <span class="comment">// Check if this memory region is executable</span></div>
+<div class="line"><a id="l00313" name="l00313"></a><span class="lineno">  313</span>        <span class="keywordflow">if</span> (std::ranges::find(mask, mbi.AllocationProtect) != mask.end()) {</div>
+<div class="line"><a id="l00314" name="l00314"></a><span class="lineno">  314</span> </div>
+<div class="line"><a id="l00315" name="l00315"></a><span class="lineno">  315</span>            <a class="code hl_struct" href="struct_memory_region.html">MemoryRegion</a> memory_region{</div>
+<div class="line"><a id="l00316" name="l00316"></a><span class="lineno">  316</span>                .<a class="code hl_variable" href="struct_memory_region.html#a2d9fa429e65d179bb0b6e274122e9b57">size</a> = mbi.RegionSize,</div>
+<div class="line"><a id="l00317" name="l00317"></a><span class="lineno">  317</span>                .start_address = <span class="keyword">static_cast&lt;</span>std::uint8_t*<span class="keyword">&gt;</span>(mbi.BaseAddress)</div>
+<div class="line"><a id="l00318" name="l00318"></a><span class="lineno">  318</span>            };</div>
+<div class="line"><a id="l00319" name="l00319"></a><span class="lineno">  319</span> </div>
+<div class="line"><a id="l00320" name="l00320"></a><span class="lineno">  320</span>            <a class="code hl_function" href="memory__scanner_8cpp.html#a2ae050caa2cab158f3f0de9796e62343">RegionScan</a>(context, memory_region);</div>
+<div class="line"><a id="l00321" name="l00321"></a><span class="lineno">  321</span>        }</div>
+<div class="line"><a id="l00322" name="l00322"></a><span class="lineno">  322</span>    }</div>
+<div class="line"><a id="l00323" name="l00323"></a><span class="lineno">  323</span>}</div>
+<div class="line"><a id="l00324" name="l00324"></a><span class="lineno">  324</span><span class="preprocessor">#pragma endregion</span></div>
 <div class="ttc" id="a_red_01team_2_inertia-cheat_2_inertia-cheat_2pch_8hpp_html"><div class="ttname"><a href="_red_01team_2_inertia-cheat_2_inertia-cheat_2pch_8hpp.html">pch.hpp</a></div></div>
-<div class="ttc" id="aban_8cpp_html_a492cefe8e40eb583e4950fe63c959ce2"><div class="ttname"><a href="ban_8cpp.html#a492cefe8e40eb583e4950fe63c959ce2">Ban</a></div><div class="ttdeci">bool Ban(const DetectionInfo &amp;detection)</div><div class="ttdef"><b>Definition:</b> <a href="ban_8cpp_source.html#l00009">ban.cpp:9</a></div></div>
+<div class="ttc" id="aban_8cpp_html_a492cefe8e40eb583e4950fe63c959ce2"><div class="ttname"><a href="ban_8cpp.html#a492cefe8e40eb583e4950fe63c959ce2">Ban</a></div><div class="ttdeci">bool Ban(const DetectionInfo &amp;detection)</div><div class="ttdoc">Ban current played.</div><div class="ttdef"><b>Definition:</b> <a href="ban_8cpp_source.html#l00013">ban.cpp:13</a></div></div>
 <div class="ttc" id="aban_8hpp_html"><div class="ttname"><a href="ban_8hpp.html">ban.hpp</a></div></div>
-<div class="ttc" id="aclassdata_1_1_signatures_html"><div class="ttname"><a href="classdata_1_1_signatures.html">data::Signatures</a></div><div class="ttdoc">Maintains a list of known cheat signatures with an associated name.</div><div class="ttdef"><b>Definition:</b> <a href="_quack-internal_2data_8hpp_source.html#l00023">data.hpp:23</a></div></div>
-<div class="ttc" id="aclassdata_1_1_signatures_html_aa8435e1f1391139a9c9ce6171934b0a6"><div class="ttname"><a href="classdata_1_1_signatures.html#aa8435e1f1391139a9c9ce6171934b0a6">data::Signatures::cheats</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; name, pattern &gt; &gt; cheats</div><div class="ttdef"><b>Definition:</b> <a href="_quack-internal_2data_8hpp_source.html#l00028">data.hpp:28</a></div></div>
-<div class="ttc" id="ahardware__id_8hpp_html"><div class="ttname"><a href="hardware__id_8hpp.html">hardware_id.hpp</a></div></div>
-<div class="ttc" id="amemory__scanner_8cpp_html_a21c6c3348901651c3ff03e7cdc610e8c"><div class="ttname"><a href="memory__scanner_8cpp.html#a21c6c3348901651c3ff03e7cdc610e8c">PatternScan</a></div><div class="ttdeci">std::uint8_t * PatternScan(const HMODULE module, const std::string &amp;signature)</div><div class="ttdoc">Scans module for supplied signature.</div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8cpp_source.html#l00118">memory_scanner.cpp:118</a></div></div>
-<div class="ttc" id="amemory__scanner_8cpp_html_a28181accbbef183e3bd1c232250ba19f"><div class="ttname"><a href="memory__scanner_8cpp.html#a28181accbbef183e3bd1c232250ba19f">PatternToByte</a></div><div class="ttdeci">std::vector&lt; unsigned long &gt; PatternToByte(const std::string &amp;signature)</div><div class="ttdoc">Converts supplied signature to bytes, removing wildcards.</div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8cpp_source.html#l00076">memory_scanner.cpp:76</a></div></div>
-<div class="ttc" id="amemory__scanner_8cpp_html_a2ae050caa2cab158f3f0de9796e62343"><div class="ttname"><a href="memory__scanner_8cpp.html#a2ae050caa2cab158f3f0de9796e62343">RegionScan</a></div><div class="ttdeci">void RegionScan(const ProcessInfo &amp;context, const MemoryRegion &amp;memory_region)</div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8cpp_source.html#l00241">memory_scanner.cpp:241</a></div></div>
-<div class="ttc" id="amemory__scanner_8cpp_html_a4f466c30ccd782474f4dea34cc470cc1"><div class="ttname"><a href="memory__scanner_8cpp.html#a4f466c30ccd782474f4dea34cc470cc1">ModuleScan</a></div><div class="ttdeci">void ModuleScan(const ProcessInfo &amp;context, const bool unsigned_only)</div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8cpp_source.html#l00180">memory_scanner.cpp:180</a></div></div>
-<div class="ttc" id="amemory__scanner_8cpp_html_a9655c919d6586782d25a74508a661754"><div class="ttname"><a href="memory__scanner_8cpp.html#a9655c919d6586782d25a74508a661754">GetSignatures</a></div><div class="ttdeci">Signatures GetSignatures(const ProcessInfo &amp;context)</div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8cpp_source.html#l00166">memory_scanner.cpp:166</a></div></div>
-<div class="ttc" id="amemory__scanner_8cpp_html_a990a578ffbeeb49aba389620d153b683"><div class="ttname"><a href="memory__scanner_8cpp.html#a990a578ffbeeb49aba389620d153b683">VerifyModule</a></div><div class="ttdeci">bool VerifyModule(const LPCWSTR source_file)</div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8cpp_source.html#l00038">memory_scanner.cpp:38</a></div></div>
-<div class="ttc" id="amemory__scanner_8cpp_html_ad9f74c4315ef2c88f6ad70fa1f151096"><div class="ttname"><a href="memory__scanner_8cpp.html#ad9f74c4315ef2c88f6ad70fa1f151096">FullScan</a></div><div class="ttdeci">void FullScan(const ProcessInfo &amp;context)</div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8cpp_source.html#l00267">memory_scanner.cpp:267</a></div></div>
-<div class="ttc" id="amemory__scanner_8cpp_html_af70a6b13d65edc9fe9c84b8b1539b96a"><div class="ttname"><a href="memory__scanner_8cpp.html#af70a6b13d65edc9fe9c84b8b1539b96a">EnumerateModules</a></div><div class="ttdeci">std::vector&lt; HMODULE &gt; EnumerateModules(const ProcessInfo &amp;pi)</div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8cpp_source.html#l00022">memory_scanner.cpp:22</a></div></div>
+<div class="ttc" id="aclassdata_1_1_signatures_html"><div class="ttname"><a href="classdata_1_1_signatures.html">data::Signatures</a></div><div class="ttdoc">Maintains a list of known cheat signatures with an associated name.</div><div class="ttdef"><b>Definition:</b> <a href="_quack-internal_2data_8hpp_source.html#l00027">data.hpp:27</a></div></div>
+<div class="ttc" id="aclassdata_1_1_signatures_html_aa8435e1f1391139a9c9ce6171934b0a6"><div class="ttname"><a href="classdata_1_1_signatures.html#aa8435e1f1391139a9c9ce6171934b0a6">data::Signatures::cheats</a></div><div class="ttdeci">std::vector&lt; std::pair&lt; name, pattern &gt; &gt; cheats</div><div class="ttdef"><b>Definition:</b> <a href="_quack-internal_2data_8hpp_source.html#l00032">data.hpp:32</a></div></div>
+<div class="ttc" id="amemory__scanner_8cpp_html_a21c6c3348901651c3ff03e7cdc610e8c"><div class="ttname"><a href="memory__scanner_8cpp.html#a21c6c3348901651c3ff03e7cdc610e8c">PatternScan</a></div><div class="ttdeci">std::uint8_t * PatternScan(const HMODULE module, const std::string &amp;signature)</div><div class="ttdoc">Scans module for supplied signature.</div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8cpp_source.html#l00126">memory_scanner.cpp:126</a></div></div>
+<div class="ttc" id="amemory__scanner_8cpp_html_a28181accbbef183e3bd1c232250ba19f"><div class="ttname"><a href="memory__scanner_8cpp.html#a28181accbbef183e3bd1c232250ba19f">PatternToByte</a></div><div class="ttdeci">std::vector&lt; unsigned long &gt; PatternToByte(const std::string &amp;signature)</div><div class="ttdoc">Converts supplied signature to bytes, removing wildcards.</div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8cpp_source.html#l00084">memory_scanner.cpp:84</a></div></div>
+<div class="ttc" id="amemory__scanner_8cpp_html_a2ae050caa2cab158f3f0de9796e62343"><div class="ttname"><a href="memory__scanner_8cpp.html#a2ae050caa2cab158f3f0de9796e62343">RegionScan</a></div><div class="ttdeci">void RegionScan(const ProcessInfo &amp;context, const MemoryRegion &amp;memory_region)</div><div class="ttdoc">Scans a region of memory provided by param memory_region.</div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8cpp_source.html#l00270">memory_scanner.cpp:270</a></div></div>
+<div class="ttc" id="amemory__scanner_8cpp_html_a4f466c30ccd782474f4dea34cc470cc1"><div class="ttname"><a href="memory__scanner_8cpp.html#a4f466c30ccd782474f4dea34cc470cc1">ModuleScan</a></div><div class="ttdeci">void ModuleScan(const ProcessInfo &amp;context, const bool unsigned_only)</div><div class="ttdoc">Scans a module that is loaded into the process.</div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8cpp_source.html#l00204">memory_scanner.cpp:204</a></div></div>
+<div class="ttc" id="amemory__scanner_8cpp_html_a9655c919d6586782d25a74508a661754"><div class="ttname"><a href="memory__scanner_8cpp.html#a9655c919d6586782d25a74508a661754">GetSignatures</a></div><div class="ttdeci">Signatures GetSignatures(const ProcessInfo &amp;context)</div><div class="ttdoc">Fetches known cheat signatures.</div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8cpp_source.html#l00185">memory_scanner.cpp:185</a></div></div>
+<div class="ttc" id="amemory__scanner_8cpp_html_a990a578ffbeeb49aba389620d153b683"><div class="ttname"><a href="memory__scanner_8cpp.html#a990a578ffbeeb49aba389620d153b683">VerifyModule</a></div><div class="ttdeci">bool VerifyModule(const LPCWSTR source_file)</div><div class="ttdoc">Verifies signature for source file, based on MSDN example code.</div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8cpp_source.html#l00046">memory_scanner.cpp:46</a></div></div>
+<div class="ttc" id="amemory__scanner_8cpp_html_acea7c94e476706b397d76faee2317412"><div class="ttname"><a href="memory__scanner_8cpp.html#acea7c94e476706b397d76faee2317412">EnumerateModules</a></div><div class="ttdeci">std::vector&lt; HMODULE &gt; EnumerateModules(const ProcessInfo &amp;process_info)</div><div class="ttdoc">Enumerates through loaded modules, returns vector of results.</div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8cpp_source.html#l00025">memory_scanner.cpp:25</a></div></div>
+<div class="ttc" id="amemory__scanner_8cpp_html_ad9f74c4315ef2c88f6ad70fa1f151096"><div class="ttname"><a href="memory__scanner_8cpp.html#ad9f74c4315ef2c88f6ad70fa1f151096">FullScan</a></div><div class="ttdeci">void FullScan(const ProcessInfo &amp;context)</div><div class="ttdoc">Scan all of executable memory.</div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8cpp_source.html#l00300">memory_scanner.cpp:300</a></div></div>
 <div class="ttc" id="amemory__scanner_8hpp_html"><div class="ttname"><a href="memory__scanner_8hpp.html">memory_scanner.hpp</a></div></div>
-<div class="ttc" id="anamespacedata_html"><div class="ttname"><a href="namespacedata.html">data</a></div><div class="ttdef"><b>Definition:</b> <a href="_quack-internal_2data_8hpp_source.html#l00006">data.hpp:6</a></div></div>
-<div class="ttc" id="astruct_detection_info_html"><div class="ttname"><a href="struct_detection_info.html">DetectionInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="ban_8hpp_source.html#l00004">ban.hpp:4</a></div></div>
-<div class="ttc" id="astruct_detection_info_html_aa4036f69c6fbbd5bb158d9272c12e3fb"><div class="ttname"><a href="struct_detection_info.html#aa4036f69c6fbbd5bb158d9272c12e3fb">DetectionInfo::cheat_name</a></div><div class="ttdeci">std::string cheat_name</div><div class="ttdef"><b>Definition:</b> <a href="ban_8hpp_source.html#l00005">ban.hpp:5</a></div></div>
-<div class="ttc" id="astruct_memory_region_html"><div class="ttname"><a href="struct_memory_region.html">MemoryRegion</a></div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8hpp_source.html#l00007">memory_scanner.hpp:7</a></div></div>
-<div class="ttc" id="astruct_memory_region_html_a2d9fa429e65d179bb0b6e274122e9b57"><div class="ttname"><a href="struct_memory_region.html#a2d9fa429e65d179bb0b6e274122e9b57">MemoryRegion::size</a></div><div class="ttdeci">std::uintptr_t size</div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8hpp_source.html#l00008">memory_scanner.hpp:8</a></div></div>
-<div class="ttc" id="astruct_memory_region_html_a44ea7a88d0b4e60c526a48d4bc347b26"><div class="ttname"><a href="struct_memory_region.html#a44ea7a88d0b4e60c526a48d4bc347b26">MemoryRegion::start_address</a></div><div class="ttdeci">std::uint8_t * start_address</div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8hpp_source.html#l00009">memory_scanner.hpp:9</a></div></div>
-<div class="ttc" id="astructdata_1_1_process_info_html"><div class="ttname"><a href="structdata_1_1_process_info.html">data::ProcessInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="_quack-internal_2data_8hpp_source.html#l00011">data.hpp:11</a></div></div>
-<div class="ttc" id="astructdata_1_1_process_info_html_a3ec3376bb54480cac694ff36874c6f3b"><div class="ttname"><a href="structdata_1_1_process_info.html#a3ec3376bb54480cac694ff36874c6f3b">data::ProcessInfo::this_module</a></div><div class="ttdeci">HMODULE this_module</div><div class="ttdef"><b>Definition:</b> <a href="_quack-internal_2data_8hpp_source.html#l00017">data.hpp:17</a></div></div>
-<div class="ttc" id="astructdata_1_1_process_info_html_afafe395662998d8209b04d0810f8e60f"><div class="ttname"><a href="structdata_1_1_process_info.html#afafe395662998d8209b04d0810f8e60f">data::ProcessInfo::handle</a></div><div class="ttdeci">HANDLE handle</div><div class="ttdef"><b>Definition:</b> <a href="_quack-internal_2data_8hpp_source.html#l00013">data.hpp:13</a></div></div>
-<div class="ttc" id="autils_8cpp_html_a61e909d98c60465d776d9cbf1da6a0bd"><div class="ttname"><a href="utils_8cpp.html#a61e909d98c60465d776d9cbf1da6a0bd">Log</a></div><div class="ttdeci">void Log(const std::string &amp;str)</div><div class="ttdoc">Logs to standard output conditionally if debug mode is enabled.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00014">utils.cpp:14</a></div></div>
+<div class="ttc" id="anamespacedata_html"><div class="ttname"><a href="namespacedata.html">data</a></div><div class="ttdoc">Data structures needed for various parts of the application.</div><div class="ttdef"><b>Definition:</b> <a href="_quack-internal_2data_8hpp_source.html#l00008">data.hpp:8</a></div></div>
+<div class="ttc" id="astruct_detection_info_html"><div class="ttname"><a href="struct_detection_info.html">DetectionInfo</a></div><div class="ttdoc">Represents information to be transmitted to remote server when ban-worthy behaviour has been detected...</div><div class="ttdef"><b>Definition:</b> <a href="ban_8hpp_source.html#l00008">ban.hpp:8</a></div></div>
+<div class="ttc" id="astruct_detection_info_html_aa4036f69c6fbbd5bb158d9272c12e3fb"><div class="ttname"><a href="struct_detection_info.html#aa4036f69c6fbbd5bb158d9272c12e3fb">DetectionInfo::cheat_name</a></div><div class="ttdeci">std::string cheat_name</div><div class="ttdef"><b>Definition:</b> <a href="ban_8hpp_source.html#l00009">ban.hpp:9</a></div></div>
+<div class="ttc" id="astruct_memory_region_html"><div class="ttname"><a href="struct_memory_region.html">MemoryRegion</a></div><div class="ttdoc">Represents a region of memory from it's size and starting address.</div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8hpp_source.html#l00010">memory_scanner.hpp:10</a></div></div>
+<div class="ttc" id="astruct_memory_region_html_a2d9fa429e65d179bb0b6e274122e9b57"><div class="ttname"><a href="struct_memory_region.html#a2d9fa429e65d179bb0b6e274122e9b57">MemoryRegion::size</a></div><div class="ttdeci">std::uintptr_t size</div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8hpp_source.html#l00011">memory_scanner.hpp:11</a></div></div>
+<div class="ttc" id="astruct_memory_region_html_a44ea7a88d0b4e60c526a48d4bc347b26"><div class="ttname"><a href="struct_memory_region.html#a44ea7a88d0b4e60c526a48d4bc347b26">MemoryRegion::start_address</a></div><div class="ttdeci">std::uint8_t * start_address</div><div class="ttdef"><b>Definition:</b> <a href="memory__scanner_8hpp_source.html#l00012">memory_scanner.hpp:12</a></div></div>
+<div class="ttc" id="astructdata_1_1_process_info_html"><div class="ttname"><a href="structdata_1_1_process_info.html">data::ProcessInfo</a></div><div class="ttdoc">Information about the process that this .DLL is inside.</div><div class="ttdef"><b>Definition:</b> <a href="_quack-internal_2data_8hpp_source.html#l00015">data.hpp:15</a></div></div>
+<div class="ttc" id="astructdata_1_1_process_info_html_a3ec3376bb54480cac694ff36874c6f3b"><div class="ttname"><a href="structdata_1_1_process_info.html#a3ec3376bb54480cac694ff36874c6f3b">data::ProcessInfo::this_module</a></div><div class="ttdeci">HMODULE this_module</div><div class="ttdef"><b>Definition:</b> <a href="_quack-internal_2data_8hpp_source.html#l00021">data.hpp:21</a></div></div>
+<div class="ttc" id="astructdata_1_1_process_info_html_afafe395662998d8209b04d0810f8e60f"><div class="ttname"><a href="structdata_1_1_process_info.html#afafe395662998d8209b04d0810f8e60f">data::ProcessInfo::handle</a></div><div class="ttdeci">HANDLE handle</div><div class="ttdef"><b>Definition:</b> <a href="_quack-internal_2data_8hpp_source.html#l00017">data.hpp:17</a></div></div>
+<div class="ttc" id="autils_8cpp_html_a61e909d98c60465d776d9cbf1da6a0bd"><div class="ttname"><a href="utils_8cpp.html#a61e909d98c60465d776d9cbf1da6a0bd">Log</a></div><div class="ttdeci">void Log(const std::string &amp;str)</div><div class="ttdoc">Logs to standard output conditionally if debug mode is enabled.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00013">utils.cpp:13</a></div></div>
 <div class="ttc" id="autils_8hpp_html"><div class="ttname"><a href="utils_8hpp.html">utils.hpp</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

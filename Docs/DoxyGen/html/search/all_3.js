@@ -23,5 +23,6 @@ var searchData=
   ['cpu_5fcounter_2ehpp_20',['cpu_counter.hpp',['../cpu__counter_8hpp.html',1,'']]],
   ['cpu_5fusage_5fthreshold_21',['cpu_usage_threshold',['../namespacecfg.html#aac14780d03af3a31884eb90a37dba74c',1,'cfg']]],
   ['cpucounter_22',['CpuCounter',['../class_cpu_counter.html',1,'CpuCounter'],['../class_cpu_counter.html#a3a6eac534e74f44946f09d0a40c3e18b',1,'CpuCounter::CpuCounter()'],['../class_cpu_counter.html#a434e43475aae4a9cb713b17393d5147a',1,'CpuCounter::CpuCounter(const CpuCounter &amp;other)'],['../class_cpu_counter.html#a2c279420c27610b1978c99f959217116',1,'CpuCounter::CpuCounter(CpuCounter &amp;&amp;other) noexcept']]],
-  ['cpuid_23',['CpuID',['../namespacecfg.html#a05ce93c100c75653006f8261e4b53653a27fb0a8198cf3d3c9320116bf2b67bda',1,'cfg']]]
+  ['cpuid_23',['CpuID',['../namespacecfg.html#a05ce93c100c75653006f8261e4b53653a27fb0a8198cf3d3c9320116bf2b67bda',1,'cfg']]],
+  ['cputhrottle_24',['CpuThrottle',['../namespacecfg.html#a42892a3b0947215bdf3c341ce9097eada4fc66d2e9436f300000c7fae61fdb0fb',1,'cfg']]]
 ];

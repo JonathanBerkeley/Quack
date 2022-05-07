@@ -26,9 +26,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="DoxyGen.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.5 / 0.6.0</span>
+   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.8 / 0.6.2</span>
    </div>
-   <div id="projectbrief">Quick Universal Anti-Cheat Kit</div>
+   <div id="projectbrief">Quick Universal Anti-Cheat Kit - https://quack.ac</div>
   </td>
  </tr>
  </tbody>
@@ -90,13 +90,20 @@ $(document).ready(function(){initNavTree('namespacecfg.html',''); initResizable(
   <div class="headertitle"><div class="title">cfg Namespace Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Config of this build, values changed here will enable or disable functionality True indicates feature is enabled, false indicates disabled.  
+<a href="namespacecfg.html#details">More...</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="enum-members" name="enum-members"></a>
 Enumerations</h2></td></tr>
-<tr class="memitem:a42892a3b0947215bdf3c341ce9097ead"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecfg.html#a42892a3b0947215bdf3c341ce9097ead">Scan</a> : bool { <a class="el" href="namespacecfg.html#a42892a3b0947215bdf3c341ce9097eadad7a74322082d09fcf955745ed05f9c22">DNS</a> = true
+<tr class="memitem:a42892a3b0947215bdf3c341ce9097ead"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecfg.html#a42892a3b0947215bdf3c341ce9097ead">Scan</a> : bool { <br />
+&#160;&#160;<a class="el" href="namespacecfg.html#a42892a3b0947215bdf3c341ce9097eada4fc66d2e9436f300000c7fae61fdb0fb">CpuThrottle</a> = true
+, <a class="el" href="namespacecfg.html#a42892a3b0947215bdf3c341ce9097eadad7a74322082d09fcf955745ed05f9c22">DNS</a> = true
 , <a class="el" href="namespacecfg.html#a42892a3b0947215bdf3c341ce9097eada4db597b2f72188f1d45b723baf508534">Module</a> = true
 , <a class="el" href="namespacecfg.html#a42892a3b0947215bdf3c341ce9097eada73785c3f84582124e7ab237dda95959e">UnsignedModulesOnly</a> = true
-, <a class="el" href="namespacecfg.html#a42892a3b0947215bdf3c341ce9097eada113d1ae65bc1e338bf2a480e435b814a">ExecutableMemory</a> = true
+, <br />
+&#160;&#160;<a class="el" href="namespacecfg.html#a42892a3b0947215bdf3c341ce9097eada113d1ae65bc1e338bf2a480e435b814a">ExecutableMemory</a> = true
+<br />
  }</td></tr>
 <tr class="separator:a42892a3b0947215bdf3c341ce9097ead"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a05ce93c100c75653006f8261e4b53653"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecfg.html#a05ce93c100c75653006f8261e4b53653">Features</a> : bool { <a class="el" href="namespacecfg.html#a05ce93c100c75653006f8261e4b53653a19977f7ff3049cb06f1b6f33ac51408d">ARP</a> = true
@@ -117,7 +124,9 @@ Variables</h2></td></tr>
 <tr class="memitem:aac14780d03af3a31884eb90a37dba74c"><td class="memItemLeft" align="right" valign="top">constexpr double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacecfg.html#aac14780d03af3a31884eb90a37dba74c">cpu_usage_threshold</a> = 90.0</td></tr>
 <tr class="separator:aac14780d03af3a31884eb90a37dba74c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Enumeration Type Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Config of this build, values changed here will enable or disable functionality True indicates feature is enabled, false indicates disabled. </p>
+</div><h2 class="groupheader">Enumeration Type Documentation</h2>
 <a id="aaeb150697b52b813a26935785d085b08" name="aaeb150697b52b813a26935785d085b08"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aaeb150697b52b813a26935785d085b08">&#9670;&nbsp;</a></span>ExitCode</h2>
 
@@ -136,7 +145,7 @@ Variables</h2></td></tr>
 <tr><td class="fieldname"><a id="aaeb150697b52b813a26935785d085b08a69d6beb632acddc027c58151fb1ae795" name="aaeb150697b52b813a26935785d085b08a69d6beb632acddc027c58151fb1ae795"></a>BlacklistedProgram&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="config_8hpp_source.html#l00019">19</a> of file <a class="el" href="config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8hpp_source.html#l00025">25</a> of file <a class="el" href="config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -158,7 +167,7 @@ Variables</h2></td></tr>
 <tr><td class="fieldname"><a id="a05ce93c100c75653006f8261e4b53653a8997eff3075a71c3caf9f2dca3a99be4" name="a05ce93c100c75653006f8261e4b53653a8997eff3075a71c3caf9f2dca3a99be4"></a>DiskID&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="config_8hpp_source.html#l00012">12</a> of file <a class="el" href="config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8hpp_source.html#l00018">18</a> of file <a class="el" href="config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -174,13 +183,14 @@ Variables</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <table class="fieldtable">
-<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a42892a3b0947215bdf3c341ce9097eadad7a74322082d09fcf955745ed05f9c22" name="a42892a3b0947215bdf3c341ce9097eadad7a74322082d09fcf955745ed05f9c22"></a>DNS&#160;</td><td class="fielddoc"></td></tr>
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a42892a3b0947215bdf3c341ce9097eada4fc66d2e9436f300000c7fae61fdb0fb" name="a42892a3b0947215bdf3c341ce9097eada4fc66d2e9436f300000c7fae61fdb0fb"></a>CpuThrottle&#160;</td><td class="fielddoc"></td></tr>
+<tr><td class="fieldname"><a id="a42892a3b0947215bdf3c341ce9097eadad7a74322082d09fcf955745ed05f9c22" name="a42892a3b0947215bdf3c341ce9097eadad7a74322082d09fcf955745ed05f9c22"></a>DNS&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a42892a3b0947215bdf3c341ce9097eada4db597b2f72188f1d45b723baf508534" name="a42892a3b0947215bdf3c341ce9097eada4db597b2f72188f1d45b723baf508534"></a>Module&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a42892a3b0947215bdf3c341ce9097eada73785c3f84582124e7ab237dda95959e" name="a42892a3b0947215bdf3c341ce9097eada73785c3f84582124e7ab237dda95959e"></a>UnsignedModulesOnly&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="a42892a3b0947215bdf3c341ce9097eada113d1ae65bc1e338bf2a480e435b814a" name="a42892a3b0947215bdf3c341ce9097eada113d1ae65bc1e338bf2a480e435b814a"></a>ExecutableMemory&#160;</td><td class="fielddoc"></td></tr>
 </table>
 
-<p class="definition">Definition at line <a class="el" href="config_8hpp_source.html#l00005">5</a> of file <a class="el" href="config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8hpp_source.html#l00010">10</a> of file <a class="el" href="config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>
@@ -205,7 +215,7 @@ Variables</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="config_8hpp_source.html#l00026">26</a> of file <a class="el" href="config_8hpp_source.html">config.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="config_8hpp_source.html#l00033">33</a> of file <a class="el" href="config_8hpp_source.html">config.hpp</a>.</p>
 
 </div>
 </div>

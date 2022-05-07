@@ -2,6 +2,11 @@
 \label{struct_detection_info}\index{DetectionInfo@{DetectionInfo}}
 
 
+Represents information to be transmitted to remote server when ban-\/worthy behaviour has been detected.  
+
+
+
+
 {\ttfamily \#include $<$Quack-\/internal/ban.\+hpp$>$}
 
 \doxysubsection*{Public Attributes}
@@ -12,17 +17,29 @@ std\+::string \mbox{\hyperlink{struct_detection_info_aa4036f69c6fbbd5bb158d9272c
 std\+::string \mbox{\hyperlink{struct_detection_info_a82200760d4708d2ac6c62d0c7b4fe641}{scan\+\_\+type}}
 \item 
 std\+::wstring \mbox{\hyperlink{struct_detection_info_accb18a24284996ff8e3b15b83de65392}{cheat\+\_\+path}}
+\item 
+std\+::vector$<$ std\+::string $>$ \mbox{\hyperlink{struct_detection_info_aab81243d007b62fd5ccfafd6a02e0be2}{blacklisted\+\_\+domains}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
+Represents information to be transmitted to remote server when ban-\/worthy behaviour has been detected. 
 
-
-Definition at line \mbox{\hyperlink{ban_8hpp_source_l00004}{4}} of file \mbox{\hyperlink{ban_8hpp_source}{ban.\+hpp}}.
+Definition at line \mbox{\hyperlink{ban_8hpp_source_l00008}{8}} of file \mbox{\hyperlink{ban_8hpp_source}{ban.\+hpp}}.
 
 
 
 \doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{struct_detection_info_aab81243d007b62fd5ccfafd6a02e0be2}\label{struct_detection_info_aab81243d007b62fd5ccfafd6a02e0be2}} 
+\index{DetectionInfo@{DetectionInfo}!blacklisted\_domains@{blacklisted\_domains}}
+\index{blacklisted\_domains@{blacklisted\_domains}!DetectionInfo@{DetectionInfo}}
+\doxysubsubsection{\texorpdfstring{blacklisted\_domains}{blacklisted\_domains}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::string$>$ Detection\+Info\+::blacklisted\+\_\+domains}
+
+
+
+Definition at line \mbox{\hyperlink{ban_8hpp_source_l00013}{13}} of file \mbox{\hyperlink{ban_8hpp_source}{ban.\+hpp}}.
+
 \mbox{\Hypertarget{struct_detection_info_aa4036f69c6fbbd5bb158d9272c12e3fb}\label{struct_detection_info_aa4036f69c6fbbd5bb158d9272c12e3fb}} 
 \index{DetectionInfo@{DetectionInfo}!cheat\_name@{cheat\_name}}
 \index{cheat\_name@{cheat\_name}!DetectionInfo@{DetectionInfo}}
@@ -31,7 +48,7 @@ Definition at line \mbox{\hyperlink{ban_8hpp_source_l00004}{4}} of file \mbox{\h
 
 
 
-Definition at line \mbox{\hyperlink{ban_8hpp_source_l00005}{5}} of file \mbox{\hyperlink{ban_8hpp_source}{ban.\+hpp}}.
+Definition at line \mbox{\hyperlink{ban_8hpp_source_l00009}{9}} of file \mbox{\hyperlink{ban_8hpp_source}{ban.\+hpp}}.
 
 \mbox{\Hypertarget{struct_detection_info_accb18a24284996ff8e3b15b83de65392}\label{struct_detection_info_accb18a24284996ff8e3b15b83de65392}} 
 \index{DetectionInfo@{DetectionInfo}!cheat\_path@{cheat\_path}}
@@ -41,7 +58,7 @@ Definition at line \mbox{\hyperlink{ban_8hpp_source_l00005}{5}} of file \mbox{\h
 
 
 
-Definition at line \mbox{\hyperlink{ban_8hpp_source_l00007}{7}} of file \mbox{\hyperlink{ban_8hpp_source}{ban.\+hpp}}.
+Definition at line \mbox{\hyperlink{ban_8hpp_source_l00011}{11}} of file \mbox{\hyperlink{ban_8hpp_source}{ban.\+hpp}}.
 
 \mbox{\Hypertarget{struct_detection_info_a82200760d4708d2ac6c62d0c7b4fe641}\label{struct_detection_info_a82200760d4708d2ac6c62d0c7b4fe641}} 
 \index{DetectionInfo@{DetectionInfo}!scan\_type@{scan\_type}}
@@ -51,7 +68,7 @@ Definition at line \mbox{\hyperlink{ban_8hpp_source_l00007}{7}} of file \mbox{\h
 
 
 
-Definition at line \mbox{\hyperlink{ban_8hpp_source_l00006}{6}} of file \mbox{\hyperlink{ban_8hpp_source}{ban.\+hpp}}.
+Definition at line \mbox{\hyperlink{ban_8hpp_source_l00010}{10}} of file \mbox{\hyperlink{ban_8hpp_source}{ban.\+hpp}}.
 
 
 

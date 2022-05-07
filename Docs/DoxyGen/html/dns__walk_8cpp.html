@@ -26,9 +26,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="DoxyGen.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.5 / 0.6.0</span>
+   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.8 / 0.6.2</span>
    </div>
-   <div id="projectbrief">Quick Universal Anti-Cheat Kit</div>
+   <div id="projectbrief">Quick Universal Anti-Cheat Kit - https://quack.ac</div>
   </td>
  </tr>
  </tbody>
@@ -93,6 +93,7 @@ $(document).ready(function(){initNavTree('dns__walk_8cpp.html',''); initResizabl
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="_quack-internal_2pch_8hpp_source.html">pch.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="dns__walk_8hpp_source.html">dns_walk.hpp</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="ban_8hpp_source.html">ban.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="utils_8hpp_source.html">utils.hpp</a>&quot;</code><br />
 <code>#include &quot;WinDNS.h&quot;</code><br />
 </div>
@@ -101,11 +102,13 @@ $(document).ready(function(){initNavTree('dns__walk_8cpp.html',''); initResizabl
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="nested-classes" name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_dns_data.html">DnsData</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure to contain data found in dns table.  <a href="struct_dns_data.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="typedef-members" name="typedef-members"></a>
 Typedefs</h2></td></tr>
 <tr class="memitem:a72d0bec0a94bbd5c4f51d79a45720666"><td class="memItemLeft" align="right" valign="top">typedef struct <a class="el" href="struct_dns_data.html">DnsData</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dns__walk_8cpp.html#a72d0bec0a94bbd5c4f51d79a45720666">DnsTablePtr</a></td></tr>
+<tr class="memdesc:a72d0bec0a94bbd5c4f51d79a45720666"><td class="mdescLeft">&#160;</td><td class="mdescRight">Structure to contain data found in dns table.  <a href="dns__walk_8cpp.html#a72d0bec0a94bbd5c4f51d79a45720666">More...</a><br /></td></tr>
 <tr class="separator:a72d0bec0a94bbd5c4f51d79a45720666"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa33dd7050edc0dac6e8b192e43a1ba01"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dns__walk_8cpp.html#aa33dd7050edc0dac6e8b192e43a1ba01">DnsTableCachePtr</a> = int(WINAPI *)(<a class="el" href="dns__walk_8cpp.html#a72d0bec0a94bbd5c4f51d79a45720666">DnsTablePtr</a> *dns_table_ptr)</td></tr>
 <tr class="separator:aa33dd7050edc0dac6e8b192e43a1ba01"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -122,6 +125,7 @@ Functions</h2></td></tr>
 <tr class="memdesc:ad614910cd368ea2dda293f33809227b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Walk the DNS cache using undocumented DNSAPI function Will cause DNSAPI.dll to be loaded temporarily.  <a href="dns__walk_8cpp.html#ad614910cd368ea2dda293f33809227b3">More...</a><br /></td></tr>
 <tr class="separator:ad614910cd368ea2dda293f33809227b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30912597ea271b2b946c03d3480c0a43"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::wstring &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dns__walk_8cpp.html#a30912597ea271b2b946c03d3480c0a43">GetBlacklistedEntries</a> ()</td></tr>
+<tr class="memdesc:a30912597ea271b2b946c03d3480c0a43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a list of blacklisted DNS entries.  <a href="dns__walk_8cpp.html#a30912597ea271b2b946c03d3480c0a43">More...</a><br /></td></tr>
 <tr class="separator:a30912597ea271b2b946c03d3480c0a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf70ac31f189901cd13fa89f5300c414"><td class="memItemLeft" align="right" valign="top"><a class="el" href="dns__walk_8cpp.html#a4b4d2ef4447201eb3b6f68f323d25671">DnsEntries</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dns__walk_8cpp.html#adf70ac31f189901cd13fa89f5300c414">CheckForBlacklistedDNSEntries</a> ()</td></tr>
 <tr class="memdesc:adf70ac31f189901cd13fa89f5300c414"><td class="mdescLeft">&#160;</td><td class="mdescRight">Searches entries in the DNS cache for blacklisted domains.  <a href="dns__walk_8cpp.html#adf70ac31f189901cd13fa89f5300c414">More...</a><br /></td></tr>
@@ -129,6 +133,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aad94980acc9a425f0a1a3028d49b2bd3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dns__walk_8cpp.html#aad94980acc9a425f0a1a3028d49b2bd3">PrintDNSEntries</a> (std::wostream &amp;wos)</td></tr>
 <tr class="memdesc:aad94980acc9a425f0a1a3028d49b2bd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints DNS entries in a human readable format to supplied wide output stream.  <a href="dns__walk_8cpp.html#aad94980acc9a425f0a1a3028d49b2bd3">More...</a><br /></td></tr>
 <tr class="separator:aad94980acc9a425f0a1a3028d49b2bd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b4dfbb155eee3c15728aa02a9074304"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dns__walk_8cpp.html#a4b4dfbb155eee3c15728aa02a9074304">DnsScan</a> ()</td></tr>
+<tr class="memdesc:a4b4dfbb155eee3c15728aa02a9074304"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scans DNS entries for blacklisted domains and bans player if blacklisted entries are found.  <a href="dns__walk_8cpp.html#a4b4dfbb155eee3c15728aa02a9074304">More...</a><br /></td></tr>
+<tr class="separator:a4b4dfbb155eee3c15728aa02a9074304"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Typedef Documentation</h2>
 <a id="a853d66c4fe175b1a67c97cb955e0f562" name="a853d66c4fe175b1a67c97cb955e0f562"></a>
@@ -143,7 +150,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00018">18</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00023">23</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
 
 </div>
 </div>
@@ -159,7 +166,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00021">21</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00026">26</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
 
 </div>
 </div>
@@ -175,7 +182,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00019">19</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00024">24</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
 
 </div>
 </div>
@@ -191,7 +198,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00017">17</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00022">22</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
 
 </div>
 </div>
@@ -206,6 +213,8 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Structure to contain data found in dns table. </p>
 
 </div>
 </div>
@@ -228,7 +237,28 @@ Functions</h2></td></tr>
 <p>Searches entries in the DNS cache for blacklisted domains. </p>
 <dl class="section return"><dt>Returns</dt><dd>List of entries that matched the blacklist, or empty </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00116">116</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00125">125</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a4b4dfbb155eee3c15728aa02a9074304" name="a4b4dfbb155eee3c15728aa02a9074304"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b4dfbb155eee3c15728aa02a9074304">&#9670;&nbsp;</a></span>DnsScan()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DnsScan </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Scans DNS entries for blacklisted domains and bans player if blacklisted entries are found. </p>
+
+<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00243">243</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
 
 </div>
 </div>
@@ -247,7 +277,10 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00098">98</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
+<p>Retrieves a list of blacklisted DNS entries. </p>
+<dl class="section return"><dt>Returns</dt><dd>Vector of blacklisted DNS entries </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00107">107</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
 
 </div>
 </div>
@@ -276,7 +309,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Vector containing cached DnsEntries on success </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00039">39</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00044">44</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
 
 </div>
 </div>
@@ -304,7 +337,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00140">140</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00149">149</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
 
 </div>
 </div>

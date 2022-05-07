@@ -14,7 +14,9 @@ std\+::optional$<$ std\+::vector$<$ \mbox{\hyperlink{struct_dns_entry}{Dns\+Entr
 std\+::optional$<$ std\+::vector$<$ \mbox{\hyperlink{struct_dns_entry}{Dns\+Entry}} $>$ $>$ \mbox{\hyperlink{dns__walk_8hpp_a62050f84df134a7fd8a1dfc8cbd19d14}{Check\+For\+Blacklisted\+DNSEntries}} ()
 \begin{DoxyCompactList}\small\item\em Searches entries in the DNS cache for blacklisted domains. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{dns__walk_8hpp_aad94980acc9a425f0a1a3028d49b2bd3}{Print\+DNSEntries}} (std\+::wostream \&wos)
-\begin{DoxyCompactList}\small\item\em Prints DNS entries in a human readable format to supplied wide output stream. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Prints DNS entries in a human readable format to supplied wide output stream. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{dns__walk_8hpp_a4b4dfbb155eee3c15728aa02a9074304}{Dns\+Scan}} ()
+\begin{DoxyCompactList}\small\item\em Scans DNS entries for blacklisted domains and bans player if blacklisted entries are found. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -33,7 +35,21 @@ List of entries that matched the blacklist, or empty
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{dns__walk_8cpp_source_l00116}{116}} of file \mbox{\hyperlink{dns__walk_8cpp_source}{dns\+\_\+walk.\+cpp}}.
+Definition at line \mbox{\hyperlink{dns__walk_8cpp_source_l00125}{125}} of file \mbox{\hyperlink{dns__walk_8cpp_source}{dns\+\_\+walk.\+cpp}}.
+
+\mbox{\Hypertarget{dns__walk_8hpp_a4b4dfbb155eee3c15728aa02a9074304}\label{dns__walk_8hpp_a4b4dfbb155eee3c15728aa02a9074304}} 
+\index{dns\_walk.hpp@{dns\_walk.hpp}!DnsScan@{DnsScan}}
+\index{DnsScan@{DnsScan}!dns\_walk.hpp@{dns\_walk.hpp}}
+\doxysubsubsection{\texorpdfstring{DnsScan()}{DnsScan()}}
+{\footnotesize\ttfamily void Dns\+Scan (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Scans DNS entries for blacklisted domains and bans player if blacklisted entries are found. 
+
+
+
+Definition at line \mbox{\hyperlink{dns__walk_8cpp_source_l00243}{243}} of file \mbox{\hyperlink{dns__walk_8cpp_source}{dns\+\_\+walk.\+cpp}}.
 
 \mbox{\Hypertarget{dns__walk_8hpp_afb5e793fde7937fec85122512e3a6f71}\label{dns__walk_8hpp_afb5e793fde7937fec85122512e3a6f71}} 
 \index{dns\_walk.hpp@{dns\_walk.hpp}!GetCachedDNSData@{GetCachedDNSData}}
@@ -55,7 +71,7 @@ Vector containing cached Dns\+Entries on success
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{dns__walk_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{dns__walk_8cpp_source}{dns\+\_\+walk.\+cpp}}.
+Definition at line \mbox{\hyperlink{dns__walk_8cpp_source_l00044}{44}} of file \mbox{\hyperlink{dns__walk_8cpp_source}{dns\+\_\+walk.\+cpp}}.
 
 \mbox{\Hypertarget{dns__walk_8hpp_aad94980acc9a425f0a1a3028d49b2bd3}\label{dns__walk_8hpp_aad94980acc9a425f0a1a3028d49b2bd3}} 
 \index{dns\_walk.hpp@{dns\_walk.hpp}!PrintDNSEntries@{PrintDNSEntries}}
@@ -74,5 +90,5 @@ Prints DNS entries in a human readable format to supplied wide output stream.
 \end{DoxyParams}
 
 
-Definition at line \mbox{\hyperlink{dns__walk_8cpp_source_l00140}{140}} of file \mbox{\hyperlink{dns__walk_8cpp_source}{dns\+\_\+walk.\+cpp}}.
+Definition at line \mbox{\hyperlink{dns__walk_8cpp_source_l00149}{149}} of file \mbox{\hyperlink{dns__walk_8cpp_source}{dns\+\_\+walk.\+cpp}}.
 

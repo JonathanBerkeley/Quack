@@ -26,9 +26,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="DoxyGen.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.5 / 0.6.0</span>
+   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.8 / 0.6.2</span>
    </div>
-   <div id="projectbrief">Quick Universal Anti-Cheat Kit</div>
+   <div id="projectbrief">Quick Universal Anti-Cheat Kit - https://quack.ac</div>
   </td>
  </tr>
  </tbody>
@@ -91,6 +91,9 @@ $(document).ready(function(){initNavTree('struct_detection_info.html',''); initR
 </div><!--header-->
 <div class="contents">
 
+<p>Represents information to be transmitted to remote server when ban-worthy behaviour has been detected.  
+ <a href="struct_detection_info.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="ban_8hpp_source.html">Quack-internal/ban.hpp</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
@@ -101,11 +104,30 @@ Public Attributes</h2></td></tr>
 <tr class="separator:a82200760d4708d2ac6c62d0c7b4fe641"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:accb18a24284996ff8e3b15b83de65392"><td class="memItemLeft" align="right" valign="top">std::wstring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_detection_info.html#accb18a24284996ff8e3b15b83de65392">cheat_path</a></td></tr>
 <tr class="separator:accb18a24284996ff8e3b15b83de65392"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab81243d007b62fd5ccfafd6a02e0be2"><td class="memItemLeft" align="right" valign="top">std::vector&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="struct_detection_info.html#aab81243d007b62fd5ccfafd6a02e0be2">blacklisted_domains</a></td></tr>
+<tr class="separator:aab81243d007b62fd5ccfafd6a02e0be2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="ban_8hpp_source.html#l00004">4</a> of file <a class="el" href="ban_8hpp_source.html">ban.hpp</a>.</p>
+<div class="textblock"><p >Represents information to be transmitted to remote server when ban-worthy behaviour has been detected. </p>
+
+<p class="definition">Definition at line <a class="el" href="ban_8hpp_source.html#l00008">8</a> of file <a class="el" href="ban_8hpp_source.html">ban.hpp</a>.</p>
 </div><h2 class="groupheader">Member Data Documentation</h2>
+<a id="aab81243d007b62fd5ccfafd6a02e0be2" name="aab81243d007b62fd5ccfafd6a02e0be2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab81243d007b62fd5ccfafd6a02e0be2">&#9670;&nbsp;</a></span>blacklisted_domains</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;std::string&gt; DetectionInfo::blacklisted_domains</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="ban_8hpp_source.html#l00013">13</a> of file <a class="el" href="ban_8hpp_source.html">ban.hpp</a>.</p>
+
+</div>
+</div>
 <a id="aa4036f69c6fbbd5bb158d9272c12e3fb" name="aa4036f69c6fbbd5bb158d9272c12e3fb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa4036f69c6fbbd5bb158d9272c12e3fb">&#9670;&nbsp;</a></span>cheat_name</h2>
 
@@ -118,7 +140,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ban_8hpp_source.html#l00005">5</a> of file <a class="el" href="ban_8hpp_source.html">ban.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ban_8hpp_source.html#l00009">9</a> of file <a class="el" href="ban_8hpp_source.html">ban.hpp</a>.</p>
 
 </div>
 </div>
@@ -134,7 +156,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ban_8hpp_source.html#l00007">7</a> of file <a class="el" href="ban_8hpp_source.html">ban.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ban_8hpp_source.html#l00011">11</a> of file <a class="el" href="ban_8hpp_source.html">ban.hpp</a>.</p>
 
 </div>
 </div>
@@ -150,7 +172,7 @@ Public Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="ban_8hpp_source.html#l00006">6</a> of file <a class="el" href="ban_8hpp_source.html">ban.hpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="ban_8hpp_source.html#l00010">10</a> of file <a class="el" href="ban_8hpp_source.html">ban.hpp</a>.</p>
 
 </div>
 </div>

@@ -26,9 +26,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="DoxyGen.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.5 / 0.6.0</span>
+   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.8 / 0.6.2</span>
    </div>
-   <div id="projectbrief">Quick Universal Anti-Cheat Kit</div>
+   <div id="projectbrief">Quick Universal Anti-Cheat Kit - https://quack.ac</div>
   </td>
  </tr>
  </tbody>
@@ -102,10 +102,13 @@ $(document).ready(function(){initNavTree('_quack-internal_2flashpoint_8cpp.html'
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:abd0606756ee6183c3caeae6b0e928d11"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_quack-internal_2flashpoint_8cpp.html#abd0606756ee6183c3caeae6b0e928d11">InitClientAC</a> ()</td></tr>
+<tr class="memdesc:abd0606756ee6183c3caeae6b0e928d11"><td class="mdescLeft">&#160;</td><td class="mdescRight">Starts the anti-cheat executable.  <a href="_quack-internal_2flashpoint_8cpp.html#abd0606756ee6183c3caeae6b0e928d11">More...</a><br /></td></tr>
 <tr class="separator:abd0606756ee6183c3caeae6b0e928d11"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2f2ccaefc4cce39a52aef1e87d358f6d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_quack-internal_2flashpoint_8cpp.html#a2f2ccaefc4cce39a52aef1e87d358f6d">KillClientAC</a> ()</td></tr>
+<tr class="memdesc:a2f2ccaefc4cce39a52aef1e87d358f6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Kills the client anti-cheat that was started by InitClientAC.  <a href="_quack-internal_2flashpoint_8cpp.html#a2f2ccaefc4cce39a52aef1e87d358f6d">More...</a><br /></td></tr>
 <tr class="separator:a2f2ccaefc4cce39a52aef1e87d358f6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a44385e5f6ecb4d791f022bf8f4392404"><td class="memItemLeft" align="right" valign="top">DWORD WINAPI&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_quack-internal_2flashpoint_8cpp.html#a44385e5f6ecb4d791f022bf8f4392404">Init</a> (LPVOID lpParam)</td></tr>
+<tr class="memdesc:a44385e5f6ecb4d791f022bf8f4392404"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entry point and setup.  <a href="_quack-internal_2flashpoint_8cpp.html#a44385e5f6ecb4d791f022bf8f4392404">More...</a><br /></td></tr>
 <tr class="separator:a44385e5f6ecb4d791f022bf8f4392404"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -125,7 +128,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_quack-internal_2flashpoint_8cpp_source.html#l00047">47</a> of file <a class="el" href="_quack-internal_2flashpoint_8cpp_source.html">flashpoint.cpp</a>.</p>
+<p>Entry point and setup. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lpParam</td><td>Optional parameter passed from DllMain </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Does not return </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_quack-internal_2flashpoint_8cpp_source.html#l00059">59</a> of file <a class="el" href="_quack-internal_2flashpoint_8cpp_source.html">flashpoint.cpp</a>.</p>
 
 </div>
 </div>
@@ -144,7 +156,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_quack-internal_2flashpoint_8cpp_source.html#l00020">20</a> of file <a class="el" href="_quack-internal_2flashpoint_8cpp_source.html">flashpoint.cpp</a>.</p>
+<p>Starts the anti-cheat executable. </p>
+
+<p class="definition">Definition at line <a class="el" href="_quack-internal_2flashpoint_8cpp_source.html#l00025">25</a> of file <a class="el" href="_quack-internal_2flashpoint_8cpp_source.html">flashpoint.cpp</a>.</p>
 
 </div>
 </div>
@@ -163,7 +177,9 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_quack-internal_2flashpoint_8cpp_source.html#l00039">39</a> of file <a class="el" href="_quack-internal_2flashpoint_8cpp_source.html">flashpoint.cpp</a>.</p>
+<p>Kills the client anti-cheat that was started by InitClientAC. </p>
+
+<p class="definition">Definition at line <a class="el" href="_quack-internal_2flashpoint_8cpp_source.html#l00047">47</a> of file <a class="el" href="_quack-internal_2flashpoint_8cpp_source.html">flashpoint.cpp</a>.</p>
 
 </div>
 </div>

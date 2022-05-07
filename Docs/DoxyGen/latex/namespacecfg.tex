@@ -1,12 +1,20 @@
 \hypertarget{namespacecfg}{}\doxysection{cfg Namespace Reference}
 \label{namespacecfg}\index{cfg@{cfg}}
+
+
+Config of this build, values changed here will enable or disable functionality True indicates feature is enabled, false indicates disabled.  
+
+
 \doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum \mbox{\hyperlink{namespacecfg_a42892a3b0947215bdf3c341ce9097ead}{Scan}} \+: bool \{ \mbox{\hyperlink{namespacecfg_a42892a3b0947215bdf3c341ce9097eadad7a74322082d09fcf955745ed05f9c22}{DNS}} = true
+enum \mbox{\hyperlink{namespacecfg_a42892a3b0947215bdf3c341ce9097ead}{Scan}} \+: bool \{ \newline
+\mbox{\hyperlink{namespacecfg_a42892a3b0947215bdf3c341ce9097eada4fc66d2e9436f300000c7fae61fdb0fb}{Cpu\+Throttle}} = true
+, \mbox{\hyperlink{namespacecfg_a42892a3b0947215bdf3c341ce9097eadad7a74322082d09fcf955745ed05f9c22}{DNS}} = true
 , \mbox{\hyperlink{namespacecfg_a42892a3b0947215bdf3c341ce9097eada4db597b2f72188f1d45b723baf508534}{Module}} = true
 , \mbox{\hyperlink{namespacecfg_a42892a3b0947215bdf3c341ce9097eada73785c3f84582124e7ab237dda95959e}{Unsigned\+Modules\+Only}} = true
-, \mbox{\hyperlink{namespacecfg_a42892a3b0947215bdf3c341ce9097eada113d1ae65bc1e338bf2a480e435b814a}{Executable\+Memory}} = true
+, \newline
+\mbox{\hyperlink{namespacecfg_a42892a3b0947215bdf3c341ce9097eada113d1ae65bc1e338bf2a480e435b814a}{Executable\+Memory}} = true
  \}
 \item 
 enum \mbox{\hyperlink{namespacecfg_a05ce93c100c75653006f8261e4b53653}{Features}} \+: bool \{ \mbox{\hyperlink{namespacecfg_a05ce93c100c75653006f8261e4b53653a19977f7ff3049cb06f1b6f33ac51408d}{ARP}} = true
@@ -27,6 +35,9 @@ enum \mbox{\hyperlink{namespacecfg_aaeb150697b52b813a26935785d085b08}{Exit\+Code
 constexpr double \mbox{\hyperlink{namespacecfg_aac14780d03af3a31884eb90a37dba74c}{cpu\+\_\+usage\+\_\+threshold}} = 90.\+0
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Config of this build, values changed here will enable or disable functionality True indicates feature is enabled, false indicates disabled. 
 
 \doxysubsection{Enumeration Type Documentation}
 \mbox{\Hypertarget{namespacecfg_aaeb150697b52b813a26935785d085b08}\label{namespacecfg_aaeb150697b52b813a26935785d085b08}} 
@@ -55,7 +66,7 @@ Blacklisted\+Program&\\
 \end{DoxyEnumFields}
 
 
-Definition at line \mbox{\hyperlink{config_8hpp_source_l00019}{19}} of file \mbox{\hyperlink{config_8hpp_source}{config.\+hpp}}.
+Definition at line \mbox{\hyperlink{config_8hpp_source_l00025}{25}} of file \mbox{\hyperlink{config_8hpp_source}{config.\+hpp}}.
 
 \mbox{\Hypertarget{namespacecfg_a05ce93c100c75653006f8261e4b53653}\label{namespacecfg_a05ce93c100c75653006f8261e4b53653}} 
 \index{cfg@{cfg}!Features@{Features}}
@@ -83,7 +94,7 @@ Disk\+ID&\\
 \end{DoxyEnumFields}
 
 
-Definition at line \mbox{\hyperlink{config_8hpp_source_l00012}{12}} of file \mbox{\hyperlink{config_8hpp_source}{config.\+hpp}}.
+Definition at line \mbox{\hyperlink{config_8hpp_source_l00018}{18}} of file \mbox{\hyperlink{config_8hpp_source}{config.\+hpp}}.
 
 \mbox{\Hypertarget{namespacecfg_a42892a3b0947215bdf3c341ce9097ead}\label{namespacecfg_a42892a3b0947215bdf3c341ce9097ead}} 
 \index{cfg@{cfg}!Scan@{Scan}}
@@ -92,6 +103,10 @@ Definition at line \mbox{\hyperlink{config_8hpp_source_l00012}{12}} of file \mbo
 {\footnotesize\ttfamily enum \mbox{\hyperlink{namespacecfg_a42892a3b0947215bdf3c341ce9097ead}{cfg\+::\+Scan}} \+: bool}
 
 \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CpuThrottle@{CpuThrottle}!cfg@{cfg}}\index{cfg@{cfg}!CpuThrottle@{CpuThrottle}}}\mbox{\Hypertarget{namespacecfg_a42892a3b0947215bdf3c341ce9097eada4fc66d2e9436f300000c7fae61fdb0fb}\label{namespacecfg_a42892a3b0947215bdf3c341ce9097eada4fc66d2e9436f300000c7fae61fdb0fb}} 
+Cpu\+Throttle&\\
+\hline
+
 \raisebox{\heightof{T}}[0pt][0pt]{\index{DNS@{DNS}!cfg@{cfg}}\index{cfg@{cfg}!DNS@{DNS}}}\mbox{\Hypertarget{namespacecfg_a42892a3b0947215bdf3c341ce9097eadad7a74322082d09fcf955745ed05f9c22}\label{namespacecfg_a42892a3b0947215bdf3c341ce9097eadad7a74322082d09fcf955745ed05f9c22}} 
 DNS&\\
 \hline
@@ -111,7 +126,7 @@ Executable\+Memory&\\
 \end{DoxyEnumFields}
 
 
-Definition at line \mbox{\hyperlink{config_8hpp_source_l00005}{5}} of file \mbox{\hyperlink{config_8hpp_source}{config.\+hpp}}.
+Definition at line \mbox{\hyperlink{config_8hpp_source_l00010}{10}} of file \mbox{\hyperlink{config_8hpp_source}{config.\+hpp}}.
 
 
 
@@ -124,5 +139,5 @@ Definition at line \mbox{\hyperlink{config_8hpp_source_l00005}{5}} of file \mbox
 
 
 
-Definition at line \mbox{\hyperlink{config_8hpp_source_l00026}{26}} of file \mbox{\hyperlink{config_8hpp_source}{config.\+hpp}}.
+Definition at line \mbox{\hyperlink{config_8hpp_source_l00033}{33}} of file \mbox{\hyperlink{config_8hpp_source}{config.\+hpp}}.
 

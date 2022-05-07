@@ -26,9 +26,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="DoxyGen.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.5 / 0.6.0</span>
+   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.8 / 0.6.2</span>
    </div>
-   <div id="projectbrief">Quick Universal Anti-Cheat Kit</div>
+   <div id="projectbrief">Quick Universal Anti-Cheat Kit - https://quack.ac</div>
   </td>
  </tr>
  </tbody>
@@ -90,18 +90,21 @@ $(document).ready(function(){initNavTree('ban_8hpp_source.html',''); initResizab
 <a href="ban_8hpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span> </div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
-<div class="line"><a id="l00004" name="l00004"></a><span class="lineno"><a class="line" href="struct_detection_info.html">    4</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct_detection_info.html">DetectionInfo</a> {</div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno"><a class="line" href="struct_detection_info.html#aa4036f69c6fbbd5bb158d9272c12e3fb">    5</a></span>    std::string <a class="code hl_variable" href="struct_detection_info.html#aa4036f69c6fbbd5bb158d9272c12e3fb">cheat_name</a>;</div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="struct_detection_info.html#a82200760d4708d2ac6c62d0c7b4fe641">    6</a></span>    std::string <a class="code hl_variable" href="struct_detection_info.html#a82200760d4708d2ac6c62d0c7b4fe641">scan_type</a>;</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno"><a class="line" href="struct_detection_info.html#accb18a24284996ff8e3b15b83de65392">    7</a></span>    std::wstring <a class="code hl_variable" href="struct_detection_info.html#accb18a24284996ff8e3b15b83de65392">cheat_path</a>;</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>};</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keywordtype">bool</span> <a class="code hl_function" href="ban_8hpp.html#a492cefe8e40eb583e4950fe63c959ce2">Ban</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_detection_info.html">DetectionInfo</a>&amp; detection);</div>
-<div class="ttc" id="aban_8hpp_html_a492cefe8e40eb583e4950fe63c959ce2"><div class="ttname"><a href="ban_8hpp.html#a492cefe8e40eb583e4950fe63c959ce2">Ban</a></div><div class="ttdeci">bool Ban(const DetectionInfo &amp;detection)</div><div class="ttdef"><b>Definition:</b> <a href="ban_8cpp_source.html#l00009">ban.cpp:9</a></div></div>
-<div class="ttc" id="astruct_detection_info_html"><div class="ttname"><a href="struct_detection_info.html">DetectionInfo</a></div><div class="ttdef"><b>Definition:</b> <a href="ban_8hpp_source.html#l00004">ban.hpp:4</a></div></div>
-<div class="ttc" id="astruct_detection_info_html_a82200760d4708d2ac6c62d0c7b4fe641"><div class="ttname"><a href="struct_detection_info.html#a82200760d4708d2ac6c62d0c7b4fe641">DetectionInfo::scan_type</a></div><div class="ttdeci">std::string scan_type</div><div class="ttdef"><b>Definition:</b> <a href="ban_8hpp_source.html#l00006">ban.hpp:6</a></div></div>
-<div class="ttc" id="astruct_detection_info_html_aa4036f69c6fbbd5bb158d9272c12e3fb"><div class="ttname"><a href="struct_detection_info.html#aa4036f69c6fbbd5bb158d9272c12e3fb">DetectionInfo::cheat_name</a></div><div class="ttdeci">std::string cheat_name</div><div class="ttdef"><b>Definition:</b> <a href="ban_8hpp_source.html#l00005">ban.hpp:5</a></div></div>
-<div class="ttc" id="astruct_detection_info_html_accb18a24284996ff8e3b15b83de65392"><div class="ttname"><a href="struct_detection_info.html#accb18a24284996ff8e3b15b83de65392">DetectionInfo::cheat_path</a></div><div class="ttdeci">std::wstring cheat_path</div><div class="ttdef"><b>Definition:</b> <a href="ban_8hpp_source.html#l00007">ban.hpp:7</a></div></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno"><a class="line" href="struct_detection_info.html">    8</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct_detection_info.html">DetectionInfo</a> {</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="struct_detection_info.html#aa4036f69c6fbbd5bb158d9272c12e3fb">    9</a></span>    std::string <a class="code hl_variable" href="struct_detection_info.html#aa4036f69c6fbbd5bb158d9272c12e3fb">cheat_name</a>;</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno"><a class="line" href="struct_detection_info.html#a82200760d4708d2ac6c62d0c7b4fe641">   10</a></span>    std::string <a class="code hl_variable" href="struct_detection_info.html#a82200760d4708d2ac6c62d0c7b4fe641">scan_type</a>;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno"><a class="line" href="struct_detection_info.html#accb18a24284996ff8e3b15b83de65392">   11</a></span>    std::wstring <a class="code hl_variable" href="struct_detection_info.html#accb18a24284996ff8e3b15b83de65392">cheat_path</a>;</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="struct_detection_info.html#aab81243d007b62fd5ccfafd6a02e0be2">   13</a></span>    std::vector&lt;std::string&gt; <a class="code hl_variable" href="struct_detection_info.html#aab81243d007b62fd5ccfafd6a02e0be2">blacklisted_domains</a>;</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>};</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span><span class="keywordtype">bool</span> <a class="code hl_function" href="ban_8hpp.html#a492cefe8e40eb583e4950fe63c959ce2">Ban</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_detection_info.html">DetectionInfo</a>&amp; detection);</div>
+<div class="ttc" id="aban_8hpp_html_a492cefe8e40eb583e4950fe63c959ce2"><div class="ttname"><a href="ban_8hpp.html#a492cefe8e40eb583e4950fe63c959ce2">Ban</a></div><div class="ttdeci">bool Ban(const DetectionInfo &amp;detection)</div><div class="ttdoc">Ban current played.</div><div class="ttdef"><b>Definition:</b> <a href="ban_8cpp_source.html#l00013">ban.cpp:13</a></div></div>
+<div class="ttc" id="astruct_detection_info_html"><div class="ttname"><a href="struct_detection_info.html">DetectionInfo</a></div><div class="ttdoc">Represents information to be transmitted to remote server when ban-worthy behaviour has been detected...</div><div class="ttdef"><b>Definition:</b> <a href="ban_8hpp_source.html#l00008">ban.hpp:8</a></div></div>
+<div class="ttc" id="astruct_detection_info_html_a82200760d4708d2ac6c62d0c7b4fe641"><div class="ttname"><a href="struct_detection_info.html#a82200760d4708d2ac6c62d0c7b4fe641">DetectionInfo::scan_type</a></div><div class="ttdeci">std::string scan_type</div><div class="ttdef"><b>Definition:</b> <a href="ban_8hpp_source.html#l00010">ban.hpp:10</a></div></div>
+<div class="ttc" id="astruct_detection_info_html_aa4036f69c6fbbd5bb158d9272c12e3fb"><div class="ttname"><a href="struct_detection_info.html#aa4036f69c6fbbd5bb158d9272c12e3fb">DetectionInfo::cheat_name</a></div><div class="ttdeci">std::string cheat_name</div><div class="ttdef"><b>Definition:</b> <a href="ban_8hpp_source.html#l00009">ban.hpp:9</a></div></div>
+<div class="ttc" id="astruct_detection_info_html_aab81243d007b62fd5ccfafd6a02e0be2"><div class="ttname"><a href="struct_detection_info.html#aab81243d007b62fd5ccfafd6a02e0be2">DetectionInfo::blacklisted_domains</a></div><div class="ttdeci">std::vector&lt; std::string &gt; blacklisted_domains</div><div class="ttdef"><b>Definition:</b> <a href="ban_8hpp_source.html#l00013">ban.hpp:13</a></div></div>
+<div class="ttc" id="astruct_detection_info_html_accb18a24284996ff8e3b15b83de65392"><div class="ttname"><a href="struct_detection_info.html#accb18a24284996ff8e3b15b83de65392">DetectionInfo::cheat_path</a></div><div class="ttdeci">std::wstring cheat_path</div><div class="ttdef"><b>Definition:</b> <a href="ban_8hpp_source.html#l00011">ban.hpp:11</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -26,9 +26,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="DoxyGen.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.5 / 0.6.0</span>
+   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.8 / 0.6.2</span>
    </div>
-   <div id="projectbrief">Quick Universal Anti-Cheat Kit</div>
+   <div id="projectbrief">Quick Universal Anti-Cheat Kit - https://quack.ac</div>
   </td>
  </tr>
  </tbody>
@@ -91,7 +91,7 @@ $(document).ready(function(){initNavTree('class_cpu_counter.html',''); initResiz
 </div><!--header-->
 <div class="contents">
 
-<p>RAII Wrapper for querying cpu usage through Pdh WinAPI.  
+<p>RAII Wrapper for querying cpu usage through PDH in WinAPI.  
  <a href="class_cpu_counter.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="cpu__counter_8hpp_source.html">Lib/Quack-shared/cpu_counter.hpp</a>&gt;</code></p>
@@ -99,8 +99,10 @@ $(document).ready(function(){initNavTree('class_cpu_counter.html',''); initResiz
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a3a6eac534e74f44946f09d0a40c3e18b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cpu_counter.html#a3a6eac534e74f44946f09d0a40c3e18b">CpuCounter</a> ()</td></tr>
+<tr class="memdesc:a3a6eac534e74f44946f09d0a40c3e18b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Establishes PDH queries to processor and adds counter.  <a href="class_cpu_counter.html#a3a6eac534e74f44946f09d0a40c3e18b">More...</a><br /></td></tr>
 <tr class="separator:a3a6eac534e74f44946f09d0a40c3e18b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac783d677a7becc1a89d0cbb7ec5b85b8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cpu_counter.html#ac783d677a7becc1a89d0cbb7ec5b85b8">~CpuCounter</a> ()</td></tr>
+<tr class="memdesc:ac783d677a7becc1a89d0cbb7ec5b85b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Closes PDH queries and counters.  <a href="class_cpu_counter.html#ac783d677a7becc1a89d0cbb7ec5b85b8">More...</a><br /></td></tr>
 <tr class="separator:ac783d677a7becc1a89d0cbb7ec5b85b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a434e43475aae4a9cb713b17393d5147a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cpu_counter.html#a434e43475aae4a9cb713b17393d5147a">CpuCounter</a> (const <a class="el" href="class_cpu_counter.html">CpuCounter</a> &amp;other)</td></tr>
 <tr class="separator:a434e43475aae4a9cb713b17393d5147a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -115,7 +117,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a356d4ed5cd4aee9f499a845e0712204e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >RAII Wrapper for querying cpu usage through Pdh WinAPI. </p>
+<div class="textblock"><p >RAII Wrapper for querying cpu usage through PDH in WinAPI. </p>
 <p >WinAPI details: <a href="https://docs.microsoft.com/en-us/windows/win32/api/pdh/">https://docs.microsoft.com/en-us/windows/win32/api/pdh/</a> </p>
 
 <p class="definition">Definition at line <a class="el" href="cpu__counter_8hpp_source.html#l00011">11</a> of file <a class="el" href="cpu__counter_8hpp_source.html">cpu_counter.hpp</a>.</p>
@@ -135,6 +137,8 @@ Public Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Establishes PDH queries to processor and adds counter. </p>
+
 <p class="definition">Definition at line <a class="el" href="cpu__counter_8cpp_source.html#l00008">8</a> of file <a class="el" href="cpu__counter_8cpp_source.html">cpu_counter.cpp</a>.</p>
 
 </div>
@@ -153,6 +157,8 @@ Public Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Closes PDH queries and counters. </p>
 
 <p class="definition">Definition at line <a class="el" href="cpu__counter_8cpp_source.html#l00014">14</a> of file <a class="el" href="cpu__counter_8cpp_source.html">cpu_counter.cpp</a>.</p>
 

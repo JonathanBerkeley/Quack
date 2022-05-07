@@ -26,9 +26,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="DoxyGen.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.5 / 0.6.0</span>
+   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.8 / 0.6.2</span>
    </div>
-   <div id="projectbrief">Quick Universal Anti-Cheat Kit</div>
+   <div id="projectbrief">Quick Universal Anti-Cheat Kit - https://quack.ac</div>
   </td>
  </tr>
  </tbody>
@@ -92,18 +92,18 @@ $(document).ready(function(){initNavTree('network_8hpp_source.html',''); initRes
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="_red_01team_2_inertia-cheat_2_inertia-cheat_2constants_8hpp.html">constants.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="class_communication.html">    6</a></span><span class="keyword">class </span><a class="code hl_class" href="class_communication.html">Communication</a> {</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>    <span class="keyword">inline</span> <span class="keyword">static</span> httplib::Client cli{ <span class="stringliteral">&quot;localhost&quot;</span>, <a class="code hl_variable" href="namespaceconstants.html#a8f8ee980778f66bcee97be6d3a4f06a2">constants::IPC_PORT</a> };</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">public</span>:</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_communication.html#afe824cffab4f52a060adcc453d832590">SendData</a>(<span class="keyword">const</span> nlohmann::json&amp; body);</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>};</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="network_8hpp.html#a262cb0a76db07722d0f8156add2d56ca">   13</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="network_8hpp.html#a262cb0a76db07722d0f8156add2d56ca">Heartbeat</a>(<span class="keyword">const</span> nlohmann::json&amp; heartbeat_data, <span class="keyword">const</span> <span class="keywordtype">int</span> miss_tolerance);</div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno"><a class="line" href="class_communication.html">    9</a></span><span class="keyword">class </span><a class="code hl_class" href="class_communication.html">Communication</a> {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">private</span>:</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>    <span class="keyword">inline</span> <span class="keyword">static</span> httplib::Client cli{ <span class="stringliteral">&quot;localhost&quot;</span>, <a class="code hl_variable" href="namespaceconstants.html#a8f8ee980778f66bcee97be6d3a4f06a2">constants::IPC_PORT</a> };</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">public</span>:</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code hl_function" href="class_communication.html#afe824cffab4f52a060adcc453d832590">SendData</a>(<span class="keyword">const</span> nlohmann::json&amp; body);</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>};</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno"><a class="line" href="network_8hpp.html#a262cb0a76db07722d0f8156add2d56ca">   16</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="network_8hpp.html#a262cb0a76db07722d0f8156add2d56ca">Heartbeat</a>(<span class="keyword">const</span> nlohmann::json&amp; heartbeat_data, <span class="keyword">const</span> <span class="keywordtype">int</span> miss_tolerance);</div>
 <div class="ttc" id="a_red_01team_2_inertia-cheat_2_inertia-cheat_2constants_8hpp_html"><div class="ttname"><a href="_red_01team_2_inertia-cheat_2_inertia-cheat_2constants_8hpp.html">constants.hpp</a></div></div>
 <div class="ttc" id="a_red_01team_2_inertia-cheat_2_inertia-cheat_2pch_8hpp_html"><div class="ttname"><a href="_red_01team_2_inertia-cheat_2_inertia-cheat_2pch_8hpp.html">pch.hpp</a></div></div>
-<div class="ttc" id="aclass_communication_html"><div class="ttname"><a href="class_communication.html">Communication</a></div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00006">network.hpp:6</a></div></div>
-<div class="ttc" id="aclass_communication_html_afe824cffab4f52a060adcc453d832590"><div class="ttname"><a href="class_communication.html#afe824cffab4f52a060adcc453d832590">Communication::SendData</a></div><div class="ttdeci">static bool SendData(const nlohmann::json &amp;body)</div><div class="ttdef"><b>Definition:</b> <a href="network_8cpp_source.html#l00012">network.cpp:12</a></div></div>
+<div class="ttc" id="aclass_communication_html"><div class="ttname"><a href="class_communication.html">Communication</a></div><div class="ttdoc">Wrapper around networking functionality.</div><div class="ttdef"><b>Definition:</b> <a href="network_8hpp_source.html#l00009">network.hpp:9</a></div></div>
+<div class="ttc" id="aclass_communication_html_afe824cffab4f52a060adcc453d832590"><div class="ttname"><a href="class_communication.html#afe824cffab4f52a060adcc453d832590">Communication::SendData</a></div><div class="ttdeci">static bool SendData(const nlohmann::json &amp;body)</div><div class="ttdoc">Send data to the server.</div><div class="ttdef"><b>Definition:</b> <a href="network_8cpp_source.html#l00016">network.cpp:16</a></div></div>
 <div class="ttc" id="anamespaceconstants_html_a8f8ee980778f66bcee97be6d3a4f06a2"><div class="ttname"><a href="namespaceconstants.html#a8f8ee980778f66bcee97be6d3a4f06a2">constants::IPC_PORT</a></div><div class="ttdeci">constexpr unsigned IPC_PORT</div><div class="ttdef"><b>Definition:</b> <a href="_quack-client_2constants_8hpp_source.html#l00006">constants.hpp:6</a></div></div>
 <div class="ttc" id="anetwork_8hpp_html_a262cb0a76db07722d0f8156add2d56ca"><div class="ttname"><a href="network_8hpp.html#a262cb0a76db07722d0f8156add2d56ca">Heartbeat</a></div><div class="ttdeci">bool Heartbeat(const nlohmann::json &amp;heartbeat_data, const int miss_tolerance)</div></div>
 </div><!-- fragment --></div><!-- contents -->

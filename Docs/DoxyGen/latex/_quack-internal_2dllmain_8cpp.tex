@@ -2,12 +2,11 @@
 \label{_quack-internal_2dllmain_8cpp}\index{\_\_quack/Quack-\/internal/dllmain.cpp@{\_\_quack/Quack-\/internal/dllmain.cpp}}
 {\ttfamily \#include \char`\"{}pch.\+hpp\char`\"{}}\newline
 {\ttfamily \#include \char`\"{}flashpoint.\+hpp\char`\"{}}\newline
-{\ttfamily \#include \char`\"{}data.\+hpp\char`\"{}}\newline
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 BOOL APIENTRY \mbox{\hyperlink{_quack-internal_2dllmain_8cpp_a83a4212b7538ce89d735a7b7d8bdcff3}{Dll\+Main}} (const HMODULE self\+\_\+module, const DWORD call\+\_\+reason, LPVOID lp\+\_\+reserved)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Entry point for the application. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -19,5 +18,21 @@ BOOL APIENTRY \mbox{\hyperlink{_quack-internal_2dllmain_8cpp_a83a4212b7538ce89d7
 
 
 
-Definition at line \mbox{\hyperlink{_quack-internal_2dllmain_8cpp_source_l00006}{6}} of file \mbox{\hyperlink{_quack-internal_2dllmain_8cpp_source}{dllmain.\+cpp}}.
+Entry point for the application. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em self\+\_\+module} & Handle to DLL module \\
+\hline
+{\em call\+\_\+reason} & Reason for calling function \\
+\hline
+{\em lp\+\_\+reserved} & Reserved \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Always returns true 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_quack-internal_2dllmain_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{_quack-internal_2dllmain_8cpp_source}{dllmain.\+cpp}}.
 

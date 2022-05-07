@@ -26,9 +26,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="DoxyGen.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.5 / 0.6.0</span>
+   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.8 / 0.6.2</span>
    </div>
-   <div id="projectbrief">Quick Universal Anti-Cheat Kit</div>
+   <div id="projectbrief">Quick Universal Anti-Cheat Kit - https://quack.ac</div>
   </td>
  </tr>
  </tbody>
@@ -91,13 +91,13 @@ $(document).ready(function(){initNavTree('_quack-internal_2dllmain_8cpp.html',''
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="_quack-internal_2pch_8hpp_source.html">pch.hpp</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="_quack-internal_2flashpoint_8hpp_source.html">flashpoint.hpp</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="_quack-internal_2data_8hpp_source.html">data.hpp</a>&quot;</code><br />
 </div>
 <p><a href="_quack-internal_2dllmain_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a83a4212b7538ce89d735a7b7d8bdcff3"><td class="memItemLeft" align="right" valign="top">BOOL APIENTRY&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_quack-internal_2dllmain_8cpp.html#a83a4212b7538ce89d735a7b7d8bdcff3">DllMain</a> (const HMODULE self_module, const DWORD call_reason, LPVOID lp_reserved)</td></tr>
+<tr class="memdesc:a83a4212b7538ce89d735a7b7d8bdcff3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Entry point for the application.  <a href="_quack-internal_2dllmain_8cpp.html#a83a4212b7538ce89d735a7b7d8bdcff3">More...</a><br /></td></tr>
 <tr class="separator:a83a4212b7538ce89d735a7b7d8bdcff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -133,7 +133,18 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_quack-internal_2dllmain_8cpp_source.html#l00006">6</a> of file <a class="el" href="_quack-internal_2dllmain_8cpp_source.html">dllmain.cpp</a>.</p>
+<p>Entry point for the application. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">self_module</td><td>Handle to DLL module </td></tr>
+    <tr><td class="paramname">call_reason</td><td>Reason for calling function </td></tr>
+    <tr><td class="paramname">lp_reserved</td><td>Reserved </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Always returns true </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="_quack-internal_2dllmain_8cpp_source.html#l00012">12</a> of file <a class="el" href="_quack-internal_2dllmain_8cpp_source.html">dllmain.cpp</a>.</p>
 
 </div>
 </div>

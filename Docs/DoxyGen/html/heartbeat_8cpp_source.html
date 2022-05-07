@@ -26,9 +26,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="DoxyGen.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.5 / 0.6.0</span>
+   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.8 / 0.6.2</span>
    </div>
-   <div id="projectbrief">Quick Universal Anti-Cheat Kit</div>
+   <div id="projectbrief">Quick Universal Anti-Cheat Kit - https://quack.ac</div>
   </td>
  </tr>
  </tbody>
@@ -106,58 +106,73 @@ $(document).ready(function(){initNavTree('heartbeat_8cpp_source.html',''); initR
 <div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span> </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="heartbeat_8cpp.html#abd3fbdd1e1b59d85c54a595135468391">   24</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="heartbeat_8cpp.html#abd3fbdd1e1b59d85c54a595135468391">Heartbeat</a>(<span class="keyword">const</span> <a class="code hl_struct" href="struct_context.html">Context</a>&amp; ctx, <span class="keyword">const</span> <a class="code hl_struct" href="struct_heartbeat_info.html">HeartbeatInfo</a>&amp; heartbeat_info) {</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keyword">const</span> <span class="keyword">auto</span> uptime{</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        chrono::duration_cast&lt;chrono::seconds&gt;(chrono::system_clock::now() - ctx.<a class="code hl_variable" href="struct_context.html#a9ddec0e640e1fb165745a87021739d13">start_point</a>)</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    };</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    json::json body{};</div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    body[<span class="stringliteral">&quot;heartbeat&quot;</span>] = {</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        {<span class="stringliteral">&quot;uuid&quot;</span>, heartbeat_info.<a class="code hl_variable" href="struct_heartbeat_info.html#a9fec5df79e7c98551a82c185a6c3411c">hwid</a>},</div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        {<span class="stringliteral">&quot;name&quot;</span>, heartbeat_info.<a class="code hl_variable" href="struct_heartbeat_info.html#a5da350a3bc384d469bcf6b67d585ca7d">username</a>},</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        {<span class="stringliteral">&quot;arp&quot;</span>, heartbeat_info.<a class="code hl_variable" href="struct_heartbeat_info.html#adf7ef5a27436ff15ca78f727cdc04b84">arp_hashes</a>},</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>        {<span class="stringliteral">&quot;risk&quot;</span>, heartbeat_info.<a class="code hl_variable" href="struct_heartbeat_info.html#a95611176f5fff8deb077b8d2d71499c0">risk_factor</a>},</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>        {<span class="stringliteral">&quot;uptime&quot;</span>, uptime.count()},</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>        {<span class="stringliteral">&quot;blob&quot;</span>, {</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>            {<span class="stringliteral">&quot;Game position&quot;</span>, <span class="stringliteral">&quot;[Placeholder]&quot;</span>}</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        }}</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    };</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (DBG) {</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        SetConsoleTextAttribute(ctx.<a class="code hl_variable" href="struct_context.html#a35afbf76b7460eaac09e5905bf1f7ebc">hConsole</a>, 7);</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;\nHeartbeat uptime &quot;</span> &lt;&lt; uptime.count() &lt;&lt; <span class="stringliteral">&quot;...\n&quot;</span>;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    }</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> res = ctx.<a class="code hl_variable" href="struct_context.html#a59efbb8e5cb8340a3421eebed74b993f">cli</a>-&gt;Post(<span class="stringliteral">&quot;/&quot;</span>, body.dump(), <span class="stringliteral">&quot;application/json&quot;</span>)) {</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>        <span class="comment">// Success</span></div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>        <span class="keywordflow">if</span> (res-&gt;status == 200) {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>            <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (DBG) {</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>                SetConsoleTextAttribute(ctx.<a class="code hl_variable" href="struct_context.html#a35afbf76b7460eaac09e5905bf1f7ebc">hConsole</a>, 2);</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>                std::cout &lt;&lt; res-&gt;body &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>            }</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        }</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    }</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <span class="comment">// Failure</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>        <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (DBG) {</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>            SetConsoleTextAttribute(ctx.<a class="code hl_variable" href="struct_context.html#a35afbf76b7460eaac09e5905bf1f7ebc">hConsole</a>, 12);</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            <span class="keyword">const</span> <span class="keyword">auto</span> err = res.error();</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Error: &quot;</span> &lt;&lt; http::to_string(err) &lt;&lt; std::endl;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>        }</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    }</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>}</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="comment">// Windows console colour codes</span></div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    <span class="keyword">enum</span> Colour : <span class="keywordtype">int</span> {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        Green = 2,</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        White = 7,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>        Red = 12</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    };</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">const</span> <span class="keyword">auto</span> uptime{</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        chrono::duration_cast&lt;chrono::seconds&gt;(chrono::system_clock::now() - ctx.<a class="code hl_variable" href="struct_context.html#a9ddec0e640e1fb165745a87021739d13">start_point</a>)</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    };</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    json::json body{};</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    body[<span class="stringliteral">&quot;heartbeat&quot;</span>] = {</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        {<span class="stringliteral">&quot;uuid&quot;</span>, heartbeat_info.<a class="code hl_variable" href="struct_heartbeat_info.html#a9fec5df79e7c98551a82c185a6c3411c">hwid</a>},</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>        {<span class="stringliteral">&quot;name&quot;</span>, heartbeat_info.<a class="code hl_variable" href="struct_heartbeat_info.html#a5da350a3bc384d469bcf6b67d585ca7d">username</a>},</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>        {<span class="stringliteral">&quot;arp&quot;</span>, heartbeat_info.<a class="code hl_variable" href="struct_heartbeat_info.html#adf7ef5a27436ff15ca78f727cdc04b84">arp_hashes</a>},</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        {<span class="stringliteral">&quot;risk&quot;</span>, heartbeat_info.<a class="code hl_variable" href="struct_heartbeat_info.html#a95611176f5fff8deb077b8d2d71499c0">risk_factor</a>},</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        {<span class="stringliteral">&quot;uptime&quot;</span>, uptime.count()},</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>        {<span class="stringliteral">&quot;blob&quot;</span>, {</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>            {<span class="stringliteral">&quot;Game position&quot;</span>, <span class="stringliteral">&quot;[Placeholder]&quot;</span>}</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>        }}</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    };</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (DBG) {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>        SetConsoleTextAttribute(ctx.<a class="code hl_variable" href="struct_context.html#a35afbf76b7460eaac09e5905bf1f7ebc">hConsole</a>, Colour::White);</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>        std::cout &lt;&lt; <span class="stringliteral">&quot;\nHeartbeat uptime &quot;</span> &lt;&lt; uptime.count() &lt;&lt; <span class="stringliteral">&quot;...\n&quot;</span>;</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>    <span class="keywordflow">if</span> (<span class="keyword">auto</span> res = ctx.<a class="code hl_variable" href="struct_context.html#a59efbb8e5cb8340a3421eebed74b993f">cli</a>-&gt;Post(<span class="stringliteral">&quot;/&quot;</span>, body.dump(), <span class="stringliteral">&quot;application/json&quot;</span>)) {</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>        <span class="comment">// Success</span></div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>        <span class="keywordflow">if</span> (res-&gt;status == 200) {</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span> </div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>            <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (DBG) {</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>                SetConsoleTextAttribute(ctx.<a class="code hl_variable" href="struct_context.html#a35afbf76b7460eaac09e5905bf1f7ebc">hConsole</a>, Colour::Green);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>                std::cout &lt;&lt; res-&gt;body &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>            }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>            <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (DBG)</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>                SetConsoleTextAttribute(ctx.<a class="code hl_variable" href="struct_context.html#a35afbf76b7460eaac09e5905bf1f7ebc">hConsole</a>, Colour::White);</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>        }</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>    }</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="comment">// Failure</span></div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>    <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>        <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (DBG) {</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            SetConsoleTextAttribute(ctx.<a class="code hl_variable" href="struct_context.html#a35afbf76b7460eaac09e5905bf1f7ebc">hConsole</a>, Colour::Red);</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            <span class="keyword">const</span> <span class="keyword">auto</span> err = res.error();</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            std::cout &lt;&lt; <span class="stringliteral">&quot;Error: &quot;</span> &lt;&lt; http::to_string(err) &lt;&lt; std::endl;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        }</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    }</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>    <span class="keywordflow">if</span> <span class="keyword">constexpr</span> (DBG)</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        SetConsoleTextAttribute(ctx.<a class="code hl_variable" href="struct_context.html#a35afbf76b7460eaac09e5905bf1f7ebc">hConsole</a>, Colour::White);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span> </div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>}</div>
 <div class="ttc" id="a_quack-internal_2task__dispatch_8hpp_html"><div class="ttname"><a href="_quack-internal_2task__dispatch_8hpp.html">task_dispatch.hpp</a></div></div>
 <div class="ttc" id="a_red_01team_2_inertia-cheat_2_inertia-cheat_2constants_8hpp_html"><div class="ttname"><a href="_red_01team_2_inertia-cheat_2_inertia-cheat_2constants_8hpp.html">constants.hpp</a></div></div>
 <div class="ttc" id="a_red_01team_2_inertia-cheat_2_inertia-cheat_2pch_8hpp_html"><div class="ttname"><a href="_red_01team_2_inertia-cheat_2_inertia-cheat_2pch_8hpp.html">pch.hpp</a></div></div>
 <div class="ttc" id="aheartbeat_8cpp_html_abd3fbdd1e1b59d85c54a595135468391"><div class="ttname"><a href="heartbeat_8cpp.html#abd3fbdd1e1b59d85c54a595135468391">Heartbeat</a></div><div class="ttdeci">bool Heartbeat(const Context &amp;ctx, const HeartbeatInfo &amp;heartbeat_info)</div><div class="ttdoc">Transmits data to remote server containing heartbeat information.</div><div class="ttdef"><b>Definition:</b> <a href="heartbeat_8cpp_source.html#l00024">heartbeat.cpp:24</a></div></div>
 <div class="ttc" id="aheartbeat_8hpp_html"><div class="ttname"><a href="heartbeat_8hpp.html">heartbeat.hpp</a></div></div>
-<div class="ttc" id="astruct_context_html"><div class="ttname"><a href="struct_context.html">Context</a></div><div class="ttdef"><b>Definition:</b> <a href="context_8hpp_source.html#l00008">context.hpp:8</a></div></div>
-<div class="ttc" id="astruct_context_html_a35afbf76b7460eaac09e5905bf1f7ebc"><div class="ttname"><a href="struct_context.html#a35afbf76b7460eaac09e5905bf1f7ebc">Context::hConsole</a></div><div class="ttdeci">HANDLE hConsole</div><div class="ttdef"><b>Definition:</b> <a href="context_8hpp_source.html#l00010">context.hpp:10</a></div></div>
-<div class="ttc" id="astruct_context_html_a59efbb8e5cb8340a3421eebed74b993f"><div class="ttname"><a href="struct_context.html#a59efbb8e5cb8340a3421eebed74b993f">Context::cli</a></div><div class="ttdeci">httplib::Client * cli</div><div class="ttdef"><b>Definition:</b> <a href="context_8hpp_source.html#l00009">context.hpp:9</a></div></div>
-<div class="ttc" id="astruct_context_html_a9ddec0e640e1fb165745a87021739d13"><div class="ttname"><a href="struct_context.html#a9ddec0e640e1fb165745a87021739d13">Context::start_point</a></div><div class="ttdeci">std::chrono::time_point&lt; std::chrono::system_clock &gt; start_point</div><div class="ttdef"><b>Definition:</b> <a href="context_8hpp_source.html#l00011">context.hpp:11</a></div></div>
+<div class="ttc" id="astruct_context_html"><div class="ttname"><a href="struct_context.html">Context</a></div><div class="ttdoc">Application context that can be passed around to decouple code dependencies.</div><div class="ttdef"><b>Definition:</b> <a href="context_8hpp_source.html#l00009">context.hpp:9</a></div></div>
+<div class="ttc" id="astruct_context_html_a35afbf76b7460eaac09e5905bf1f7ebc"><div class="ttname"><a href="struct_context.html#a35afbf76b7460eaac09e5905bf1f7ebc">Context::hConsole</a></div><div class="ttdeci">HANDLE hConsole</div><div class="ttdef"><b>Definition:</b> <a href="context_8hpp_source.html#l00011">context.hpp:11</a></div></div>
+<div class="ttc" id="astruct_context_html_a59efbb8e5cb8340a3421eebed74b993f"><div class="ttname"><a href="struct_context.html#a59efbb8e5cb8340a3421eebed74b993f">Context::cli</a></div><div class="ttdeci">httplib::Client * cli</div><div class="ttdef"><b>Definition:</b> <a href="context_8hpp_source.html#l00010">context.hpp:10</a></div></div>
+<div class="ttc" id="astruct_context_html_a9ddec0e640e1fb165745a87021739d13"><div class="ttname"><a href="struct_context.html#a9ddec0e640e1fb165745a87021739d13">Context::start_point</a></div><div class="ttdeci">std::chrono::time_point&lt; std::chrono::system_clock &gt; start_point</div><div class="ttdef"><b>Definition:</b> <a href="context_8hpp_source.html#l00012">context.hpp:12</a></div></div>
 <div class="ttc" id="astruct_heartbeat_info_html"><div class="ttname"><a href="struct_heartbeat_info.html">HeartbeatInfo</a></div><div class="ttdoc">Contains information that will be transmitted with heartbeats.</div><div class="ttdef"><b>Definition:</b> <a href="heartbeat_8hpp_source.html#l00010">heartbeat.hpp:10</a></div></div>
 <div class="ttc" id="astruct_heartbeat_info_html_a5da350a3bc384d469bcf6b67d585ca7d"><div class="ttname"><a href="struct_heartbeat_info.html#a5da350a3bc384d469bcf6b67d585ca7d">HeartbeatInfo::username</a></div><div class="ttdeci">std::string username</div><div class="ttdef"><b>Definition:</b> <a href="heartbeat_8hpp_source.html#l00012">heartbeat.hpp:12</a></div></div>
 <div class="ttc" id="astruct_heartbeat_info_html_a95611176f5fff8deb077b8d2d71499c0"><div class="ttname"><a href="struct_heartbeat_info.html#a95611176f5fff8deb077b8d2d71499c0">HeartbeatInfo::risk_factor</a></div><div class="ttdeci">unsigned risk_factor</div><div class="ttdef"><b>Definition:</b> <a href="heartbeat_8hpp_source.html#l00015">heartbeat.hpp:15</a></div></div>

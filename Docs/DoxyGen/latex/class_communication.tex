@@ -2,19 +2,24 @@
 \label{class_communication}\index{Communication@{Communication}}
 
 
+Wrapper around networking functionality.  
+
+
+
+
 {\ttfamily \#include $<$Quack-\/internal/network.\+hpp$>$}
 
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
 static bool \mbox{\hyperlink{class_communication_afe824cffab4f52a060adcc453d832590}{Send\+Data}} (const nlohmann\+::json \&body)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Send data to the server. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
+Wrapper around networking functionality. 
 
-
-Definition at line \mbox{\hyperlink{network_8hpp_source_l00006}{6}} of file \mbox{\hyperlink{network_8hpp_source}{network.\+hpp}}.
+Definition at line \mbox{\hyperlink{network_8hpp_source_l00009}{9}} of file \mbox{\hyperlink{network_8hpp_source}{network.\+hpp}}.
 
 
 
@@ -27,7 +32,19 @@ Definition at line \mbox{\hyperlink{network_8hpp_source_l00006}{6}} of file \mbo
 
 
 
-Definition at line \mbox{\hyperlink{network_8cpp_source_l00012}{12}} of file \mbox{\hyperlink{network_8cpp_source}{network.\+cpp}}.
+Send data to the server. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em body} & Json data to be sent to the server \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the server returns status 200, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{network_8cpp_source_l00016}{16}} of file \mbox{\hyperlink{network_8cpp_source}{network.\+cpp}}.
 
 
 

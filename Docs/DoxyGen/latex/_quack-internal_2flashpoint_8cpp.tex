@@ -11,11 +11,11 @@
 \begin{DoxyCompactItemize}
 \item 
 void \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_abd0606756ee6183c3caeae6b0e928d11}{Init\+Client\+AC}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Starts the anti-\/cheat executable. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_a2f2ccaefc4cce39a52aef1e87d358f6d}{Kill\+Client\+AC}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Kills the client anti-\/cheat that was started by Init\+Client\+AC. \end{DoxyCompactList}\item 
 DWORD WINAPI \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_a44385e5f6ecb4d791f022bf8f4392404}{Init}} (LPVOID lp\+Param)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Entry point and setup. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -27,7 +27,19 @@ DWORD WINAPI \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_a44385e5f6ecb4d79
 
 
 
-Definition at line \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_source}{flashpoint.\+cpp}}.
+Entry point and setup. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em lp\+Param} & Optional parameter passed from Dll\+Main \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Does not return 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_source_l00059}{59}} of file \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_source}{flashpoint.\+cpp}}.
 
 \mbox{\Hypertarget{_quack-internal_2flashpoint_8cpp_abd0606756ee6183c3caeae6b0e928d11}\label{_quack-internal_2flashpoint_8cpp_abd0606756ee6183c3caeae6b0e928d11}} 
 \index{flashpoint.cpp@{flashpoint.cpp}!InitClientAC@{InitClientAC}}
@@ -37,7 +49,11 @@ Definition at line \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_source_l000
 
 
 
-Definition at line \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_source_l00020}{20}} of file \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_source}{flashpoint.\+cpp}}.
+Starts the anti-\/cheat executable. 
+
+
+
+Definition at line \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_source_l00025}{25}} of file \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_source}{flashpoint.\+cpp}}.
 
 \mbox{\Hypertarget{_quack-internal_2flashpoint_8cpp_a2f2ccaefc4cce39a52aef1e87d358f6d}\label{_quack-internal_2flashpoint_8cpp_a2f2ccaefc4cce39a52aef1e87d358f6d}} 
 \index{flashpoint.cpp@{flashpoint.cpp}!KillClientAC@{KillClientAC}}
@@ -47,5 +63,9 @@ Definition at line \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_source_l000
 
 
 
-Definition at line \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_source_l00039}{39}} of file \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_source}{flashpoint.\+cpp}}.
+Kills the client anti-\/cheat that was started by Init\+Client\+AC. 
+
+
+
+Definition at line \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_source_l00047}{47}} of file \mbox{\hyperlink{_quack-internal_2flashpoint_8cpp_source}{flashpoint.\+cpp}}.
 

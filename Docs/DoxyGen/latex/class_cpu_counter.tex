@@ -2,7 +2,7 @@
 \label{class_cpu_counter}\index{CpuCounter@{CpuCounter}}
 
 
-RAII Wrapper for querying cpu usage through Pdh Win\+API.  
+RAII Wrapper for querying cpu usage through PDH in Win\+API.  
 
 
 
@@ -13,9 +13,9 @@ RAII Wrapper for querying cpu usage through Pdh Win\+API.
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_cpu_counter_a3a6eac534e74f44946f09d0a40c3e18b}{Cpu\+Counter}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Establishes PDH queries to processor and adds counter. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_cpu_counter_ac783d677a7becc1a89d0cbb7ec5b85b8}{$\sim$\+Cpu\+Counter}} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Closes PDH queries and counters. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_cpu_counter_a434e43475aae4a9cb713b17393d5147a}{Cpu\+Counter}} (const \mbox{\hyperlink{class_cpu_counter}{Cpu\+Counter}} \&other)
 \item 
 \mbox{\hyperlink{class_cpu_counter_a2c279420c27610b1978c99f959217116}{Cpu\+Counter}} (\mbox{\hyperlink{class_cpu_counter}{Cpu\+Counter}} \&\&other) noexcept
@@ -29,7 +29,7 @@ double \mbox{\hyperlink{class_cpu_counter_a356d4ed5cd4aee9f499a845e0712204e}{ope
 
 
 \doxysubsection{Detailed Description}
-RAII Wrapper for querying cpu usage through Pdh Win\+API. 
+RAII Wrapper for querying cpu usage through PDH in Win\+API. 
 
 Win\+API details\+: \href{https://docs.microsoft.com/en-us/windows/win32/api/pdh/}{\texttt{ https\+://docs.\+microsoft.\+com/en-\/us/windows/win32/api/pdh/}} 
 
@@ -46,6 +46,10 @@ Definition at line \mbox{\hyperlink{cpu__counter_8hpp_source_l00011}{11}} of fil
 
 
 
+Establishes PDH queries to processor and adds counter. 
+
+
+
 Definition at line \mbox{\hyperlink{cpu__counter_8cpp_source_l00008}{8}} of file \mbox{\hyperlink{cpu__counter_8cpp_source}{cpu\+\_\+counter.\+cpp}}.
 
 \mbox{\Hypertarget{class_cpu_counter_ac783d677a7becc1a89d0cbb7ec5b85b8}\label{class_cpu_counter_ac783d677a7becc1a89d0cbb7ec5b85b8}} 
@@ -53,6 +57,10 @@ Definition at line \mbox{\hyperlink{cpu__counter_8cpp_source_l00008}{8}} of file
 \index{````~CpuCounter@{$\sim$CpuCounter}!CpuCounter@{CpuCounter}}
 \doxysubsubsection{\texorpdfstring{$\sim$CpuCounter()}{~CpuCounter()}}
 {\footnotesize\ttfamily Cpu\+Counter\+::$\sim$\+Cpu\+Counter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Closes PDH queries and counters. 
 
 
 

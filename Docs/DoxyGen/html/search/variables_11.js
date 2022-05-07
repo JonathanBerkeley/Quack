@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['w_5fdll_5fname_0',['W_DLL_NAME',['../namespaceconstants.html#a363abd05858266375be01b8ddb67a137',1,'constants']]]
+  ['version_0',['VERSION',['../namespaceconstants.html#aee53c90b8dbbbf076fd51818fe89c77f',1,'constants']]]
 ];

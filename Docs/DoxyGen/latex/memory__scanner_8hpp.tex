@@ -6,26 +6,26 @@
 \begin{DoxyCompactItemize}
 \item 
 struct \mbox{\hyperlink{struct_memory_region}{Memory\+Region}}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Represents a region of memory from it\textquotesingle{}s size and starting address. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
 std\+::vector$<$ HMODULE $>$ \mbox{\hyperlink{memory__scanner_8hpp_a9c6e17807cdaf631a78e72cea857adc6}{Enumerate\+Modules}} (\mbox{\hyperlink{structdata_1_1_process_info}{data\+::\+Process\+Info}} \&pi)
 \item 
 bool \mbox{\hyperlink{memory__scanner_8hpp_a784f8dc8677eb7181a0de5843013722b}{Verify\+Module}} (LPCWSTR source\+\_\+file)
-\item 
+\begin{DoxyCompactList}\small\item\em Verifies signature for source file, based on MSDN example code. \end{DoxyCompactList}\item 
 std\+::vector$<$ unsigned long $>$ \mbox{\hyperlink{memory__scanner_8hpp_a28181accbbef183e3bd1c232250ba19f}{Pattern\+To\+Byte}} (const std\+::string \&signature)
 \begin{DoxyCompactList}\small\item\em Converts supplied signature to bytes, removing wildcards. \end{DoxyCompactList}\item 
 std\+::uint8\+\_\+t $\ast$ \mbox{\hyperlink{memory__scanner_8hpp_a21c6c3348901651c3ff03e7cdc610e8c}{Pattern\+Scan}} (const HMODULE module, const std\+::string \&signature)
 \begin{DoxyCompactList}\small\item\em Scans module for supplied signature. \end{DoxyCompactList}\item 
 std\+::uint8\+\_\+t $\ast$ \mbox{\hyperlink{memory__scanner_8hpp_a6f5661ae7206f7751587a687d4b421fb}{Pattern\+Scan}} (const std\+::string \&signature, const \mbox{\hyperlink{struct_memory_region}{Memory\+Region}} \&mem\+\_\+region)
-\item 
+\begin{DoxyCompactList}\small\item\em Scans a region for a provided signature. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{memory__scanner_8hpp_a677b9f0b9fe6d5efaef52a0673dc2783}{Module\+Scan}} (const \mbox{\hyperlink{structdata_1_1_process_info}{data\+::\+Process\+Info}} \&context, const bool unsigned\+\_\+only)
-\item 
+\begin{DoxyCompactList}\small\item\em Scans a module that is loaded into the process. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{memory__scanner_8hpp_a0b6433cd3c0e8e1639f39f0c0eb69abb}{Region\+Scan}} (const \mbox{\hyperlink{structdata_1_1_process_info}{data\+::\+Process\+Info}} \&context, const \mbox{\hyperlink{struct_memory_region}{Memory\+Region}} \&memory\+\_\+region)
-\item 
+\begin{DoxyCompactList}\small\item\em Scans a region of memory provided by param memory\+\_\+region. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{memory__scanner_8hpp_a9b5983ccb579005cf91545bcfe3937fa}{Full\+Scan}} (const \mbox{\hyperlink{structdata_1_1_process_info}{data\+::\+Process\+Info}} \&context)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Scan all of executable memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Function Documentation}
@@ -39,21 +39,41 @@ void \mbox{\hyperlink{memory__scanner_8hpp_a9b5983ccb579005cf91545bcfe3937fa}{Fu
 \index{memory\_scanner.hpp@{memory\_scanner.hpp}!FullScan@{FullScan}}
 \index{FullScan@{FullScan}!memory\_scanner.hpp@{memory\_scanner.hpp}}
 \doxysubsubsection{\texorpdfstring{FullScan()}{FullScan()}}
-{\footnotesize\ttfamily void Full\+Scan (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structdata_1_1_process_info}{data\+::\+Process\+Info}} \&}]{context }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Full\+Scan (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structdata_1_1_process_info}{Process\+Info}} \&}]{context }\end{DoxyParamCaption})}
 
 
 
-Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00267}{267}} of file \mbox{\hyperlink{memory__scanner_8cpp_source}{memory\+\_\+scanner.\+cpp}}.
+Scan all of executable memory. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & Information about the current process \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00300}{300}} of file \mbox{\hyperlink{memory__scanner_8cpp_source}{memory\+\_\+scanner.\+cpp}}.
 
 \mbox{\Hypertarget{memory__scanner_8hpp_a677b9f0b9fe6d5efaef52a0673dc2783}\label{memory__scanner_8hpp_a677b9f0b9fe6d5efaef52a0673dc2783}} 
 \index{memory\_scanner.hpp@{memory\_scanner.hpp}!ModuleScan@{ModuleScan}}
 \index{ModuleScan@{ModuleScan}!memory\_scanner.hpp@{memory\_scanner.hpp}}
 \doxysubsubsection{\texorpdfstring{ModuleScan()}{ModuleScan()}}
-{\footnotesize\ttfamily void Module\+Scan (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structdata_1_1_process_info}{data\+::\+Process\+Info}} \&}]{context,  }\item[{const bool}]{unsigned\+\_\+only }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Module\+Scan (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structdata_1_1_process_info}{Process\+Info}} \&}]{context,  }\item[{const bool}]{unsigned\+\_\+only }\end{DoxyParamCaption})}
 
 
 
-Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00180}{180}} of file \mbox{\hyperlink{memory__scanner_8cpp_source}{memory\+\_\+scanner.\+cpp}}.
+Scans a module that is loaded into the process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & Information about the current process \\
+\hline
+{\em unsigned\+\_\+only} & Whether to scan unsigned modules only, or to scan all modules \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00204}{204}} of file \mbox{\hyperlink{memory__scanner_8cpp_source}{memory\+\_\+scanner.\+cpp}}.
 
 \mbox{\Hypertarget{memory__scanner_8hpp_a21c6c3348901651c3ff03e7cdc610e8c}\label{memory__scanner_8hpp_a21c6c3348901651c3ff03e7cdc610e8c}} 
 \index{memory\_scanner.hpp@{memory\_scanner.hpp}!PatternScan@{PatternScan}}
@@ -77,7 +97,7 @@ If signature detected, a pointer to detected signature otherwise nullptr
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00118}{118}} of file \mbox{\hyperlink{memory__scanner_8cpp_source}{memory\+\_\+scanner.\+cpp}}.
+Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00126}{126}} of file \mbox{\hyperlink{memory__scanner_8cpp_source}{memory\+\_\+scanner.\+cpp}}.
 
 \mbox{\Hypertarget{memory__scanner_8hpp_a6f5661ae7206f7751587a687d4b421fb}\label{memory__scanner_8hpp_a6f5661ae7206f7751587a687d4b421fb}} 
 \index{memory\_scanner.hpp@{memory\_scanner.hpp}!PatternScan@{PatternScan}}
@@ -87,7 +107,21 @@ Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00118}{118}} of
 
 
 
-Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00145}{145}} of file \mbox{\hyperlink{memory__scanner_8cpp_source}{memory\+\_\+scanner.\+cpp}}.
+Scans a region for a provided signature. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em signature} & Signature to search for \\
+\hline
+{\em mem\+\_\+region} & Memory region to search \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to start address of matched pattern 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00159}{159}} of file \mbox{\hyperlink{memory__scanner_8cpp_source}{memory\+\_\+scanner.\+cpp}}.
 
 \mbox{\Hypertarget{memory__scanner_8hpp_a28181accbbef183e3bd1c232250ba19f}\label{memory__scanner_8hpp_a28181accbbef183e3bd1c232250ba19f}} 
 \index{memory\_scanner.hpp@{memory\_scanner.hpp}!PatternToByte@{PatternToByte}}
@@ -109,25 +143,48 @@ Vector of unsigned long, representing bytes
 \end{DoxyReturn}
 
 
-Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00076}{76}} of file \mbox{\hyperlink{memory__scanner_8cpp_source}{memory\+\_\+scanner.\+cpp}}.
+Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00084}{84}} of file \mbox{\hyperlink{memory__scanner_8cpp_source}{memory\+\_\+scanner.\+cpp}}.
 
 \mbox{\Hypertarget{memory__scanner_8hpp_a0b6433cd3c0e8e1639f39f0c0eb69abb}\label{memory__scanner_8hpp_a0b6433cd3c0e8e1639f39f0c0eb69abb}} 
 \index{memory\_scanner.hpp@{memory\_scanner.hpp}!RegionScan@{RegionScan}}
 \index{RegionScan@{RegionScan}!memory\_scanner.hpp@{memory\_scanner.hpp}}
 \doxysubsubsection{\texorpdfstring{RegionScan()}{RegionScan()}}
-{\footnotesize\ttfamily void Region\+Scan (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structdata_1_1_process_info}{data\+::\+Process\+Info}} \&}]{context,  }\item[{const \mbox{\hyperlink{struct_memory_region}{Memory\+Region}} \&}]{memory\+\_\+region }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily void Region\+Scan (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structdata_1_1_process_info}{Process\+Info}} \&}]{context,  }\item[{const \mbox{\hyperlink{struct_memory_region}{Memory\+Region}} \&}]{memory\+\_\+region }\end{DoxyParamCaption})}
 
 
 
-Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00241}{241}} of file \mbox{\hyperlink{memory__scanner_8cpp_source}{memory\+\_\+scanner.\+cpp}}.
+Scans a region of memory provided by param memory\+\_\+region. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em context} & Information about the current process \\
+\hline
+{\em memory\+\_\+region} & Information about the memory region to scan, containing size and start address \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00270}{270}} of file \mbox{\hyperlink{memory__scanner_8cpp_source}{memory\+\_\+scanner.\+cpp}}.
 
 \mbox{\Hypertarget{memory__scanner_8hpp_a784f8dc8677eb7181a0de5843013722b}\label{memory__scanner_8hpp_a784f8dc8677eb7181a0de5843013722b}} 
 \index{memory\_scanner.hpp@{memory\_scanner.hpp}!VerifyModule@{VerifyModule}}
 \index{VerifyModule@{VerifyModule}!memory\_scanner.hpp@{memory\_scanner.hpp}}
 \doxysubsubsection{\texorpdfstring{VerifyModule()}{VerifyModule()}}
-{\footnotesize\ttfamily bool Verify\+Module (\begin{DoxyParamCaption}\item[{LPCWSTR}]{source\+\_\+file }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily bool Verify\+Module (\begin{DoxyParamCaption}\item[{const LPCWSTR}]{source\+\_\+file }\end{DoxyParamCaption})}
 
 
 
-Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00038}{38}} of file \mbox{\hyperlink{memory__scanner_8cpp_source}{memory\+\_\+scanner.\+cpp}}.
+Verifies signature for source file, based on MSDN example code. 
+
+\href{https://docs.microsoft.com/en-us/windows/win32/seccrypto/example-c-program&ndash;verifying-the-signature-of-a-pe-file}{\texttt{ https\+://docs.\+microsoft.\+com/en-\/us/windows/win32/seccrypto/example-\/c-\/program--verifying-\/the-\/signature-\/of-\/a-\/pe-\/file}} 
+\begin{DoxyParams}{Parameters}
+{\em source\+\_\+file} & Image name to verify \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the module is verified, false otherwise 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{memory__scanner_8cpp_source_l00046}{46}} of file \mbox{\hyperlink{memory__scanner_8cpp_source}{memory\+\_\+scanner.\+cpp}}.
 

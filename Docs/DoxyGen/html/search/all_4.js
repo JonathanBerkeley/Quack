@@ -1,7 +1,7 @@
 var searchData=
 [
   ['data_0',['data',['../namespacedata.html',1,'']]],
-  ['data_2ecpp_1',['data.cpp',['../_inertia-cheat_2_inertia-cheat_2data_8cpp.html',1,'(Global Namespace)'],['../_highlight-_generic_2_highlight_2data_8cpp.html',1,'(Global Namespace)']]],
+  ['data_2ecpp_1',['data.cpp',['../_highlight-_generic_2_highlight_2data_8cpp.html',1,'(Global Namespace)'],['../_inertia-cheat_2_inertia-cheat_2data_8cpp.html',1,'(Global Namespace)']]],
   ['data_2ehpp_2',['data.hpp',['../_quack-internal_2data_8hpp.html',1,'(Global Namespace)'],['../_red_01team_2_highlight-_generic_2_highlight_2data_8hpp.html',1,'(Global Namespace)'],['../_red_01team_2_inertia-cheat_2_inertia-cheat_2data_8hpp.html',1,'(Global Namespace)']]],
   ['data_5flength_3',['data_length',['../struct_dns_data.html#a7542574de3427a0b8df25046504865ac',1,'DnsData']]],
   ['debuggerpresent_4',['DebuggerPresent',['../namespacecfg.html#aaeb150697b52b813a26935785d085b08a9f924efa808d2875bd496f8bbf846bfc',1,'cfg']]],
@@ -21,7 +21,7 @@ var searchData=
   ['dnsentries_18',['DnsEntries',['../dns__walk_8cpp.html#a4b4d2ef4447201eb3b6f68f323d25671',1,'dns_walk.cpp']]],
   ['dnsentry_19',['DnsEntry',['../struct_dns_entry.html',1,'']]],
   ['dnsfreeptr_20',['DnsFreePtr',['../dns__walk_8cpp.html#aae209c7f0fd849600c4aaf9a7fbe7d81',1,'dns_walk.cpp']]],
-  ['dnsscan_21',['DnsScan',['../_quack-internal_2task__dispatch_8cpp.html#a4b4dfbb155eee3c15728aa02a9074304',1,'task_dispatch.cpp']]],
+  ['dnsscan_21',['DnsScan',['../dns__walk_8cpp.html#a4b4dfbb155eee3c15728aa02a9074304',1,'DnsScan():&#160;dns_walk.cpp'],['../dns__walk_8hpp.html#a4b4dfbb155eee3c15728aa02a9074304',1,'DnsScan():&#160;dns_walk.cpp']]],
   ['dnstablecacheptr_22',['DnsTableCachePtr',['../dns__walk_8cpp.html#aa33dd7050edc0dac6e8b192e43a1ba01',1,'dns_walk.cpp']]],
   ['dnstableptr_23',['DnsTablePtr',['../dns__walk_8cpp.html#a72d0bec0a94bbd5c4f51d79a45720666',1,'dns_walk.cpp']]],
   ['input_24',['input',['../namespacedata_1_1input.html',1,'data']]],

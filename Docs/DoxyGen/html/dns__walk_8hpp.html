@@ -26,9 +26,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="DoxyGen.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.5 / 0.6.0</span>
+   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.8 / 0.6.2</span>
    </div>
-   <div id="projectbrief">Quick Universal Anti-Cheat Kit</div>
+   <div id="projectbrief">Quick Universal Anti-Cheat Kit - https://quack.ac</div>
   </td>
  </tr>
  </tbody>
@@ -110,6 +110,9 @@ Functions</h2></td></tr>
 <tr class="memitem:aad94980acc9a425f0a1a3028d49b2bd3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dns__walk_8hpp.html#aad94980acc9a425f0a1a3028d49b2bd3">PrintDNSEntries</a> (std::wostream &amp;wos)</td></tr>
 <tr class="memdesc:aad94980acc9a425f0a1a3028d49b2bd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints DNS entries in a human readable format to supplied wide output stream.  <a href="dns__walk_8hpp.html#aad94980acc9a425f0a1a3028d49b2bd3">More...</a><br /></td></tr>
 <tr class="separator:aad94980acc9a425f0a1a3028d49b2bd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b4dfbb155eee3c15728aa02a9074304"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="dns__walk_8hpp.html#a4b4dfbb155eee3c15728aa02a9074304">DnsScan</a> ()</td></tr>
+<tr class="memdesc:a4b4dfbb155eee3c15728aa02a9074304"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scans DNS entries for blacklisted domains and bans player if blacklisted entries are found.  <a href="dns__walk_8hpp.html#a4b4dfbb155eee3c15728aa02a9074304">More...</a><br /></td></tr>
+<tr class="separator:a4b4dfbb155eee3c15728aa02a9074304"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a62050f84df134a7fd8a1dfc8cbd19d14" name="a62050f84df134a7fd8a1dfc8cbd19d14"></a>
@@ -130,7 +133,28 @@ Functions</h2></td></tr>
 <p>Searches entries in the DNS cache for blacklisted domains. </p>
 <dl class="section return"><dt>Returns</dt><dd>List of entries that matched the blacklist, or empty </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00116">116</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00125">125</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a4b4dfbb155eee3c15728aa02a9074304" name="a4b4dfbb155eee3c15728aa02a9074304"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b4dfbb155eee3c15728aa02a9074304">&#9670;&nbsp;</a></span>DnsScan()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DnsScan </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Scans DNS entries for blacklisted domains and bans player if blacklisted entries are found. </p>
+
+<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00243">243</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
 
 </div>
 </div>
@@ -159,7 +183,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Vector containing cached DnsEntries on success </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00039">39</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00044">44</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
 
 </div>
 </div>
@@ -187,7 +211,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00140">140</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="dns__walk_8cpp_source.html#l00149">149</a> of file <a class="el" href="dns__walk_8cpp_source.html">dns_walk.cpp</a>.</p>
 
 </div>
 </div>

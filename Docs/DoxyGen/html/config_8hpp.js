@@ -13,6 +13,7 @@ var config_8hpp =
       [ "DiskID", "config_8hpp.html#a05ce93c100c75653006f8261e4b53653a8997eff3075a71c3caf9f2dca3a99be4", null ]
     ] ],
     [ "Scan", "config_8hpp.html#a42892a3b0947215bdf3c341ce9097ead", [
+      [ "CpuThrottle", "config_8hpp.html#a42892a3b0947215bdf3c341ce9097eada4fc66d2e9436f300000c7fae61fdb0fb", null ],
       [ "DNS", "config_8hpp.html#a42892a3b0947215bdf3c341ce9097eadad7a74322082d09fcf955745ed05f9c22", null ],
       [ "Module", "config_8hpp.html#a42892a3b0947215bdf3c341ce9097eada4db597b2f72188f1d45b723baf508534", null ],
       [ "UnsignedModulesOnly", "config_8hpp.html#a42892a3b0947215bdf3c341ce9097eada73785c3f84582124e7ab237dda95959e", null ],

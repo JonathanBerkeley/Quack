@@ -26,9 +26,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="DoxyGen.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.5 / 0.6.0</span>
+   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.8 / 0.6.2</span>
    </div>
-   <div id="projectbrief">Quick Universal Anti-Cheat Kit</div>
+   <div id="projectbrief">Quick Universal Anti-Cheat Kit - https://quack.ac</div>
   </td>
  </tr>
  </tbody>
@@ -122,6 +122,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a9317d81d43e3270a6f3176c65f9f4c97"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8hpp.html#a9317d81d43e3270a6f3176c65f9f4c97">ExitFailure</a> (const UINT exit_code)</td></tr>
 <tr class="memdesc:a9317d81d43e3270a6f3176c65f9f4c97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Wrapper around ExitProcess.  <a href="utils_8hpp.html#a9317d81d43e3270a6f3176c65f9f4c97">More...</a><br /></td></tr>
 <tr class="separator:a9317d81d43e3270a6f3176c65f9f4c97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5f1f74d60d70b4087722033ea8b31e5"><td class="memItemLeft" align="right" valign="top">std::optional&lt; std::string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8hpp.html#ad5f1f74d60d70b4087722033ea8b31e5">wstring_to_string</a> (const std::wstring &amp;wide_str)</td></tr>
+<tr class="memdesc:ad5f1f74d60d70b4087722033ea8b31e5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Convert a std::wstring to a std::string.  <a href="utils_8hpp.html#ad5f1f74d60d70b4087722033ea8b31e5">More...</a><br /></td></tr>
+<tr class="separator:ad5f1f74d60d70b4087722033ea8b31e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
 <a id="a84817d79c47f5b13735e17b57a386f92" name="a84817d79c47f5b13735e17b57a386f92"></a>
@@ -149,7 +152,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>HMODULE for requested library </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00037">37</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00038">38</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
 
 </div>
 </div>
@@ -225,7 +228,7 @@ template&lt;typename F , typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00054">54</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00055">55</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
 
 </div>
 </div>
@@ -291,7 +294,7 @@ template&lt;typename T &gt; </div>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00014">14</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00013">13</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
 
 </div>
 </div>
@@ -356,6 +359,35 @@ template&lt;typename T &gt; </div>
 </dl>
 
 <p class="definition">Definition at line <a class="el" href="utils_8hpp_source.html#l00018">18</a> of file <a class="el" href="utils_8hpp_source.html">utils.hpp</a>.</p>
+
+</div>
+</div>
+<a id="ad5f1f74d60d70b4087722033ea8b31e5" name="ad5f1f74d60d70b4087722033ea8b31e5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5f1f74d60d70b4087722033ea8b31e5">&#9670;&nbsp;</a></span>wstring_to_string()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::optional&lt; std::string &gt; wstring_to_string </td>
+          <td>(</td>
+          <td class="paramtype">const std::wstring &amp;&#160;</td>
+          <td class="paramname"><em>wide_str</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Convert a std::wstring to a std::string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">wide_str</td><td>Wide string to be converted </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>std::string representation of the std::wstring provided on success, std::nullopt on failure </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="utils_8cpp_source.html#l00087">87</a> of file <a class="el" href="utils_8cpp_source.html">utils.cpp</a>.</p>
 
 </div>
 </div>

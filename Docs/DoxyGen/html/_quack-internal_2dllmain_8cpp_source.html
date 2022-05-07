@@ -26,9 +26,9 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="DoxyGen.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.5 / 0.6.0</span>
+   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.8 / 0.6.2</span>
    </div>
-   <div id="projectbrief">Quick Universal Anti-Cheat Kit</div>
+   <div id="projectbrief">Quick Universal Anti-Cheat Kit - https://quack.ac</div>
   </td>
  </tr>
  </tbody>
@@ -89,30 +89,28 @@ $(document).ready(function(){initNavTree('_quack-internal_2dllmain_8cpp_source.h
 <div class="contents">
 <a href="_quack-internal_2dllmain_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="preprocessor">#include &quot;<a class="code" href="_red_01team_2_inertia-cheat_2_inertia-cheat_2pch_8hpp.html">pch.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="preprocessor">#include &quot;<a class="code" href="_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8hpp.html">flashpoint.hpp</a>&quot;</span></div>
-<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="_red_01team_2_inertia-cheat_2_inertia-cheat_2data_8hpp.html">data.hpp</a>&quot;</span></div>
+<div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span> </div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span> </div>
-<div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// Entry point for the application</span></div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno"><a class="line" href="_quack-internal_2dllmain_8cpp.html#a83a4212b7538ce89d735a7b7d8bdcff3">    6</a></span>BOOL APIENTRY <a class="code hl_function" href="_quack-internal_2dllmain_8cpp.html#a83a4212b7538ce89d735a7b7d8bdcff3">DllMain</a>(<span class="keyword">const</span> HMODULE <a class="code hl_variable" href="namespacedata_1_1proc.html#a1556e021ad69c9e8500cbad9569f71f1">self_module</a>, <span class="keyword">const</span> DWORD call_reason, LPVOID lp_reserved) {</div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span>    <span class="keywordflow">if</span> (call_reason == DLL_PROCESS_ATTACH) {</div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span>        DisableThreadLibraryCalls(<a class="code hl_variable" href="namespacedata_1_1proc.html#a1556e021ad69c9e8500cbad9569f71f1">self_module</a>);</div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span>        <span class="comment">// ReSharper disable once CppLocalVariableMayBeConst</span></div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span>        <span class="comment">// Create thread in host application</span></div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span>        <span class="keywordflow">if</span> (HANDLE thread = CreateThread(</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>            <span class="keyword">nullptr</span>,</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>            0,</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>            <a class="code hl_function" href="_quack-internal_2flashpoint_8cpp.html#a44385e5f6ecb4d791f022bf8f4392404">Init</a>,</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>            <a class="code hl_variable" href="namespacedata_1_1proc.html#a1556e021ad69c9e8500cbad9569f71f1">self_module</a>,</div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>            0,</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>            <span class="keyword">nullptr</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        ))</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            CloseHandle(thread);</div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>    }</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>    <span class="keywordflow">return</span> TRUE;</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>}</div>
-<div class="ttc" id="a_quack-internal_2dllmain_8cpp_html_a83a4212b7538ce89d735a7b7d8bdcff3"><div class="ttname"><a href="_quack-internal_2dllmain_8cpp.html#a83a4212b7538ce89d735a7b7d8bdcff3">DllMain</a></div><div class="ttdeci">BOOL APIENTRY DllMain(const HMODULE self_module, const DWORD call_reason, LPVOID lp_reserved)</div><div class="ttdef"><b>Definition:</b> <a href="_quack-internal_2dllmain_8cpp_source.html#l00006">dllmain.cpp:6</a></div></div>
-<div class="ttc" id="a_quack-internal_2flashpoint_8cpp_html_a44385e5f6ecb4d791f022bf8f4392404"><div class="ttname"><a href="_quack-internal_2flashpoint_8cpp.html#a44385e5f6ecb4d791f022bf8f4392404">Init</a></div><div class="ttdeci">DWORD WINAPI Init(LPVOID lpParam)</div><div class="ttdef"><b>Definition:</b> <a href="_quack-internal_2flashpoint_8cpp_source.html#l00047">flashpoint.cpp:47</a></div></div>
-<div class="ttc" id="a_red_01team_2_inertia-cheat_2_inertia-cheat_2data_8hpp_html"><div class="ttname"><a href="_red_01team_2_inertia-cheat_2_inertia-cheat_2data_8hpp.html">data.hpp</a></div></div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="_quack-internal_2dllmain_8cpp.html#a83a4212b7538ce89d735a7b7d8bdcff3">   12</a></span>BOOL APIENTRY <a class="code hl_function" href="_quack-internal_2dllmain_8cpp.html#a83a4212b7538ce89d735a7b7d8bdcff3">DllMain</a>(<span class="keyword">const</span> HMODULE <a class="code hl_variable" href="namespacedata_1_1proc.html#a1556e021ad69c9e8500cbad9569f71f1">self_module</a>, <span class="keyword">const</span> DWORD call_reason, LPVOID lp_reserved) {</div>
+<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keywordflow">if</span> (call_reason == DLL_PROCESS_ATTACH) {</div>
+<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>        DisableThreadLibraryCalls(<a class="code hl_variable" href="namespacedata_1_1proc.html#a1556e021ad69c9e8500cbad9569f71f1">self_module</a>);</div>
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span> </div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <span class="comment">// ReSharper disable once CppLocalVariableMayBeConst</span></div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        <span class="comment">// Create thread in host application</span></div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="keywordflow">if</span> (HANDLE thread = CreateThread(</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>            <span class="keyword">nullptr</span>,</div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>            0,</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>            <a class="code hl_function" href="_quack-internal_2flashpoint_8cpp.html#a44385e5f6ecb4d791f022bf8f4392404">Init</a>,</div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>            <a class="code hl_variable" href="namespacedata_1_1proc.html#a1556e021ad69c9e8500cbad9569f71f1">self_module</a>,</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>            0,</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>            <span class="keyword">nullptr</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        ))</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>            CloseHandle(thread);</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>    }</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    <span class="keywordflow">return</span> TRUE;</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>}</div>
+<div class="ttc" id="a_quack-internal_2dllmain_8cpp_html_a83a4212b7538ce89d735a7b7d8bdcff3"><div class="ttname"><a href="_quack-internal_2dllmain_8cpp.html#a83a4212b7538ce89d735a7b7d8bdcff3">DllMain</a></div><div class="ttdeci">BOOL APIENTRY DllMain(const HMODULE self_module, const DWORD call_reason, LPVOID lp_reserved)</div><div class="ttdoc">Entry point for the application.</div><div class="ttdef"><b>Definition:</b> <a href="_quack-internal_2dllmain_8cpp_source.html#l00012">dllmain.cpp:12</a></div></div>
+<div class="ttc" id="a_quack-internal_2flashpoint_8cpp_html_a44385e5f6ecb4d791f022bf8f4392404"><div class="ttname"><a href="_quack-internal_2flashpoint_8cpp.html#a44385e5f6ecb4d791f022bf8f4392404">Init</a></div><div class="ttdeci">DWORD WINAPI Init(LPVOID lpParam)</div><div class="ttdoc">Entry point and setup.</div><div class="ttdef"><b>Definition:</b> <a href="_quack-internal_2flashpoint_8cpp_source.html#l00059">flashpoint.cpp:59</a></div></div>
 <div class="ttc" id="a_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8hpp_html"><div class="ttname"><a href="_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8hpp.html">flashpoint.hpp</a></div></div>
 <div class="ttc" id="a_red_01team_2_inertia-cheat_2_inertia-cheat_2pch_8hpp_html"><div class="ttname"><a href="_red_01team_2_inertia-cheat_2_inertia-cheat_2pch_8hpp.html">pch.hpp</a></div></div>
 <div class="ttc" id="anamespacedata_1_1proc_html_a1556e021ad69c9e8500cbad9569f71f1"><div class="ttname"><a href="namespacedata_1_1proc.html#a1556e021ad69c9e8500cbad9569f71f1">data::proc::self_module</a></div><div class="ttdeci">HMODULE self_module</div><div class="ttdef"><b>Definition:</b> <a href="_highlight-_generic_2_highlight_2data_8cpp_source.html#l00010">data.cpp:10</a></div></div>

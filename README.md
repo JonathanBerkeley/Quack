@@ -1,7 +1,9 @@
 # Quack
 Quick Universal Anti-Cheat Kit    
 
-Generic anti-cheat software, for defending videogames from cheats.    
+Universal (works with any game) anti-cheat software, for defending videogames from cheats.    
+Also contains other software for aiding in anti-cheat software development.    
+<br>
 This should be considered as a research project only and not used to defend any real world games.    
 
 # Documentation
@@ -13,7 +15,7 @@ https://github.com/JonathanBerkeley/Quack/tree/main/Docs
 2. Open "Quack main.sln" located in directory "Quack/Main/" with Visual Studio 2022    
 3. Build all, or individual modules from this solution    
 
-Or download binaries from https://github.com/JonathanBerkeley/Quack/releases/    
+Binaries can be downloaded from https://github.com/JonathanBerkeley/Quack/releases/    
 
 # Other project repositories
 #### Example server software to interact with Quack clients:

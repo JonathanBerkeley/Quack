@@ -73,6 +73,10 @@ bool Heartbeat(const Context& ctx, const HeartbeatInfo& heartbeat_info) {
             const auto err = res.error();
             std::cout << "Error: " << http::to_string(err) << std::endl;
         }
+
+        if constexpr (DBG)
+            SetConsoleTextAttribute(ctx.hConsole, Colour::White);
+
         return false;
     }
 

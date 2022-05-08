@@ -21,6 +21,7 @@
 #include <thread>
 #include <optional>
 #include <unordered_map>
+#include <filesystem>
 #include <random>
 #include <cstdio>
 #include <cstdlib>

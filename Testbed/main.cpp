@@ -12,6 +12,7 @@
 #include "smbios.hpp"
 
 #include <iostream>
+#include <filesystem>
 #include <cstdio>
 #include <sstream>
 #include <optional>
@@ -75,39 +76,17 @@ char16_t GetCpuID() {
 }
 
 int main() {
-    using namespace smbios;
-
     AllocConsole();
     freopen_s(reinterpret_cast<FILE**>(stdin), "CONIN$", "r", stdin);
     freopen_s(reinterpret_cast<FILE**>(stdout), "CONOUT$", "w", stdout);
     freopen_s(reinterpret_cast<FILE**>(stderr), "CONOUT$", "w", stderr);
 
-    const auto smbios_size = GetSystemFirmwareTable('RSMB', 0, nullptr, 0);
-    const auto smbios_data = static_cast<RawSMBIOSData*>(HeapAlloc(GetProcessHeap(), 0, smbios_size));
 
-    if (not smbios_data)
-        return -1;
+    auto current_path = std::filesystem::current_path();
 
-    // Retrieve SMBIOS table
-    auto bytes_written = GetSystemFirmwareTable('RSMB', 0, smbios_data, smbios_size);
-    if (not bytes_written)
-        return -2;
-
-    auto smbios_table = smbios_data->SMBIOSTableData;
-    bool flag = true;
-    auto* header = reinterpret_cast<dmi_header*>(smbios_table);
-
-
-    std::stringstream hwid;
-    hwid << static_cast<int>(smbios_table[0x4]) << static_cast<int>(smbios_table[0x5])
-        << static_cast<int>(smbios_table[0x8]) << GpuID().value_or("")
-        << DiskID().value_or(0) << static_cast<int>(GetCpuID());
-
-    std::cout << hwid.str();
-
-    // Cleanup
-    HeapFree(GetProcessHeap(), 0, smbios_data);
-
+    current_path += "/Quack-ac.exe";
+    const auto application_name = current_path.generic_string();
+    std::cout << application_name.c_str();
 
     std::wstring ws;
     std::wcin >> ws;

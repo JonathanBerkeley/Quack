@@ -24,7 +24,7 @@ Check [Scripts-for-games](https://github.com/JonathanBerkeley/Quack/tree/main/Sc
 # Other project repositories
 #### Example server software to interact with Quack clients:
 https://github.com/JonathanBerkeley/Quack-server/    
-#### Frontend website template displaying list of banned players (Unfinsihed):
+#### Frontend website template displaying list of banned players (Unfinished):
 https://github.com/JonathanBerkeley/Anti-cheat-frontend    
 
 ## Red team repositories

@@ -51,9 +51,6 @@
     <ClInclude Include="pch.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="utility.hpp">
-      <Filter>Source Files\Utility</Filter>
-    </ClInclude>
     <ClInclude Include="identification.hpp">
       <Filter>Source Files\Identification</Filter>
     </ClInclude>
@@ -90,6 +87,9 @@
     <ClInclude Include="..\Lib\Quack-shared\config.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Lib\Quack-shared\utils.hpp">
+      <Filter>Source Files\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="flashpoint.cpp">
@@ -97,9 +97,6 @@
     </ClCompile>
     <ClCompile Include="pch.cpp">
       <Filter>Source Files\Boilerplate</Filter>
-    </ClCompile>
-    <ClCompile Include="utility.cpp">
-      <Filter>Source Files\Utility</Filter>
     </ClCompile>
     <ClCompile Include="detection.cpp">
       <Filter>Source Files\Detection</Filter>
@@ -127,6 +124,9 @@
     </ClCompile>
     <ClCompile Include="..\Lib\Quack-shared\hardware_id.cpp">
       <Filter>Source Files\Identification</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Lib\Quack-shared\utils.cpp">
+      <Filter>Source Files\Utility</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

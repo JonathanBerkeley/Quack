@@ -4,20 +4,14 @@
 #include "constants.hpp"
 #include "server.hpp"
 #include "context.hpp"
-#include "heartbeat.hpp"
-#include "utility.hpp"
-#include "identification.hpp"
 
 // 3rd party library
-#include "detection.hpp"
-#include "hardware_id.hpp"
 #include "httplib.hpp"              // Networking
 #include "json.hpp"                 // JSON support
 #include "task_dispatch.hpp"
 
 // Shorten namespace names
 namespace http = httplib;
-namespace thread = std::this_thread;
 namespace chrono = std::chrono;
 
 using namespace std::chrono_literals;

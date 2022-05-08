@@ -7,8 +7,6 @@
 #include "smbios.hpp"
 
 
-
-
 #pragma region Public
 HardwareID::HardwareID() : raw_hwid(GetHWID().value_or("")) {
     hash(raw_hwid);

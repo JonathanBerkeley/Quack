@@ -9,11 +9,37 @@
 #include <SoftPub.h>
 #include <WinTrust.h>
 
+#include "network.hpp"
+
 // Link with the WinTrust.lib file
 #pragma comment (lib, "wintrust")
 
 using namespace data;
 using namespace std::string_literals;
+
+
+/**
+ * \brief Check if a pointer is valid
+ *
+ * Adapted from: https://guidedhacking.com/threads/testing-if-pointer-is-invalid.13222/#post-77709
+ * \param ptr Pointer to check
+ * \return True if pointer is valid
+ */
+bool PointerIsValid(const void* ptr) {
+    MEMORY_BASIC_INFORMATION mbi{};
+
+    if (VirtualQuery(ptr, &mbi, sizeof mbi)) {
+        constexpr auto mask = PAGE_READONLY | PAGE_READWRITE | PAGE_WRITECOPY | PAGE_EXECUTE_READ | PAGE_EXECUTE_READWRITE | PAGE_EXECUTE_WRITECOPY;
+        bool protect = mbi.Protect & mask;
+
+        if (mbi.Protect & (PAGE_GUARD | PAGE_NOACCESS))
+            protect = false;
+
+        return protect;
+    }
+
+    return false;
+}
 
 
 #pragma region Modules
@@ -74,6 +100,7 @@ bool VerifyModule(const LPCWSTR source_file) {
     return verified;
 }
 #pragma endregion
+
 
 #pragma region Patterns
 /**
@@ -157,6 +184,10 @@ std::uint8_t* PatternScan(const HMODULE module, const std::string& signature) {
  * \return Pointer to start address of matched pattern
  */
 std::uint8_t* PatternScan(const std::string& signature, const MemoryRegion& mem_region) {
+
+    if (not PointerIsValid(mem_region.start_address))
+        return nullptr;
+
     const auto pattern_bytes = PatternToByte(signature);
     const auto size = pattern_bytes.size();
     const auto data = pattern_bytes.data();
@@ -176,24 +207,45 @@ std::uint8_t* PatternScan(const std::string& signature, const MemoryRegion& mem_
 }
 
 
-// todo: Network this
 /**
- * \brief Fetches known cheat signatures
- * \param context Information about the current process
+ * \brief Fetches known cheat signatures from local storage
  * \return Signature data
  */
-Signatures GetSignatures(const ProcessInfo& context) {
+Signatures GetLocalSignatures() {
     Signatures signatures{};
 
-    // context->SendData();
-    
     signatures.cheats.emplace_back(std::make_pair("Highlight"s, std::vector<std::string>{
         "50 00 72 00 6F 00 63 00 65 00 73 00 73 00 20 00 68 00 69 00 6A 00 61 00 63 00 6B 00 65 00 64"
     }));
 
+    signatures.cheats.emplace_back(std::make_pair("Inertia-Cheat"s, std::vector<std::string>{
+        "55 8B EC 83 EC 2C A1 * * * * 33 C5 89 45 FC 53 56 8B 35 * * * * 57 6A 23 8B F9 FF D6 A8 01 0F 85",
+            "68 * * * * FF 15 * * * * 8B 35 * * * * 8B 3D * * * * 03 F0 A1 * * * * 89 45 C8 3B F8 74 5D",
+            "50 A1 * * * * 33 C5 50 8D 45 F4 64 A3 * * * * 6A 19"
+    }));
+
+    return signatures;
+}
+
+
+/**
+ * \brief Fetches known cheat signatures
+ *
+ * \param context Information about the current process
+ * \return Signature data
+ */
+Signatures GetSignatures(const ProcessInfo& context) {
+    // todo: fix networking problems
+    static Signatures signatures{};
+
+    if (not signatures.cheats.empty())
+        return signatures;
+    
+    signatures = Communication::GetSignatures();
     return signatures;
 }
 #pragma endregion
+
 
 #pragma region Scans
 /**
@@ -203,7 +255,7 @@ Signatures GetSignatures(const ProcessInfo& context) {
  */
 void ModuleScan(const ProcessInfo& context, const bool unsigned_only) {
 
-    auto [cheats] = GetSignatures(context);
+    auto [cheats] = GetLocalSignatures();
 
     Log("\nBeginning module memory scan...\n");
 
@@ -269,7 +321,7 @@ void ModuleScan(const ProcessInfo& context, const bool unsigned_only) {
  */
 void RegionScan(const ProcessInfo& context, const MemoryRegion& memory_region) {
 
-    auto [cheats] = GetSignatures(context);
+    auto [cheats] = GetLocalSignatures();
 
     // Log("\nBeginning executable memory scan...\n");
 

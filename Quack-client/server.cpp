@@ -3,11 +3,11 @@
 #include "server.hpp"
 #include "constants.hpp"
 
+// 3rd party
 #include "httplib.hpp"
 #include "json.hpp"
 
 namespace http = httplib;
-namespace json = nlohmann;
 
 
 void Server(http::Client* cli) {
@@ -27,10 +27,11 @@ void Server(http::Client* cli) {
         }
     });
 
-    server.Post("/handshake", [cli](const http::Request& req, http::Response& res) {
+    server.Get("/signatures", [cli](const http::Request& req, http::Response& res) {
 
-
-        res.set_content("", "text/plain");
+        if (auto raw_signatures = cli->Get("/data/signatures")) {
+            res.set_content(raw_signatures->body, "application/json");
+        }
     });
 
     server.listen("localhost", constants::IPC_PORT);

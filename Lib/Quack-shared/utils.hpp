@@ -23,6 +23,19 @@ void Log(std::initializer_list<T> data) {
 
 
 /**
+ * \brief Wrapper around reinterpret_cast to reduce code verbosity
+ * \tparam T Resulting type after casting
+ * \tparam U Type of the subject of the cast
+ * \param u Subject of the cast
+ * \return Result of reinterpret_cast
+ */
+template <typename T, typename U>
+T recast(U&& u) {
+    return reinterpret_cast<T>(std::forward<U>(u));
+}
+
+
+/**
  * \brief Calls a function with one argument asynchronously
  *
  * Relies on implementation defined behaviour
@@ -65,3 +78,4 @@ HMODULE CachedLoadLibrary(const LPCWSTR& dll_name);
 void ExitFailure(const UINT exit_code);
 
 std::optional<std::string> wstring_to_string(const std::wstring& wide_str);
+std::wstring wstring_to_lower(const std::wstring& wide_str);

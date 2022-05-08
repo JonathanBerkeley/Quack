@@ -1,5 +1,4 @@
 #include "pch.hpp"
-
 #include "utils.hpp"
 #include "network.hpp"
 
@@ -25,6 +24,24 @@ bool Communication::SendData(const json::json& body) {
     }
 
     return false;
+}
+
+
+/**
+ * \brief Gets signatures from remote server
+ * \return Signature data from remote server
+ */
+data::Signatures Communication::GetSignatures() {
+    
+    if (auto res = cli.Get("/signatures")) {
+        if (res->status == 200) {
+            // todo: Parse data into data::Signatures
+            return {};
+        }
+        Log("Failed signature get: " + std::to_string(res->status));
+    }
+
+    return {};
 }
 
 

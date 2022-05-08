@@ -90,7 +90,7 @@ auto smbios::dmi_string(
 	//
 
 	length = std::strlen(bp);
-	for (int i = 0; i < length; i++) {
+	for (i = 0; i < length; i++) {
 		if (bp[i] < 32 || bp[i] == 127) { bp[i] = '.'; }
 	}
 	return bp;

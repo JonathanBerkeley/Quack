@@ -22,9 +22,8 @@ using constants::DBG;
  */
 void HeartbeatWrapper(const Context& ctx, const HeartbeatInfo& heartbeat_info) {
     // Override check so that testing can be done without server connection
-    if (not Heartbeat(ctx, heartbeat_info))
-        if constexpr (not DBG)
-            ExitFailure(cfg::ExitCode::NoHeartbeat);
+    if (not Heartbeat(ctx, heartbeat_info) and not DBG)
+        ExitFailure(cfg::ExitCode::NoHeartbeat);
 }
 
 

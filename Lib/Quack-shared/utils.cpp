@@ -80,6 +80,22 @@ void ExitFailure(const UINT exit_code) {
 
 
 /**
+ * \brief Returns a lowercase version of wide string
+ * \param wide_str Wide string to be converted
+ * \return New wide string in lowercase
+ */
+std::wstring wstring_to_lower(const std::wstring& wide_str) {
+
+    std::wstring output;
+
+    for (auto& wc : wide_str)
+        output += static_cast<wchar_t>(towlower(wc));
+
+    return output;
+}
+
+
+/**
  * \brief Convert a std::wstring to a std::string
  * \param wide_str Wide string to be converted
  * \return std::string representation of the std::wstring provided on success, std::nullopt on failure

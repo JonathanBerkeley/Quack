@@ -18,10 +18,13 @@ https://github.com/JonathanBerkeley/Quack/tree/main/Docs
 
 Binaries can be downloaded from https://github.com/JonathanBerkeley/Quack/releases/    
 
+# Usage instructions
+Check [Scripts-for-games](https://github.com/JonathanBerkeley/Quack/tree/main/Scripts-for-games) for information on how to load Quack into a game    
+
 # Other project repositories
 #### Example server software to interact with Quack clients:
 https://github.com/JonathanBerkeley/Quack-server/    
-#### Frontend website displaying list of banned players (Unfinsihed):
+#### Frontend website template displaying list of banned players (Unfinsihed):
 https://github.com/JonathanBerkeley/Anti-cheat-frontend    
 
 ## Red team repositories

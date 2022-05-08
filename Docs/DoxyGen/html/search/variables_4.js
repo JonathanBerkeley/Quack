@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['error_0',['error',['../structfile__contents.html#a97ec5e76b4ae43000b508bfc484ffd09',1,'file_contents']]]
+  ['error_0',['error',['../struct_file_contents.html#aed41779dbbfbab23858df83f5192e143',1,'FileContents']]]
 ];

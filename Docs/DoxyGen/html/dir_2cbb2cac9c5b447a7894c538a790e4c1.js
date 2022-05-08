@@ -15,7 +15,5 @@ var dir_2cbb2cac9c5b447a7894c538a790e4c1 =
     [ "server.cpp", "server_8cpp.html", "server_8cpp" ],
     [ "server.hpp", "server_8hpp.html", "server_8hpp" ],
     [ "task_dispatch.cpp", "_quack-client_2task__dispatch_8cpp.html", "_quack-client_2task__dispatch_8cpp" ],
-    [ "task_dispatch.hpp", "_quack-client_2task__dispatch_8hpp.html", "_quack-client_2task__dispatch_8hpp" ],
-    [ "utility.cpp", "utility_8cpp.html", "utility_8cpp" ],
-    [ "utility.hpp", "utility_8hpp.html", "utility_8hpp" ]
+    [ "task_dispatch.hpp", "_quack-client_2task__dispatch_8hpp.html", "_quack-client_2task__dispatch_8hpp" ]
 ];

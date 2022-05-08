@@ -1,7 +1,7 @@
 var searchData=
 [
   ['features_0',['Features',['../namespacecfg.html#a05ce93c100c75653006f8261e4b53653',1,'cfg']]],
-  ['file_5fcontents_1',['file_contents',['../structfile__contents.html',1,'']]],
+  ['filecontents_1',['FileContents',['../struct_file_contents.html',1,'']]],
   ['findprocesses_2',['FindProcesses',['../detection_8cpp.html#a4f5b1ecf2a4b9587f270effa0512c794',1,'FindProcesses(const std::vector&lt; std::wstring &gt; &amp;blacklist):&#160;detection.cpp'],['../detection_8hpp.html#a4f5b1ecf2a4b9587f270effa0512c794',1,'FindProcesses(const std::vector&lt; std::wstring &gt; &amp;blacklist):&#160;detection.cpp']]],
   ['flags_3',['flags',['../struct_dns_data.html#a1e68b0332a31d7202ad00f597cee76e8',1,'DnsData']]],
   ['flashpoint_2ecpp_4',['flashpoint.cpp',['../_quack-client_2flashpoint_8cpp.html',1,'(Global Namespace)'],['../_quack-internal_2flashpoint_8cpp.html',1,'(Global Namespace)'],['../_red_01team_2_highlight-_generic_2_highlight_2flashpoint_8cpp.html',1,'(Global Namespace)'],['../_red_01team_2_inertia-cheat_2_inertia-cheat_2flashpoint_8cpp.html',1,'(Global Namespace)']]],

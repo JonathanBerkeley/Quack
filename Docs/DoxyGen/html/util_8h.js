@@ -1,7 +1,7 @@
 var util_8h =
 [
-    [ "file_contents", "structfile__contents.html", "structfile__contents" ],
-    [ "config_read", "util_8h.html#ac50769322189d486044db9d60a5ea33d", null ],
+    [ "FileContents", "struct_file_contents.html", "struct_file_contents" ],
+    [ "config_read", "util_8h.html#a9f7d675d99cc9a17c3b7e0921a97ebe0", null ],
     [ "config_write", "util_8h.html#a5354aaa283ee1eb99170672768a6f4ce", null ],
     [ "log_write", "util_8h.html#af1fb285bc928880e22a89589717535c9", null ],
     [ "sleep", "util_8h.html#a5aacbb489d670e9343296d4e91b20ac7", null ],

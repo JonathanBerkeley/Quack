@@ -11,7 +11,7 @@ var annotated_dup =
     [ "DetectionInfo", "struct_detection_info.html", "struct_detection_info" ],
     [ "DnsData", "struct_dns_data.html", "struct_dns_data" ],
     [ "DnsEntry", "struct_dns_entry.html", "struct_dns_entry" ],
-    [ "file_contents", "structfile__contents.html", "structfile__contents" ],
+    [ "FileContents", "struct_file_contents.html", "struct_file_contents" ],
     [ "HardwareID", "class_hardware_i_d.html", "class_hardware_i_d" ],
     [ "HeartbeatInfo", "struct_heartbeat_info.html", "struct_heartbeat_info" ],
     [ "MappingData", "struct_mapping_data.html", "struct_mapping_data" ],

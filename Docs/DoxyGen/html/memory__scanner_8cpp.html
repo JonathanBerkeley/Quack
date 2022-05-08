@@ -26,7 +26,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="DoxyGen.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.8 / 0.6.2</span>
+   <div id="projectname">Quack<span id="projectnumber">&#160;0.4.0 / 0.6.4</span>
    </div>
    <div id="projectbrief">Quick Universal Anti-Cheat Kit - https://quack.ac</div>
   </td>
@@ -95,11 +95,15 @@ $(document).ready(function(){initNavTree('memory__scanner_8cpp.html',''); initRe
 <code>#include &quot;<a class="el" href="memory__scanner_8hpp_source.html">memory_scanner.hpp</a>&quot;</code><br />
 <code>#include &lt;SoftPub.h&gt;</code><br />
 <code>#include &lt;WinTrust.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="network_8hpp_source.html">network.hpp</a>&quot;</code><br />
 </div>
 <p><a href="memory__scanner_8cpp_source.html">Go to the source code of this file.</a></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a383441e07eff1fd3167a90dc9732729c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory__scanner_8cpp.html#a383441e07eff1fd3167a90dc9732729c">PointerIsValid</a> (const void *ptr)</td></tr>
+<tr class="memdesc:a383441e07eff1fd3167a90dc9732729c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if a pointer is valid.  <a href="memory__scanner_8cpp.html#a383441e07eff1fd3167a90dc9732729c">More...</a><br /></td></tr>
+<tr class="separator:a383441e07eff1fd3167a90dc9732729c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acea7c94e476706b397d76faee2317412"><td class="memItemLeft" align="right" valign="top">std::vector&lt; HMODULE &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory__scanner_8cpp.html#acea7c94e476706b397d76faee2317412">EnumerateModules</a> (const <a class="el" href="structdata_1_1_process_info.html">ProcessInfo</a> &amp;process_info)</td></tr>
 <tr class="memdesc:acea7c94e476706b397d76faee2317412"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enumerates through loaded modules, returns vector of results.  <a href="memory__scanner_8cpp.html#acea7c94e476706b397d76faee2317412">More...</a><br /></td></tr>
 <tr class="separator:acea7c94e476706b397d76faee2317412"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -115,6 +119,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a6f5661ae7206f7751587a687d4b421fb"><td class="memItemLeft" align="right" valign="top">std::uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory__scanner_8cpp.html#a6f5661ae7206f7751587a687d4b421fb">PatternScan</a> (const std::string &amp;signature, const <a class="el" href="struct_memory_region.html">MemoryRegion</a> &amp;mem_region)</td></tr>
 <tr class="memdesc:a6f5661ae7206f7751587a687d4b421fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scans a region for a provided signature.  <a href="memory__scanner_8cpp.html#a6f5661ae7206f7751587a687d4b421fb">More...</a><br /></td></tr>
 <tr class="separator:a6f5661ae7206f7751587a687d4b421fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29d81deff4c34834a4993b0146aee218"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdata_1_1_signatures.html">Signatures</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory__scanner_8cpp.html#a29d81deff4c34834a4993b0146aee218">GetLocalSignatures</a> ()</td></tr>
+<tr class="memdesc:a29d81deff4c34834a4993b0146aee218"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches known cheat signatures from local storage.  <a href="memory__scanner_8cpp.html#a29d81deff4c34834a4993b0146aee218">More...</a><br /></td></tr>
+<tr class="separator:a29d81deff4c34834a4993b0146aee218"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9655c919d6586782d25a74508a661754"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classdata_1_1_signatures.html">Signatures</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="memory__scanner_8cpp.html#a9655c919d6586782d25a74508a661754">GetSignatures</a> (const <a class="el" href="structdata_1_1_process_info.html">ProcessInfo</a> &amp;context)</td></tr>
 <tr class="memdesc:a9655c919d6586782d25a74508a661754"><td class="mdescLeft">&#160;</td><td class="mdescRight">Fetches known cheat signatures.  <a href="memory__scanner_8cpp.html#a9655c919d6586782d25a74508a661754">More...</a><br /></td></tr>
 <tr class="separator:a9655c919d6586782d25a74508a661754"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -154,7 +161,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Vector of HMODULEs that correspond to the starting address of loaded modules </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="memory__scanner_8cpp_source.html#l00025">25</a> of file <a class="el" href="memory__scanner_8cpp_source.html">memory_scanner.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory__scanner_8cpp_source.html#l00051">51</a> of file <a class="el" href="memory__scanner_8cpp_source.html">memory_scanner.cpp</a>.</p>
 
 </div>
 </div>
@@ -182,7 +189,29 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="memory__scanner_8cpp_source.html#l00300">300</a> of file <a class="el" href="memory__scanner_8cpp_source.html">memory_scanner.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory__scanner_8cpp_source.html#l00352">352</a> of file <a class="el" href="memory__scanner_8cpp_source.html">memory_scanner.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a29d81deff4c34834a4993b0146aee218" name="a29d81deff4c34834a4993b0146aee218"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a29d81deff4c34834a4993b0146aee218">&#9670;&nbsp;</a></span>GetLocalSignatures()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classdata_1_1_signatures.html">Signatures</a> GetLocalSignatures </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Fetches known cheat signatures from local storage. </p>
+<dl class="section return"><dt>Returns</dt><dd>Signature data </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="memory__scanner_8cpp_source.html#l00214">214</a> of file <a class="el" href="memory__scanner_8cpp_source.html">memory_scanner.cpp</a>.</p>
 
 </div>
 </div>
@@ -211,7 +240,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Signature data </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="memory__scanner_8cpp_source.html#l00185">185</a> of file <a class="el" href="memory__scanner_8cpp_source.html">memory_scanner.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory__scanner_8cpp_source.html#l00237">237</a> of file <a class="el" href="memory__scanner_8cpp_source.html">memory_scanner.cpp</a>.</p>
 
 </div>
 </div>
@@ -250,7 +279,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="memory__scanner_8cpp_source.html#l00204">204</a> of file <a class="el" href="memory__scanner_8cpp_source.html">memory_scanner.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory__scanner_8cpp_source.html#l00256">256</a> of file <a class="el" href="memory__scanner_8cpp_source.html">memory_scanner.cpp</a>.</p>
 
 </div>
 </div>
@@ -290,7 +319,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>If signature detected, a pointer to detected signature otherwise nullptr </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="memory__scanner_8cpp_source.html#l00126">126</a> of file <a class="el" href="memory__scanner_8cpp_source.html">memory_scanner.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory__scanner_8cpp_source.html#l00153">153</a> of file <a class="el" href="memory__scanner_8cpp_source.html">memory_scanner.cpp</a>.</p>
 
 </div>
 </div>
@@ -330,7 +359,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to start address of matched pattern </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="memory__scanner_8cpp_source.html#l00159">159</a> of file <a class="el" href="memory__scanner_8cpp_source.html">memory_scanner.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory__scanner_8cpp_source.html#l00186">186</a> of file <a class="el" href="memory__scanner_8cpp_source.html">memory_scanner.cpp</a>.</p>
 
 </div>
 </div>
@@ -359,7 +388,36 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Vector of unsigned long, representing bytes </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="memory__scanner_8cpp_source.html#l00084">84</a> of file <a class="el" href="memory__scanner_8cpp_source.html">memory_scanner.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory__scanner_8cpp_source.html#l00111">111</a> of file <a class="el" href="memory__scanner_8cpp_source.html">memory_scanner.cpp</a>.</p>
+
+</div>
+</div>
+<a id="a383441e07eff1fd3167a90dc9732729c" name="a383441e07eff1fd3167a90dc9732729c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a383441e07eff1fd3167a90dc9732729c">&#9670;&nbsp;</a></span>PointerIsValid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PointerIsValid </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>ptr</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Check if a pointer is valid. </p>
+<p >Adapted from: <a href="https://guidedhacking.com/threads/testing-if-pointer-is-invalid.13222/#post-77709">https://guidedhacking.com/threads/testing-if-pointer-is-invalid.13222/#post-77709</a> </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ptr</td><td>Pointer to check </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if pointer is valid </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="memory__scanner_8cpp_source.html#l00028">28</a> of file <a class="el" href="memory__scanner_8cpp_source.html">memory_scanner.cpp</a>.</p>
 
 </div>
 </div>
@@ -398,7 +456,7 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="memory__scanner_8cpp_source.html#l00270">270</a> of file <a class="el" href="memory__scanner_8cpp_source.html">memory_scanner.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory__scanner_8cpp_source.html#l00322">322</a> of file <a class="el" href="memory__scanner_8cpp_source.html">memory_scanner.cpp</a>.</p>
 
 </div>
 </div>
@@ -427,7 +485,7 @@ Functions</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the module is verified, false otherwise </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="memory__scanner_8cpp_source.html#l00046">46</a> of file <a class="el" href="memory__scanner_8cpp_source.html">memory_scanner.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="memory__scanner_8cpp_source.html#l00072">72</a> of file <a class="el" href="memory__scanner_8cpp_source.html">memory_scanner.cpp</a>.</p>
 
 </div>
 </div>

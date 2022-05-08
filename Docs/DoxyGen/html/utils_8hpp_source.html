@@ -26,7 +26,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="DoxyGen.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.8 / 0.6.2</span>
+   <div id="projectname">Quack<span id="projectnumber">&#160;0.4.0 / 0.6.4</span>
    </div>
    <div id="projectbrief">Quick Universal Anti-Cheat Kit - https://quack.ac</div>
   </td>
@@ -106,36 +106,45 @@ $(document).ready(function(){initNavTree('utils_8hpp_source.html',''); initResiz
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>}</div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> F, <span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno"><a class="line" href="utils_8hpp.html#aecb9ce4c8098cd95259a02000c1478bf">   36</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="utils_8hpp.html#aecb9ce4c8098cd95259a02000c1478bf">CallAsync</a>(F&amp;&amp; function, T&amp;&amp; function_arg) {</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    <span class="keyword">auto</span> future_ptr = std::make_shared&lt;std::future&lt;void&gt;&gt;();</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    *future_ptr = std::async(std::launch::async, [future_ptr, function, function_arg]() {</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>        function(function_arg);</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>    });</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>}</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="utils_8hpp.html#a9dbea9df0654c3d551d35ae4bd7d4c8f">   55</a></span>std::optional&lt;std::remove_reference_t&lt;T&gt;&gt; <a class="code hl_function" href="utils_8hpp.html#a9dbea9df0654c3d551d35ae4bd7d4c8f">IfNotEmpty</a>(T&amp;&amp; t) {</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <span class="keywordflow">if</span> (t.empty())</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>        <span class="keywordflow">return</span> {};</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <span class="keywordflow">return</span> std::move(t);  <span class="comment">// NOLINT(bugprone-move-forwarding-reference)</span></div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>}</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>HMODULE <a class="code hl_function" href="utils_8hpp.html#a84817d79c47f5b13735e17b57a386f92">CachedLoadLibrary</a>(<span class="keyword">const</span> LPCWSTR&amp; dll_name);</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span> </div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>[[noreturn]]</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="keywordtype">void</span> <a class="code hl_function" href="utils_8hpp.html#a9317d81d43e3270a6f3176c65f9f4c97">ExitFailure</a>(<span class="keyword">const</span> UINT exit_code);</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>std::optional&lt;std::string&gt; <a class="code hl_function" href="utils_8hpp.html#ad5f1f74d60d70b4087722033ea8b31e5">wstring_to_string</a>(<span class="keyword">const</span> std::wstring&amp; wide_str);</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T, <span class="keyword">typename</span> U&gt;</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno"><a class="line" href="utils_8hpp.html#a9952fc2b17b16940f8dd3d32ed675d60">   33</a></span>T <a class="code hl_function" href="utils_8hpp.html#a9952fc2b17b16940f8dd3d32ed675d60">recast</a>(U&amp;&amp; u) {</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keywordflow">return</span> <span class="keyword">reinterpret_cast&lt;</span>T<span class="keyword">&gt;</span>(std::forward&lt;U&gt;(u));</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>}</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> F, <span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="utils_8hpp.html#aecb9ce4c8098cd95259a02000c1478bf">   49</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="utils_8hpp.html#aecb9ce4c8098cd95259a02000c1478bf">CallAsync</a>(F&amp;&amp; function, T&amp;&amp; function_arg) {</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">auto</span> future_ptr = std::make_shared&lt;std::future&lt;void&gt;&gt;();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    *future_ptr = std::async(std::launch::async, [future_ptr, function, function_arg]() {</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>        function(function_arg);</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    });</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>}</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno"><a class="line" href="utils_8hpp.html#a9dbea9df0654c3d551d35ae4bd7d4c8f">   68</a></span>std::optional&lt;std::remove_reference_t&lt;T&gt;&gt; <a class="code hl_function" href="utils_8hpp.html#a9dbea9df0654c3d551d35ae4bd7d4c8f">IfNotEmpty</a>(T&amp;&amp; t) {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>    <span class="keywordflow">if</span> (t.empty())</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>        <span class="keywordflow">return</span> {};</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>    <span class="keywordflow">return</span> std::move(t);  <span class="comment">// NOLINT(bugprone-move-forwarding-reference)</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>}</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span> </div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span> </div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>HMODULE <a class="code hl_function" href="utils_8hpp.html#a84817d79c47f5b13735e17b57a386f92">CachedLoadLibrary</a>(<span class="keyword">const</span> LPCWSTR&amp; dll_name);</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>[[noreturn]]</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span><span class="keywordtype">void</span> <a class="code hl_function" href="utils_8hpp.html#a9317d81d43e3270a6f3176c65f9f4c97">ExitFailure</a>(<span class="keyword">const</span> UINT exit_code);</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span> </div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>std::optional&lt;std::string&gt; <a class="code hl_function" href="utils_8hpp.html#ad5f1f74d60d70b4087722033ea8b31e5">wstring_to_string</a>(<span class="keyword">const</span> std::wstring&amp; wide_str);</div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>std::wstring <a class="code hl_function" href="utils_8hpp.html#aed561d723ab83be5f60ab6021f49621b">wstring_to_lower</a>(<span class="keyword">const</span> std::wstring&amp; wide_str);</div>
 <div class="ttc" id="anamespacedata_html"><div class="ttname"><a href="namespacedata.html">data</a></div><div class="ttdoc">Data structures needed for various parts of the application.</div><div class="ttdef"><b>Definition:</b> <a href="_quack-internal_2data_8hpp_source.html#l00008">data.hpp:8</a></div></div>
 <div class="ttc" id="autils_8hpp_html_a61e909d98c60465d776d9cbf1da6a0bd"><div class="ttname"><a href="utils_8hpp.html#a61e909d98c60465d776d9cbf1da6a0bd">Log</a></div><div class="ttdeci">void Log(const std::string &amp;str)</div><div class="ttdoc">Logs to standard output conditionally if debug mode is enabled.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00013">utils.cpp:13</a></div></div>
 <div class="ttc" id="autils_8hpp_html_a84817d79c47f5b13735e17b57a386f92"><div class="ttname"><a href="utils_8hpp.html#a84817d79c47f5b13735e17b57a386f92">CachedLoadLibrary</a></div><div class="ttdeci">HMODULE CachedLoadLibrary(const LPCWSTR &amp;dll_name)</div><div class="ttdoc">Cache queries to LoadLibrary, to return a library reference if it is already loaded.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00038">utils.cpp:38</a></div></div>
 <div class="ttc" id="autils_8hpp_html_a9317d81d43e3270a6f3176c65f9f4c97"><div class="ttname"><a href="utils_8hpp.html#a9317d81d43e3270a6f3176c65f9f4c97">ExitFailure</a></div><div class="ttdeci">void ExitFailure(const UINT exit_code)</div><div class="ttdoc">Wrapper around ExitProcess.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00055">utils.cpp:55</a></div></div>
-<div class="ttc" id="autils_8hpp_html_a9dbea9df0654c3d551d35ae4bd7d4c8f"><div class="ttname"><a href="utils_8hpp.html#a9dbea9df0654c3d551d35ae4bd7d4c8f">IfNotEmpty</a></div><div class="ttdeci">std::optional&lt; std::remove_reference_t&lt; T &gt; &gt; IfNotEmpty(T &amp;&amp;t)</div><div class="ttdoc">Constructs an std::optional of type T if T is not .empty()</div><div class="ttdef"><b>Definition:</b> <a href="utils_8hpp_source.html#l00055">utils.hpp:55</a></div></div>
-<div class="ttc" id="autils_8hpp_html_ad5f1f74d60d70b4087722033ea8b31e5"><div class="ttname"><a href="utils_8hpp.html#ad5f1f74d60d70b4087722033ea8b31e5">wstring_to_string</a></div><div class="ttdeci">std::optional&lt; std::string &gt; wstring_to_string(const std::wstring &amp;wide_str)</div><div class="ttdoc">Convert a std::wstring to a std::string.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00087">utils.cpp:87</a></div></div>
-<div class="ttc" id="autils_8hpp_html_aecb9ce4c8098cd95259a02000c1478bf"><div class="ttname"><a href="utils_8hpp.html#aecb9ce4c8098cd95259a02000c1478bf">CallAsync</a></div><div class="ttdeci">void CallAsync(F &amp;&amp;function, T &amp;&amp;function_arg)</div><div class="ttdoc">Calls a function with one argument asynchronously.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8hpp_source.html#l00036">utils.hpp:36</a></div></div>
+<div class="ttc" id="autils_8hpp_html_a9952fc2b17b16940f8dd3d32ed675d60"><div class="ttname"><a href="utils_8hpp.html#a9952fc2b17b16940f8dd3d32ed675d60">recast</a></div><div class="ttdeci">T recast(U &amp;&amp;u)</div><div class="ttdoc">Wrapper around reinterpret_cast to reduce code verbosity.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8hpp_source.html#l00033">utils.hpp:33</a></div></div>
+<div class="ttc" id="autils_8hpp_html_a9dbea9df0654c3d551d35ae4bd7d4c8f"><div class="ttname"><a href="utils_8hpp.html#a9dbea9df0654c3d551d35ae4bd7d4c8f">IfNotEmpty</a></div><div class="ttdeci">std::optional&lt; std::remove_reference_t&lt; T &gt; &gt; IfNotEmpty(T &amp;&amp;t)</div><div class="ttdoc">Constructs an std::optional of type T if T is not .empty()</div><div class="ttdef"><b>Definition:</b> <a href="utils_8hpp_source.html#l00068">utils.hpp:68</a></div></div>
+<div class="ttc" id="autils_8hpp_html_ad5f1f74d60d70b4087722033ea8b31e5"><div class="ttname"><a href="utils_8hpp.html#ad5f1f74d60d70b4087722033ea8b31e5">wstring_to_string</a></div><div class="ttdeci">std::optional&lt; std::string &gt; wstring_to_string(const std::wstring &amp;wide_str)</div><div class="ttdoc">Convert a std::wstring to a std::string.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00103">utils.cpp:103</a></div></div>
+<div class="ttc" id="autils_8hpp_html_aecb9ce4c8098cd95259a02000c1478bf"><div class="ttname"><a href="utils_8hpp.html#aecb9ce4c8098cd95259a02000c1478bf">CallAsync</a></div><div class="ttdeci">void CallAsync(F &amp;&amp;function, T &amp;&amp;function_arg)</div><div class="ttdoc">Calls a function with one argument asynchronously.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8hpp_source.html#l00049">utils.hpp:49</a></div></div>
+<div class="ttc" id="autils_8hpp_html_aed561d723ab83be5f60ab6021f49621b"><div class="ttname"><a href="utils_8hpp.html#aed561d723ab83be5f60ab6021f49621b">wstring_to_lower</a></div><div class="ttdeci">std::wstring wstring_to_lower(const std::wstring &amp;wide_str)</div><div class="ttdoc">Returns a lowercase version of wide string.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00087">utils.cpp:87</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

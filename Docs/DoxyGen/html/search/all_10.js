@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['recast_0',['recast',['../utility_8hpp.html#a9952fc2b17b16940f8dd3d32ed675d60',1,'utility.hpp']]],
+  ['recast_0',['recast',['../utils_8hpp.html#a9952fc2b17b16940f8dd3d32ed675d60',1,'utils.hpp']]],
   ['regionscan_1',['RegionScan',['../memory__scanner_8cpp.html#a2ae050caa2cab158f3f0de9796e62343',1,'RegionScan(const ProcessInfo &amp;context, const MemoryRegion &amp;memory_region):&#160;memory_scanner.cpp'],['../memory__scanner_8hpp.html#a0b6433cd3c0e8e1639f39f0c0eb69abb',1,'RegionScan(const data::ProcessInfo &amp;context, const MemoryRegion &amp;memory_region):&#160;memory_scanner.cpp']]],
   ['reloc_5fflag_2',['RELOC_FLAG',['../manual__map_8cpp.html#a68129d4382e059810889bce0e3b2c69c',1,'manual_map.cpp']]],
   ['reloc_5fflag32_3',['RELOC_FLAG32',['../manual__map_8cpp.html#a4b5ad872b8229715b775c741418f1c45',1,'manual_map.cpp']]],

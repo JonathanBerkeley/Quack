@@ -5,8 +5,6 @@ var searchData=
   ['username_2',['username',['../struct_heartbeat_info.html#a5da350a3bc384d469bcf6b67d585ca7d',1,'HeartbeatInfo']]],
   ['util_2ecpp_3',['util.cpp',['../util_8cpp.html',1,'']]],
   ['util_2eh_4',['util.h',['../util_8h.html',1,'']]],
-  ['utility_2ecpp_5',['utility.cpp',['../utility_8cpp.html',1,'']]],
-  ['utility_2ehpp_6',['utility.hpp',['../utility_8hpp.html',1,'']]],
-  ['utils_2ecpp_7',['utils.cpp',['../utils_8cpp.html',1,'']]],
-  ['utils_2ehpp_8',['utils.hpp',['../utils_8hpp.html',1,'']]]
+  ['utils_2ecpp_5',['utils.cpp',['../utils_8cpp.html',1,'']]],
+  ['utils_2ehpp_6',['utils.hpp',['../utils_8hpp.html',1,'']]]
 ];

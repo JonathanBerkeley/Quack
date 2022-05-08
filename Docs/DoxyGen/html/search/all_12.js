@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['target_0',['target',['../structfile__contents.html#a8904dbf563933a064b20a845e8f8a57d',1,'file_contents']]],
+  ['target_0',['target',['../struct_file_contents.html#a06540a1736eef9c6b5ee61ccc7e293fe',1,'FileContents']]],
   ['task_5fdispatch_2ecpp_1',['task_dispatch.cpp',['../_quack-client_2task__dispatch_8cpp.html',1,'(Global Namespace)'],['../_quack-internal_2task__dispatch_8cpp.html',1,'(Global Namespace)']]],
   ['task_5fdispatch_2ehpp_2',['task_dispatch.hpp',['../_quack-client_2task__dispatch_8hpp.html',1,'(Global Namespace)'],['../_quack-internal_2task__dispatch_8hpp.html',1,'(Global Namespace)']]],
   ['taskdispatch_3',['TaskDispatch',['../_quack-client_2task__dispatch_8cpp.html#a2fa9076c95e2b43a3afe903eaf7d951c',1,'TaskDispatch(const Context &amp;ctx):&#160;task_dispatch.cpp'],['../_quack-client_2task__dispatch_8hpp.html#a2fa9076c95e2b43a3afe903eaf7d951c',1,'TaskDispatch(const Context &amp;ctx):&#160;task_dispatch.cpp'],['../_quack-internal_2task__dispatch_8cpp.html#a665007b46df4d62f2ce0d8ed1ee80509',1,'TaskDispatch():&#160;task_dispatch.cpp'],['../_quack-internal_2task__dispatch_8hpp.html#a665007b46df4d62f2ce0d8ed1ee80509',1,'TaskDispatch():&#160;task_dispatch.cpp']]],

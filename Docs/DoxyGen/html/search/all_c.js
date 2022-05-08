@@ -13,7 +13,7 @@ var searchData=
   ['memory_5fscanner_2ecpp_10',['memory_scanner.cpp',['../memory__scanner_8cpp.html',1,'']]],
   ['memory_5fscanner_2ehpp_11',['memory_scanner.hpp',['../memory__scanner_8hpp.html',1,'']]],
   ['memoryregion_12',['MemoryRegion',['../struct_memory_region.html',1,'']]],
-  ['mode_13',['mode',['../structfile__contents.html#a97de2821cdf71a1e099c588349759bd9',1,'file_contents']]],
+  ['mode_13',['mode',['../struct_file_contents.html#ac37d692cc789a9d2c35cc888265d2637',1,'FileContents']]],
   ['module_14',['Module',['../struct_mapping_data.html#a91dabe8c87988fa095b8879b2efb9a3f',1,'MappingData::Module()'],['../namespacecfg.html#a42892a3b0947215bdf3c341ce9097eada4db597b2f72188f1d45b723baf508534',1,'cfg::Module()']]],
   ['modulescan_15',['ModuleScan',['../memory__scanner_8cpp.html#a4f466c30ccd782474f4dea34cc470cc1',1,'ModuleScan(const ProcessInfo &amp;context, const bool unsigned_only):&#160;memory_scanner.cpp'],['../memory__scanner_8hpp.html#a677b9f0b9fe6d5efaef52a0673dc2783',1,'ModuleScan(const data::ProcessInfo &amp;context, const bool unsigned_only):&#160;memory_scanner.cpp']]]
 ];

@@ -11,7 +11,7 @@ var searchData=
   ['player_2ecpp_8',['player.cpp',['../player_8cpp.html',1,'']]],
   ['player_2ehpp_9',['player.hpp',['../player_8hpp.html',1,'']]],
   ['pointerchain_10',['PointerChain',['../structdata_1_1_pointer_chain.html',1,'data']]],
-  ['pointerisvalid_11',['PointerIsValid',['../memory_8cpp.html#a383441e07eff1fd3167a90dc9732729c',1,'PointerIsValid(const void *ptr):&#160;memory.cpp'],['../memory_8hpp.html#a383441e07eff1fd3167a90dc9732729c',1,'PointerIsValid(const void *ptr):&#160;memory.cpp']]],
+  ['pointerisvalid_11',['PointerIsValid',['../memory__scanner_8cpp.html#a383441e07eff1fd3167a90dc9732729c',1,'PointerIsValid(const void *ptr):&#160;memory_scanner.cpp'],['../memory_8cpp.html#a383441e07eff1fd3167a90dc9732729c',1,'PointerIsValid(const void *ptr):&#160;memory.cpp'],['../memory_8hpp.html#a383441e07eff1fd3167a90dc9732729c',1,'PointerIsValid(const void *ptr):&#160;memory_scanner.cpp']]],
   ['printdnsentries_12',['PrintDNSEntries',['../dns__walk_8cpp.html#aad94980acc9a425f0a1a3028d49b2bd3',1,'PrintDNSEntries(std::wostream &amp;wos):&#160;dns_walk.cpp'],['../dns__walk_8hpp.html#aad94980acc9a425f0a1a3028d49b2bd3',1,'PrintDNSEntries(std::wostream &amp;wos):&#160;dns_walk.cpp']]],
   ['processentry_13',['ProcessEntry',['../detection_8hpp.html#a54a5f3995159e2b0dfdf1b14abaea4dd',1,'detection.hpp']]],
   ['processinfo_14',['ProcessInfo',['../structdata_1_1_process_info.html',1,'data']]],

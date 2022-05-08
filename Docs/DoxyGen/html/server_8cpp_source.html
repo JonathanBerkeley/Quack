@@ -26,7 +26,7 @@
  <tr id="projectrow">
   <td id="projectlogo"><img alt="Logo" src="DoxyGen.png"/></td>
   <td id="projectalign">
-   <div id="projectname">Quack<span id="projectnumber">&#160;0.3.8 / 0.6.2</span>
+   <div id="projectname">Quack<span id="projectnumber">&#160;0.4.0 / 0.6.4</span>
    </div>
    <div id="projectbrief">Quick Universal Anti-Cheat Kit - https://quack.ac</div>
   </td>
@@ -92,11 +92,11 @@ $(document).ready(function(){initNavTree('server_8cpp_source.html',''); initResi
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="preprocessor">#include &quot;<a class="code" href="server_8hpp.html">server.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="preprocessor">#include &quot;<a class="code" href="_red_01team_2_inertia-cheat_2_inertia-cheat_2constants_8hpp.html">constants.hpp</a>&quot;</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span> </div>
-<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="preprocessor">#include &quot;httplib.hpp&quot;</span></div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;json.hpp&quot;</span></div>
-<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span> </div>
-<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="keyword">namespace </span>http = httplib;</div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span>json = nlohmann;</div>
+<div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span><span class="comment">// 3rd party</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#include &quot;httplib.hpp&quot;</span></div>
+<div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#include &quot;json.hpp&quot;</span></div>
+<div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">namespace </span>http = httplib;</div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span> </div>
 <div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span> </div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno"><a class="line" href="server_8cpp.html#ac795f32e39ef3a54d8e00caf14db91cb">   13</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="server_8cpp.html#ac795f32e39ef3a54d8e00caf14db91cb">Server</a>(http::Client* cli) {</div>
@@ -116,14 +116,15 @@ $(document).ready(function(){initNavTree('server_8cpp_source.html',''); initResi
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>        }</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>    });</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span> </div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    server.Post(<span class="stringliteral">&quot;/handshake&quot;</span>, [cli](<span class="keyword">const</span> http::Request&amp; req, http::Response&amp; res) {</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    server.Get(<span class="stringliteral">&quot;/signatures&quot;</span>, [cli](<span class="keyword">const</span> http::Request&amp; req, http::Response&amp; res) {</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>        res.set_content(<span class="stringliteral">&quot;&quot;</span>, <span class="stringliteral">&quot;text/plain&quot;</span>);</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    });</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span> </div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>    server.listen(<span class="stringliteral">&quot;localhost&quot;</span>, <a class="code hl_variable" href="namespaceconstants.html#a8f8ee980778f66bcee97be6d3a4f06a2">constants::IPC_PORT</a>);</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>}</div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>        <span class="keywordflow">if</span> (<span class="keyword">auto</span> raw_signatures = cli-&gt;Get(<span class="stringliteral">&quot;/data/signatures&quot;</span>)) {</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>            res.set_content(raw_signatures-&gt;body, <span class="stringliteral">&quot;application/json&quot;</span>);</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>        }</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>    });</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>    server.listen(<span class="stringliteral">&quot;localhost&quot;</span>, <a class="code hl_variable" href="namespaceconstants.html#a8f8ee980778f66bcee97be6d3a4f06a2">constants::IPC_PORT</a>);</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>}</div>
 <div class="ttc" id="a_red_01team_2_inertia-cheat_2_inertia-cheat_2constants_8hpp_html"><div class="ttname"><a href="_red_01team_2_inertia-cheat_2_inertia-cheat_2constants_8hpp.html">constants.hpp</a></div></div>
 <div class="ttc" id="a_red_01team_2_inertia-cheat_2_inertia-cheat_2pch_8hpp_html"><div class="ttname"><a href="_red_01team_2_inertia-cheat_2_inertia-cheat_2pch_8hpp.html">pch.hpp</a></div></div>
 <div class="ttc" id="anamespaceconstants_html_a8f8ee980778f66bcee97be6d3a4f06a2"><div class="ttname"><a href="namespaceconstants.html#a8f8ee980778f66bcee97be6d3a4f06a2">constants::IPC_PORT</a></div><div class="ttdeci">constexpr unsigned IPC_PORT</div><div class="ttdef"><b>Definition:</b> <a href="_quack-client_2constants_8hpp_source.html#l00006">constants.hpp:6</a></div></div>

@@ -173,7 +173,6 @@
     <ClInclude Include="dns_walk.hpp" />
     <ClInclude Include="flashpoint.hpp" />
     <ClInclude Include="framework.hpp" />
-    <ClInclude Include="identification.hpp" />
     <ClInclude Include="memory_scanner.hpp" />
     <ClInclude Include="network.hpp" />
     <ClInclude Include="pch.hpp" />
@@ -189,7 +188,6 @@
     <ClCompile Include="dllmain.cpp" />
     <ClCompile Include="dns_walk.cpp" />
     <ClCompile Include="flashpoint.cpp" />
-    <ClCompile Include="identification.cpp" />
     <ClCompile Include="memory_scanner.cpp" />
     <ClCompile Include="network.cpp" />
     <ClCompile Include="pch.cpp">

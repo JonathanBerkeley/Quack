@@ -74,9 +74,6 @@
     <ClInclude Include="task_dispatch.hpp">
       <Filter>3. Frame\Dispatch</Filter>
     </ClInclude>
-    <ClInclude Include="identification.hpp">
-      <Filter>3. Frame\Detections</Filter>
-    </ClInclude>
     <ClInclude Include="..\Lib\httplib.hpp">
       <Filter>0. Libs</Filter>
     </ClInclude>
@@ -126,9 +123,6 @@
     </ClCompile>
     <ClCompile Include="task_dispatch.cpp">
       <Filter>3. Frame\Dispatch</Filter>
-    </ClCompile>
-    <ClCompile Include="identification.cpp">
-      <Filter>3. Frame\Detections</Filter>
     </ClCompile>
     <ClCompile Include="..\Lib\Quack-shared\cpu_counter.cpp">
       <Filter>3. Frame\Dispatch</Filter>

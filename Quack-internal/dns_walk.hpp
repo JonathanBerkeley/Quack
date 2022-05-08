@@ -2,6 +2,9 @@
 #include "pch.hpp"
 
 
+/**
+ * \brief Represents an entry in the DNS table
+ */
 struct DnsEntry {
     std::wstring name{};
     int type{};

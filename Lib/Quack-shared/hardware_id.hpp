@@ -3,7 +3,7 @@
 
 
 /**
- * \brief Class for
+ * \brief Class for retrieving encoded hardware IDs and hashed representations of them
  */
 class HardwareID {
 private:

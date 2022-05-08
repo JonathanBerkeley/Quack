@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['identification_2ecpp_0',['identification.cpp',['../_quack-client_2identification_8cpp.html',1,'(Global Namespace)'],['../_quack-internal_2identification_8cpp.html',1,'(Global Namespace)']]],
-  ['identification_2ehpp_1',['identification.hpp',['../_quack-client_2identification_8hpp.html',1,'(Global Namespace)'],['../_quack-internal_2identification_8hpp.html',1,'(Global Namespace)']]],
+  ['identification_2ecpp_0',['identification.cpp',['../identification_8cpp.html',1,'']]],
+  ['identification_2ehpp_1',['identification.hpp',['../identification_8hpp.html',1,'']]],
   ['idi_5ficon1_2',['IDI_ICON1',['../resource_8h.html#a455fef2a9349aae3af8ef8f24f6fc9d8',1,'IDI_ICON1():&#160;resource.h'],['../resource1_8h.html#a455fef2a9349aae3af8ef8f24f6fc9d8',1,'IDI_ICON1():&#160;resource1.h']]],
   ['idi_5ficon2_3',['IDI_ICON2',['../resource1_8h.html#ab646dec1c42c0f4e7960e71dba9957b2',1,'resource1.h']]],
   ['idi_5ficon3_4',['IDI_ICON3',['../resource1_8h.html#ab378a877ccd5940c761e68ba950adc20',1,'resource1.h']]],

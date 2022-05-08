@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="CpuCounter">
+    <Position X="4.5" Y="3.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAgAAAAAEAAAAAAAAAACBAAAAAAgAAAAAAA=</HashCode>
+      <FileName>C:\Users\mainuser\Desktop\dev\cpp\__quack\Lib\Quack-shared\cpu_counter.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="HardwareID">
+    <Position X="2" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAIAAAIAACAAJAACAQAAAAAAEAA=</HashCode>
+      <FileName>C:\Users\mainuser\Desktop\dev\cpp\__quack\Lib\Quack-shared\hardware_id.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Communication">
+    <Position X="4.5" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAIAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>network.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="data::Signatures">
+    <Position X="6.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>data.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="DetectionInfo">
+    <Position X="2" Y="1" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAgAAAAAAAABAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ban.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="data::ProcessInfo">
+    <Position X="8.5" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAIAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>data.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="MemoryRegion">
+    <Position X="7.75" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>memory_scanner.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="DnsEntry">
+    <Position X="7.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>dns_walk.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="cfg::Scan">
+    <Position X="10.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAEAAAIAAAAAAAAAEAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>C:\Users\mainuser\Desktop\dev\cpp\__quack\Lib\Quack-shared\config.hpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="cfg::Features">
+    <Position X="10.25" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAACAAAgAAAQAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\mainuser\Desktop\dev\cpp\__quack\Lib\Quack-shared\config.hpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="cfg::ExitCode">
+    <Position X="10.25" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAgAAABAAAAAAAACAAAA=</HashCode>
+      <FileName>C:\Users\mainuser\Desktop\dev\cpp\__quack\Lib\Quack-shared\config.hpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

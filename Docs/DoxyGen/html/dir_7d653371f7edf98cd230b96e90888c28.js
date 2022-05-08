@@ -10,8 +10,6 @@ var dir_7d653371f7edf98cd230b96e90888c28 =
     [ "flashpoint.cpp", "_quack-internal_2flashpoint_8cpp.html", "_quack-internal_2flashpoint_8cpp" ],
     [ "flashpoint.hpp", "_quack-internal_2flashpoint_8hpp.html", "_quack-internal_2flashpoint_8hpp" ],
     [ "framework.hpp", "_quack-internal_2framework_8hpp.html", "_quack-internal_2framework_8hpp" ],
-    [ "identification.cpp", "_quack-internal_2identification_8cpp.html", "_quack-internal_2identification_8cpp" ],
-    [ "identification.hpp", "_quack-internal_2identification_8hpp.html", null ],
     [ "memory_scanner.cpp", "memory__scanner_8cpp.html", "memory__scanner_8cpp" ],
     [ "memory_scanner.hpp", "memory__scanner_8hpp.html", "memory__scanner_8hpp" ],
     [ "network.cpp", "network_8cpp.html", "network_8cpp" ],

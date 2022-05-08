@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="HardwareID">
+    <Position X="3.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAIAAAIAACAAJAACAQAAAAAAEAA=</HashCode>
+      <FileName>C:\Users\mainuser\Desktop\dev\cpp\__quack\Lib\Quack-shared\hardware_id.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="CpuCounter">
+    <Position X="5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAgAAAAAEAAAAAAAAAACBAAAAAAgAAAAAAA=</HashCode>
+      <FileName>C:\Users\mainuser\Desktop\dev\cpp\__quack\Lib\Quack-shared\cpu_counter.hpp</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="HeartbeatInfo">
+    <Position X="3.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAQAAAAAAEAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>heartbeat.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Context">
+    <Position X="5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAABAAAgAAA=</HashCode>
+      <FileName>context.hpp</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="cfg::Scan">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAEAAAIAAAAAAAAAEAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>C:\Users\mainuser\Desktop\dev\cpp\__quack\Lib\Quack-shared\config.hpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="cfg::Features">
+    <Position X="7" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAACAAAgAAAQAAAAAAAAA=</HashCode>
+      <FileName>C:\Users\mainuser\Desktop\dev\cpp\__quack\Lib\Quack-shared\config.hpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="cfg::ExitCode">
+    <Position X="7" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAEAAAAAAAAgAAABAAAAAAAACAAAA=</HashCode>
+      <FileName>C:\Users\mainuser\Desktop\dev\cpp\__quack\Lib\Quack-shared\config.hpp</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

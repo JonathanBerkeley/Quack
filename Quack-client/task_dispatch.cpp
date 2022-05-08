@@ -107,7 +107,6 @@ void TaskDispatch(const Context& ctx) {
         } break;
         }
 
-
         if (seconds > 15s)
             seconds = 0s;
 

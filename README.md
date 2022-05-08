@@ -11,9 +11,10 @@ https://docs.quack.ac
 https://github.com/JonathanBerkeley/Quack/tree/main/Docs    
 
 # Build instructions
-1. Clone repository    
-2. Open "Quack main.sln" located in directory "Quack/Main/" with Visual Studio 2022    
-3. Build all, or individual modules from this solution    
+1. Clone repository (git clone https://github.com/JonathanBerkeley/Quack.git)    
+2. Download submodules (git submodule update --init --recursive)    
+3. Open "Quack main.sln" located in directory "Quack/Main/" with Visual Studio 2022    
+4. Build all, or individual modules from this solution    
 
 Binaries can be downloaded from https://github.com/JonathanBerkeley/Quack/releases/    
 

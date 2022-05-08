@@ -24,10 +24,8 @@ static PROCESS_INFORMATION ac_client{};
  */
 void InitClientAC() {
     STARTUPINFOA si{};
-
-#pragma warning( suppress : 6335 )
+    
     auto current_path = std::filesystem::current_path();
-
     current_path += "/Quack-ac.exe";
     const auto application_name = current_path.generic_string();
 

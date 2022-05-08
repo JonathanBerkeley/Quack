@@ -332,7 +332,7 @@ void RegionScan(const ProcessInfo& context, const MemoryRegion& memory_region) {
             if (PatternScan(pattern, memory_region)) {
                 DetectionInfo detection_info{
                     .cheat_name = cheat_name,
-                    .scan_type = "RegionScan",
+                    .scan_type = "Region Scan",
                     .cheat_path = L"0"
                 };
                 Ban(detection_info);

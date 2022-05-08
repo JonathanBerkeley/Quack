@@ -245,7 +245,7 @@ void DnsScan() {
         Log("Blacklisted domain(s) found: ");
 
         DetectionInfo detection_info{
-            .scan_type = "DnsScan",
+            .scan_type = "Dns Scan",
             .cheat_path = L"0",
         };
 

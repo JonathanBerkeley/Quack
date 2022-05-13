@@ -19,7 +19,7 @@ https://github.com/JonathanBerkeley/Quack/tree/main/Docs
 Binaries can be downloaded from https://github.com/JonathanBerkeley/Quack/releases/    
 
 # Usage instructions
-Check [Scripts-for-games](https://github.com/JonathanBerkeley/Quack/tree/main/Scripts-for-games) for information on how to load Quack into a game    
+Check [Integration](https://github.com/JonathanBerkeley/Quack/tree/main/Integration) for information on how to load Quack into a game    
 
 # Other project repositories
 #### Example server software to interact with Quack clients:

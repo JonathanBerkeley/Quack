@@ -29,6 +29,7 @@
 #include <sstream>
 #include <chrono>
 #include <thread>
+#include <future>
 #include <unordered_map>
 
 #endif // PCH_H

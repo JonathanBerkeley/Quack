@@ -1,5 +1,9 @@
 #pragma once
 
+
+/**
+ * \brief Global constants
+ */
 namespace constants {
     const std::string VERSION{ "0.4.2" };
     const std::string NAME{ "Quack" };

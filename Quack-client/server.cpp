@@ -8,13 +8,24 @@
 #include "json.hpp"
 
 namespace http = httplib;
+using namespace std::chrono_literals;
 
 
 void Server(http::Client* cli) {
     http::Server server{};
+    bool connected = true;
+
+    // Exit process if internal communication has been lost
+    auto process_monitor = std::async(std::launch::async, [&connected] {
+        while (connected) {
+            connected = false;
+            std::this_thread::sleep_for(3s);
+        }
+        ExitProcess(0);
+    });
 
     // Routes
-    server.Post("/", [cli](const http::Request& req, http::Response& res) {
+    server.Post("/", [cli, &connected](const http::Request& req, http::Response& res) {
 
         if (req.body.find("detection") != std::string::npos) {
 
@@ -23,6 +34,7 @@ void Server(http::Client* cli) {
             res.set_content("QAC: Cheat info received", "text/plain");
         }
         else {
+            connected = true;
             res.set_content("QAC: Heartbeat received", "text/plain");
         }
     });

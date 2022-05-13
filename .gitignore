@@ -48,7 +48,6 @@
 !*.vcxproj.user
 
 # Other
-!*.lib
 !*.docx
 
 # Reblacklist

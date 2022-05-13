@@ -81,6 +81,10 @@ DWORD WINAPI Init(LPVOID lpParam) {
 
     // On exit, run KillClientAC
     std::atexit(KillClientAC);
+    std::set_terminate([] {
+        KillClientAC();
+        std::abort();
+    });
 
     // Main program loop
     TaskDispatch();

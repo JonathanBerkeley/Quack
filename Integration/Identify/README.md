@@ -1,5 +1,5 @@
 # Identify
-Provides an interface to the hardware ID system used in Quack so it can be easily included in games as a .DLL depedency.    
+Provides an interface to the hardware ID system used in Quack so it can be easily included in games as a .DLL dependency.    
 
 # Usage
 ### Unity example

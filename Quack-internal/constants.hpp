@@ -12,5 +12,5 @@ namespace constants {
     const std::string VERSION { "0.6.5" };
     constexpr unsigned IPC_PORT = 5175; // Local machine communications port
     constexpr unsigned NET_PORT = 7982; // Foreign network communications port
-    static constexpr bool DBG = true;
+    static constexpr bool DBG = false;
 }

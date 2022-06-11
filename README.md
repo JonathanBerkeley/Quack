@@ -41,4 +41,4 @@ https://github.com/JonathanBerkeley/Inertia-cheat/
 https://onshow.iadt.ie/2022/student/jonathan-p-berkeley/    
 
 # Demonstration
-[![Tutorial](https://i.imgur.com/PKtuHvQ.png)](https://www.youtube.com/watch?v=r_laptslep4)    
+[![Tutorial](https://i.imgur.com/oiuwu3M.png)](https://www.youtube.com/watch?v=r_laptslep4)    

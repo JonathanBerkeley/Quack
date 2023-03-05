@@ -10,6 +10,9 @@ This should be considered as a research project only and not used to defend any 
 https://docs.quack.ac    
 https://github.com/JonathanBerkeley/Quack/tree/main/Docs    
 
+# Contributing
+Contribution is welcomed, check out [CONTRIBUTING.md](https://github.com/JonathanBerkeley/Quack/blob/main/CONTRIBUTING.md) for information on contributing to Quack. Any pull requests opened will be reviewed as soon as possible.    
+
 # Build instructions
 1. Clone repository (git clone https://github.com/JonathanBerkeley/Quack.git)    
 2. Download submodules (git submodule update --init --recursive)    

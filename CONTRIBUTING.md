@@ -38,15 +38,14 @@ Any content that is sourced from or even inspired by code from another project (
 A good bug report shouldn't leave others needing to chase you up for more information. Therefore, we ask you to investigate carefully, collect information and describe the issue in detail in your report. Please complete the following steps in advance to help us fix any potential bug as fast as possible.
 
 - Make sure that you are using the latest version.
-- Determine if your bug is really a bug and not an error on your side e.g. using incompatible environment components/versions. If you are looking for support, you might want to check [this section](#i-have-a-question)).
+- Determine if your bug is really a bug and not an error on your side. If you are looking for support, you might want to check [this section](#i-have-a-question)).
 - To see if other users have experienced (and potentially already solved) the same issue you are having, check if there is not already a bug report existing for your bug or error in the [bug tracker](https://github.com/JonathanBerkeley/Quack/issues?q=label%3Abug).
-- Try make sure the bug experienced is directly related to this project, and not the fault of external factors.
 - Collect information about the bug:
   - What did you expect to happen? What did happen?
   - Stacktrace if available, any error messages.
   - OS version, architecture, any additional user setup information.
   - Version of the compiler, IDE, etc. if relevant.
-  - Can you reliably reproduce the issue?
+  - Can you reliably reproduce the issue? If so, list the steps. If not, describe the scenario in which it occured.
 
 ### Suggesting enhancements
 
@@ -76,7 +75,7 @@ Style should be kept in-line with the component that is being worked on, some sp
 
 Gitignore is used as a whitelist in this project, see [.gitignore](https://github.com/JonathanBerkeley/Quack/blob/main/.gitignore) for an example.
 
-Changes can be made to style or project structure, this is allowed but it is best to open an [issue](https://github.com/JonathanBerkeley/Quack/issues/new) first detailing the planned changes to style or structure. The changes would also then need to be rolled out across the entire project, in order to remain consistent.
+Changes can be made to style or project structure, but it is best to open an [issue](https://github.com/JonathanBerkeley/Quack/issues/new) first detailing the planned changes to style or structure to make sure the changes would be accepted. The changes would also then need to be rolled out across the entire project, in order to remain consistent.
 
 <!-- omit in toc -->
 ## Attribution

@@ -4,7 +4,7 @@ Quick Universal Anti-Cheat Kit
 Universal (works with any game) anti-cheat software, for defending videogames from cheats.    
 Also contains other software for aiding in anti-cheat software development.    
 <br>
-This should be considered as a research project only and not used to defend any real world games.    
+**Disclaimer:** This is a research project and not used to defend any real world games.    
 
 # Documentation
 https://docs.quack.ac    
@@ -12,7 +12,7 @@ https://github.com/JonathanBerkeley/Quack/tree/main/Docs
 
 # Contributing
 Contribution is welcomed, check out [CONTRIBUTING.md](https://github.com/JonathanBerkeley/Quack/blob/main/CONTRIBUTING.md) for information on contributing to Quack. Any pull requests opened will be reviewed as soon as possible.    
-
+w
 # Build instructions
 1. Clone repository (git clone https://github.com/JonathanBerkeley/Quack.git)    
 2. Download submodules (git submodule update --init --recursive)    

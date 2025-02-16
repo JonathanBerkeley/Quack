@@ -4,7 +4,7 @@ Quick Universal Anti-Cheat Kit
 Universal (works with any game) anti-cheat software, for defending videogames from cheats.    
 Also contains other software for aiding in anti-cheat software development.    
 <br>
-**Disclaimer:** This is a research project and not used to defend any real world games.    
+**Disclaimer:** This is a research project and should not be used to defend any real world games.    
 
 # Documentation
 https://docs.quack.ac    

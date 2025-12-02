@@ -12,7 +12,7 @@ https://github.com/JonathanBerkeley/Quack/tree/main/Docs
 
 # Contributing
 Contribution is welcomed, check out [CONTRIBUTING.md](https://github.com/JonathanBerkeley/Quack/blob/main/CONTRIBUTING.md) for information on contributing to Quack. Any pull requests opened will be reviewed as soon as possible.    
-w
+
 # Build instructions
 1. Clone repository (git clone https://github.com/JonathanBerkeley/Quack.git)    
 2. Download submodules (git submodule update --init --recursive)    
@@ -44,4 +44,5 @@ https://github.com/JonathanBerkeley/Inertia-cheat/
 https://onshow.iadt.ie/2022/student/jonathan-p-berkeley/    
 
 # Demonstration
+
 [![Tutorial](https://i.imgur.com/oiuwu3M.png)](https://www.youtube.com/watch?v=r_laptslep4)    
